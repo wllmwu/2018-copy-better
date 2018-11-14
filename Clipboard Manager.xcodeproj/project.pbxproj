@@ -59,8 +59,8 @@
 				E056F8F020CEE46C0025E2FE /* AppDelegate.swift */,
 				E056F8F220CEE46C0025E2FE /* ViewController.swift */,
 				E056F8F420CEE46C0025E2FE /* Main.storyboard */,
-				E056F8FA20CEE46E0025E2FE /* Assets.xcassets */,
 				E056F8FC20CEE46E0025E2FE /* LaunchScreen.storyboard */,
+				E056F8FA20CEE46E0025E2FE /* Assets.xcassets */,
 				E056F8FF20CEE46E0025E2FE /* Info.plist */,
 				E056F8F720CEE46C0025E2FE /* Clipboard_Manager.xcdatamodeld */,
 			);
