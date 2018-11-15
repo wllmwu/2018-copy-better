@@ -200,7 +200,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="LastCopiedCell" id="HgL-Ev-V2n" customClass="LastCopiedTableViewCell" customModule="Clipboard" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="LastCopiedCell" id="HgL-Ev-V2n" customClass="ClipTableViewCell" customModule="Clipboard" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HgL-Ev-V2n" id="pjn-Ma-mMc">
@@ -213,6 +213,9 @@
                                                 <constraint firstAttribute="width" constant="40" id="hQT-lC-8wM"/>
                                             </constraints>
                                             <state key="normal" title="Copy"/>
+                                            <connections>
+                                                <action selector="copyButtonTapped:" destination="HgL-Ev-V2n" eventType="touchUpInside" id="e1J-R7-LcN"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last copied" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOG-VC-fzC">
                                             <rect key="frame" x="64" y="11" width="186" height="21"/>
@@ -220,7 +223,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;Contents&quot;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lgi-3s-Kbg">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lgi-3s-Kbg">
                                             <rect key="frame" x="64" y="36" width="186" height="13"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <nil key="textColor"/>
@@ -232,6 +235,9 @@
                                                 <constraint firstAttribute="width" constant="75" id="had-Nv-s4W"/>
                                             </constraints>
                                             <state key="normal" title="Add to list"/>
+                                            <connections>
+                                                <action selector="addButtonTapped:" destination="HgL-Ev-V2n" eventType="touchUpInside" id="n1i-nc-riM"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -251,10 +257,13 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="addButton" destination="Gcs-nk-eEx" id="Edi-ep-9lJ"/>
+                                    <outlet property="contentsLabel" destination="Lgi-3s-Kbg" id="Rt5-08-FiY"/>
+                                    <outlet property="copyButton" destination="TJ8-tS-zk3" id="fOL-LM-kb1"/>
                                     <segue destination="9Ah-HQ-3Ku" kind="show" identifier="LastCopiedToClip" id="1pd-qj-QPy"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ClipWithTitleCell" id="LK3-ka-3An" customClass="ClipTitledTableViewCell" customModule="Clipboard" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ClipWithTitleCell" id="LK3-ka-3An" customClass="ClipTableViewCell" customModule="Clipboard" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="88" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LK3-ka-3An" id="tCf-pS-C3b">
@@ -267,6 +276,9 @@
                                                 <constraint firstAttribute="width" constant="40" id="FzJ-bJ-jU4"/>
                                             </constraints>
                                             <state key="normal" title="Copy"/>
+                                            <connections>
+                                                <action selector="copyButtonTapped:" destination="LK3-ka-3An" eventType="touchUpInside" id="LZ6-jL-lGM"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBM-4M-D6k">
                                             <rect key="frame" x="64" y="11" width="269" height="21"/>
@@ -274,7 +286,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;Contents&quot;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1t-hn-ih7">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1t-hn-ih7">
                                             <rect key="frame" x="64" y="36" width="269" height="13"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <nil key="textColor"/>
@@ -295,6 +307,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="contentsLabel" destination="o1t-hn-ih7" id="89k-2M-a9Z"/>
+                                    <outlet property="copyButton" destination="AXt-XT-I7X" id="Z9X-ev-Fa4"/>
+                                    <outlet property="titleLabel" destination="sBM-4M-D6k" id="qXM-uo-p03"/>
                                     <segue destination="9Ah-HQ-3Ku" kind="show" identifier="ClipWithTitleToClip" id="OQy-tm-RJB"/>
                                 </connections>
                             </tableViewCell>
@@ -311,8 +326,11 @@
                                                 <constraint firstAttribute="width" constant="40" id="zF0-tT-HmO"/>
                                             </constraints>
                                             <state key="normal" title="Copy"/>
+                                            <connections>
+                                                <action selector="copyButtonTapped:" destination="A58-0s-LVh" eventType="touchUpInside" id="Iyp-Ou-GKe"/>
+                                            </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;Contents&quot;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6d-Bl-fOw">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6d-Bl-fOw">
                                             <rect key="frame" x="64" y="20" width="269" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -329,6 +347,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="contentsLabel" destination="d6d-Bl-fOw" id="Ajh-DU-vOu"/>
+                                    <outlet property="copyButton" destination="yoX-S0-ffx" id="COW-Cc-ttc"/>
                                     <segue destination="9Ah-HQ-3Ku" kind="show" identifier="ClipNoTitleToClip" id="T1C-MY-kRL"/>
                                 </connections>
                             </tableViewCell>
@@ -350,7 +370,11 @@
                                     <segue destination="j6B-tm-cbu" kind="presentation" identifier="MainToAddClip" id="dAW-D8-Ny7"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="edit" id="6qG-x0-vYh"/>
+                            <barButtonItem systemItem="edit" id="6qG-x0-vYh">
+                                <connections>
+                                    <action selector="toggleEditing:" destination="Haj-no-mYC" id="hsQ-2T-qQj"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
