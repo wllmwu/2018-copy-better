@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Clipboard Manager.xcodeproj">
+      location = "self:/Users/billwu/Desktop/Folder/Clipboard Manager/Clipboard.xcodeproj">
    </FileRef>
 </Workspace>

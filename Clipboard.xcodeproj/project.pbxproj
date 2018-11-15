@@ -7,16 +7,49 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E04106BD219D04F100DD68AD /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E04106BC219D04F100DD68AD /* NotificationCenter.framework */; };
+		E04106C0219D04F100DD68AD /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04106BF219D04F100DD68AD /* TodayViewController.swift */; };
+		E04106C3219D04F100DD68AD /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E04106C1219D04F100DD68AD /* MainInterface.storyboard */; };
+		E04106C7219D04F100DD68AD /* Clipboard Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E04106BA219D04F100DD68AD /* Clipboard Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E056F8F120CEE46C0025E2FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E056F8F020CEE46C0025E2FE /* AppDelegate.swift */; };
 		E056F8F320CEE46C0025E2FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E056F8F220CEE46C0025E2FE /* ViewController.swift */; };
 		E056F8F620CEE46C0025E2FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E056F8F420CEE46C0025E2FE /* Main.storyboard */; };
-		E056F8F920CEE46C0025E2FE /* Clipboard_Manager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E056F8F720CEE46C0025E2FE /* Clipboard_Manager.xcdatamodeld */; };
+		E056F8F920CEE46C0025E2FE /* Clipboard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E056F8F720CEE46C0025E2FE /* Clipboard.xcdatamodeld */; };
 		E056F8FB20CEE46E0025E2FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E056F8FA20CEE46E0025E2FE /* Assets.xcassets */; };
 		E056F8FE20CEE46E0025E2FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E056F8FC20CEE46E0025E2FE /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		E04106C5219D04F100DD68AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E056F8E520CEE46C0025E2FE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E04106B9219D04F100DD68AD;
+			remoteInfo = "Clipboard Widget";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E04106CB219D04F100DD68AD /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E04106C7219D04F100DD68AD /* Clipboard Widget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		E056F8ED20CEE46C0025E2FE /* Clipboard Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Clipboard Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E04106BA219D04F100DD68AD /* Clipboard Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Clipboard Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E04106BC219D04F100DD68AD /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		E04106BF219D04F100DD68AD /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		E04106C2219D04F100DD68AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		E04106C4219D04F100DD68AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E056F8ED20CEE46C0025E2FE /* Clipboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clipboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E056F8F020CEE46C0025E2FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E056F8F220CEE46C0025E2FE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E056F8F520CEE46C0025E2FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -27,6 +60,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E04106B7219D04F100DD68AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E04106BD219D04F100DD68AD /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E056F8EA20CEE46C0025E2FE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -37,10 +78,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E04106BB219D04F100DD68AD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E04106BC219D04F100DD68AD /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E04106BE219D04F100DD68AD /* Clipboard Widget */ = {
+			isa = PBXGroup;
+			children = (
+				E04106BF219D04F100DD68AD /* TodayViewController.swift */,
+				E04106C1219D04F100DD68AD /* MainInterface.storyboard */,
+				E04106C4219D04F100DD68AD /* Info.plist */,
+			);
+			path = "Clipboard Widget";
+			sourceTree = "<group>";
+		};
 		E056F8E420CEE46C0025E2FE = {
 			isa = PBXGroup;
 			children = (
-				E056F8EF20CEE46C0025E2FE /* Clipboard Manager */,
+				E056F8EF20CEE46C0025E2FE /* Clipboard */,
+				E04106BE219D04F100DD68AD /* Clipboard Widget */,
+				E04106BB219D04F100DD68AD /* Frameworks */,
 				E056F8EE20CEE46C0025E2FE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,12 +109,13 @@
 		E056F8EE20CEE46C0025E2FE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E056F8ED20CEE46C0025E2FE /* Clipboard Manager.app */,
+				E056F8ED20CEE46C0025E2FE /* Clipboard.app */,
+				E04106BA219D04F100DD68AD /* Clipboard Widget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E056F8EF20CEE46C0025E2FE /* Clipboard Manager */ = {
+		E056F8EF20CEE46C0025E2FE /* Clipboard */ = {
 			isa = PBXGroup;
 			children = (
 				E056F8F020CEE46C0025E2FE /* AppDelegate.swift */,
@@ -62,29 +124,48 @@
 				E056F8FC20CEE46E0025E2FE /* LaunchScreen.storyboard */,
 				E056F8FA20CEE46E0025E2FE /* Assets.xcassets */,
 				E056F8FF20CEE46E0025E2FE /* Info.plist */,
-				E056F8F720CEE46C0025E2FE /* Clipboard_Manager.xcdatamodeld */,
+				E056F8F720CEE46C0025E2FE /* Clipboard.xcdatamodeld */,
 			);
-			path = "Clipboard Manager";
+			path = Clipboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E056F8EC20CEE46C0025E2FE /* Clipboard Manager */ = {
+		E04106B9219D04F100DD68AD /* Clipboard Widget */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E056F90220CEE46E0025E2FE /* Build configuration list for PBXNativeTarget "Clipboard Manager" */;
+			buildConfigurationList = E04106C8219D04F100DD68AD /* Build configuration list for PBXNativeTarget "Clipboard Widget" */;
 			buildPhases = (
-				E056F8E920CEE46C0025E2FE /* Sources */,
-				E056F8EA20CEE46C0025E2FE /* Frameworks */,
-				E056F8EB20CEE46C0025E2FE /* Resources */,
+				E04106B6219D04F100DD68AD /* Sources */,
+				E04106B7219D04F100DD68AD /* Frameworks */,
+				E04106B8219D04F100DD68AD /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Clipboard Manager";
+			name = "Clipboard Widget";
+			productName = "Clipboard Widget";
+			productReference = E04106BA219D04F100DD68AD /* Clipboard Widget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		E056F8EC20CEE46C0025E2FE /* Clipboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E056F90220CEE46E0025E2FE /* Build configuration list for PBXNativeTarget "Clipboard" */;
+			buildPhases = (
+				E056F8E920CEE46C0025E2FE /* Sources */,
+				E056F8EA20CEE46C0025E2FE /* Frameworks */,
+				E056F8EB20CEE46C0025E2FE /* Resources */,
+				E04106CB219D04F100DD68AD /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E04106C6219D04F100DD68AD /* PBXTargetDependency */,
+			);
+			name = Clipboard;
 			productName = "Clipboard Manager";
-			productReference = E056F8ED20CEE46C0025E2FE /* Clipboard Manager.app */;
+			productReference = E056F8ED20CEE46C0025E2FE /* Clipboard.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -93,16 +174,19 @@
 		E056F8E520CEE46C0025E2FE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0930;
+				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "William Wu";
 				TargetAttributes = {
+					E04106B9219D04F100DD68AD = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
 					E056F8EC20CEE46C0025E2FE = {
 						CreatedOnToolsVersion = 9.3.1;
 					};
 				};
 			};
-			buildConfigurationList = E056F8E820CEE46C0025E2FE /* Build configuration list for PBXProject "Clipboard Manager" */;
+			buildConfigurationList = E056F8E820CEE46C0025E2FE /* Build configuration list for PBXProject "Clipboard" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,12 +199,21 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E056F8EC20CEE46C0025E2FE /* Clipboard Manager */,
+				E056F8EC20CEE46C0025E2FE /* Clipboard */,
+				E04106B9219D04F100DD68AD /* Clipboard Widget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E04106B8219D04F100DD68AD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E04106C3219D04F100DD68AD /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E056F8EB20CEE46C0025E2FE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -134,19 +227,43 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E04106B6219D04F100DD68AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E04106C0219D04F100DD68AD /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E056F8E920CEE46C0025E2FE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				E056F8F320CEE46C0025E2FE /* ViewController.swift in Sources */,
-				E056F8F920CEE46C0025E2FE /* Clipboard_Manager.xcdatamodeld in Sources */,
+				E056F8F920CEE46C0025E2FE /* Clipboard.xcdatamodeld in Sources */,
 				E056F8F120CEE46C0025E2FE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		E04106C6219D04F100DD68AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E04106B9219D04F100DD68AD /* Clipboard Widget */;
+			targetProxy = E04106C5219D04F100DD68AD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		E04106C1219D04F100DD68AD /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E04106C2219D04F100DD68AD /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		E056F8F420CEE46C0025E2FE /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -166,6 +283,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E04106C9219D04F100DD68AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FFB5P5C3G7;
+				INFOPLIST_FILE = "Clipboard Widget/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.williamwu.Clipboard-Manager.Clipboard-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E04106CA219D04F100DD68AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FFB5P5C3G7;
+				INFOPLIST_FILE = "Clipboard Widget/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.williamwu.Clipboard-Manager.Clipboard-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		E056F90020CEE46E0025E2FE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -283,10 +440,11 @@
 		E056F90320CEE46E0025E2FE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
-				INFOPLIST_FILE = "Clipboard Manager/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Clipboard/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -301,10 +459,11 @@
 		E056F90420CEE46E0025E2FE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
-				INFOPLIST_FILE = "Clipboard Manager/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Clipboard/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -319,7 +478,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E056F8E820CEE46C0025E2FE /* Build configuration list for PBXProject "Clipboard Manager" */ = {
+		E04106C8219D04F100DD68AD /* Build configuration list for PBXNativeTarget "Clipboard Widget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E04106C9219D04F100DD68AD /* Debug */,
+				E04106CA219D04F100DD68AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E056F8E820CEE46C0025E2FE /* Build configuration list for PBXProject "Clipboard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E056F90020CEE46E0025E2FE /* Debug */,
@@ -328,7 +496,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E056F90220CEE46E0025E2FE /* Build configuration list for PBXNativeTarget "Clipboard Manager" */ = {
+		E056F90220CEE46E0025E2FE /* Build configuration list for PBXNativeTarget "Clipboard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E056F90320CEE46E0025E2FE /* Debug */,
@@ -340,13 +508,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E056F8F720CEE46C0025E2FE /* Clipboard_Manager.xcdatamodeld */ = {
+		E056F8F720CEE46C0025E2FE /* Clipboard.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				E056F8F820CEE46C0025E2FE /* Clipboard_Manager.xcdatamodel */,
 			);
 			currentVersion = E056F8F820CEE46C0025E2FE /* Clipboard_Manager.xcdatamodel */;
-			path = Clipboard_Manager.xcdatamodeld;
+			path = Clipboard.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
