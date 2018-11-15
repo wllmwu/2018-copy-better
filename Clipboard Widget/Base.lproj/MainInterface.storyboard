@@ -30,12 +30,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last copied" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhW-Aa-uuz">
-                                                    <rect key="frame" x="15" y="11" width="92.5" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JjV-Pq-txm">
                                                     <rect key="frame" x="274" y="6" width="30" height="30"/>
                                                     <constraints>
@@ -46,6 +40,12 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Contents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H9m-bC-e4K">
                                                     <rect key="frame" x="115.5" y="12" width="150.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last copied" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhW-Aa-uuz">
+                                                    <rect key="frame" x="15" y="11" width="92.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -68,14 +68,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkn-Jd-RqI">
-                                                    <rect key="frame" x="15" y="11" width="35.5" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0rp-gP-ymg">
-                                                    <rect key="frame" x="264" y="6" width="40" height="30"/>
+                                                    <rect key="frame" x="264" y="7.5" width="40" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="qsV-LV-YpW"/>
                                                     </constraints>
@@ -84,6 +78,12 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Contents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXf-ml-lh5">
                                                     <rect key="frame" x="58.5" y="12" width="197.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkn-Jd-RqI">
+                                                    <rect key="frame" x="15" y="12" width="35.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -114,7 +114,7 @@
                                                     <state key="normal" title="Copy"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jk5-vb-u6a">
-                                                    <rect key="frame" x="23" y="12" width="233" height="20.5"/>
+                                                    <rect key="frame" x="15" y="12" width="241" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -123,7 +123,7 @@
                                             <constraints>
                                                 <constraint firstItem="jk5-vb-u6a" firstAttribute="centerY" secondItem="awn-bg-jib" secondAttribute="centerY" id="2pf-wP-eCQ"/>
                                                 <constraint firstItem="wKi-7V-pRM" firstAttribute="leading" secondItem="jk5-vb-u6a" secondAttribute="trailing" constant="8" id="9hL-qi-P9W"/>
-                                                <constraint firstItem="jk5-vb-u6a" firstAttribute="leading" secondItem="awn-bg-jib" secondAttribute="leadingMargin" constant="8" id="CB5-oD-nCB"/>
+                                                <constraint firstItem="jk5-vb-u6a" firstAttribute="leading" secondItem="awn-bg-jib" secondAttribute="leadingMargin" id="CB5-oD-nCB"/>
                                                 <constraint firstAttribute="trailing" secondItem="wKi-7V-pRM" secondAttribute="trailing" constant="16" id="ChR-Ew-N3z"/>
                                                 <constraint firstItem="wKi-7V-pRM" firstAttribute="centerY" secondItem="jk5-vb-u6a" secondAttribute="centerY" id="cIT-XB-vLT"/>
                                             </constraints>
