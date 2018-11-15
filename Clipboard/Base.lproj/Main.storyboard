@@ -15,7 +15,7 @@
         <!--Settings-->
         <scene sceneID="W4b-il-UZl">
             <objects>
-                <tableViewController id="BlK-IM-OGN" sceneMemberID="viewController">
+                <tableViewController id="BlK-IM-OGN" customClass="SettingsTableViewController" customModule="Clipboard" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="cgU-5O-pTN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -194,13 +194,13 @@
         <!--Main-->
         <scene sceneID="es6-c5-mlw">
             <objects>
-                <tableViewController title="Main" id="Haj-no-mYC" sceneMemberID="viewController">
+                <tableViewController title="Main" id="Haj-no-mYC" customClass="MainTableViewController" customModule="Clipboard" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="uiC-iC-gr4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="LastCopiedCell" id="HgL-Ev-V2n">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="LastCopiedCell" id="HgL-Ev-V2n" customClass="LastCopiedTableViewCell" customModule="Clipboard" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HgL-Ev-V2n" id="pjn-Ma-mMc">
@@ -254,7 +254,7 @@
                                     <segue destination="9Ah-HQ-3Ku" kind="show" identifier="LastCopiedToClip" id="1pd-qj-QPy"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ClipWithTitleCell" id="LK3-ka-3An">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ClipWithTitleCell" id="LK3-ka-3An" customClass="ClipTitledTableViewCell" customModule="Clipboard" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="88" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LK3-ka-3An" id="tCf-pS-C3b">
@@ -298,7 +298,7 @@
                                     <segue destination="9Ah-HQ-3Ku" kind="show" identifier="ClipWithTitleToClip" id="OQy-tm-RJB"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ClipNoTitleCell" id="A58-0s-LVh">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ClipNoTitleCell" id="A58-0s-LVh" customClass="ClipTableViewCell" customModule="Clipboard" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="148" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A58-0s-LVh" id="XKn-Oo-xf0">
@@ -345,7 +345,11 @@
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="f4M-pE-6hk"/>
+                            <barButtonItem systemItem="add" id="f4M-pE-6hk">
+                                <connections>
+                                    <segue destination="j6B-tm-cbu" kind="presentation" identifier="MainToAddClip" id="dAW-D8-Ny7"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem systemItem="edit" id="6qG-x0-vYh"/>
                         </rightBarButtonItems>
                     </navigationItem>
@@ -357,7 +361,7 @@
         <!--Clip-->
         <scene sceneID="auW-EL-kvS">
             <objects>
-                <viewController title="Clip" id="9Ah-HQ-3Ku" sceneMemberID="viewController">
+                <viewController title="Clip" id="9Ah-HQ-3Ku" customClass="ClipViewController" customModule="Clipboard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="olz-Yc-cne">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -375,7 +379,7 @@
         <!--Edit Clip-->
         <scene sceneID="nwi-s5-uLu">
             <objects>
-                <tableViewController title="Edit Clip" id="c12-NJ-Wss" sceneMemberID="viewController">
+                <tableViewController title="Edit Clip" id="c12-NJ-Wss" customClass="EditClipTableViewController" customModule="Clipboard" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Jgs-Zu-sYs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -489,6 +493,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="dAW-D8-Ny7"/>
         <segue reference="T1C-MY-kRL"/>
     </inferredMetricsTieBreakers>
 </document>
