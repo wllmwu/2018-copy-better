@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  Clipboard Manager
+//  Clipboard
 //
 //  Created by Bill Wu on 6/11/18.
 //  Copyright © 2018 William Wu. All rights reserved.

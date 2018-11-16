@@ -25,6 +25,8 @@
 		E06AA132219D32F60015A30F /* EditClipTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA131219D32F60015A30F /* EditClipTableViewController.swift */; };
 		E06AA134219D331E0015A30F /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA133219D331E0015A30F /* SettingsTableViewController.swift */; };
 		E06AA136219D37BE0015A30F /* ClipboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA135219D37BE0015A30F /* ClipboardManager.swift */; };
+		E0D67EE3219E925600559CA6 /* DefaultClipboard.plist in Resources */ = {isa = PBXBuildFile; fileRef = E0D67EE2219E925600559CA6 /* DefaultClipboard.plist */; };
+		E0D67EE4219E925600559CA6 /* DefaultClipboard.plist in Resources */ = {isa = PBXBuildFile; fileRef = E0D67EE2219E925600559CA6 /* DefaultClipboard.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,9 @@
 		E06AA131219D32F60015A30F /* EditClipTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditClipTableViewController.swift; sourceTree = "<group>"; };
 		E06AA133219D331E0015A30F /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		E06AA135219D37BE0015A30F /* ClipboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardManager.swift; sourceTree = "<group>"; };
+		E0D67EE0219E8B6700559CA6 /* Clipboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Clipboard.entitlements; sourceTree = "<group>"; };
+		E0D67EE1219E8CB100559CA6 /* Clipboard Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Clipboard Widget.entitlements"; sourceTree = "<group>"; };
+		E0D67EE2219E925600559CA6 /* DefaultClipboard.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultClipboard.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +110,7 @@
 		E04106BE219D04F100DD68AD /* Clipboard Widget */ = {
 			isa = PBXGroup;
 			children = (
+				E0D67EE1219E8CB100559CA6 /* Clipboard Widget.entitlements */,
 				E04106BF219D04F100DD68AD /* TodayViewController.swift */,
 				E04106C1219D04F100DD68AD /* MainInterface.storyboard */,
 				E04106C4219D04F100DD68AD /* Info.plist */,
@@ -134,6 +140,7 @@
 		E056F8EF20CEE46C0025E2FE /* Clipboard */ = {
 			isa = PBXGroup;
 			children = (
+				E0D67EE0219E8B6700559CA6 /* Clipboard.entitlements */,
 				E056F8F020CEE46C0025E2FE /* AppDelegate.swift */,
 				E056F8F220CEE46C0025E2FE /* ViewController.swift */,
 				E06AA135219D37BE0015A30F /* ClipboardManager.swift */,
@@ -148,6 +155,7 @@
 				E056F8FC20CEE46E0025E2FE /* LaunchScreen.storyboard */,
 				E056F8FA20CEE46E0025E2FE /* Assets.xcassets */,
 				E056F8FF20CEE46E0025E2FE /* Info.plist */,
+				E0D67EE2219E925600559CA6 /* DefaultClipboard.plist */,
 				E056F8F720CEE46C0025E2FE /* Clipboard.xcdatamodeld */,
 			);
 			path = Clipboard;
@@ -204,9 +212,19 @@
 				TargetAttributes = {
 					E04106B9219D04F100DD68AD = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					E056F8EC20CEE46C0025E2FE = {
 						CreatedOnToolsVersion = 9.3.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -235,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E04106C3219D04F100DD68AD /* MainInterface.storyboard in Resources */,
+				E0D67EE4219E925600559CA6 /* DefaultClipboard.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E056F8FE20CEE46E0025E2FE /* LaunchScreen.storyboard in Resources */,
+				E0D67EE3219E925600559CA6 /* DefaultClipboard.plist in Resources */,
 				E056F8FB20CEE46E0025E2FE /* Assets.xcassets in Resources */,
 				E056F8F620CEE46C0025E2FE /* Main.storyboard in Resources */,
 			);
@@ -318,6 +338,7 @@
 		E04106C9219D04F100DD68AD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Clipboard Widget/Clipboard Widget.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clipboard Widget/Info.plist";
@@ -338,6 +359,7 @@
 		E04106CA219D04F100DD68AD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Clipboard Widget/Clipboard Widget.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clipboard Widget/Info.plist";
@@ -474,6 +496,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Clipboard/Clipboard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "$(SRCROOT)/Clipboard/Info.plist";
@@ -493,6 +516,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Clipboard/Clipboard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "$(SRCROOT)/Clipboard/Info.plist";
