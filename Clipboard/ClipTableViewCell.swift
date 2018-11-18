@@ -16,7 +16,7 @@ class ClipTableViewCell: UITableViewCell {
     @IBOutlet weak var addButton: UIButton!
     
     private var title: String?
-    private var contents: String! = ""
+    private var contents: NSAttributedString!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,21 +29,22 @@ class ClipTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setup(title: String, contents: String) {
+    func setup(title: String, contents: NSAttributedString) {
         self.title = title
         self.contents = contents
         self.titleLabel.text = title
-        self.contentsLabel.text = contents
+        self.contentsLabel.attributedText = contents
     }
     
-    func setup(contents: String) {
+    func setup(contents: NSAttributedString) {
         self.title = nil
         self.contents = contents
-        self.contentsLabel.text = contents
+        self.contentsLabel.attributedText = contents
     }
     
     @IBAction func copyButtonTapped(_ sender: UIButton) {
-        UIPasteboard.general.string = self.contents
+        //UIPasteboard.general.string = self.contents
+        
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {

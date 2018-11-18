@@ -14,10 +14,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    private var managedObjectContext: NSManagedObjectContext!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        self.managedObjectContext = self.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
+        do {
+            let results = try managedObjectContext.fetch(fetchRequest)
+            if results.count == 0 {
+                self.addDefaultData()
+            }
+        }
+        catch {
+            fatalError("Error fetching data.")
+        }
+        
         return true
+    }
+    
+    private func addDefaultData() {
+        guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
+            fatalError("Couldn't find entity description.")
+        }
+        
+        let clip1 = Clip(entity: entity, insertInto: self.managedObjectContext)
+        clip1.setValue("Shrug", forKey: "title")
+        clip1.setValue(NSAttributedString(string: "\u{00af}\\_(\u{30c4})_/\u{00af}"), forKey: "contents")
+        clip1.setValue(0, forKey: "index")
+        /*
+        let clip2 = Clip(entity: entity, insertInto: self.managedObjectContext)
+        clip2.setValue("Example", forKey: "title")
+        clip2.setValue(NSAttributedString(string: <#T##String#>, attributes: <#T##[NSAttributedStringKey : Any]?#>), forKey: "contents")
+        clip2.setValue(1, forKey: "index")*/
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
