@@ -9,6 +9,10 @@
 import UIKit
 
 class EditClipTableViewController: UITableViewController {
+    
+    public enum Mode {
+        case Add, Edit
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,17 +28,25 @@ class EditClipTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func save(_ sender: UIBarButtonItem) {
+        //
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 1
     }
 
     /*

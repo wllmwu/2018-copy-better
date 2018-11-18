@@ -38,6 +38,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="quD-o9-F9g">
                                                     <rect key="frame" x="310" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="toggleShowCurrentInMainSwitch:" destination="BlK-IM-OGN" eventType="valueChanged" id="Hl8-su-T0v"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -68,6 +71,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OEm-6q-V9t">
                                                     <rect key="frame" x="310" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="toggleShowCurrentInWidgetSwitch:" destination="BlK-IM-OGN" eventType="valueChanged" id="lXv-6u-vbd"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -103,6 +109,9 @@
                                                 </label>
                                                 <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minimumValue="1" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="9XM-JF-u9j">
                                                     <rect key="frame" x="265" y="7" width="94" height="29"/>
+                                                    <connections>
+                                                        <action selector="changeNumClips:" destination="BlK-IM-OGN" eventType="valueChanged" id="UGI-yi-om8"/>
+                                                    </connections>
                                                 </stepper>
                                             </subviews>
                                             <constraints>
@@ -152,8 +161,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="9zi-Xh-Iso">
-                        <barButtonItem key="rightBarButtonItem" title="Back" id="fvL-xS-aiC"/>
+                        <barButtonItem key="rightBarButtonItem" title="Back" id="fvL-xS-aiC">
+                            <connections>
+                                <action selector="close:" destination="BlK-IM-OGN" id="PUC-qp-XS0"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="numClipsInWidgetLabel" destination="NzM-rt-96F" id="NDP-14-sG8"/>
+                        <outlet property="numClipsInWidgetStepper" destination="9XM-JF-u9j" id="bXi-Y1-dfS"/>
+                        <outlet property="showCurrentInMainSwitch" destination="quD-o9-F9g" id="Wen-w6-FSQ"/>
+                        <outlet property="showCurrentInWidgetSwitch" destination="OEm-6q-V9t" id="lc5-xD-VnV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bCe-be-UTs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -453,8 +472,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Edit Clip" id="05A-KI-hkJ">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qdy-pa-BHY"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="i0u-a0-TR0"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qdy-pa-BHY">
+                            <connections>
+                                <action selector="cancel:" destination="c12-NJ-Wss" id="lX3-9V-qTM"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="i0u-a0-TR0">
+                            <connections>
+                                <action selector="save:" destination="c12-NJ-Wss" id="3ar-nr-vQa"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gc9-F6-52Y" userLabel="First Responder" sceneMemberID="firstResponder"/>

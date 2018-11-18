@@ -17,7 +17,7 @@ class MainTableViewController: UITableViewController {
     private var showLastCopied: Bool = true
     private var lastCopied: NSAttributedString?
     
-    private var emptyContents = NSAttributedString(string: "Empty", attributes: <#T##[NSAttributedStringKey : Any]?#>)
+    private var emptyContents: NSAttributedString!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,25 +33,23 @@ class MainTableViewController: UITableViewController {
         }
         self.managedObjectContext = appDelegate.persistentContainer.viewContext
         
-        // user preference: show last copied
-        if let _ = UserDefaults.standard.object(forKey: "showLastCopied") {
-            // key exists
-            self.showLastCopied = UserDefaults.standard.bool(forKey: "showLastCopied")
-        }
-        else {
-            // key doesn't exist
-            UserDefaults.standard.set(true, forKey: "showLastCopied")
-        }
-        
-        if self.showLastCopied {
-            self.retrieveLastCopied()
-        }
+        let attributes: [NSAttributedStringKey : Any] = [
+            .font : UIFont.systemFont(ofSize: 11),
+            .foregroundColor : UIColor.gray
+        ]
+        self.emptyContents = NSAttributedString(string: "Empty", attributes: attributes)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.showLastCopied = UserDefaults.standard.bool(forKey: "showLastCopiedInMain")
+        if self.showLastCopied {
+            self.retrieveLastCopied()
+        }
+        
         self.loadData()
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,13 +64,14 @@ class MainTableViewController: UITableViewController {
             self.clips = try managedObjectContext.fetch(fetchRequest)
         }
         catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+            print("Couldn't fetch. \(error), \(error.userInfo)")
         }
     }
     
     private func retrieveLastCopied() {
         self.lastCopied = ClipboardManager.retrieveFromPasteboard()
-        if self.lastCopied == nil {
+        if let _ = self.lastCopied {}
+        else {
             self.lastCopied = self.emptyContents
         }
     }
@@ -80,7 +79,7 @@ class MainTableViewController: UITableViewController {
     @IBAction func toggleEditing(_ sender: UIBarButtonItem) {
         self.isEditing = !self.isEditing
     }
-
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -162,6 +161,11 @@ class MainTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if let identifier = segue.identifier {
+            if identifier == "MainToAddClip" {
+                //
+            }
+        }
     }
 
 }

@@ -19,16 +19,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        self.managedObjectContext = self.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
-        do {
-            let results = try managedObjectContext.fetch(fetchRequest)
-            if results.count == 0 {
-                self.addDefaultData()
-            }
-        }
-        catch {
-            fatalError("Error fetching data.")
+        let defaults: UserDefaults = UserDefaults.standard
+        if !defaults.bool(forKey: "launchedBefore") {
+            // first launch - set some default settings and data
+            defaults.set(true, forKey: "showLastCopiedInMain")
+            defaults.set(true, forKey: "showLastCopiedInWidget")
+            defaults.set(10, forKey: "numClipsInWidget")
+            
+            self.managedObjectContext = self.persistentContainer.viewContext
+            self.addDefaultData()
+            
+            defaults.set(true, forKey: "launchedBefore")
         }
         
         return true
@@ -48,6 +49,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         clip2.setValue("Example", forKey: "title")
         clip2.setValue(NSAttributedString(string: <#T##String#>, attributes: <#T##[NSAttributedStringKey : Any]?#>), forKey: "contents")
         clip2.setValue(1, forKey: "index")*/
+        
+        do {
+            try self.managedObjectContext.save()
+        }
+        catch let error as NSError {
+            print("Couldn't save. \(error), \(error.userInfo)")
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -83,7 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
-        let container = NSPersistentContainer(name: "Clipboard_Manager")
+        let container = NSPersistentContainer(name: "Clipboard")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
