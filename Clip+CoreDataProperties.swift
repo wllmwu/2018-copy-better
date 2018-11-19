@@ -17,7 +17,7 @@ extension Clip {
         return NSFetchRequest<Clip>(entityName: "Clip")
     }
 
-    @NSManaged public var contents: NSAttributedString
+    @NSManaged public var contents: NSAttributedString?
     @NSManaged public var index: Int16
     @NSManaged public var title: String?
 

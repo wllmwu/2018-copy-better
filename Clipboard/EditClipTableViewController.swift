@@ -7,12 +7,22 @@
 //
 
 import UIKit
+import CoreData
 
 class EditClipTableViewController: UITableViewController {
     
     public enum Mode {
         case Add, Edit
     }
+    
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var contentsTextField: UITextField!
+    
+    private var mode: Mode = .Add
+    private var index: Int?
+    private var clip: Clip?
+    
+    private var managedObjectContext: NSManagedObjectContext!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +39,55 @@ class EditClipTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func setContext(_ context: NSManagedObjectContext) {
+        self.managedObjectContext = context
+    }
+    
+    func setMode(_ mode: Mode) {
+        self.mode = mode
+    }
+    
+    func setIndex(_ index: Int) {
+        self.index = index
+    }
+    
+    func setClip(_ clip: Clip) {
+        self.clip = clip
+        self.titleTextField.text = clip.title
+        self.contentsTextField.attributedText = clip.contents
+    }
+    
     @IBAction func save(_ sender: UIBarButtonItem) {
-        //
+        if self.mode == .Add {
+            if let i = self.index {
+                guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
+                    fatalError("Couldn't find entity description.")
+                }
+                
+                let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
+                clip.setValue(self.titleTextField.text, forKey: "title")
+                if let contents = self.contentsTextField.attributedText {
+                    clip.setValue(contents, forKey: "contents")
+                }
+                else {
+                    clip.setValue("", forKey: "contents")
+                }
+                clip.setValue(i, forKey: "index")
+                
+                do {
+                    try self.managedObjectContext.save()
+                }
+                catch let error as NSError {
+                    print("Couldn't save. \(error), \(error.userInfo)")
+                }
+            }
+            else {
+                print("Error when adding: index wasn't set.")
+            }
+        }
+        else {
+            //
+        }
         
         self.dismiss(animated: true, completion: nil)
     }

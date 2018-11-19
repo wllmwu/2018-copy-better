@@ -16,8 +16,6 @@ class MainTableViewController: UITableViewController {
     
     private var showLastCopied: Bool = true
     private var lastCopied: NSAttributedString?
-    
-    private var emptyContents: NSAttributedString!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,27 +25,23 @@ class MainTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.rightBarButtonItems?.append(self.editButtonItem)
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             fatalError("Couldn't find AppDelegate")
         }
         self.managedObjectContext = appDelegate.persistentContainer.viewContext
         
-        let attributes: [NSAttributedStringKey : Any] = [
-            .font : UIFont.systemFont(ofSize: 11),
-            .foregroundColor : UIColor.gray
-        ]
-        self.emptyContents = NSAttributedString(string: "Empty", attributes: attributes)
+        self.showLastCopied = UserDefaults.standard.bool(forKey: "showLastCopiedInMain")
+        if self.showLastCopied {
+            self.retrieveLastCopied()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.showLastCopied = UserDefaults.standard.bool(forKey: "showLastCopiedInMain")
-        if self.showLastCopied {
-            self.retrieveLastCopied()
-        }
-        
         self.loadData()
         self.tableView.reloadData()
     }
@@ -61,7 +55,7 @@ class MainTableViewController: UITableViewController {
         let fetchRequest: NSFetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "index", ascending: true)]
         do {
-            self.clips = try managedObjectContext.fetch(fetchRequest)
+            self.clips = try self.managedObjectContext.fetch(fetchRequest)
         }
         catch let error as NSError {
             print("Couldn't fetch. \(error), \(error.userInfo)")
@@ -70,14 +64,15 @@ class MainTableViewController: UITableViewController {
     
     private func retrieveLastCopied() {
         self.lastCopied = ClipboardManager.retrieveFromPasteboard()
-        if let _ = self.lastCopied {}
-        else {
-            self.lastCopied = self.emptyContents
-        }
     }
     
-    @IBAction func toggleEditing(_ sender: UIBarButtonItem) {
-        self.isEditing = !self.isEditing
+    private func saveContext() {
+        do {
+            try self.managedObjectContext.save()
+        }
+        catch let error as NSError {
+            print("Couldn't save. \(error), \(error.userInfo)")
+        }
     }
     
     // MARK: - Table view data source
@@ -93,27 +88,27 @@ class MainTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 && self.showLastCopied {
             let cell: ClipTableViewCell = tableView.dequeueReusableCell(withIdentifier: "LastCopiedCell", for: indexPath) as! ClipTableViewCell
-            cell.setup(contents: self.lastCopied!)
+            cell.setContents(self.lastCopied)
             return cell
         }
         
-        let row: Int = indexPath.row - (self.showLastCopied ? 1 : 0)
-        let clip: Clip = self.clips[row]
+        let index: Int = indexPath.row - (self.showLastCopied ? 1 : 0)
+        let clip: Clip = self.clips[index]
         var cell: ClipTableViewCell
-        if let title = clip.title {
+        if let _ = clip.title {
             cell = tableView.dequeueReusableCell(withIdentifier: "ClipWithTitleCell", for: indexPath) as! ClipTableViewCell
-            cell.setup(title: title, contents: clip.contents)
         }
         else {
             cell = tableView.dequeueReusableCell(withIdentifier: "ClipNoTitleCell", for: indexPath) as! ClipTableViewCell
-            cell.setup(contents: clip.contents)
         }
+        cell.setClip(clip)
         return cell
     }
 
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
+        if !self.isEditing { return false }
         if indexPath.row == 0 && self.showLastCopied { return false }
         return true
     }
@@ -121,19 +116,37 @@ class MainTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            let correction: Int = self.showLastCopied ? 1 : 0
             // Delete the row from the data source
-            self.clips.remove(at: indexPath.row)
-            // call to ClipboardManager
+            self.managedObjectContext.delete(self.clips[indexPath.row - correction])
+            self.clips.remove(at: indexPath.row - correction)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            // reassign indices
+            for i in (indexPath.row - correction)..<self.clips.count {
+                let clip: Clip = self.clips[i]
+                clip.index = clip.index - 1
+            }
+            
+            self.saveContext()
         }
     }
 
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-        // call to ClipboardManager
-        let moved: Clip = self.clips[fromIndexPath.row]
-        self.clips.remove(at: fromIndexPath.row)
-        self.clips.insert(moved, at: to.row)
+        let correction: Int = self.showLastCopied ? 1 : 0
+        let moved: Clip = self.clips[fromIndexPath.row - correction]
+        moved.setValue((to.row - correction), forKey: "index")
+        self.clips.remove(at: fromIndexPath.row - correction)
+        self.clips.insert(moved, at: to.row - correction)
+        
+        // reassign indices
+        for i in (fromIndexPath.row - correction)..<(to.row - correction) {
+            let clip: Clip = self.clips[i]
+            clip.index = clip.index - 1
+        }
+        
+        self.saveContext()
     }
 
     // Override to support conditional rearranging of the table view.
@@ -163,7 +176,11 @@ class MainTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
         if let identifier = segue.identifier {
             if identifier == "MainToAddClip" {
-                //
+                let destinationNav: UINavigationController = segue.destination as! UINavigationController
+                let destination: EditClipTableViewController = destinationNav.viewControllers.first as! EditClipTableViewController
+                destination.setContext(self.managedObjectContext)
+                destination.setMode(.Add)
+                destination.setIndex(self.clips.count) // append new clip to end of list
             }
         }
     }

@@ -10,13 +10,17 @@ import UIKit
 
 class ClipTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel?
     @IBOutlet weak var contentsLabel: UILabel!
     @IBOutlet weak var copyButton: UIButton!
-    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var addButton: UIButton?
     
-    private var title: String?
-    private var contents: NSAttributedString!
+    private var clip: Clip!
+    
+    /*private let emptyContents = NSAttributedString(string: "Empty", attributes: [
+        .font : UIFont.systemFont(ofSize: 11),
+        .foregroundColor : UIColor.gray
+        ])*/
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,17 +33,24 @@ class ClipTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setup(title: String, contents: NSAttributedString) {
-        self.title = title
-        self.contents = contents
-        self.titleLabel.text = title
-        self.contentsLabel.attributedText = contents
+    func setClip(_ clip: Clip) {
+        self.clip = clip
+        
+        if let titleLabel = self.titleLabel {
+            titleLabel.text = self.clip.title
+        }
+        
+        self.setContents(clip.contents)
     }
     
-    func setup(contents: NSAttributedString) {
-        self.title = nil
-        self.contents = contents
-        self.contentsLabel.attributedText = contents
+    func setContents(_ contents: NSAttributedString?) {
+        if let _ = contents {
+            self.contentsLabel.attributedText = contents
+        }
+        else {
+            self.contentsLabel.text = "(Empty)"
+            self.contentsLabel.textColor = UIColor.gray
+        }
     }
     
     @IBAction func copyButtonTapped(_ sender: UIButton) {

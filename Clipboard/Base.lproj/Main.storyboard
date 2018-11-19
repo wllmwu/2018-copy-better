@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +15,7 @@
         <scene sceneID="W4b-il-UZl">
             <objects>
                 <tableViewController id="BlK-IM-OGN" customClass="SettingsTableViewController" customModule="Clipboard" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="cgU-5O-pTN">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="cgU-5O-pTN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -182,7 +181,7 @@
         <scene sceneID="Lpt-Vh-KfW">
             <objects>
                 <tableViewController title="About" id="KQb-ND-3vh" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="fdD-vG-J61">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="fdD-vG-J61">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -383,18 +382,11 @@
                                 <segue destination="zou-yU-NyZ" kind="presentation" identifier="MainToSettings" modalTransitionStyle="coverVertical" id="oCp-9y-Yt3"/>
                             </connections>
                         </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="f4M-pE-6hk">
-                                <connections>
-                                    <segue destination="j6B-tm-cbu" kind="presentation" identifier="MainToAddClip" id="dAW-D8-Ny7"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem systemItem="edit" id="6qG-x0-vYh">
-                                <connections>
-                                    <action selector="toggleEditing:" destination="Haj-no-mYC" id="hsQ-2T-qQj"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="f4M-pE-6hk">
+                            <connections>
+                                <segue destination="j6B-tm-cbu" kind="presentation" identifier="MainToAddClip" id="dAW-D8-Ny7"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EE1-qK-7A8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -423,7 +415,7 @@
         <scene sceneID="nwi-s5-uLu">
             <objects>
                 <tableViewController title="Edit Clip" id="c12-NJ-Wss" customClass="EditClipTableViewController" customModule="Clipboard" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Jgs-Zu-sYs">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Jgs-Zu-sYs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -437,7 +429,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title…" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="BIk-3c-cFB">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title… (optional)" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="BIk-3c-cFB">
                                                     <rect key="frame" x="16" y="11.5" width="343" height="21"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -461,6 +453,19 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lUI-eK-GbS" id="GXB-de-R8W">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="299.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" usesAttributedText="YES" placeholder="Type here…" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O0q-Da-U7Q">
+                                                    <rect key="frame" x="16" y="11" width="343" height="278"/>
+                                                    <attributedString key="attributedText"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="O0q-Da-U7Q" secondAttribute="trailing" id="38e-Y1-kZD"/>
+                                                <constraint firstItem="O0q-Da-U7Q" firstAttribute="leading" secondItem="GXB-de-R8W" secondAttribute="leadingMargin" id="jQ0-j1-hMt"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="O0q-Da-U7Q" secondAttribute="bottom" id="kru-U1-VEm"/>
+                                                <constraint firstItem="O0q-Da-U7Q" firstAttribute="top" secondItem="GXB-de-R8W" secondAttribute="topMargin" id="y5U-yo-dZo"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -483,6 +488,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="contentsTextField" destination="O0q-Da-U7Q" id="Nn1-tp-Xhb"/>
+                        <outlet property="titleTextField" destination="BIk-3c-cFB" id="8fJ-31-hHZ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gc9-F6-52Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
