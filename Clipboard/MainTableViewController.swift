@@ -15,7 +15,7 @@ class MainTableViewController: UITableViewController {
     private var clips: [Clip] = []
     
     private var showLastCopied: Bool = true
-    private var lastCopied: NSAttributedString?
+    private var lastCopied: NSAttributedString = NSAttributedString()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +75,13 @@ class MainTableViewController: UITableViewController {
         }
     }
     
+    private func reassignIndices() {
+        for i in 0..<self.clips.count {
+            let clip = self.clips[i]
+            clip.index = Int16(i)
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -122,12 +129,7 @@ class MainTableViewController: UITableViewController {
             self.clips.remove(at: indexPath.row - correction)
             tableView.deleteRows(at: [indexPath], with: .fade)
             
-            // reassign indices
-            for i in (indexPath.row - correction)..<self.clips.count {
-                let clip: Clip = self.clips[i]
-                clip.index = clip.index - 1
-            }
-            
+            self.reassignIndices()
             self.saveContext()
         }
     }
@@ -136,16 +138,12 @@ class MainTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
         let correction: Int = self.showLastCopied ? 1 : 0
         let moved: Clip = self.clips[fromIndexPath.row - correction]
-        moved.setValue((to.row - correction), forKey: "index")
+        moved.index = Int16(to.row - correction)
+//        moved.setValue((to.row - correction), forKey: "index")
         self.clips.remove(at: fromIndexPath.row - correction)
         self.clips.insert(moved, at: to.row - correction)
         
-        // reassign indices
-        for i in (fromIndexPath.row - correction)..<(to.row - correction) {
-            let clip: Clip = self.clips[i]
-            clip.index = clip.index - 1
-        }
-        
+        self.reassignIndices()
         self.saveContext()
     }
 

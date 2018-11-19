@@ -41,9 +41,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         let clip1 = Clip(entity: entity, insertInto: self.managedObjectContext)
-        clip1.setValue("Shrug", forKey: "title")
-        clip1.setValue(NSAttributedString(string: "\u{00af}\\_(\u{30c4})_/\u{00af}"), forKey: "contents")
-        clip1.setValue(0, forKey: "index")
+        clip1.title = "Shrug"
+        clip1.contents = NSAttributedString(string: "\u{00af}\\_(\u{30c4})_/\u{00af}")
+        clip1.index = 0
+//        clip1.setValue("Shrug", forKey: "title")
+//        clip1.setValue(NSAttributedString(string: "\u{00af}\\_(\u{30c4})_/\u{00af}"), forKey: "contents")
+//        clip1.setValue(0, forKey: "index")
         /*
         let clip2 = Clip(entity: entity, insertInto: self.managedObjectContext)
         clip2.setValue("Example", forKey: "title")

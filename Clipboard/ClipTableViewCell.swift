@@ -43,13 +43,13 @@ class ClipTableViewCell: UITableViewCell {
         self.setContents(clip.contents)
     }
     
-    func setContents(_ contents: NSAttributedString?) {
-        if let _ = contents {
-            self.contentsLabel.attributedText = contents
-        }
-        else {
+    func setContents(_ contents: NSAttributedString) {
+        if contents.string.isEmpty {
             self.contentsLabel.text = "(Empty)"
             self.contentsLabel.textColor = UIColor.gray
+        }
+        else {
+            self.contentsLabel.attributedText = contents
         }
     }
     

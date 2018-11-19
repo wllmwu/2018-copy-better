@@ -65,14 +65,17 @@ class EditClipTableViewController: UITableViewController {
                 }
                 
                 let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
-                clip.setValue(self.titleTextField.text, forKey: "title")
+                clip.title = self.titleTextField.text
                 if let contents = self.contentsTextField.attributedText {
-                    clip.setValue(contents, forKey: "contents")
+                    clip.contents = contents
                 }
                 else {
-                    clip.setValue("", forKey: "contents")
+                    clip.contents = NSAttributedString()
                 }
-                clip.setValue(i, forKey: "index")
+                clip.index = Int16(i)
+//                clip.setValue(self.titleTextField.text, forKey: "title")
+//                clip.setValue(self.contentsTextField.attributedText, forKey: "contents")
+//                clip.setValue(i, forKey: "index")
                 
                 do {
                     try self.managedObjectContext.save()

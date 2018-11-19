@@ -88,7 +88,7 @@ class ClipboardManager: NSObject {
     
     static func moveClip(_ clip: NSManagedObject, )
     */
-    static func retrieveFromPasteboard() -> NSAttributedString? {
+    static func retrieveFromPasteboard() -> NSAttributedString {
         let pasteboard: UIPasteboard = UIPasteboard.general
         // look for RTF first
         if pasteboard.contains(pasteboardTypes: [kUTTypeRTF as String], inItemSet: nil) {
@@ -103,7 +103,7 @@ class ClipboardManager: NSObject {
             return NSAttributedString(string: string)
         }
         print("Neither RTF nor plaintext found in pasteboard")
-        return nil
+        return NSAttributedString()
     }
     
     static func copyToPasteboard(attributedString str: NSAttributedString) {
