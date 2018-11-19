@@ -32,6 +32,11 @@ class EditClipTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        if let clip = self.clip {
+            self.titleTextField.text = clip.title
+            self.contentsTextField.attributedText = clip.contents
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,8 +58,6 @@ class EditClipTableViewController: UITableViewController {
     
     func setClip(_ clip: Clip) {
         self.clip = clip
-        self.titleTextField.text = clip.title
-        self.contentsTextField.attributedText = clip.contents
     }
     
     @IBAction func save(_ sender: UIBarButtonItem) {
@@ -73,9 +76,6 @@ class EditClipTableViewController: UITableViewController {
                     clip.contents = NSAttributedString()
                 }
                 clip.index = Int16(i)
-//                clip.setValue(self.titleTextField.text, forKey: "title")
-//                clip.setValue(self.contentsTextField.attributedText, forKey: "contents")
-//                clip.setValue(i, forKey: "index")
                 
                 do {
                     try self.managedObjectContext.save()

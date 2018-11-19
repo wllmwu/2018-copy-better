@@ -16,6 +16,8 @@ class MainTableViewController: UITableViewController {
     
     private var showLastCopied: Bool = true
     private var lastCopied: NSAttributedString = NSAttributedString()
+    
+    private var selectedClip: Clip?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -139,7 +141,6 @@ class MainTableViewController: UITableViewController {
         let correction: Int = self.showLastCopied ? 1 : 0
         let moved: Clip = self.clips[fromIndexPath.row - correction]
         moved.index = Int16(to.row - correction)
-//        moved.setValue((to.row - correction), forKey: "index")
         self.clips.remove(at: fromIndexPath.row - correction)
         self.clips.insert(moved, at: to.row - correction)
         
@@ -165,6 +166,12 @@ class MainTableViewController: UITableViewController {
         }
         return proposedDestinationIndexPath
     }
+    
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        let selectedCell: ClipTableViewCell = self.tableView.cellForRow(at: indexPath) as! ClipTableViewCell
+        self.selectedClip = selectedCell.getClip()
+        return indexPath
+    }
 
     // MARK: - Navigation
 
@@ -179,6 +186,23 @@ class MainTableViewController: UITableViewController {
                 destination.setContext(self.managedObjectContext)
                 destination.setMode(.Add)
                 destination.setIndex(self.clips.count) // append new clip to end of list
+            }
+            else if identifier == "LastCopiedToClip" {
+                let destination: ClipViewController = segue.destination as! ClipViewController
+                destination.setContext(self.managedObjectContext)
+                destination.setIsLastCopied(true)
+                destination.setLastCopied(contents: self.lastCopied, allClipsList: self.clips)
+            }
+            else if identifier == "ClipWithTitleToClip" || identifier == "ClipNoTitleToClip" {
+                let destination: ClipViewController = segue.destination as! ClipViewController
+                if let clip = self.selectedClip {
+                    destination.setContext(self.managedObjectContext)
+                    destination.setIsLastCopied(false)
+                    destination.setClip(clip)
+                }
+                else {
+                    print("Error with segue: selected clip wasn't set.")
+                }
             }
         }
     }

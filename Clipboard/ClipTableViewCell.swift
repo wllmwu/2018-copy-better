@@ -15,7 +15,7 @@ class ClipTableViewCell: UITableViewCell {
     @IBOutlet weak var copyButton: UIButton!
     @IBOutlet weak var addButton: UIButton?
     
-    private var clip: Clip!
+    private var clip: Clip?
     
     /*private let emptyContents = NSAttributedString(string: "Empty", attributes: [
         .font : UIFont.systemFont(ofSize: 11),
@@ -37,10 +37,14 @@ class ClipTableViewCell: UITableViewCell {
         self.clip = clip
         
         if let titleLabel = self.titleLabel {
-            titleLabel.text = self.clip.title
+            titleLabel.text = clip.title
         }
         
         self.setContents(clip.contents)
+    }
+    
+    func getClip() -> Clip? {
+        return self.clip
     }
     
     func setContents(_ contents: NSAttributedString) {

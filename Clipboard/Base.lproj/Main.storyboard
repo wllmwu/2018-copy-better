@@ -400,10 +400,24 @@
                     <view key="view" contentMode="scaleToFill" id="olz-Yc-cne">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" usesAttributedText="YES" allowsEditingTextAttributes="YES" placeholder="(Empty)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Awe-GC-a2p">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <attributedString key="attributedText"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Awe-GC-a2p" firstAttribute="leading" secondItem="rWH-zQ-aTB" secondAttribute="leading" id="6ad-Vr-gTI"/>
+                            <constraint firstItem="rWH-zQ-aTB" firstAttribute="trailing" secondItem="Awe-GC-a2p" secondAttribute="trailing" id="Nq5-20-5cN"/>
+                            <constraint firstItem="rWH-zQ-aTB" firstAttribute="bottom" secondItem="Awe-GC-a2p" secondAttribute="bottom" id="oz3-zx-oLj"/>
+                            <constraint firstItem="Awe-GC-a2p" firstAttribute="top" secondItem="rWH-zQ-aTB" secondAttribute="top" id="zX9-hI-6cd"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="rWH-zQ-aTB"/>
                     </view>
                     <connections>
+                        <outlet property="contentsTextField" destination="Awe-GC-a2p" id="S0H-Rq-KY7"/>
                         <segue destination="j6B-tm-cbu" kind="presentation" identifier="ClipToEditClip" modalTransitionStyle="coverVertical" id="atL-tM-tp5"/>
                     </connections>
                 </viewController>
@@ -454,7 +468,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="299.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" usesAttributedText="YES" placeholder="Type here…" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O0q-Da-U7Q">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" usesAttributedText="YES" allowsEditingTextAttributes="YES" placeholder="Type here…" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O0q-Da-U7Q">
                                                     <rect key="frame" x="16" y="11" width="343" height="278"/>
                                                     <attributedString key="attributedText"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -553,7 +567,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dAW-D8-Ny7"/>
-        <segue reference="T1C-MY-kRL"/>
+        <segue reference="atL-tM-tp5"/>
+        <segue reference="OQy-tm-RJB"/>
     </inferredMetricsTieBreakers>
 </document>
