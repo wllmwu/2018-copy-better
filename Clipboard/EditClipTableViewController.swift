@@ -78,6 +78,11 @@ class EditClipTableViewController: UITableViewController {
                 
                 let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
                 clip.title = self.titleTextField.text
+                if let title = self.titleTextField.text {
+                    if title.isEmpty {
+                        clip.title = nil
+                    }
+                }
                 if let contents = self.contentsTextField.attributedText {
                     clip.contents = contents
                 }
@@ -95,6 +100,11 @@ class EditClipTableViewController: UITableViewController {
         else {
             if let clip = self.clip {
                 clip.title = self.titleTextField.text
+                if let title = self.titleTextField.text {
+                    if title.isEmpty {
+                        clip.title = nil
+                    }
+                }
                 if let contents = self.contentsTextField.attributedText {
                     clip.contents = contents
                 }

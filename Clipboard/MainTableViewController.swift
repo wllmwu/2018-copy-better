@@ -43,7 +43,12 @@ class MainTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.showLastCopied = UserDefaults.standard.bool(forKey: "showLastCopiedInMain")
+        let showLastCopied: Bool = UserDefaults.standard.bool(forKey: "showLastCopiedInMain")
+        if showLastCopied && !self.showLastCopied {
+            // should update lastCopied
+            self.retrieveLastCopied()
+            self.showLastCopied = showLastCopied
+        }
         self.loadData()
         self.tableView.reloadData()
     }
@@ -102,6 +107,7 @@ class MainTableViewController: UITableViewController {
         }
         
         self.saveContext()
+        self.tableView.reloadData()
     }
     
     // MARK: - Table view data source

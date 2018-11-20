@@ -16,6 +16,7 @@ class ClipTableViewCell: UITableViewCell {
     @IBOutlet weak var addButton: UIButton?
     
     private var clip: Clip?
+    private var contents: NSAttributedString!
     private var tableViewController: MainTableViewController?
     
     /*private let emptyContents = NSAttributedString(string: "Empty", attributes: [
@@ -32,6 +33,20 @@ class ClipTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        // reset contentsLabel's font, text size, and text color
+        var defaultSize: CGFloat = 17
+        if let _ = self.titleLabel {
+            defaultSize = 11
+        }
+        self.contentsLabel.attributedText = NSAttributedString(string: "", attributes: [
+            .font : UIFont.systemFont(ofSize: defaultSize),
+            .foregroundColor : UIColor.black
+            ])
     }
     
     func setClip(_ clip: Clip) {
@@ -53,22 +68,26 @@ class ClipTableViewCell: UITableViewCell {
     }
     
     func setContents(_ contents: NSAttributedString) {
+        self.contents = contents
         if contents.string.isEmpty {
             self.contentsLabel.text = "(Empty)"
             self.contentsLabel.textColor = UIColor.gray
         }
         else {
-            self.contentsLabel.attributedText = contents
+            // force text size in the label
+            let text: NSMutableAttributedString = NSMutableAttributedString(attributedString: contents)
+            if let _ = self.titleLabel {
+                text.addAttribute(.font, value: UIFont.systemFont(ofSize: 11), range: NSMakeRange(0, text.length))
+            }
+            else {
+                text.addAttribute(.font, value: UIFont.systemFont(ofSize: 17), range: NSMakeRange(0, text.length))
+            }
+            self.contentsLabel.attributedText = text
         }
     }
     
     @IBAction func copyButtonTapped(_ sender: UIButton) {
-        if let clip = self.clip {
-            ClipboardManager.copyToPasteboard(attributedString: clip.contents)
-        }
-        else {
-            ClipboardManager.copyToPasteboard(attributedString: NSAttributedString())
-        }
+        ClipboardManager.copyToPasteboard(attributedString: self.contents)
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
