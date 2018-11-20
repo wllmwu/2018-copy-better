@@ -38,15 +38,17 @@ class ClipTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
+        self.reset()
+    }
+    
+    private func reset() {
         // reset contentsLabel's font, text size, and text color
         var defaultSize: CGFloat = 17
         if let _ = self.titleLabel {
             defaultSize = 11
         }
-        self.contentsLabel.attributedText = NSAttributedString(string: "", attributes: [
-            .font : UIFont.systemFont(ofSize: defaultSize),
-            .foregroundColor : UIColor.black
-            ])
+        self.contentsLabel.font = UIFont.systemFont(ofSize: defaultSize)
+        self.contentsLabel.textColor = UIColor.black
     }
     
     func setClip(_ clip: Clip) {
@@ -75,6 +77,7 @@ class ClipTableViewCell: UITableViewCell {
         }
         else {
             // force text size in the label
+            self.reset()
             let text: NSMutableAttributedString = NSMutableAttributedString(attributedString: contents)
             if let _ = self.titleLabel {
                 text.addAttribute(.font, value: UIFont.systemFont(ofSize: 11), range: NSMakeRange(0, text.length))

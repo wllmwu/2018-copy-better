@@ -47,8 +47,8 @@ class MainTableViewController: UITableViewController {
         if showLastCopied && !self.showLastCopied {
             // should update lastCopied
             self.retrieveLastCopied()
-            self.showLastCopied = showLastCopied
         }
+        self.showLastCopied = showLastCopied
         self.loadData()
         self.tableView.reloadData()
     }
