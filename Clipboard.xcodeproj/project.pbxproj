@@ -19,8 +19,6 @@
 		E056F8FE20CEE46E0025E2FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E056F8FC20CEE46E0025E2FE /* LaunchScreen.storyboard */; };
 		E06AA128219D31CE0015A30F /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA127219D31CE0015A30F /* MainTableViewController.swift */; };
 		E06AA12A219D32500015A30F /* ClipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA129219D32500015A30F /* ClipTableViewCell.swift */; };
-		E06AA12C219D32820015A30F /* ClipTitledTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA12B219D32820015A30F /* ClipTitledTableViewCell.swift */; };
-		E06AA12E219D32B10015A30F /* LastCopiedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA12D219D32B10015A30F /* LastCopiedTableViewCell.swift */; };
 		E06AA130219D32DE0015A30F /* ClipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA12F219D32DE0015A30F /* ClipViewController.swift */; };
 		E06AA132219D32F60015A30F /* EditClipTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA131219D32F60015A30F /* EditClipTableViewController.swift */; };
 		E06AA134219D331E0015A30F /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA133219D331E0015A30F /* SettingsTableViewController.swift */; };
@@ -73,8 +71,6 @@
 		E056F8FF20CEE46E0025E2FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E06AA127219D31CE0015A30F /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 		E06AA129219D32500015A30F /* ClipTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipTableViewCell.swift; sourceTree = "<group>"; };
-		E06AA12B219D32820015A30F /* ClipTitledTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipTitledTableViewCell.swift; sourceTree = "<group>"; };
-		E06AA12D219D32B10015A30F /* LastCopiedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastCopiedTableViewCell.swift; sourceTree = "<group>"; };
 		E06AA12F219D32DE0015A30F /* ClipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipViewController.swift; sourceTree = "<group>"; };
 		E06AA131219D32F60015A30F /* EditClipTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditClipTableViewController.swift; sourceTree = "<group>"; };
 		E06AA133219D331E0015A30F /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -155,8 +151,6 @@
 				E056F8F420CEE46C0025E2FE /* Main.storyboard */,
 				E06AA127219D31CE0015A30F /* MainTableViewController.swift */,
 				E06AA129219D32500015A30F /* ClipTableViewCell.swift */,
-				E06AA12B219D32820015A30F /* ClipTitledTableViewCell.swift */,
-				E06AA12D219D32B10015A30F /* LastCopiedTableViewCell.swift */,
 				E06AA12F219D32DE0015A30F /* ClipViewController.swift */,
 				E06AA131219D32F60015A30F /* EditClipTableViewController.swift */,
 				E06AA133219D331E0015A30F /* SettingsTableViewController.swift */,
@@ -299,13 +293,11 @@
 				E06AA136219D37BE0015A30F /* ClipboardManager.swift in Sources */,
 				E06AA132219D32F60015A30F /* EditClipTableViewController.swift in Sources */,
 				E06AA128219D31CE0015A30F /* MainTableViewController.swift in Sources */,
-				E06AA12E219D32B10015A30F /* LastCopiedTableViewCell.swift in Sources */,
 				E0858C3121A0F0240089AE53 /* Clip+CoreDataProperties.swift in Sources */,
 				E0858C2F21A0F0240089AE53 /* Clip+CoreDataClass.swift in Sources */,
 				E06AA134219D331E0015A30F /* SettingsTableViewController.swift in Sources */,
 				E06AA12A219D32500015A30F /* ClipTableViewCell.swift in Sources */,
 				E056F8F120CEE46C0025E2FE /* AppDelegate.swift in Sources */,
-				E06AA12C219D32820015A30F /* ClipTitledTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

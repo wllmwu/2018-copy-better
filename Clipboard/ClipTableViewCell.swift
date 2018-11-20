@@ -16,6 +16,7 @@ class ClipTableViewCell: UITableViewCell {
     @IBOutlet weak var addButton: UIButton?
     
     private var clip: Clip?
+    private var tableViewController: MainTableViewController?
     
     /*private let emptyContents = NSAttributedString(string: "Empty", attributes: [
         .font : UIFont.systemFont(ofSize: 11),
@@ -47,6 +48,10 @@ class ClipTableViewCell: UITableViewCell {
         return self.clip
     }
     
+    func setTableViewController(_ table: MainTableViewController) {
+        self.tableViewController = table
+    }
+    
     func setContents(_ contents: NSAttributedString) {
         if contents.string.isEmpty {
             self.contentsLabel.text = "(Empty)"
@@ -58,12 +63,16 @@ class ClipTableViewCell: UITableViewCell {
     }
     
     @IBAction func copyButtonTapped(_ sender: UIButton) {
-        //UIPasteboard.general.string = self.contents
-        
+        if let clip = self.clip {
+            ClipboardManager.copyToPasteboard(attributedString: clip.contents)
+        }
+        else {
+            ClipboardManager.copyToPasteboard(attributedString: NSAttributedString())
+        }
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
-        // use ClipboardManager to add the new clip
+        self.tableViewController?.addLastCopied()
     }
 
 }

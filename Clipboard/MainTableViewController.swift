@@ -84,6 +84,32 @@ class MainTableViewController: UITableViewController {
         }
     }
     
+    func addLastCopied() {
+        guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
+            fatalError("Couldn't find entity description.")
+        }
+        
+        // create new clip
+        let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
+        clip.title = nil
+        clip.contents = self.lastCopied
+        clip.index = 0
+        self.clips.insert(clip, at: 0)
+        
+        // reassign indices
+        for i in 1..<self.clips.count {
+            self.clips[i].index += 1
+        }
+        
+        do {
+            try self.managedObjectContext.save()
+            self.tableView.reloadData()
+        }
+        catch let error as NSError {
+            print("Couldn't save. \(error), \(error.userInfo)")
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -97,6 +123,7 @@ class MainTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 && self.showLastCopied {
             let cell: ClipTableViewCell = tableView.dequeueReusableCell(withIdentifier: "LastCopiedCell", for: indexPath) as! ClipTableViewCell
+            cell.setTableViewController(self)
             cell.setContents(self.lastCopied)
             return cell
         }
