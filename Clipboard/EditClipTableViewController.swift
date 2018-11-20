@@ -60,6 +60,15 @@ class EditClipTableViewController: UITableViewController {
         self.clip = clip
     }
     
+    private func saveContext() {
+        do {
+            try self.managedObjectContext.save()
+        }
+        catch let error as NSError {
+            print("Couldn't save. \(error), \(error.userInfo)")
+        }
+    }
+    
     @IBAction func save(_ sender: UIBarButtonItem) {
         if self.mode == .Add {
             if let i = self.index {
@@ -77,19 +86,27 @@ class EditClipTableViewController: UITableViewController {
                 }
                 clip.index = Int16(i)
                 
-                do {
-                    try self.managedObjectContext.save()
-                }
-                catch let error as NSError {
-                    print("Couldn't save. \(error), \(error.userInfo)")
-                }
+                self.saveContext()
             }
             else {
                 print("Error when adding: index wasn't set.")
             }
         }
         else {
-            //
+            if let clip = self.clip {
+                clip.title = self.titleTextField.text
+                if let contents = self.contentsTextField.attributedText {
+                    clip.contents = contents
+                }
+                else {
+                    clip.contents = NSAttributedString()
+                }
+                
+                self.saveContext()
+            }
+            else {
+                print("Error when saving: clip wasn't set.")
+            }
         }
         
         self.dismiss(animated: true, completion: nil)

@@ -29,12 +29,10 @@ class ClipViewController: UIViewController {
             self.contentsTextField.attributedText = self.contents
         }
         else {
-            if let clip = self.clip {
+            if let _ = self.clip {
                 let copyButton: UIBarButtonItem = UIBarButtonItem(title: "Copy", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ClipViewController.copyClip))
                 let editButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(ClipViewController.segueToEdit))
-                self.navigationItem.title = clip.title
                 self.navigationItem.rightBarButtonItems = [copyButton, editButton]
-                self.contentsTextField.attributedText = clip.contents
             }
         }
     }
@@ -42,6 +40,17 @@ class ClipViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if !self.isLastCopied {
+            if let clip = self.clip {
+                self.navigationItem.title = clip.title
+                self.contentsTextField.attributedText = clip.contents
+            }
+        }
     }
     
     func setContext(_ context: NSManagedObjectContext) {

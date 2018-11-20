@@ -101,13 +101,7 @@ class MainTableViewController: UITableViewController {
             self.clips[i].index += 1
         }
         
-        do {
-            try self.managedObjectContext.save()
-            self.tableView.reloadData()
-        }
-        catch let error as NSError {
-            print("Couldn't save. \(error), \(error.userInfo)")
-        }
+        self.saveContext()
     }
     
     // MARK: - Table view data source
