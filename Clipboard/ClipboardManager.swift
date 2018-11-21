@@ -24,7 +24,10 @@ class ClipboardManager: NSObject {
         }
         // look for plaintext next
         else if pasteboard.contains(pasteboardTypes: [kUTTypePlainText as String], inItemSet: nil) {
-            let string = pasteboard.values(forPasteboardType: kUTTypePlainText as String, inItemSet: nil)?.first! as! String
+//            let thing = pasteboard.values(forPasteboardType: kUTTypePlainText as String, inItemSet: nil)
+//            print(thing ?? "Nothing")
+            //let string = pasteboard.values(forPasteboardType: kUTTypePlainText as String, inItemSet: nil)?.first! as! String
+            let string = pasteboard.string ?? "Something broke"
             print("Found plaintext: \"\(string)\"")
             return NSAttributedString(string: string)
         }
