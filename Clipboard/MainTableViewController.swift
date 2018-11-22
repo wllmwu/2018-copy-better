@@ -34,21 +34,17 @@ class MainTableViewController: UITableViewController {
         }
         self.managedObjectContext = appDelegate.persistentContainer.viewContext
         
-        self.showLastCopied = UserDefaults.standard.bool(forKey: "showLastCopiedInMain")
+        /*self.showLastCopied = UserDefaults.standard.bool(forKey: "showLastCopiedInMain")
         if self.showLastCopied {
             self.retrieveLastCopied()
-        }
+        }*/
+        NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.updateLastCopied), name: Notification.Name(rawValue: "UpdateLastCopied"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let showLastCopied: Bool = UserDefaults.standard.bool(forKey: "showLastCopiedInMain")
-        if showLastCopied && !self.showLastCopied {
-            // should update lastCopied
-            self.retrieveLastCopied()
-        }
-        self.showLastCopied = showLastCopied
+        self.showLastCopied = UserDefaults.standard.bool(forKey: "showLastCopiedInMain")
         self.loadData()
         self.tableView.reloadData()
     }
@@ -71,6 +67,11 @@ class MainTableViewController: UITableViewController {
     
     private func retrieveLastCopied() {
         self.lastCopied = ClipboardManager.retrieveFromPasteboard()
+    }
+    
+    @objc private func updateLastCopied() {
+        self.retrieveLastCopied()
+        self.tableView.reloadData()
     }
     
     private func saveContext() {

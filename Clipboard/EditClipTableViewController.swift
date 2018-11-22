@@ -16,7 +16,8 @@ class EditClipTableViewController: UITableViewController {
     }
     
     @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var contentsTextField: UITextField!
+    //@IBOutlet weak var contentsTextField: UITextField!
+    @IBOutlet weak var contentsTextView: UITextView!
     
     private var mode: Mode = .Add
     private var index: Int?
@@ -35,7 +36,7 @@ class EditClipTableViewController: UITableViewController {
         
         if let clip = self.clip {
             self.titleTextField.text = clip.title
-            self.contentsTextField.attributedText = clip.contents
+            self.contentsTextView.attributedText = clip.contents
         }
     }
 
@@ -83,7 +84,7 @@ class EditClipTableViewController: UITableViewController {
                         clip.title = nil
                     }
                 }
-                if let contents = self.contentsTextField.attributedText {
+                if let contents = self.contentsTextView.attributedText {
                     clip.contents = contents
                 }
                 else {
@@ -105,7 +106,7 @@ class EditClipTableViewController: UITableViewController {
                         clip.title = nil
                     }
                 }
-                if let contents = self.contentsTextField.attributedText {
+                if let contents = self.contentsTextView.attributedText {
                     clip.contents = contents
                 }
                 else {

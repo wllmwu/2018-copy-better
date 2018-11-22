@@ -46,7 +46,10 @@ class SettingsTableViewController: UITableViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func toggleShowCurrentInMainSwitch(_ sender: UISwitch) {
+    @IBAction func didToggleShowCurrentInMainSwitch(_ sender: UISwitch) {
+        if sender.isOn {
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "UpdateLastCopied"), object: nil)
+        }
     }
     
     @IBAction func toggleShowCurrentInWidgetSwitch(_ sender: UISwitch) {

@@ -37,7 +37,7 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="quD-o9-F9g">
                                                     <rect key="frame" x="310" y="6.5" width="51" height="31"/>
                                                     <connections>
-                                                        <action selector="toggleShowCurrentInMainSwitch:" destination="BlK-IM-OGN" eventType="valueChanged" id="Hl8-su-T0v"/>
+                                                        <action selector="didToggleShowCurrentInMainSwitch:" destination="BlK-IM-OGN" eventType="valueChanged" id="7Q6-9M-pgq"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
@@ -401,23 +401,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" usesAttributedText="YES" allowsEditingTextAttributes="YES" placeholder="(Empty)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Awe-GC-a2p">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MmT-bY-Fx2">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <attributedString key="attributedText"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textField>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Awe-GC-a2p" firstAttribute="leading" secondItem="rWH-zQ-aTB" secondAttribute="leading" id="6ad-Vr-gTI"/>
-                            <constraint firstItem="rWH-zQ-aTB" firstAttribute="trailing" secondItem="Awe-GC-a2p" secondAttribute="trailing" id="Nq5-20-5cN"/>
-                            <constraint firstItem="rWH-zQ-aTB" firstAttribute="bottom" secondItem="Awe-GC-a2p" secondAttribute="bottom" id="oz3-zx-oLj"/>
-                            <constraint firstItem="Awe-GC-a2p" firstAttribute="top" secondItem="rWH-zQ-aTB" secondAttribute="top" id="zX9-hI-6cd"/>
+                            <constraint firstItem="MmT-bY-Fx2" firstAttribute="leading" secondItem="rWH-zQ-aTB" secondAttribute="leading" id="OWE-lQ-jYL"/>
+                            <constraint firstItem="rWH-zQ-aTB" firstAttribute="trailing" secondItem="MmT-bY-Fx2" secondAttribute="trailing" id="Vbj-M4-tdT"/>
+                            <constraint firstItem="MmT-bY-Fx2" firstAttribute="top" secondItem="rWH-zQ-aTB" secondAttribute="top" id="Vz9-kq-eiR"/>
+                            <constraint firstItem="rWH-zQ-aTB" firstAttribute="bottom" secondItem="MmT-bY-Fx2" secondAttribute="bottom" id="u5h-cz-ZBe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rWH-zQ-aTB"/>
                     </view>
                     <connections>
-                        <outlet property="contentsTextField" destination="Awe-GC-a2p" id="S0H-Rq-KY7"/>
+                        <outlet property="contentsTextView" destination="MmT-bY-Fx2" id="W6j-OE-SGC"/>
                         <segue destination="j6B-tm-cbu" kind="presentation" identifier="ClipToEditClip" modalTransitionStyle="coverVertical" id="atL-tM-tp5"/>
                     </connections>
                 </viewController>
@@ -468,17 +469,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="299.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" usesAttributedText="YES" allowsEditingTextAttributes="YES" placeholder="Type here…" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O0q-Da-U7Q">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kra-BP-Mbe">
                                                     <rect key="frame" x="16" y="11" width="343" height="278"/>
-                                                    <attributedString key="attributedText"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textField>
+                                                </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="O0q-Da-U7Q" secondAttribute="trailing" id="38e-Y1-kZD"/>
-                                                <constraint firstItem="O0q-Da-U7Q" firstAttribute="leading" secondItem="GXB-de-R8W" secondAttribute="leadingMargin" id="jQ0-j1-hMt"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="O0q-Da-U7Q" secondAttribute="bottom" id="kru-U1-VEm"/>
-                                                <constraint firstItem="O0q-Da-U7Q" firstAttribute="top" secondItem="GXB-de-R8W" secondAttribute="topMargin" id="y5U-yo-dZo"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="kra-BP-Mbe" secondAttribute="bottom" id="CtB-hg-B7h"/>
+                                                <constraint firstItem="kra-BP-Mbe" firstAttribute="leading" secondItem="GXB-de-R8W" secondAttribute="leadingMargin" id="RGt-9r-4Zb"/>
+                                                <constraint firstItem="kra-BP-Mbe" firstAttribute="top" secondItem="GXB-de-R8W" secondAttribute="topMargin" id="UCw-TH-5fY"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="kra-BP-Mbe" secondAttribute="trailing" id="pDa-Rm-efF"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -503,7 +505,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="contentsTextField" destination="O0q-Da-U7Q" id="Nn1-tp-Xhb"/>
+                        <outlet property="contentsTextView" destination="kra-BP-Mbe" id="mbf-Jm-dPn"/>
                         <outlet property="titleTextField" destination="BIk-3c-cFB" id="8fJ-31-hHZ"/>
                     </connections>
                 </tableViewController>

@@ -16,7 +16,8 @@ class ClipViewController: UIViewController {
     private var managedObjectContext: NSManagedObjectContext!
     private var allClips: [Clip]?
     private var isLastCopied: Bool = false
-    @IBOutlet weak var contentsTextField: UITextField!
+    //@IBOutlet weak var contentsTextField: UITextField!
+    @IBOutlet weak var contentsTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,7 @@ class ClipViewController: UIViewController {
             let addButton: UIBarButtonItem = UIBarButtonItem(title: "Add to list", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ClipViewController.addLastCopied))
             self.navigationItem.title = "Last Copied"
             self.navigationItem.rightBarButtonItem = addButton
-            self.contentsTextField.attributedText = self.contents
+            self.contentsTextView.attributedText = self.contents
         }
         else {
             if let _ = self.clip {
@@ -48,7 +49,7 @@ class ClipViewController: UIViewController {
         if !self.isLastCopied {
             if let clip = self.clip {
                 self.navigationItem.title = clip.title
-                self.contentsTextField.attributedText = clip.contents
+                self.contentsTextView.attributedText = clip.contents
             }
         }
     }
@@ -92,7 +93,7 @@ class ClipViewController: UIViewController {
         // create new clip
         let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
         clip.title = nil
-        if let contents = self.contentsTextField.attributedText {
+        if let contents = self.contentsTextView.attributedText {
             clip.contents = contents
         }
         else {

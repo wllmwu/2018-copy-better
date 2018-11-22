@@ -12,8 +12,16 @@ import MobileCoreServices
 
 class ClipboardManager: NSObject {
     
+    /* pasteboard representations todo:
+     * html
+     * flat-rtfd? (has "dispatch data")
+     * plaintext
+     * rtf
+     */
+    
     static func retrieveFromPasteboard() -> NSAttributedString {
         let pasteboard: UIPasteboard = UIPasteboard.general
+        print("Pasteboard items: \(pasteboard.items)")
         // look for RTF first
         if pasteboard.contains(pasteboardTypes: [kUTTypeRTF as String], inItemSet: nil) {
             if let data = pasteboard.data(forPasteboardType: kUTTypeRTF as String, inItemSet: nil)?.first as? Data {
