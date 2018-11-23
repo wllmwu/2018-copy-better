@@ -15,14 +15,8 @@ class ClipTableViewCell: UITableViewCell {
     @IBOutlet weak var copyButton: UIButton!
     @IBOutlet weak var addButton: UIButton?
     
-    private var clip: Clip?
-    private var contents: NSAttributedString!
+    private var contents: [String : Any]!
     private var tableViewController: MainTableViewController?
-    
-    /*private let emptyContents = NSAttributedString(string: "Empty", attributes: [
-        .font : UIFont.systemFont(ofSize: 11),
-        .foregroundColor : UIColor.gray
-        ])*/
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -51,46 +45,51 @@ class ClipTableViewCell: UITableViewCell {
         self.contentsLabel.textColor = UIColor.black
     }
     
-    func setClip(_ clip: Clip) {
-        self.clip = clip
-        
-        if let titleLabel = self.titleLabel {
-            titleLabel.text = clip.title
+    private func setContentsLabelText() {
+        if self.contents.count == 0 {
+            self.contentsLabel.text = "(Empty)"
+            self.contentsLabel.textColor = UIColor.gray
+            return
         }
         
-        self.setContents(clip.contents)
+        self.reset()
+        if let rtf = ClipboardManager.textFromRtf(inItem: self.contents) {
+            self.setContentsLabelAttributedText(rtf)
+        }
+        else if let html = ClipboardManager.textFromHtml(inItem: self.contents) {
+            self.setContentsLabelAttributedText(html)
+        }
+        else if let plaintext = ClipboardManager.textFromPlaintext(inItem: self.contents) {
+            self.contentsLabel.text = plaintext
+        }
+        else {
+            print("ClipTableViewCell: couldn't find usable data representations.")
+        }
     }
     
-    func getClip() -> Clip? {
-        return self.clip
+    private func setContentsLabelAttributedText(_ attributedString: NSAttributedString) {
+        let string: NSMutableAttributedString = NSMutableAttributedString(attributedString: attributedString)
+        string.removeAttribute(.font, range: NSMakeRange(0, string.length))
+        self.contentsLabel.attributedText = string
     }
     
     func setTableViewController(_ table: MainTableViewController) {
         self.tableViewController = table
     }
     
-    func setContents(_ contents: NSAttributedString) {
-        self.contents = contents
-        if contents.string.isEmpty {
-            self.contentsLabel.text = "(Empty)"
-            self.contentsLabel.textColor = UIColor.gray
-        }
-        else {
-            // force text size in the label
-            self.reset()
-            let text: NSMutableAttributedString = NSMutableAttributedString(attributedString: contents)
-            if let _ = self.titleLabel {
-                text.addAttribute(.font, value: UIFont.systemFont(ofSize: 11), range: NSMakeRange(0, text.length))
-            }
-            else {
-                text.addAttribute(.font, value: UIFont.systemFont(ofSize: 17), range: NSMakeRange(0, text.length))
-            }
-            self.contentsLabel.attributedText = text
+    func setTitle(_ title: String) {
+        if let label = self.titleLabel {
+            label.text = title
         }
     }
     
+    func setContents(_ contents: [String : Any]) {
+        self.contents = contents
+        self.setContentsLabelText()
+    }
+    
     @IBAction func copyButtonTapped(_ sender: UIButton) {
-        ClipboardManager.copyToPasteboard(attributedString: self.contents)
+        ClipboardManager.copyToPasteboard(item: self.contents)
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {

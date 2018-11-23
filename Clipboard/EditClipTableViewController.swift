@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import MobileCoreServices
 
 class EditClipTableViewController: UITableViewController {
     
@@ -16,7 +17,6 @@ class EditClipTableViewController: UITableViewController {
     }
     
     @IBOutlet weak var titleTextField: UITextField!
-    //@IBOutlet weak var contentsTextField: UITextField!
     @IBOutlet weak var contentsTextView: UITextView!
     
     private var mode: Mode = .Add
@@ -36,13 +36,34 @@ class EditClipTableViewController: UITableViewController {
         
         if let clip = self.clip {
             self.titleTextField.text = clip.title
-            self.contentsTextView.attributedText = clip.contents
+            self.setContentsText(contents: clip.contents)
         }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    private func setContentsText(contents: [String : Any]) {
+        if contents.count == 0 {
+            self.contentsTextView.text = "(Empty)"
+            self.contentsTextView.textColor = UIColor.gray
+            return
+        }
+        
+        if let rtf = ClipboardManager.textFromRtf(inItem: contents) {
+            self.contentsTextView.attributedText = rtf
+        }
+        else if let html = ClipboardManager.textFromHtml(inItem: contents) {
+            self.contentsTextView.attributedText = html
+        }
+        else if let plaintext = ClipboardManager.textFromPlaintext(inItem: contents) {
+            self.contentsTextView.text = plaintext
+        }
+        else {
+            print("EditClipTableViewController: couldn't find usable data representations.")
+        }
     }
     
     func setContext(_ context: NSManagedObjectContext) {
@@ -78,20 +99,8 @@ class EditClipTableViewController: UITableViewController {
                 }
                 
                 let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
-                clip.title = self.titleTextField.text
-                if let title = self.titleTextField.text {
-                    if title.isEmpty {
-                        clip.title = nil
-                    }
-                }
-                if let contents = self.contentsTextView.attributedText {
-                    clip.contents = contents
-                }
-                else {
-                    clip.contents = NSAttributedString()
-                }
+                self.setClipTitleAndContents(clip: clip)
                 clip.index = Int16(i)
-                
                 self.saveContext()
             }
             else {
@@ -100,19 +109,7 @@ class EditClipTableViewController: UITableViewController {
         }
         else {
             if let clip = self.clip {
-                clip.title = self.titleTextField.text
-                if let title = self.titleTextField.text {
-                    if title.isEmpty {
-                        clip.title = nil
-                    }
-                }
-                if let contents = self.contentsTextView.attributedText {
-                    clip.contents = contents
-                }
-                else {
-                    clip.contents = NSAttributedString()
-                }
-                
+                self.setClipTitleAndContents(clip: clip)
                 self.saveContext()
             }
             else {
@@ -121,6 +118,22 @@ class EditClipTableViewController: UITableViewController {
         }
         
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    private func setClipTitleAndContents(clip: Clip) {
+        clip.title = self.titleTextField.text
+        if let title = self.titleTextField.text {
+            if title.isEmpty {
+                clip.title = nil
+            }
+        }
+        if let text = self.contentsTextView.attributedText {
+            let rtfData: Data = try! text.data(from: NSMakeRange(0, text.length), documentAttributes: [.documentType : NSAttributedString.DocumentType.rtf])
+            clip.contents = [kUTTypeRTF as String : rtfData, kUTTypePlainText as String : text.string]
+        }
+        else {
+            clip.contents = [:]
+        }
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {

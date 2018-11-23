@@ -12,11 +12,10 @@ import CoreData
 class ClipViewController: UIViewController {
     
     private var clip: Clip?
-    private var contents: NSAttributedString?
+    private var contents: [String : Any] = [:]
     private var managedObjectContext: NSManagedObjectContext!
     private var allClips: [Clip]?
     private var isLastCopied: Bool = false
-    //@IBOutlet weak var contentsTextField: UITextField!
     @IBOutlet weak var contentsTextView: UITextView!
     
     override func viewDidLoad() {
@@ -27,7 +26,7 @@ class ClipViewController: UIViewController {
             let addButton: UIBarButtonItem = UIBarButtonItem(title: "Add to list", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ClipViewController.addLastCopied))
             self.navigationItem.title = "Last Copied"
             self.navigationItem.rightBarButtonItem = addButton
-            self.contentsTextView.attributedText = self.contents
+            self.setContentsText(contents: self.contents)
         }
         else {
             if let _ = self.clip {
@@ -49,8 +48,29 @@ class ClipViewController: UIViewController {
         if !self.isLastCopied {
             if let clip = self.clip {
                 self.navigationItem.title = clip.title
-                self.contentsTextView.attributedText = clip.contents
+                self.setContentsText(contents: clip.contents)
             }
+        }
+    }
+    
+    private func setContentsText(contents: [String : Any]) {
+        if contents.count == 0 {
+            self.contentsTextView.text = "(Empty)"
+            self.contentsTextView.textColor = UIColor.gray
+            return
+        }
+        
+        if let rtf = ClipboardManager.textFromRtf(inItem: contents) {
+            self.contentsTextView.attributedText = rtf
+        }
+        else if let html = ClipboardManager.textFromHtml(inItem: contents) {
+            self.contentsTextView.attributedText = html
+        }
+        else if let plaintext = ClipboardManager.textFromPlaintext(inItem: contents) {
+            self.contentsTextView.text = plaintext
+        }
+        else {
+            print("ClipViewController: couldn't find usable data representations.")
         }
     }
     
@@ -67,7 +87,7 @@ class ClipViewController: UIViewController {
         self.contents = clip.contents
     }
     
-    func setLastCopied(contents: NSAttributedString, allClipsList: [Clip]) {
+    func setLastCopied(contents: [String : Any], allClipsList: [Clip]) {
         self.allClips = allClipsList
         self.contents = contents
     }
@@ -77,12 +97,7 @@ class ClipViewController: UIViewController {
     }
     
     @objc func copyClip() {
-        if let contents = self.contents {
-            ClipboardManager.copyToPasteboard(attributedString: contents)
-        }
-        else {
-            ClipboardManager.copyToPasteboard(attributedString: NSAttributedString())
-        }
+        ClipboardManager.copyToPasteboard(item: self.contents)
     }
     
     @objc func addLastCopied() {
@@ -93,12 +108,7 @@ class ClipViewController: UIViewController {
         // create new clip
         let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
         clip.title = nil
-        if let contents = self.contentsTextView.attributedText {
-            clip.contents = contents
-        }
-        else {
-            clip.contents = NSAttributedString()
-        }
+        clip.contents = self.contents
         clip.index = 0
         self.allClips!.insert(clip, at: 0)
         

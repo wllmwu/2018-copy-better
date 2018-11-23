@@ -15,7 +15,7 @@ class MainTableViewController: UITableViewController {
     private var clips: [Clip] = []
     
     private var showLastCopied: Bool = true
-    private var lastCopied: NSAttributedString = NSAttributedString()
+    private var lastCopied: [String : Any] = [:]
     
     private var selectedClip: Clip?
 
@@ -34,10 +34,6 @@ class MainTableViewController: UITableViewController {
         }
         self.managedObjectContext = appDelegate.persistentContainer.viewContext
         
-        /*self.showLastCopied = UserDefaults.standard.bool(forKey: "showLastCopiedInMain")
-        if self.showLastCopied {
-            self.retrieveLastCopied()
-        }*/
         NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.updateLastCopied), name: Notification.Name(rawValue: "UpdateLastCopied"), object: nil)
     }
     
@@ -132,13 +128,14 @@ class MainTableViewController: UITableViewController {
         let index: Int = indexPath.row - (self.showLastCopied ? 1 : 0)
         let clip: Clip = self.clips[index]
         var cell: ClipTableViewCell
-        if let _ = clip.title {
+        if let title = clip.title {
             cell = tableView.dequeueReusableCell(withIdentifier: "ClipWithTitleCell", for: indexPath) as! ClipTableViewCell
+            cell.setTitle(title)
         }
         else {
             cell = tableView.dequeueReusableCell(withIdentifier: "ClipNoTitleCell", for: indexPath) as! ClipTableViewCell
         }
-        cell.setClip(clip)
+        cell.setContents(clip.contents)
         return cell
     }
 
@@ -196,8 +193,9 @@ class MainTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        let selectedCell: ClipTableViewCell = self.tableView.cellForRow(at: indexPath) as! ClipTableViewCell
-        self.selectedClip = selectedCell.getClip()
+        if self.showLastCopied && indexPath.row == 0 { return indexPath }
+        let correction: Int = self.showLastCopied ? 1 : 0
+        self.selectedClip = self.clips[indexPath.row - correction]
         return indexPath
     }
 

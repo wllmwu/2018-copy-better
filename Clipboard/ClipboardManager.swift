@@ -13,45 +13,55 @@ import MobileCoreServices
 class ClipboardManager: NSObject {
     
     /* pasteboard representations todo:
-     * html
-     * flat-rtfd? (has "dispatch data")
-     * plaintext
      * rtf
+     * html
+     * plaintext
      */
     
-    static func retrieveFromPasteboard() -> NSAttributedString {
+    static func retrieveFromPasteboard() -> [String : Any] {
         let pasteboard: UIPasteboard = UIPasteboard.general
         print("Pasteboard items: \(pasteboard.items)")
-        // look for RTF first
-        if pasteboard.contains(pasteboardTypes: [kUTTypeRTF as String], inItemSet: nil) {
-            if let data = pasteboard.data(forPasteboardType: kUTTypeRTF as String, inItemSet: nil)?.first as? Data {
-                let attributedString = try! NSAttributedString(data: data, options: [:], documentAttributes: nil)
-                print("Found RTF (string: \"\(attributedString.string)\")")
-                return attributedString
-            }
+        if let item = pasteboard.items.first {
+            return item
         }
-        // look for plaintext next
-        else if pasteboard.contains(pasteboardTypes: [kUTTypePlainText as String], inItemSet: nil) {
-//            let thing = pasteboard.values(forPasteboardType: kUTTypePlainText as String, inItemSet: nil)
-//            print(thing ?? "Nothing")
-            //let string = pasteboard.values(forPasteboardType: kUTTypePlainText as String, inItemSet: nil)?.first! as! String
-            let string = pasteboard.string ?? "Something broke"
-            print("Found plaintext: \"\(string)\"")
-            return NSAttributedString(string: string)
-        }
-        print("Neither RTF nor plaintext found in pasteboard")
-        return NSAttributedString()
+        return [:]
     }
     
-    static func copyToPasteboard(attributedString str: NSAttributedString) {
-        let range: NSRange = NSMakeRange(0, str.length)
-        let rtfData: Data = try! str.data(from: range, documentAttributes: [.documentType : NSAttributedString.DocumentType.rtf])
-        let plaintext: String = str.string
-        print("Copied to pasteboard: \"\(plaintext)\"")
-        
-        UIPasteboard.general.items = [
-            [ kUTTypeRTF as String : rtfData, kUTTypePlainText as String : plaintext ]
-        ]
+    static func copyToPasteboard(item: [String : Any]) {
+        UIPasteboard.general.items = [item]
+    }
+    
+    static func textFromRtf(inItem item: [String : Any]) -> NSAttributedString? {
+        if let rtfData = item[kUTTypeRTF as String] as? Data {
+            do {
+                let rtf: NSAttributedString = try NSAttributedString(data: rtfData, options: [.documentType : NSAttributedString.DocumentType.rtf], documentAttributes: nil)
+                return rtf
+            }
+            catch let error as NSError {
+                print("Found RTF data, but couldn't convert to NSAttributedString. \(error), \(error.userInfo)")
+            }
+        }
+        return nil
+    }
+    
+    static func textFromHtml(inItem item: [String : Any]) -> NSAttributedString? {
+        if let htmlData = item[kUTTypeHTML as String] as? Data {
+            do {
+                let html: NSAttributedString = try NSAttributedString(data: htmlData, options: [.documentType : NSAttributedString.DocumentType.html], documentAttributes: nil)
+                return html
+            }
+            catch let error as NSError {
+                print("Found HTML data, but couldn't convert to NSAttributedString. \(error), \(error.userInfo)")
+            }
+        }
+        return nil
+    }
+    
+    static func textFromPlaintext(inItem item: [String : Any]) -> String? {
+        if let plaintext = item[kUTTypePlainText as String] as? String {
+            return plaintext
+        }
+        return nil
     }
 
 }
