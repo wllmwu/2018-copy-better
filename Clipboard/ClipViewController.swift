@@ -69,6 +69,9 @@ class ClipViewController: UIViewController {
         else if let plaintext = ClipboardManager.textFromPlaintext(inItem: contents) {
             self.contentsTextView.text = plaintext
         }
+        else if let image = ClipboardManager.textFromImage(inItem: contents, maxImageWidth: self.contentsTextView.bounds.width, maxImageHeight: nil) {
+            self.contentsTextView.attributedText = image
+        }
         else {
             print("ClipViewController: couldn't find usable data representations.")
         }

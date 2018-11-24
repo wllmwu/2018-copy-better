@@ -20,6 +20,8 @@ class EditClipTableViewController: UITableViewController {
     @IBOutlet weak var contentsTextView: UITextView!
     
     private var mode: Mode = .Add
+    private var contents: [String : Any] = [:]
+    private var originalContentsText: NSAttributedString!
     private var index: Int?
     private var clip: Clip?
     
@@ -36,7 +38,7 @@ class EditClipTableViewController: UITableViewController {
         
         if let clip = self.clip {
             self.titleTextField.text = clip.title
-            self.setContentsText(contents: clip.contents)
+            self.setContents(clip.contents)
         }
     }
 
@@ -45,7 +47,9 @@ class EditClipTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    private func setContentsText(contents: [String : Any]) {
+    private func setContents(_ contents: [String : Any]) {
+        self.contents = contents
+        
         if contents.count == 0 {
             self.contentsTextView.text = "(Empty)"
             self.contentsTextView.textColor = UIColor.gray
@@ -61,9 +65,13 @@ class EditClipTableViewController: UITableViewController {
         else if let plaintext = ClipboardManager.textFromPlaintext(inItem: contents) {
             self.contentsTextView.text = plaintext
         }
+        else if let image = ClipboardManager.textFromImage(inItem: contents, maxImageWidth: self.contentsTextView.bounds.width, maxImageHeight: nil) {
+            self.contentsTextView.attributedText = image
+        }
         else {
             print("EditClipTableViewController: couldn't find usable data representations.")
         }
+        self.originalContentsText = self.contentsTextView.attributedText
     }
     
     func setContext(_ context: NSManagedObjectContext) {
@@ -85,6 +93,7 @@ class EditClipTableViewController: UITableViewController {
     private func saveContext() {
         do {
             try self.managedObjectContext.save()
+            NotificationCenter.default.post(name: Notification.Name("UpdateMain"), object: nil)
         }
         catch let error as NSError {
             print("Couldn't save. \(error), \(error.userInfo)")
@@ -127,9 +136,19 @@ class EditClipTableViewController: UITableViewController {
                 clip.title = nil
             }
         }
+        
         if let text = self.contentsTextView.attributedText {
-            let rtfData: Data = try! text.data(from: NSMakeRange(0, text.length), documentAttributes: [.documentType : NSAttributedString.DocumentType.rtf])
-            clip.contents = [kUTTypeRTF as String : rtfData, kUTTypePlainText as String : text.string]
+            if self.mode == .Add || !text.isEqual(to: self.originalContentsText) {
+                do {
+                    let rtfData: Data = try text.data(from: NSMakeRange(0, text.length), documentAttributes: [.documentType : NSAttributedString.DocumentType.rtf])
+                    let htmlData: Data = try text.data(from: NSMakeRange(0, text.length), documentAttributes: [.documentType : NSAttributedString.DocumentType.html])
+                    clip.contents = [kUTTypeRTF as String : rtfData, kUTTypeHTML as String : htmlData, kUTTypePlainText as String : text.string]
+                }
+                catch let error as NSError {
+                    print("Error when saving: \(error), \(error.userInfo)")
+                }
+            }
+            // else the text hasn't changed when Save is pressed, so just leave the clip as it is
         }
         else {
             clip.contents = [:]

@@ -62,6 +62,9 @@ class ClipTableViewCell: UITableViewCell {
         else if let plaintext = ClipboardManager.textFromPlaintext(inItem: self.contents) {
             self.contentsLabel.text = plaintext
         }
+        else if let image = ClipboardManager.textFromImage(inItem: self.contents, maxImageWidth: nil, maxImageHeight: self.contentsLabel.bounds.height) {
+            self.contentsLabel.attributedText = image
+        }
         else {
             print("ClipTableViewCell: couldn't find usable data representations.")
         }

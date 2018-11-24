@@ -33,16 +33,18 @@ class MainTableViewController: UITableViewController {
             fatalError("Couldn't find AppDelegate")
         }
         self.managedObjectContext = appDelegate.persistentContainer.viewContext
+        self.loadData()
         
         NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.updateLastCopied), name: Notification.Name(rawValue: "UpdateLastCopied"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.updateMain), name: Notification.Name(rawValue: "UpdateMain"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.showLastCopied = UserDefaults.standard.bool(forKey: "showLastCopiedInMain")
-        self.loadData()
-        self.tableView.reloadData()
+        /*self.loadData()
+        self.tableView.reloadData()*/
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,6 +69,11 @@ class MainTableViewController: UITableViewController {
     
     @objc private func updateLastCopied() {
         self.retrieveLastCopied()
+        self.tableView.reloadData()
+    }
+    
+    @objc private func updateMain() {
+        self.loadData()
         self.tableView.reloadData()
     }
     
