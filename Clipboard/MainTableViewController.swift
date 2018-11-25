@@ -43,8 +43,6 @@ class MainTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         self.showLastCopied = UserDefaults.standard.bool(forKey: "showLastCopiedInMain")
-        /*self.loadData()
-        self.tableView.reloadData()*/
     }
 
     override func didReceiveMemoryWarning() {

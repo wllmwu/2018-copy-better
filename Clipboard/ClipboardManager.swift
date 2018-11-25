@@ -102,7 +102,46 @@ class ClipboardManager: NSObject {
         return nil
     }
     
-    static func textFromImage(inItem item: [String : Any], maxImageWidth: CGFloat?, maxImageHeight: CGFloat?) -> NSAttributedString? {
+    static func imageExists(inItem item: [String : Any]) -> Bool {
+        if let _ = item[kUTTypePNG as String] as? UIImage {
+            return true
+        }
+        else if let _ = item[kUTTypeJPEG as String] as? UIImage {
+            return true
+        }
+        else if let _ = item[kUTTypeGIF as String] as? UIImage {
+            return true
+        }
+        else if let _ = item[kUTTypeTIFF as String] as? UIImage {
+            return true
+        }
+        else if let _ = item[kUTTypeBMP as String] as? UIImage {
+            return true
+        }
+        return false
+    }
+    
+    static func imageFromImage(inItem item: [String : Any]) -> UIImage? {
+        var image: UIImage?
+        if let png = item[kUTTypePNG as String] as? UIImage {
+            image = png
+        }
+        else if let jpg = item[kUTTypeJPEG as String] as? UIImage {
+            image = jpg
+        }
+        else if let gif = item[kUTTypeGIF as String] as? UIImage {
+            image = gif
+        }
+        else if let tif = item[kUTTypeTIFF as String] as? UIImage {
+            image = tif
+        }
+        else if let bmp = item[kUTTypeBMP as String] as? UIImage {
+            image = bmp
+        }
+        return image
+    }
+    
+    static func imageFromImage(inItem item: [String : Any], maxImageWidth: CGFloat?, maxImageHeight: CGFloat?) -> UIImage? {
         var image: UIImage
         if let png = item[kUTTypePNG as String] as? UIImage {
             image = png
@@ -148,6 +187,119 @@ class ClipboardManager: NSObject {
             }
             UIGraphicsEndImageContext()
         }
+        
+        return image
+    }
+    
+    static func scaleImage(_ originalImage: UIImage, maxImageWidth: CGFloat?, maxImageHeight: CGFloat?) -> UIImage {
+        let size: CGSize = originalImage.size
+        var scaleFactor: CGFloat?
+        if let maxWidth = maxImageWidth {
+            if size.width > maxWidth {
+                // scale image down to fit width
+                scaleFactor = maxWidth / size.width
+                
+            }
+        }
+        else if let maxHeight = maxImageHeight {
+            if size.height > maxHeight {
+                // scale image down to fit height
+                scaleFactor = maxHeight / size.height
+            }
+        }
+        
+        var image = originalImage
+        if let scale = scaleFactor {
+            let newSize: CGSize = CGSize(width: size.width * scale, height: size.height * scale)
+            UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+            image.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+            if let newImage = UIGraphicsGetImageFromCurrentImageContext() {
+                image = newImage
+            }
+            UIGraphicsEndImageContext()
+        }
+        return image
+    }
+    
+    static func prepareTextFromImage(_ originalImage: UIImage, maxImageWidth: CGFloat?, maxImageHeight: CGFloat?) -> NSAttributedString {
+        let size: CGSize = originalImage.size
+        var scaleFactor: CGFloat?
+        if let maxWidth = maxImageWidth {
+            if size.width > maxWidth {
+                // scale image down to fit width
+                scaleFactor = maxWidth / size.width
+                
+            }
+        }
+        else if let maxHeight = maxImageHeight {
+            if size.height > maxHeight {
+                // scale image down to fit height
+                scaleFactor = maxHeight / size.height
+            }
+        }
+        
+        var image = originalImage
+        if let scale = scaleFactor {
+            let newSize: CGSize = CGSize(width: size.width * scale, height: size.height * scale)
+            UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+            image.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+            if let newImage = UIGraphicsGetImageFromCurrentImageContext() {
+                image = newImage
+            }
+            UIGraphicsEndImageContext()
+        }
+        
+        let textAttachment: NSTextAttachment = NSTextAttachment()
+        textAttachment.image = image
+        return NSAttributedString(attachment: textAttachment)
+    }
+    
+    static func textFromImage(inItem item: [String : Any], maxImageWidth: CGFloat?, maxImageHeight: CGFloat?) -> NSAttributedString? {
+        var image: UIImage
+        if let png = item[kUTTypePNG as String] as? UIImage {
+            image = png
+        }
+        else if let jpg = item[kUTTypeJPEG as String] as? UIImage {
+            image = jpg
+        }
+        else if let gif = item[kUTTypeGIF as String] as? UIImage {
+            image = gif
+        }
+        else if let tif = item[kUTTypeTIFF as String] as? UIImage {
+            image = tif
+        }
+        else if let bmp = item[kUTTypeBMP as String] as? UIImage {
+            image = bmp
+        }
+        else {
+            return nil
+        }
+        
+        /*let size: CGSize = image.size
+        var scaleFactor: CGFloat?
+        if let maxWidth = maxImageWidth {
+            if size.width > maxWidth {
+                // scale image down to fit width
+                scaleFactor = maxWidth / size.width
+                
+            }
+        }
+        else if let maxHeight = maxImageHeight {
+            if size.height > maxHeight {
+                // scale image down to fit height
+                scaleFactor = maxHeight / size.height
+            }
+        }
+        
+        if let scale = scaleFactor {
+            let newSize: CGSize = CGSize(width: size.width * scale, height: size.height * scale)
+            UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+            image.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+            if let newImage = UIGraphicsGetImageFromCurrentImageContext() {
+                image = newImage
+            }
+            UIGraphicsEndImageContext()
+        }*/
         
         let textAttachment: NSTextAttachment = NSTextAttachment()
         textAttachment.image = image

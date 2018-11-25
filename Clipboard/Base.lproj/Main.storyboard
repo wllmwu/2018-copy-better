@@ -240,6 +240,9 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TvE-32-YYL">
+                                            <rect key="frame" x="64" y="36" width="186" height="13"/>
+                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contents" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lgi-3s-Kbg">
                                             <rect key="frame" x="64" y="36" width="186" height="13"/>
                                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="11"/>
@@ -258,8 +261,11 @@
                                         </button>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="Lgi-3s-Kbg" firstAttribute="trailing" secondItem="TvE-32-YYL" secondAttribute="trailing" id="0Ro-lq-guH"/>
+                                        <constraint firstItem="Lgi-3s-Kbg" firstAttribute="leading" secondItem="TvE-32-YYL" secondAttribute="leading" id="127-FZ-Hfy"/>
                                         <constraint firstItem="Lgi-3s-Kbg" firstAttribute="leading" secondItem="SOG-VC-fzC" secondAttribute="leading" id="2Xg-gH-L0w"/>
                                         <constraint firstItem="TJ8-tS-zk3" firstAttribute="top" secondItem="pjn-Ma-mMc" secondAttribute="topMargin" id="2bF-AQ-mgH"/>
+                                        <constraint firstItem="Lgi-3s-Kbg" firstAttribute="bottom" secondItem="TvE-32-YYL" secondAttribute="bottom" id="7IR-QG-aq7"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Gcs-nk-eEx" secondAttribute="bottom" id="HhF-JC-NQj"/>
                                         <constraint firstItem="Lgi-3s-Kbg" firstAttribute="trailing" secondItem="SOG-VC-fzC" secondAttribute="trailing" id="LEK-ke-6Eu"/>
                                         <constraint firstItem="Gcs-nk-eEx" firstAttribute="top" secondItem="pjn-Ma-mMc" secondAttribute="topMargin" id="N3T-M4-9F6"/>
@@ -271,10 +277,12 @@
                                         <constraint firstItem="Lgi-3s-Kbg" firstAttribute="bottom" secondItem="pjn-Ma-mMc" secondAttribute="bottomMargin" id="hm3-Cd-rGJ"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="TJ8-tS-zk3" secondAttribute="bottom" id="k33-yI-4bS"/>
                                         <constraint firstItem="Gcs-nk-eEx" firstAttribute="leading" secondItem="SOG-VC-fzC" secondAttribute="trailing" constant="8" id="vWD-Mw-a69"/>
+                                        <constraint firstItem="Lgi-3s-Kbg" firstAttribute="top" secondItem="TvE-32-YYL" secondAttribute="top" id="xiL-PQ-N9T"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="addButton" destination="Gcs-nk-eEx" id="Edi-ep-9lJ"/>
+                                    <outlet property="contentsImageView" destination="TvE-32-YYL" id="4aQ-fS-nc1"/>
                                     <outlet property="contentsLabel" destination="Lgi-3s-Kbg" id="Rt5-08-FiY"/>
                                     <outlet property="copyButton" destination="TJ8-tS-zk3" id="fOL-LM-kb1"/>
                                     <outlet property="titleLabel" destination="SOG-VC-fzC" id="CUz-iT-MJx"/>
@@ -304,6 +312,9 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fFw-Dh-xbj">
+                                            <rect key="frame" x="64" y="36" width="269" height="13"/>
+                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contents" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1t-hn-ih7">
                                             <rect key="frame" x="64" y="36" width="269" height="13"/>
                                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="11"/>
@@ -314,17 +325,22 @@
                                     <constraints>
                                         <constraint firstItem="o1t-hn-ih7" firstAttribute="trailing" secondItem="sBM-4M-D6k" secondAttribute="trailing" id="6Kl-ih-hvW"/>
                                         <constraint firstItem="o1t-hn-ih7" firstAttribute="top" secondItem="sBM-4M-D6k" secondAttribute="bottom" constant="4" id="CRl-0l-kTK"/>
+                                        <constraint firstItem="o1t-hn-ih7" firstAttribute="bottom" secondItem="fFw-Dh-xbj" secondAttribute="bottom" id="HsH-1u-xxm"/>
+                                        <constraint firstItem="o1t-hn-ih7" firstAttribute="leading" secondItem="fFw-Dh-xbj" secondAttribute="leading" id="IlV-nK-pS5"/>
                                         <constraint firstItem="AXt-XT-I7X" firstAttribute="leading" secondItem="tCf-pS-C3b" secondAttribute="leadingMargin" id="NAI-qn-AHx"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="AXt-XT-I7X" secondAttribute="bottom" id="Xsc-H0-OfP"/>
+                                        <constraint firstItem="o1t-hn-ih7" firstAttribute="trailing" secondItem="fFw-Dh-xbj" secondAttribute="trailing" id="Y2W-lf-Woj"/>
                                         <constraint firstItem="o1t-hn-ih7" firstAttribute="bottom" secondItem="tCf-pS-C3b" secondAttribute="bottomMargin" id="YDe-LK-Twy"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="sBM-4M-D6k" secondAttribute="trailing" id="YxK-03-ZYs"/>
                                         <constraint firstItem="sBM-4M-D6k" firstAttribute="leading" secondItem="AXt-XT-I7X" secondAttribute="trailing" constant="8" id="aM4-Wa-fTQ"/>
                                         <constraint firstItem="o1t-hn-ih7" firstAttribute="leading" secondItem="sBM-4M-D6k" secondAttribute="leading" id="ezd-c2-xcr"/>
                                         <constraint firstItem="AXt-XT-I7X" firstAttribute="top" secondItem="tCf-pS-C3b" secondAttribute="topMargin" id="jha-dZ-87k"/>
+                                        <constraint firstItem="o1t-hn-ih7" firstAttribute="top" secondItem="fFw-Dh-xbj" secondAttribute="top" id="s1h-2o-FZw"/>
                                         <constraint firstItem="sBM-4M-D6k" firstAttribute="top" secondItem="tCf-pS-C3b" secondAttribute="topMargin" id="zjp-DZ-Uw1"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="contentsImageView" destination="fFw-Dh-xbj" id="nK4-Cu-0fW"/>
                                     <outlet property="contentsLabel" destination="o1t-hn-ih7" id="89k-2M-a9Z"/>
                                     <outlet property="copyButton" destination="AXt-XT-I7X" id="Z9X-ev-Fa4"/>
                                     <outlet property="titleLabel" destination="sBM-4M-D6k" id="qXM-uo-p03"/>
@@ -348,6 +364,9 @@
                                                 <action selector="copyButtonTapped:" destination="A58-0s-LVh" eventType="touchUpInside" id="Iyp-Ou-GKe"/>
                                             </connections>
                                         </button>
+                                        <imageView userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KhN-C3-464">
+                                            <rect key="frame" x="64" y="12" width="269" height="36.5"/>
+                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contents" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6d-Bl-fOw">
                                             <rect key="frame" x="64" y="20" width="269" height="20.5"/>
                                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
@@ -356,15 +375,20 @@
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="KhN-C3-464" firstAttribute="leading" secondItem="d6d-Bl-fOw" secondAttribute="leading" id="CrX-8W-jxx"/>
                                         <constraint firstItem="yoX-S0-ffx" firstAttribute="leading" secondItem="XKn-Oo-xf0" secondAttribute="leadingMargin" id="HeV-kV-2k7"/>
+                                        <constraint firstItem="KhN-C3-464" firstAttribute="trailing" secondItem="d6d-Bl-fOw" secondAttribute="trailing" id="JyF-au-6uw"/>
                                         <constraint firstItem="yoX-S0-ffx" firstAttribute="top" secondItem="XKn-Oo-xf0" secondAttribute="topMargin" id="N2r-g7-u97"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="yoX-S0-ffx" secondAttribute="bottom" id="Tzr-21-MQH"/>
+                                        <constraint firstItem="KhN-C3-464" firstAttribute="top" secondItem="d6d-Bl-fOw" secondAttribute="top" constant="-8" id="Xi4-qC-lYj"/>
+                                        <constraint firstItem="KhN-C3-464" firstAttribute="bottom" secondItem="d6d-Bl-fOw" secondAttribute="bottom" constant="8" id="icX-Gg-ZfY"/>
                                         <constraint firstItem="d6d-Bl-fOw" firstAttribute="leading" secondItem="yoX-S0-ffx" secondAttribute="trailing" constant="8" id="orE-wr-dwh"/>
                                         <constraint firstItem="d6d-Bl-fOw" firstAttribute="centerY" secondItem="yoX-S0-ffx" secondAttribute="centerY" id="rxd-5d-HPs"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="d6d-Bl-fOw" secondAttribute="trailing" id="wDM-Ed-VM3"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="contentsImageView" destination="KhN-C3-464" id="FUL-w2-Oxk"/>
                                     <outlet property="contentsLabel" destination="d6d-Bl-fOw" id="Ajh-DU-vOu"/>
                                     <outlet property="copyButton" destination="yoX-S0-ffx" id="COW-Cc-ttc"/>
                                     <segue destination="9Ah-HQ-3Ku" kind="show" identifier="ClipNoTitleToClip" id="T1C-MY-kRL"/>
@@ -569,7 +593,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="atL-tM-tp5"/>
+        <segue reference="dAW-D8-Ny7"/>
         <segue reference="OQy-tm-RJB"/>
     </inferredMetricsTieBreakers>
 </document>
