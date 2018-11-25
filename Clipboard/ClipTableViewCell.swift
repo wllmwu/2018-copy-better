@@ -54,67 +54,45 @@ class ClipTableViewCell: UITableViewCell {
         }
         
         self.reset()
-        if let rtf = ClipboardManager.textFromRtf(inItem: self.contents) {
-            //DispatchQueue.global(qos: .utility).async {
-                self.setContentsLabelAttributedText(rtf)
-            //}
-            //self.setContentsLabelAttributedText(rtf)
-        }
-        else if let html = ClipboardManager.textFromHtml(inItem: self.contents) {
-            //DispatchQueue.global(qos: .utility).async {
-                self.setContentsLabelAttributedText(html)
-            //}
-            //self.setContentsLabelAttributedText(html)
-        }
-        else if let plaintext = ClipboardManager.textFromPlaintext(inItem: self.contents) {
-            self.contentsLabel.text = plaintext
-        }
-        /*else if let image = ClipboardManager.textFromImage(inItem: self.contents, maxImageWidth: nil, maxImageHeight: self.contentsLabel.bounds.height) {
-            self.contentsLabel.attributedText = image
-        }*/
-        /*else if ClipboardManager.imageExists(inItem: self.contents) {
-            let height = self.contentsImageView.bounds.height
-            DispatchQueue.global(qos: .utility).async {
-                let image: UIImage = ClipboardManager.imageFromImage(inItem: self.contents)!
-                let scaledImage: UIImage = ClipboardManager.scaleImage(image, maxImageWidth: nil, maxImageHeight: height)
+        let imageViewHeight = self.contentsImageView.bounds.height
+        DispatchQueue.global(qos: .utility).async {
+            if let rtf = ClipboardManager.textFromRtf(inItem: self.contents) {
                 DispatchQueue.main.async {
-                    self.contentsImageView.image = scaledImage
+                    self.setContentsLabelAttributedText(rtf)
                 }
             }
-        }*/
-        else if let image = ClipboardManager.imageFromImage(inItem: self.contents, maxImageWidth: nil, maxImageHeight: self.contentsImageView.bounds.height) {
-            self.contentsLabel.text = ""
-            self.contentsImageView.image = image
-            //self.contentsImageView.setImage(image, maxImageWidth: nil, maxImageHeight: self.contentsImageView.bounds.height)
-        }
-        /*else if let image = ClipboardManager.imageFromImage(inItem: self.contents) {
-            let height = self.contentsLabel.bounds.height
-            DispatchQueue.global(qos: .utility).async {
-                let imageInText = ClipboardManager.prepareTextFromImage(image, maxImageWidth: nil, maxImageHeight: height)
+            else if let html = ClipboardManager.textFromHtml(inItem: self.contents) {
                 DispatchQueue.main.async {
-                    self.contentsLabel.attributedText = imageInText
+                    self.setContentsLabelAttributedText(html)
                 }
             }
-        }*/
-        else {
-            print("ClipTableViewCell: couldn't find usable data representations.")
+            else if let plaintext = ClipboardManager.textFromPlaintext(inItem: self.contents) {
+                DispatchQueue.main.async {
+                    self.contentsLabel.text = plaintext
+                }
+            }
+            else if let image = ClipboardManager.imageFromImage(inItem: self.contents, maxImageWidth: nil, maxImageHeight: imageViewHeight) {
+                DispatchQueue.main.async {
+                    self.contentsLabel.text = ""
+                    self.contentsImageView.image = image
+                }
+            }
+            else {
+                print("ClipTableViewCell: couldn't find usable data representations.")
+            }
         }
     }
     
     private func setContentsLabelAttributedText(_ attributedString: NSAttributedString) {
-        self.contentsLabel.text = ""
-        self.contentsLabel.setAttributedTextAsync(attributedString)
-        /*DispatchQueue.global(qos: .utility).async {
-            let string: NSMutableAttributedString = NSMutableAttributedString(attributedString: attributedString)
-            string.removeAttribute(.font, range: NSMakeRange(0, string.length))
-            
-            DispatchQueue.main.async {
-                self.contentsLabel.attributedText = string
+        // remove font and attachments
+        let string: NSMutableAttributedString = NSMutableAttributedString(attributedString: attributedString)
+        string.removeAttribute(.font, range: NSMakeRange(0, string.length))
+        string.enumerateAttribute(NSAttributedStringKey.attachment, in: NSMakeRange(0, string.length), options: []) { (value, range, stop) in
+            if let _ = value as? NSTextAttachment {
+                string.replaceCharacters(in: range, with: "")
             }
-        }*/
-        //let string: NSMutableAttributedString = NSMutableAttributedString(attributedString: attributedString)
-        //string.removeAttribute(.font, range: NSMakeRange(0, string.length))
-        //self.contentsLabel.attributedText = attributedString
+        }
+        self.contentsLabel.attributedText = attributedString
     }
     
     func setTableViewController(_ table: MainTableViewController) {
