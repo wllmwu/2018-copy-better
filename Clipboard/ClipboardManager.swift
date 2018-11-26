@@ -62,7 +62,18 @@ class ClipboardManager: NSObject {
     }
     
     static func copyToPasteboard(item: [String : Any]) {
-        UIPasteboard.general.items = [item]
+        var itemVar: [String : Any] = item
+        if let png = itemVar[kUTTypePNG as String] as? UIImage {
+            if let pngData = UIImagePNGRepresentation(png) {
+                itemVar[kUTTypePNG as String] = pngData
+            }
+        }
+        if let jpg = itemVar[kUTTypeJPEG as String] as? UIImage {
+            if let jpgData = UIImageJPEGRepresentation(jpg, 1) {
+                itemVar[kUTTypeJPEG as String] = jpgData
+            }
+        }
+        UIPasteboard.general.items = [itemVar]
     }
     
     // MARK: - Interpreters for data representations in pasteboard items
@@ -102,7 +113,7 @@ class ClipboardManager: NSObject {
         return nil
     }
     
-    static func imageExists(inItem item: [String : Any]) -> Bool {
+    /*static func imageExists(inItem item: [String : Any]) -> Bool {
         if let _ = item[kUTTypePNG as String] as? UIImage {
             return true
         }
@@ -119,9 +130,9 @@ class ClipboardManager: NSObject {
             return true
         }
         return false
-    }
+    }*/
     
-    static func imageFromImage(inItem item: [String : Any]) -> UIImage? {
+    /*static func imageFromImage(inItem item: [String : Any]) -> UIImage? {
         var image: UIImage?
         if let png = item[kUTTypePNG as String] as? UIImage {
             image = png
@@ -139,7 +150,7 @@ class ClipboardManager: NSObject {
             image = bmp
         }
         return image
-    }
+    }*/
     
     static func imageFromImage(inItem item: [String : Any], maxImageWidth: CGFloat?, maxImageHeight: CGFloat?) -> UIImage? {
         var image: UIImage
@@ -191,7 +202,13 @@ class ClipboardManager: NSObject {
         return image
     }
     
-    static func scaleImage(_ originalImage: UIImage, maxImageWidth: CGFloat?, maxImageHeight: CGFloat?) -> UIImage {
+    static func textFromImage(_ image: UIImage) -> NSAttributedString {
+        let attachment: NSTextAttachment = NSTextAttachment()
+        attachment.image = image
+        return NSAttributedString(attachment: attachment)
+    }
+    
+    /*static func scaleImage(_ originalImage: UIImage, maxImageWidth: CGFloat?, maxImageHeight: CGFloat?) -> UIImage {
         let size: CGSize = originalImage.size
         var scaleFactor: CGFloat?
         if let maxWidth = maxImageWidth {
@@ -219,9 +236,9 @@ class ClipboardManager: NSObject {
             UIGraphicsEndImageContext()
         }
         return image
-    }
+    }*/
     
-    static func prepareTextFromImage(_ originalImage: UIImage, maxImageWidth: CGFloat?, maxImageHeight: CGFloat?) -> NSAttributedString {
+    /*static func prepareTextFromImage(_ originalImage: UIImage, maxImageWidth: CGFloat?, maxImageHeight: CGFloat?) -> NSAttributedString {
         let size: CGSize = originalImage.size
         var scaleFactor: CGFloat?
         if let maxWidth = maxImageWidth {
@@ -252,9 +269,9 @@ class ClipboardManager: NSObject {
         let textAttachment: NSTextAttachment = NSTextAttachment()
         textAttachment.image = image
         return NSAttributedString(attachment: textAttachment)
-    }
+    }*/
     
-    static func textFromImage(inItem item: [String : Any], maxImageWidth: CGFloat?, maxImageHeight: CGFloat?) -> NSAttributedString? {
+    /*static func textFromImage(inItem item: [String : Any], maxImageWidth: CGFloat?, maxImageHeight: CGFloat?) -> NSAttributedString? {
         var image: UIImage
         if let png = item[kUTTypePNG as String] as? UIImage {
             image = png
@@ -304,6 +321,6 @@ class ClipboardManager: NSObject {
         let textAttachment: NSTextAttachment = NSTextAttachment()
         textAttachment.image = image
         return NSAttributedString(attachment: textAttachment)
-    }
+    }*/
 
 }

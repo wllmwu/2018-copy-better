@@ -44,6 +44,7 @@ class ClipTableViewCell: UITableViewCell {
         }
         self.contentsLabel.font = UIFont.systemFont(ofSize: defaultSize)
         self.contentsLabel.textColor = UIColor.black
+        self.contentsImageView.image = nil
     }
     
     private func setContentsLabelText() {
@@ -115,7 +116,9 @@ class ClipTableViewCell: UITableViewCell {
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
-        self.tableViewController?.addLastCopied()
+        if self.contents.count > 0 {
+            self.tableViewController?.addLastCopied()
+        }
     }
 
 }

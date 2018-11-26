@@ -69,8 +69,8 @@ class ClipViewController: UIViewController {
         else if let plaintext = ClipboardManager.textFromPlaintext(inItem: contents) {
             self.contentsTextView.text = plaintext
         }
-        else if let image = ClipboardManager.textFromImage(inItem: contents, maxImageWidth: self.contentsTextView.bounds.width, maxImageHeight: nil) {
-            self.contentsTextView.attributedText = image
+        else if let image = ClipboardManager.imageFromImage(inItem: contents, maxImageWidth: self.contentsTextView.contentSize.width, maxImageHeight: nil) {
+            self.contentsTextView.attributedText = ClipboardManager.textFromImage(image)
         }
         else {
             print("ClipViewController: couldn't find usable data representations.")
@@ -104,27 +104,29 @@ class ClipViewController: UIViewController {
     }
     
     @objc func addLastCopied() {
-        guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
-            fatalError("Couldn't find entity description.")
-        }
-        
-        // create new clip
-        let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
-        clip.title = nil
-        clip.contents = self.contents
-        clip.index = 0
-        self.allClips!.insert(clip, at: 0)
-        
-        // reassign indices
-        for i in 1..<self.allClips!.count {
-            self.allClips![i].index += 1
-        }
-        
-        do {
-            try self.managedObjectContext.save()
-        }
-        catch let error as NSError {
-            print("Couldn't save. \(error), \(error.userInfo)")
+        if self.contents.count > 0 {
+            guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
+                fatalError("Couldn't find entity description.")
+            }
+            
+            // create new clip
+            let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
+            clip.title = nil
+            clip.contents = self.contents
+            clip.index = 0
+            self.allClips!.insert(clip, at: 0)
+            
+            // reassign indices
+            for i in 1..<self.allClips!.count {
+                self.allClips![i].index += 1
+            }
+            
+            do {
+                try self.managedObjectContext.save()
+            }
+            catch let error as NSError {
+                print("Couldn't save. \(error), \(error.userInfo)")
+            }
         }
     }
     

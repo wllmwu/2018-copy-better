@@ -65,8 +65,8 @@ class EditClipTableViewController: UITableViewController {
         else if let plaintext = ClipboardManager.textFromPlaintext(inItem: contents) {
             self.contentsTextView.text = plaintext
         }
-        else if let image = ClipboardManager.textFromImage(inItem: contents, maxImageWidth: self.contentsTextView.bounds.width, maxImageHeight: nil) {
-            self.contentsTextView.attributedText = image
+        else if let image = ClipboardManager.imageFromImage(inItem: contents, maxImageWidth: self.contentsTextView.contentSize.width, maxImageHeight: nil) {
+            self.contentsTextView.attributedText = ClipboardManager.textFromImage(image)
         }
         else {
             print("EditClipTableViewController: couldn't find usable data representations.")
