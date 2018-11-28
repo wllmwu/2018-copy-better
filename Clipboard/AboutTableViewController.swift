@@ -1,19 +1,16 @@
 //
-//  SettingsTableViewController.swift
+//  AboutTableViewController.swift
 //  Clipboard
 //
-//  Created by Bill Wu on 11/14/18.
+//  Created by Bill Wu on 11/27/18.
 //  Copyright © 2018 William Wu. All rights reserved.
 //
 
 import UIKit
 
-class SettingsTableViewController: UITableViewController {
+class AboutTableViewController: UITableViewController {
     
-    @IBOutlet weak var showCurrentInMainSwitch: UISwitch!
-    @IBOutlet weak var showCurrentInWidgetSwitch: UISwitch!
-    @IBOutlet weak var numClipsInWidgetStepper: UIStepper!
-    @IBOutlet weak var numClipsInWidgetLabel: UILabel!
+    @IBOutlet weak var aboutLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,58 +20,22 @@ class SettingsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
-        let defaults: UserDefaults = UserDefaults.standard
-        self.showCurrentInMainSwitch.isOn = defaults.bool(forKey: "showLastCopiedInMain")
-        self.showCurrentInWidgetSwitch.isOn = defaults.bool(forKey: "showLastCopiedInWidget")
-        let numClips: Int = defaults.integer(forKey: "numClipsInWidget")
-        self.numClipsInWidgetStepper.value = Double(numClips)
-        self.numClipsInWidgetLabel.text = String(numClips)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func close(_ sender: UIBarButtonItem) {
-        let defaults: UserDefaults = UserDefaults.standard
-        defaults.set(self.showCurrentInMainSwitch.isOn, forKey: "showLastCopiedInMain")
-        defaults.set(self.showCurrentInWidgetSwitch.isOn, forKey: "showLastCopiedInWidget")
-        defaults.set(Int(self.numClipsInWidgetStepper.value), forKey: "numClipsInWidget")
-        
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func didToggleShowCurrentInMainSwitch(_ sender: UISwitch) {
-        if sender.isOn {
-            NotificationCenter.default.post(name: Notification.Name(rawValue: "UpdateLastCopied"), object: nil)
-        }
-    }
-    
-    @IBAction func toggleShowCurrentInWidgetSwitch(_ sender: UISwitch) {
-    }
-    
-    @IBAction func changeNumClips(_ sender: UIStepper) {
-        self.numClipsInWidgetLabel.text = String(Int(self.numClipsInWidgetStepper.value))
-    }
-    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        // #warning Incomplete implementation, return the number of sections
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 1 { return 2 }
+        // #warning Incomplete implementation, return the number of rows
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if indexPath.section == 2 {
-            return indexPath
-        }
-        return nil
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return self.aboutLabel.bounds.height + 16
     }
 
     /*
@@ -127,7 +88,7 @@ class SettingsTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
+        // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
     */

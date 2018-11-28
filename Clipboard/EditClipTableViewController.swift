@@ -36,6 +36,8 @@ class EditClipTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
         if let clip = self.clip {
             self.titleTextField.text = clip.title
             self.setContents(clip.contents)
@@ -108,7 +110,7 @@ class EditClipTableViewController: UITableViewController {
                 }
                 
                 let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
-                self.setClipTitleAndContents(clip: clip)
+                self.saveClipTitleAndContents(clip: clip)
                 clip.index = Int16(i)
                 self.saveContext()
             }
@@ -118,7 +120,7 @@ class EditClipTableViewController: UITableViewController {
         }
         else {
             if let clip = self.clip {
-                self.setClipTitleAndContents(clip: clip)
+                self.saveClipTitleAndContents(clip: clip)
                 self.saveContext()
             }
             else {
@@ -129,7 +131,7 @@ class EditClipTableViewController: UITableViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    private func setClipTitleAndContents(clip: Clip) {
+    private func saveClipTitleAndContents(clip: Clip) {
         clip.title = self.titleTextField.text
         if let title = self.titleTextField.text {
             if title.isEmpty {

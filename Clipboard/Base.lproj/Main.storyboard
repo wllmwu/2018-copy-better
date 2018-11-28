@@ -14,7 +14,7 @@
         <scene sceneID="W4b-il-UZl">
             <objects>
                 <tableViewController id="BlK-IM-OGN" customClass="SettingsTableViewController" customModule="Clipboard" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="cgU-5O-pTN">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="cgU-5O-pTN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -179,7 +179,7 @@
         <!--About-->
         <scene sceneID="Lpt-Vh-KfW">
             <objects>
-                <tableViewController title="About" id="KQb-ND-3vh" sceneMemberID="viewController">
+                <tableViewController title="About" id="KQb-ND-3vh" customClass="AboutTableViewController" customModule="Clipboard" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="fdD-vG-J61">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -193,6 +193,20 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JWb-9a-NRG" id="Rju-5u-SQ3">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Nl-cj-gKr">
+                                                    <rect key="frame" x="16" y="-110.5" width="343" height="264.5"/>
+                                                    <mutableString key="text">© 2018 William Wu  This app is version 1.0.  Questions or bug reports? Email me at dev.wwu@gmail.com.  For the best use of this app, I recommend that you add the Clipboard widget to the Today View. Then you'll be able to access it from inside any app by swiping down from the top of the screen, then swiping to the right.</mutableString>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="4Nl-cj-gKr" firstAttribute="centerY" secondItem="Rju-5u-SQ3" secondAttribute="centerY" id="5SE-BY-v6V"/>
+                                                <constraint firstItem="4Nl-cj-gKr" firstAttribute="leading" secondItem="Rju-5u-SQ3" secondAttribute="leadingMargin" id="Mbf-eU-Mi9"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="4Nl-cj-gKr" secondAttribute="trailing" id="QtQ-Ya-5v2"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -203,6 +217,9 @@
                             <outlet property="delegate" destination="KQb-ND-3vh" id="GK1-sQ-uU3"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="aboutLabel" destination="4Nl-cj-gKr" id="TI9-6q-eZl"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dj6-5O-gHn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -430,6 +447,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES" shipmentTrackingNumber="YES" flightNumber="YES"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -593,7 +611,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dAW-D8-Ny7"/>
+        <segue reference="atL-tM-tp5"/>
         <segue reference="OQy-tm-RJB"/>
     </inferredMetricsTieBreakers>
 </document>

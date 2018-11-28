@@ -27,6 +27,7 @@
 		E0858C3021A0F0240089AE53 /* Clip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */; };
 		E0858C3121A0F0240089AE53 /* Clip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858C2E21A0F0240089AE53 /* Clip+CoreDataProperties.swift */; };
 		E0858C3221A0F0240089AE53 /* Clip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858C2E21A0F0240089AE53 /* Clip+CoreDataProperties.swift */; };
+		E0CC277621AD9A04000FEF5A /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CC277521AD9A04000FEF5A /* AboutTableViewController.swift */; };
 		E0D67EE3219E925600559CA6 /* DefaultClipboard.plist in Resources */ = {isa = PBXBuildFile; fileRef = E0D67EE2219E925600559CA6 /* DefaultClipboard.plist */; };
 		E0D67EE4219E925600559CA6 /* DefaultClipboard.plist in Resources */ = {isa = PBXBuildFile; fileRef = E0D67EE2219E925600559CA6 /* DefaultClipboard.plist */; };
 		E0F5BE0821A8BE9600422DC1 /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */; };
@@ -78,6 +79,7 @@
 		E06AA135219D37BE0015A30F /* ClipboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardManager.swift; sourceTree = "<group>"; };
 		E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clip+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E0858C2E21A0F0240089AE53 /* Clip+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clip+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E0CC277521AD9A04000FEF5A /* AboutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
 		E0D67EE0219E8B6700559CA6 /* Clipboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Clipboard.entitlements; sourceTree = "<group>"; };
 		E0D67EE1219E8CB100559CA6 /* Clipboard Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Clipboard Widget.entitlements"; sourceTree = "<group>"; };
 		E0D67EE2219E925600559CA6 /* DefaultClipboard.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultClipboard.plist; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				E06AA12F219D32DE0015A30F /* ClipViewController.swift */,
 				E06AA131219D32F60015A30F /* EditClipTableViewController.swift */,
 				E06AA133219D331E0015A30F /* SettingsTableViewController.swift */,
+				E0CC277521AD9A04000FEF5A /* AboutTableViewController.swift */,
 				E056F8FC20CEE46E0025E2FE /* LaunchScreen.storyboard */,
 				E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */,
 				E056F8FA20CEE46E0025E2FE /* Assets.xcassets */,
@@ -291,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E056F8F320CEE46C0025E2FE /* ViewController.swift in Sources */,
+				E0CC277621AD9A04000FEF5A /* AboutTableViewController.swift in Sources */,
 				E056F8F920CEE46C0025E2FE /* Clipboard.xcdatamodeld in Sources */,
 				E06AA130219D32DE0015A30F /* ClipViewController.swift in Sources */,
 				E0F5BE0821A8BE9600422DC1 /* String+HTML.swift in Sources */,
