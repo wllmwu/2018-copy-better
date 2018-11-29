@@ -28,7 +28,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show current pasteboard contents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7j-pN-GgP">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show current pasteboard contents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="C7j-pN-GgP">
                                                     <rect key="frame" x="16" y="11.5" width="286" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -61,7 +61,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show current pasteboard contents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOF-UE-d6A">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show current pasteboard contents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cOF-UE-d6A">
                                                     <rect key="frame" x="16" y="11.5" width="286" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -90,17 +90,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of clips" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ytH-gW-dY9">
-                                                    <rect key="frame" x="16" y="11.5" width="203" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Number of clips" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ytH-gW-dY9">
+                                                    <rect key="frame" x="16" y="11.5" width="215" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NzM-rt-96F">
-                                                    <rect key="frame" x="227" y="11.5" width="30" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="Ok0-0w-Gex"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="239" y="11.5" width="18" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -134,8 +131,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KqB-Ws-rer">
-                                                    <rect key="frame" x="16" y="11.5" width="46.5" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KqB-Ws-rer">
+                                                    <rect key="frame" x="16" y="11.5" width="317" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -144,6 +141,7 @@
                                             <constraints>
                                                 <constraint firstItem="KqB-Ws-rer" firstAttribute="leading" secondItem="h1D-YZ-cqa" secondAttribute="leadingMargin" id="GMQ-q6-2e1"/>
                                                 <constraint firstItem="KqB-Ws-rer" firstAttribute="centerY" secondItem="h1D-YZ-cqa" secondAttribute="centerY" id="S6C-7E-mDh"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="KqB-Ws-rer" secondAttribute="trailing" id="xSX-7o-v2B"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -196,7 +194,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Nl-cj-gKr">
                                                     <rect key="frame" x="16" y="-110.5" width="343" height="264.5"/>
-                                                    <mutableString key="text">© 2018 William Wu  This app is version 1.0.  Questions or bug reports? Email me at dev.wwu@gmail.com.  For the best use of this app, I recommend that you add the Clipboard widget to the Today View. Then you'll be able to access it from inside any app by swiping down from the top of the screen, then swiping to the right.</mutableString>
+                                                    <string key="text">© 2018 William Wu  This app is version 1.0.  Questions or bug reports? Email me at dev.wwu@gmail.com.  For the best use of this app, I recommend that you add the Clipboard widget to the Today View. Then you'll be able to access it from inside any app by swiping down from the top of the screen, then swiping to the right.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -241,36 +239,30 @@
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJ8-tS-zk3">
-                                            <rect key="frame" x="16" y="11" width="40" height="38"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="40" id="hQT-lC-8wM"/>
-                                            </constraints>
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJ8-tS-zk3">
+                                            <rect key="frame" x="16" y="11" width="36" height="38"/>
                                             <state key="normal" title="Copy"/>
                                             <connections>
                                                 <action selector="copyButtonTapped:" destination="HgL-Ev-V2n" eventType="touchUpInside" id="e1J-R7-LcN"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last copied" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOG-VC-fzC">
-                                            <rect key="frame" x="64" y="11" width="186" height="21"/>
+                                            <rect key="frame" x="60" y="11" width="196" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TvE-32-YYL">
-                                            <rect key="frame" x="64" y="36" width="186" height="13"/>
+                                            <rect key="frame" x="60" y="36" width="196" height="13"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contents" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lgi-3s-Kbg">
-                                            <rect key="frame" x="64" y="36" width="186" height="13"/>
+                                            <rect key="frame" x="60" y="36" width="196" height="13"/>
                                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="11"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gcs-nk-eEx">
-                                            <rect key="frame" x="258" y="11" width="75" height="38"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="75" id="had-Nv-s4W"/>
-                                            </constraints>
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gcs-nk-eEx">
+                                            <rect key="frame" x="264" y="11" width="69" height="38"/>
                                             <state key="normal" title="Add to list"/>
                                             <connections>
                                                 <action selector="addButtonTapped:" destination="HgL-Ev-V2n" eventType="touchUpInside" id="n1i-nc-riM"/>
@@ -313,27 +305,24 @@
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AXt-XT-I7X">
-                                            <rect key="frame" x="16" y="11" width="40" height="38"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="40" id="FzJ-bJ-jU4"/>
-                                            </constraints>
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AXt-XT-I7X">
+                                            <rect key="frame" x="16" y="11" width="36" height="38"/>
                                             <state key="normal" title="Copy"/>
                                             <connections>
                                                 <action selector="copyButtonTapped:" destination="LK3-ka-3An" eventType="touchUpInside" id="LZ6-jL-lGM"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBM-4M-D6k">
-                                            <rect key="frame" x="64" y="11" width="269" height="21"/>
+                                            <rect key="frame" x="60" y="11" width="273" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fFw-Dh-xbj">
-                                            <rect key="frame" x="64" y="36" width="269" height="13"/>
+                                            <rect key="frame" x="60" y="36" width="273" height="13"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contents" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1t-hn-ih7">
-                                            <rect key="frame" x="64" y="36" width="269" height="13"/>
+                                            <rect key="frame" x="60" y="36" width="273" height="13"/>
                                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="11"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -371,21 +360,18 @@
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yoX-S0-ffx">
-                                            <rect key="frame" x="16" y="11" width="40" height="38"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="40" id="zF0-tT-HmO"/>
-                                            </constraints>
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yoX-S0-ffx">
+                                            <rect key="frame" x="16" y="11" width="36" height="38"/>
                                             <state key="normal" title="Copy"/>
                                             <connections>
                                                 <action selector="copyButtonTapped:" destination="A58-0s-LVh" eventType="touchUpInside" id="Iyp-Ou-GKe"/>
                                             </connections>
                                         </button>
                                         <imageView userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KhN-C3-464">
-                                            <rect key="frame" x="64" y="12" width="269" height="36.5"/>
+                                            <rect key="frame" x="60" y="12" width="273" height="36.5"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contents" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6d-Bl-fOw">
-                                            <rect key="frame" x="64" y="20" width="269" height="20.5"/>
+                                            <rect key="frame" x="60" y="20" width="273" height="20.5"/>
                                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
