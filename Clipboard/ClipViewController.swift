@@ -53,6 +53,8 @@ class ClipViewController: UIViewController {
         }
     }
     
+    // MARK: - Instance methods
+    
     private func setContentsText(contents: [String : Any]) {
         if contents.count == 0 {
             self.contentsTextView.text = "(Empty)"

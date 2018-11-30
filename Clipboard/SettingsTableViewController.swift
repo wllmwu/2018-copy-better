@@ -15,6 +15,8 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var numClipsInWidgetStepper: UIStepper!
     @IBOutlet weak var numClipsInWidgetLabel: UILabel!
     
+    private var shouldUpdateLastCopied: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,19 +39,22 @@ class SettingsTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Instance methods
+    
     @IBAction func close(_ sender: UIBarButtonItem) {
         let defaults: UserDefaults = UserDefaults.standard
-        defaults.set(self.showCurrentInMainSwitch.isOn, forKey: "showLastCopiedInMain")
-        defaults.set(self.showCurrentInWidgetSwitch.isOn, forKey: "showLastCopiedInWidget")
-        defaults.set(Int(self.numClipsInWidgetStepper.value), forKey: "numClipsInWidget")
+        if self.shouldUpdateLastCopied {
+            defaults.set(self.showCurrentInMainSwitch.isOn, forKey: "showLastCopiedInMain")
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "UpdateLastCopied"), object: nil)
+        }
+        //defaults.set(self.showCurrentInWidgetSwitch.isOn, forKey: "showLastCopiedInWidget")
+        //defaults.set(Int(self.numClipsInWidgetStepper.value), forKey: "numClipsInWidget")
         
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func didToggleShowCurrentInMainSwitch(_ sender: UISwitch) {
-        if sender.isOn {
-            NotificationCenter.default.post(name: Notification.Name(rawValue: "UpdateLastCopied"), object: nil)
-        }
+        self.shouldUpdateLastCopied = true
     }
     
     @IBAction func toggleShowCurrentInWidgetSwitch(_ sender: UISwitch) {

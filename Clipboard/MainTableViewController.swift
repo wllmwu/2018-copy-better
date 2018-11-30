@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class MainTableViewController: UITableViewController {
+class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     
     private var managedObjectContext: NSManagedObjectContext!
     private var clips: [Clip] = []
@@ -18,6 +18,9 @@ class MainTableViewController: UITableViewController {
     private var lastCopied: [String : Any] = [:]
     
     private var selectedClip: Clip?
+    
+    private let searchController: UISearchController = UISearchController(searchResultsController: nil)
+    private var filteredClips: [Clip] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,18 +40,25 @@ class MainTableViewController: UITableViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.updateLastCopied), name: Notification.Name(rawValue: "UpdateLastCopied"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.updateMain), name: Notification.Name(rawValue: "UpdateMain"), object: nil)
+        
+        // set up search controller
+        self.searchController.searchResultsUpdater = self
+        self.searchController.obscuresBackgroundDuringPresentation = false
+        self.searchController.searchBar.placeholder = "Search"
+        self.tableView.tableHeaderView = self.searchController.searchBar
+        self.definesPresentationContext = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.showLastCopied = UserDefaults.standard.bool(forKey: "showLastCopiedInMain")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: - Instance methods
     
     private func loadData() {
         let fetchRequest: NSFetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
@@ -66,8 +76,13 @@ class MainTableViewController: UITableViewController {
     }
     
     @objc private func updateLastCopied() {
-        self.retrieveLastCopied()
-        self.tableView.reloadData()
+        if self.showLastCopied != UserDefaults.standard.bool(forKey: "showLastCopiedInMain") {
+            self.showLastCopied = !self.showLastCopied
+            if self.showLastCopied {
+                self.retrieveLastCopied()
+            }
+            self.tableView.reloadData()
+        }
     }
     
     @objc private func updateMain() {
@@ -119,19 +134,27 @@ class MainTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if self.isFiltering() {
+            return self.filteredClips.count
+        }
         return self.clips.count + (self.showLastCopied ? 1 : 0)
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 && self.showLastCopied {
+        if indexPath.row == 0 && self.showLastCopied && !self.isFiltering() {
             let cell: ClipTableViewCell = tableView.dequeueReusableCell(withIdentifier: "LastCopiedCell", for: indexPath) as! ClipTableViewCell
             cell.setTableViewController(self)
             cell.setContents(self.lastCopied)
             return cell
         }
         
-        let index: Int = indexPath.row - (self.showLastCopied ? 1 : 0)
-        let clip: Clip = self.clips[index]
+        let clip: Clip
+        if self.isFiltering() {
+            clip = self.filteredClips[indexPath.row]
+        }
+        else {
+            clip = self.clips[indexPath.row - (self.showLastCopied ? 1 : 0)]
+        }
         var cell: ClipTableViewCell
         if let title = clip.title {
             cell = tableView.dequeueReusableCell(withIdentifier: "ClipWithTitleCell", for: indexPath) as! ClipTableViewCell
@@ -147,7 +170,7 @@ class MainTableViewController: UITableViewController {
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        if !self.isEditing { return false }
+        if !self.isEditing || self.isFiltering() { return false }
         if indexPath.row == 0 && self.showLastCopied { return false }
         return true
     }
@@ -198,10 +221,42 @@ class MainTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if self.showLastCopied && indexPath.row == 0 { return indexPath }
-        let correction: Int = self.showLastCopied ? 1 : 0
-        self.selectedClip = self.clips[indexPath.row - correction]
+        if self.showLastCopied && indexPath.row == 0 && !self.isFiltering() { return indexPath }
+        
+        if self.isFiltering() {
+            self.selectedClip = self.filteredClips[indexPath.row]
+        }
+        else {
+            self.selectedClip = self.clips[indexPath.row - (self.showLastCopied ? 1 : 0)]
+        }
         return indexPath
+    }
+    
+    // MARK: - Search results updating delegate
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if self.isEditing {
+            self.setEditing(false, animated: true)
+        }
+        self.filterContentForSearchText(searchController.searchBar.text!)
+    }
+    
+    // MARK: - Search bar helper methods
+    
+    private func isFiltering() -> Bool {
+        return self.searchController.isActive && !self.searchBarIsEmpty()
+    }
+    
+    private func searchBarIsEmpty() -> Bool {
+        return self.searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    private func filterContentForSearchText(_ searchText: String) {
+        self.filteredClips = self.clips.filter({( clip: Clip ) -> Bool in
+            return clip.title?.lowercased().contains(searchText.lowercased()) ?? false
+        })
+        
+        self.tableView.reloadData()
     }
 
     // MARK: - Navigation

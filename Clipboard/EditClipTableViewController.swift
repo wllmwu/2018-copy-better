@@ -48,6 +48,8 @@ class EditClipTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Instance methods
+    
     private func setContents(_ contents: [String : Any]) {
         self.contents = contents
         

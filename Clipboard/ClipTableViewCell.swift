@@ -36,6 +36,8 @@ class ClipTableViewCell: UITableViewCell {
         self.reset()
     }
     
+    // MARK: - Instance methods
+    
     private func reset() {
         // reset contentsLabel's font, text size, and text color
         var defaultSize: CGFloat = 17
