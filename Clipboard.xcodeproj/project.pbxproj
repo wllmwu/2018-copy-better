@@ -12,7 +12,6 @@
 		E04106C3219D04F100DD68AD /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E04106C1219D04F100DD68AD /* MainInterface.storyboard */; };
 		E04106C7219D04F100DD68AD /* Clipboard Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E04106BA219D04F100DD68AD /* Clipboard Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E056F8F120CEE46C0025E2FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E056F8F020CEE46C0025E2FE /* AppDelegate.swift */; };
-		E056F8F320CEE46C0025E2FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E056F8F220CEE46C0025E2FE /* ViewController.swift */; };
 		E056F8F620CEE46C0025E2FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E056F8F420CEE46C0025E2FE /* Main.storyboard */; };
 		E056F8F920CEE46C0025E2FE /* Clipboard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E056F8F720CEE46C0025E2FE /* Clipboard.xcdatamodeld */; };
 		E056F8FB20CEE46E0025E2FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E056F8FA20CEE46E0025E2FE /* Assets.xcassets */; };
@@ -65,7 +64,6 @@
 		E04106C4219D04F100DD68AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E056F8ED20CEE46C0025E2FE /* Clipboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clipboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E056F8F020CEE46C0025E2FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E056F8F220CEE46C0025E2FE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E056F8F520CEE46C0025E2FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E056F8F820CEE46C0025E2FE /* Clipboard_Manager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Clipboard_Manager.xcdatamodel; sourceTree = "<group>"; };
 		E056F8FA20CEE46E0025E2FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -150,7 +148,6 @@
 			children = (
 				E0D67EE0219E8B6700559CA6 /* Clipboard.entitlements */,
 				E056F8F020CEE46C0025E2FE /* AppDelegate.swift */,
-				E056F8F220CEE46C0025E2FE /* ViewController.swift */,
 				E06AA135219D37BE0015A30F /* ClipboardManager.swift */,
 				E056F8F420CEE46C0025E2FE /* Main.storyboard */,
 				E06AA127219D31CE0015A30F /* MainTableViewController.swift */,
@@ -293,7 +290,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E056F8F320CEE46C0025E2FE /* ViewController.swift in Sources */,
 				E0CC277621AD9A04000FEF5A /* AboutTableViewController.swift in Sources */,
 				E056F8F920CEE46C0025E2FE /* Clipboard.xcdatamodeld in Sources */,
 				E06AA130219D32DE0015A30F /* ClipViewController.swift in Sources */,

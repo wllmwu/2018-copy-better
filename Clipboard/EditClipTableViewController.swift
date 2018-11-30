@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import MobileCoreServices
 
 class EditClipTableViewController: UITableViewController {
     
@@ -141,14 +140,7 @@ class EditClipTableViewController: UITableViewController {
         
         if let text = self.contentsTextView.attributedText {
             if self.mode == .Add || !text.isEqual(to: self.originalContentsText) {
-                do {
-                    let rtfData: Data = try text.data(from: NSMakeRange(0, text.length), documentAttributes: [.documentType : NSAttributedString.DocumentType.rtf])
-                    let htmlData: Data = try text.data(from: NSMakeRange(0, text.length), documentAttributes: [.documentType : NSAttributedString.DocumentType.html])
-                    clip.contents = [kUTTypeRTF as String : rtfData, kUTTypeHTML as String : htmlData, kUTTypePlainText as String : text.string]
-                }
-                catch let error as NSError {
-                    print("Error when saving: \(error), \(error.userInfo)")
-                }
+                clip.contents = ClipboardManager.itemForAttributedString(text)
             }
             // else the text hasn't changed when Save is pressed, so just leave the clip as it is
         }

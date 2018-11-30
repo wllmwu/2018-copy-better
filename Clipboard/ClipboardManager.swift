@@ -101,56 +101,29 @@ class ClipboardManager: NSObject {
     }
     
     static func textFromPlaintext(inItem item: [String : Any]) -> String? {
-        if let utf8Plaintext = item[kUTTypeUTF8PlainText as String] as? String {
-            return utf8Plaintext
+        if let utf8Plaintext = item[kUTTypeUTF8PlainText as String] {
+            if let string = utf8Plaintext as? String {
+                return string
+            }
+            else if let stringData = utf8Plaintext as? Data {
+                // will substitute characters it can't decode with the replacement character
+                return String(decoding: stringData, as: UTF8.self)
+            }
         }
-        else if let utf16Plaintext = item[kUTTypeUTF16PlainText as String] as? String {
-            return utf16Plaintext
+        else if let utf16Plaintext = item[kUTTypeUTF16PlainText as String] {
+            if let string = utf16Plaintext as? String {
+                return string
+            }
+            else if let stringData = utf16Plaintext as? Data {
+                // will return nil if it can't decode - String(decoding:as:) doesn't work
+                return String(data: stringData, encoding: .utf16)
+            }
         }
         else if let plaintext = item[kUTTypePlainText as String] as? String {
             return plaintext
         }
         return nil
     }
-    
-    /*static func imageExists(inItem item: [String : Any]) -> Bool {
-        if let _ = item[kUTTypePNG as String] as? UIImage {
-            return true
-        }
-        else if let _ = item[kUTTypeJPEG as String] as? UIImage {
-            return true
-        }
-        else if let _ = item[kUTTypeGIF as String] as? UIImage {
-            return true
-        }
-        else if let _ = item[kUTTypeTIFF as String] as? UIImage {
-            return true
-        }
-        else if let _ = item[kUTTypeBMP as String] as? UIImage {
-            return true
-        }
-        return false
-    }*/
-    
-    /*static func imageFromImage(inItem item: [String : Any]) -> UIImage? {
-        var image: UIImage?
-        if let png = item[kUTTypePNG as String] as? UIImage {
-            image = png
-        }
-        else if let jpg = item[kUTTypeJPEG as String] as? UIImage {
-            image = jpg
-        }
-        else if let gif = item[kUTTypeGIF as String] as? UIImage {
-            image = gif
-        }
-        else if let tif = item[kUTTypeTIFF as String] as? UIImage {
-            image = tif
-        }
-        else if let bmp = item[kUTTypeBMP as String] as? UIImage {
-            image = bmp
-        }
-        return image
-    }*/
     
     static func imageFromImage(inItem item: [String : Any], maxImageWidth: CGFloat?, maxImageHeight: CGFloat?) -> UIImage? {
         var image: UIImage
@@ -208,119 +181,23 @@ class ClipboardManager: NSObject {
         return NSAttributedString(attachment: attachment)
     }
     
-    /*static func scaleImage(_ originalImage: UIImage, maxImageWidth: CGFloat?, maxImageHeight: CGFloat?) -> UIImage {
-        let size: CGSize = originalImage.size
-        var scaleFactor: CGFloat?
-        if let maxWidth = maxImageWidth {
-            if size.width > maxWidth {
-                // scale image down to fit width
-                scaleFactor = maxWidth / size.width
-                
-            }
-        }
-        else if let maxHeight = maxImageHeight {
-            if size.height > maxHeight {
-                // scale image down to fit height
-                scaleFactor = maxHeight / size.height
-            }
-        }
+    static func itemForAttributedString(_ string: NSAttributedString) -> [String : Any] {
+        if string.length == 0 { return [:] }
         
-        var image = originalImage
-        if let scale = scaleFactor {
-            let newSize: CGSize = CGSize(width: size.width * scale, height: size.height * scale)
-            UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
-            image.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
-            if let newImage = UIGraphicsGetImageFromCurrentImageContext() {
-                image = newImage
-            }
-            UIGraphicsEndImageContext()
+        var item: [String : Any] = [:]
+        do {
+            let rtfData: Data = try string.data(from: NSMakeRange(0, string.length), documentAttributes: [.documentType : NSAttributedString.DocumentType.rtf])
+            item[kUTTypeRTF as String] = rtfData
+            let htmlData: Data = try string.data(from: NSMakeRange(0, string.length), documentAttributes: [.documentType : NSAttributedString.DocumentType.html])
+            item[kUTTypeHTML as String] = htmlData
         }
-        return image
-    }*/
-    
-    /*static func prepareTextFromImage(_ originalImage: UIImage, maxImageWidth: CGFloat?, maxImageHeight: CGFloat?) -> NSAttributedString {
-        let size: CGSize = originalImage.size
-        var scaleFactor: CGFloat?
-        if let maxWidth = maxImageWidth {
-            if size.width > maxWidth {
-                // scale image down to fit width
-                scaleFactor = maxWidth / size.width
-                
-            }
+        catch let error as NSError {
+            print("Error when creating pasteboard item from attributed string: \(error), \(error.userInfo)")
         }
-        else if let maxHeight = maxImageHeight {
-            if size.height > maxHeight {
-                // scale image down to fit height
-                scaleFactor = maxHeight / size.height
-            }
-        }
-        
-        var image = originalImage
-        if let scale = scaleFactor {
-            let newSize: CGSize = CGSize(width: size.width * scale, height: size.height * scale)
-            UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
-            image.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
-            if let newImage = UIGraphicsGetImageFromCurrentImageContext() {
-                image = newImage
-            }
-            UIGraphicsEndImageContext()
-        }
-        
-        let textAttachment: NSTextAttachment = NSTextAttachment()
-        textAttachment.image = image
-        return NSAttributedString(attachment: textAttachment)
-    }*/
-    
-    /*static func textFromImage(inItem item: [String : Any], maxImageWidth: CGFloat?, maxImageHeight: CGFloat?) -> NSAttributedString? {
-        var image: UIImage
-        if let png = item[kUTTypePNG as String] as? UIImage {
-            image = png
-        }
-        else if let jpg = item[kUTTypeJPEG as String] as? UIImage {
-            image = jpg
-        }
-        else if let gif = item[kUTTypeGIF as String] as? UIImage {
-            image = gif
-        }
-        else if let tif = item[kUTTypeTIFF as String] as? UIImage {
-            image = tif
-        }
-        else if let bmp = item[kUTTypeBMP as String] as? UIImage {
-            image = bmp
-        }
-        else {
-            return nil
-        }
-        
-        /*let size: CGSize = image.size
-        var scaleFactor: CGFloat?
-        if let maxWidth = maxImageWidth {
-            if size.width > maxWidth {
-                // scale image down to fit width
-                scaleFactor = maxWidth / size.width
-                
-            }
-        }
-        else if let maxHeight = maxImageHeight {
-            if size.height > maxHeight {
-                // scale image down to fit height
-                scaleFactor = maxHeight / size.height
-            }
-        }
-        
-        if let scale = scaleFactor {
-            let newSize: CGSize = CGSize(width: size.width * scale, height: size.height * scale)
-            UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
-            image.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
-            if let newImage = UIGraphicsGetImageFromCurrentImageContext() {
-                image = newImage
-            }
-            UIGraphicsEndImageContext()
-        }*/
-        
-        let textAttachment: NSTextAttachment = NSTextAttachment()
-        textAttachment.image = image
-        return NSAttributedString(attachment: textAttachment)
-    }*/
+        item[kUTTypeUTF8PlainText as String] = string.string.data(using: .utf8)
+        item[kUTTypeUTF16PlainText as String] = string.string.data(using: .utf16)
+        item[kUTTypePlainText as String] = string.string
+        return item
+    }
 
 }
