@@ -92,6 +92,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     private func saveContext() {
         do {
             try self.managedObjectContext.save()
+            self.updateWidget()
         }
         catch let error as NSError {
             print("Couldn't save. \(error), \(error.userInfo)")
@@ -103,6 +104,11 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             let clip = self.clips[i]
             clip.index = Int16(i)
         }
+    }
+    
+    private func updateWidget() {
+        let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clipboard")!
+        defaults.set(true, forKey: "widgetNeedsUpdate")
     }
     
     func addLastCopied() {
@@ -154,7 +160,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         else {
             clip = self.clips[indexPath.row - (self.showLastCopied ? 1 : 0)]
         }
-        var cell: ClipTableViewCell
+        let cell: ClipTableViewCell
         if let title = clip.title {
             cell = tableView.dequeueReusableCell(withIdentifier: "ClipWithTitleCell", for: indexPath) as! ClipTableViewCell
             cell.setTitle(title)

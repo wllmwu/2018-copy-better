@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import CoreData
 import MobileCoreServices
 
 class ClipboardManager: NSObject {

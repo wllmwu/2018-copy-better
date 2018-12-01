@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E029B42B21B32C8F005EFEB6 /* ClipboardPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E029B42A21B32C8F005EFEB6 /* ClipboardPersistentContainer.swift */; };
+		E029B42C21B32C8F005EFEB6 /* ClipboardPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E029B42A21B32C8F005EFEB6 /* ClipboardPersistentContainer.swift */; };
+		E029B42D21B33A30005EFEB6 /* ClipboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA135219D37BE0015A30F /* ClipboardManager.swift */; };
 		E04106BD219D04F100DD68AD /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E04106BC219D04F100DD68AD /* NotificationCenter.framework */; };
 		E04106C0219D04F100DD68AD /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04106BF219D04F100DD68AD /* TodayViewController.swift */; };
 		E04106C3219D04F100DD68AD /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E04106C1219D04F100DD68AD /* MainInterface.storyboard */; };
@@ -58,6 +61,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E029B42A21B32C8F005EFEB6 /* ClipboardPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardPersistentContainer.swift; sourceTree = "<group>"; };
 		E04106BA219D04F100DD68AD /* Clipboard Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Clipboard Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E04106BC219D04F100DD68AD /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		E04106BF219D04F100DD68AD /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +134,8 @@
 			children = (
 				E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */,
 				E0858C2E21A0F0240089AE53 /* Clip+CoreDataProperties.swift */,
+				E029B42A21B32C8F005EFEB6 /* ClipboardPersistentContainer.swift */,
+				E06AA135219D37BE0015A30F /* ClipboardManager.swift */,
 				E056F8EF20CEE46C0025E2FE /* Clipboard */,
 				E04106BE219D04F100DD68AD /* Clipboard Widget */,
 				E04106BB219D04F100DD68AD /* Frameworks */,
@@ -151,7 +157,6 @@
 			children = (
 				E0D67EE0219E8B6700559CA6 /* Clipboard.entitlements */,
 				E056F8F020CEE46C0025E2FE /* AppDelegate.swift */,
-				E06AA135219D37BE0015A30F /* ClipboardManager.swift */,
 				E056F8F420CEE46C0025E2FE /* Main.storyboard */,
 				E06AA127219D31CE0015A30F /* MainTableViewController.swift */,
 				E06AA129219D32500015A30F /* ClipTableViewCell.swift */,
@@ -284,8 +289,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E04106C0219D04F100DD68AD /* TodayViewController.swift in Sources */,
+				E029B42C21B32C8F005EFEB6 /* ClipboardPersistentContainer.swift in Sources */,
 				E0858C3221A0F0240089AE53 /* Clip+CoreDataProperties.swift in Sources */,
 				E0858C3021A0F0240089AE53 /* Clip+CoreDataClass.swift in Sources */,
+				E029B42D21B33A30005EFEB6 /* ClipboardManager.swift in Sources */,
 				E0D348C721B2393000BF1F4E /* WidgetClipTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,6 +313,7 @@
 				E06AA134219D331E0015A30F /* SettingsTableViewController.swift in Sources */,
 				E06AA12A219D32500015A30F /* ClipTableViewCell.swift in Sources */,
 				E056F8F120CEE46C0025E2FE /* AppDelegate.swift in Sources */,
+				E029B42B21B32C8F005EFEB6 /* ClipboardPersistentContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

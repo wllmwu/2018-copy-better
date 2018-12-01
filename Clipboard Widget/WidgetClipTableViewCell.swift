@@ -14,6 +14,9 @@ class WidgetClipTableViewCell: UITableViewCell {
     @IBOutlet weak var contentsLabel: UILabel!
     @IBOutlet weak var copyButton: UIButton?
     @IBOutlet weak var addButton: UIButton?
+    
+    private var contents: [String : Any]!
+    private var parentViewController: TodayViewController!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,5 +28,26 @@ class WidgetClipTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    func setParentViewController(_ viewController: TodayViewController) {
+        self.parentViewController = viewController
+    }
+    
+    func setTitle(_ title: String) {
+        if let label = self.titleLabel {
+            label.text = title
+        }
+    }
+    
+    func setContents(_ item: [String : Any]) {
+        self.contents = item
+    }
+    
+    @IBAction func copyButtonTapped(_ sender: UIButton) {
+        ClipboardManager.copyToPasteboard(item: self.contents)
+    }
+    
+    @IBAction func addButtonTapped(_ sender: UIButton) {
+    }
+    
 }
