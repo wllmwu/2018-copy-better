@@ -294,7 +294,7 @@
                                     <outlet property="contentsImageView" destination="TvE-32-YYL" id="4aQ-fS-nc1"/>
                                     <outlet property="contentsLabel" destination="Lgi-3s-Kbg" id="Rt5-08-FiY"/>
                                     <outlet property="copyButton" destination="TJ8-tS-zk3" id="fOL-LM-kb1"/>
-                                    <outlet property="titleLabel" destination="SOG-VC-fzC" id="CUz-iT-MJx"/>
+                                    <outlet property="titleLabel" destination="SOG-VC-fzC" id="fLq-79-RPF"/>
                                     <segue destination="9Ah-HQ-3Ku" kind="show" identifier="LastCopiedToClip" id="1pd-qj-QPy"/>
                                 </connections>
                             </tableViewCell>
@@ -498,7 +498,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kra-BP-Mbe">
-                                                    <rect key="frame" x="16" y="11" width="343" height="278"/>
+                                                    <rect key="frame" x="8" y="11" width="359" height="278"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -506,9 +506,9 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="kra-BP-Mbe" secondAttribute="bottom" id="CtB-hg-B7h"/>
-                                                <constraint firstItem="kra-BP-Mbe" firstAttribute="leading" secondItem="GXB-de-R8W" secondAttribute="leadingMargin" id="RGt-9r-4Zb"/>
+                                                <constraint firstItem="kra-BP-Mbe" firstAttribute="leading" secondItem="GXB-de-R8W" secondAttribute="leadingMargin" constant="-8" id="RGt-9r-4Zb"/>
                                                 <constraint firstItem="kra-BP-Mbe" firstAttribute="top" secondItem="GXB-de-R8W" secondAttribute="topMargin" id="UCw-TH-5fY"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="kra-BP-Mbe" secondAttribute="trailing" id="pDa-Rm-efF"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="kra-BP-Mbe" secondAttribute="trailing" constant="-8" id="pDa-Rm-efF"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -597,7 +597,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="atL-tM-tp5"/>
+        <segue reference="dAW-D8-Ny7"/>
         <segue reference="OQy-tm-RJB"/>
     </inferredMetricsTieBreakers>
 </document>

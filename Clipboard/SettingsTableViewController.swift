@@ -26,7 +26,7 @@ class SettingsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        let defaults: UserDefaults = UserDefaults.standard
+        let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clipboard")!
         self.showCurrentInMainSwitch.isOn = defaults.bool(forKey: "showLastCopiedInMain")
         self.showCurrentInWidgetSwitch.isOn = defaults.bool(forKey: "showLastCopiedInWidget")
         let numClips: Int = defaults.integer(forKey: "numClipsInWidget")
@@ -42,7 +42,7 @@ class SettingsTableViewController: UITableViewController {
     // MARK: - Instance methods
     
     @IBAction func close(_ sender: UIBarButtonItem) {
-        let defaults: UserDefaults = UserDefaults.standard
+        let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clipboard")!
         if self.shouldUpdateLastCopied {
             defaults.set(self.showCurrentInMainSwitch.isOn, forKey: "showLastCopiedInMain")
             NotificationCenter.default.post(name: Notification.Name(rawValue: "UpdateLastCopied"), object: nil)

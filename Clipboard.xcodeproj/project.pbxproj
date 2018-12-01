@@ -27,6 +27,7 @@
 		E0858C3121A0F0240089AE53 /* Clip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858C2E21A0F0240089AE53 /* Clip+CoreDataProperties.swift */; };
 		E0858C3221A0F0240089AE53 /* Clip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858C2E21A0F0240089AE53 /* Clip+CoreDataProperties.swift */; };
 		E0CC277621AD9A04000FEF5A /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CC277521AD9A04000FEF5A /* AboutTableViewController.swift */; };
+		E0D348C721B2393000BF1F4E /* WidgetClipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D348C621B2393000BF1F4E /* WidgetClipTableViewCell.swift */; };
 		E0D67EE3219E925600559CA6 /* DefaultClipboard.plist in Resources */ = {isa = PBXBuildFile; fileRef = E0D67EE2219E925600559CA6 /* DefaultClipboard.plist */; };
 		E0D67EE4219E925600559CA6 /* DefaultClipboard.plist in Resources */ = {isa = PBXBuildFile; fileRef = E0D67EE2219E925600559CA6 /* DefaultClipboard.plist */; };
 		E0F5BE0821A8BE9600422DC1 /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */; };
@@ -78,6 +79,7 @@
 		E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clip+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E0858C2E21A0F0240089AE53 /* Clip+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clip+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E0CC277521AD9A04000FEF5A /* AboutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
+		E0D348C621B2393000BF1F4E /* WidgetClipTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetClipTableViewCell.swift; sourceTree = "<group>"; };
 		E0D67EE0219E8B6700559CA6 /* Clipboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Clipboard.entitlements; sourceTree = "<group>"; };
 		E0D67EE1219E8CB100559CA6 /* Clipboard Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Clipboard Widget.entitlements"; sourceTree = "<group>"; };
 		E0D67EE2219E925600559CA6 /* DefaultClipboard.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultClipboard.plist; sourceTree = "<group>"; };
@@ -115,8 +117,9 @@
 			isa = PBXGroup;
 			children = (
 				E0D67EE1219E8CB100559CA6 /* Clipboard Widget.entitlements */,
-				E04106BF219D04F100DD68AD /* TodayViewController.swift */,
 				E04106C1219D04F100DD68AD /* MainInterface.storyboard */,
+				E04106BF219D04F100DD68AD /* TodayViewController.swift */,
+				E0D348C621B2393000BF1F4E /* WidgetClipTableViewCell.swift */,
 				E04106C4219D04F100DD68AD /* Info.plist */,
 			);
 			path = "Clipboard Widget";
@@ -283,6 +286,7 @@
 				E04106C0219D04F100DD68AD /* TodayViewController.swift in Sources */,
 				E0858C3221A0F0240089AE53 /* Clip+CoreDataProperties.swift in Sources */,
 				E0858C3021A0F0240089AE53 /* Clip+CoreDataClass.swift in Sources */,
+				E0D348C721B2393000BF1F4E /* WidgetClipTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

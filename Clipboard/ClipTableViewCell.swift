@@ -95,7 +95,7 @@ class ClipTableViewCell: UITableViewCell {
                 string.replaceCharacters(in: range, with: "")
             }
         }
-        self.contentsLabel.attributedText = attributedString
+        self.contentsLabel.attributedText = string
     }
     
     func setTableViewController(_ table: MainTableViewController) {

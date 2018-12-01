@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let defaults: UserDefaults = UserDefaults.standard
+        let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clipboard")!
         if !defaults.bool(forKey: "launchedBefore") {
             // first launch - set some default settings and data
             defaults.set(true, forKey: "showLastCopiedInMain")
@@ -79,7 +79,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
-        if UserDefaults.standard.bool(forKey: "showLastCopiedInMain") {
+        let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clipboard")!
+        if defaults.bool(forKey: "showLastCopiedInMain") {
             NotificationCenter.default.post(name: Notification.Name("UpdateLastCopied"), object: nil)
         }
     }

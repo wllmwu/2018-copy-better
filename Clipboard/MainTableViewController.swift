@@ -76,13 +76,12 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     @objc private func updateLastCopied() {
-        if self.showLastCopied != UserDefaults.standard.bool(forKey: "showLastCopiedInMain") {
-            self.showLastCopied = !self.showLastCopied
-            if self.showLastCopied {
-                self.retrieveLastCopied()
-            }
-            self.tableView.reloadData()
+        let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clipboard")!
+        self.showLastCopied = defaults.bool(forKey: "showLastCopiedInMain")
+        if self.showLastCopied {
+            self.retrieveLastCopied()
         }
+        self.tableView.reloadData()
     }
     
     @objc private func updateMain() {
