@@ -57,7 +57,7 @@ class ClipTableViewCell: UITableViewCell {
         }
         
         self.reset()
-        let imageViewHeight = self.contentsImageView.bounds.height
+        let imageViewSize: CGSize = self.contentsImageView.bounds.size
         DispatchQueue.global(qos: .utility).async {
             if let rtf = ClipboardManager.textFromRtf(inItem: self.contents) {
                 DispatchQueue.main.async {
@@ -74,7 +74,7 @@ class ClipTableViewCell: UITableViewCell {
                     self.contentsLabel.text = plaintext
                 }
             }
-            else if let image = ClipboardManager.imageFromImage(inItem: self.contents, maxImageWidth: nil, maxImageHeight: imageViewHeight) {
+            else if let image = ClipboardManager.imageFromImage(inItem: self.contents, maxImageWidth: imageViewSize.width, maxImageHeight: imageViewSize.height) {
                 DispatchQueue.main.async {
                     self.contentsLabel.text = ""
                     self.contentsImageView.image = image
@@ -82,6 +82,7 @@ class ClipTableViewCell: UITableViewCell {
             }
             else {
                 print("ClipTableViewCell: couldn't find usable data representations.")
+                self.contentsLabel.text = "\u{fffd}"
             }
         }
     }

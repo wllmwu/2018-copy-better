@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E01FFB2821B4451800C69DEF /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */; };
+		E01FFB2921B44BB500C69DEF /* Clipboard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E056F8F720CEE46C0025E2FE /* Clipboard.xcdatamodeld */; };
 		E029B42B21B32C8F005EFEB6 /* ClipboardPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E029B42A21B32C8F005EFEB6 /* ClipboardPersistentContainer.swift */; };
 		E029B42C21B32C8F005EFEB6 /* ClipboardPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E029B42A21B32C8F005EFEB6 /* ClipboardPersistentContainer.swift */; };
 		E029B42D21B33A30005EFEB6 /* ClipboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA135219D37BE0015A30F /* ClipboardManager.swift */; };
@@ -31,8 +33,6 @@
 		E0858C3221A0F0240089AE53 /* Clip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858C2E21A0F0240089AE53 /* Clip+CoreDataProperties.swift */; };
 		E0CC277621AD9A04000FEF5A /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CC277521AD9A04000FEF5A /* AboutTableViewController.swift */; };
 		E0D348C721B2393000BF1F4E /* WidgetClipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D348C621B2393000BF1F4E /* WidgetClipTableViewCell.swift */; };
-		E0D67EE3219E925600559CA6 /* DefaultClipboard.plist in Resources */ = {isa = PBXBuildFile; fileRef = E0D67EE2219E925600559CA6 /* DefaultClipboard.plist */; };
-		E0D67EE4219E925600559CA6 /* DefaultClipboard.plist in Resources */ = {isa = PBXBuildFile; fileRef = E0D67EE2219E925600559CA6 /* DefaultClipboard.plist */; };
 		E0F5BE0821A8BE9600422DC1 /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */; };
 /* End PBXBuildFile section */
 
@@ -86,7 +86,6 @@
 		E0D348C621B2393000BF1F4E /* WidgetClipTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetClipTableViewCell.swift; sourceTree = "<group>"; };
 		E0D67EE0219E8B6700559CA6 /* Clipboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Clipboard.entitlements; sourceTree = "<group>"; };
 		E0D67EE1219E8CB100559CA6 /* Clipboard Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Clipboard Widget.entitlements"; sourceTree = "<group>"; };
-		E0D67EE2219E925600559CA6 /* DefaultClipboard.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultClipboard.plist; sourceTree = "<group>"; };
 		E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HTML.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,8 +133,10 @@
 			children = (
 				E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */,
 				E0858C2E21A0F0240089AE53 /* Clip+CoreDataProperties.swift */,
+				E056F8F720CEE46C0025E2FE /* Clipboard.xcdatamodeld */,
 				E029B42A21B32C8F005EFEB6 /* ClipboardPersistentContainer.swift */,
 				E06AA135219D37BE0015A30F /* ClipboardManager.swift */,
+				E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */,
 				E056F8EF20CEE46C0025E2FE /* Clipboard */,
 				E04106BE219D04F100DD68AD /* Clipboard Widget */,
 				E04106BB219D04F100DD68AD /* Frameworks */,
@@ -165,11 +166,8 @@
 				E06AA133219D331E0015A30F /* SettingsTableViewController.swift */,
 				E0CC277521AD9A04000FEF5A /* AboutTableViewController.swift */,
 				E056F8FC20CEE46E0025E2FE /* LaunchScreen.storyboard */,
-				E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */,
 				E056F8FA20CEE46E0025E2FE /* Assets.xcassets */,
 				E056F8FF20CEE46E0025E2FE /* Info.plist */,
-				E0D67EE2219E925600559CA6 /* DefaultClipboard.plist */,
-				E056F8F720CEE46C0025E2FE /* Clipboard.xcdatamodeld */,
 			);
 			path = Clipboard;
 			sourceTree = "<group>";
@@ -266,7 +264,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E04106C3219D04F100DD68AD /* MainInterface.storyboard in Resources */,
-				E0D67EE4219E925600559CA6 /* DefaultClipboard.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,7 +272,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E056F8FE20CEE46E0025E2FE /* LaunchScreen.storyboard in Resources */,
-				E0D67EE3219E925600559CA6 /* DefaultClipboard.plist in Resources */,
 				E056F8FB20CEE46E0025E2FE /* Assets.xcassets in Resources */,
 				E056F8F620CEE46C0025E2FE /* Main.storyboard in Resources */,
 			);
@@ -292,7 +288,9 @@
 				E029B42C21B32C8F005EFEB6 /* ClipboardPersistentContainer.swift in Sources */,
 				E0858C3221A0F0240089AE53 /* Clip+CoreDataProperties.swift in Sources */,
 				E0858C3021A0F0240089AE53 /* Clip+CoreDataClass.swift in Sources */,
+				E01FFB2821B4451800C69DEF /* String+HTML.swift in Sources */,
 				E029B42D21B33A30005EFEB6 /* ClipboardManager.swift in Sources */,
+				E01FFB2921B44BB500C69DEF /* Clipboard.xcdatamodeld in Sources */,
 				E0D348C721B2393000BF1F4E /* WidgetClipTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,7 +366,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.williamwu.Clipboard-Manager.Clipboard-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.williamwu.Clipboard.Clipboard-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
@@ -389,7 +387,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.williamwu.Clipboard-Manager.Clipboard-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.williamwu.Clipboard.Clipboard-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
@@ -525,7 +523,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.williamwu.Clipboard-Manager";
+				PRODUCT_BUNDLE_IDENTIFIER = com.williamwu.Clipboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -546,7 +544,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.williamwu.Clipboard-Manager";
+				PRODUCT_BUNDLE_IDENTIFIER = com.williamwu.Clipboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

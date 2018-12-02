@@ -12,6 +12,7 @@ class WidgetClipTableViewCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel?
     @IBOutlet weak var contentsLabel: UILabel!
+    @IBOutlet weak var contentsImageView: UIImageView!
     @IBOutlet weak var copyButton: UIButton?
     @IBOutlet weak var addButton: UIButton?
     
@@ -29,6 +30,12 @@ class WidgetClipTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.contentsImageView.image = nil
+    }
+    
     func setParentViewController(_ viewController: TodayViewController) {
         self.parentViewController = viewController
     }
@@ -41,6 +48,43 @@ class WidgetClipTableViewCell: UITableViewCell {
     
     func setContents(_ item: [String : Any]) {
         self.contents = item
+        self.contentsLabel.textColor = UIColor.black
+        self.contentsImageView.image = nil
+        
+        if item.count == 0 {
+            self.contentsLabel.text = "(Empty)"
+            self.contentsLabel.textColor = UIColor.gray
+        }
+        else {
+            let imageViewSize: CGSize = self.contentsImageView.bounds.size
+            DispatchQueue.global(qos: .utility).async {
+                if let plaintext = ClipboardManager.textFromPlaintext(inItem: item) {
+                    DispatchQueue.main.async {
+                        self.contentsLabel.text = plaintext
+                    }
+                }
+                else if let rtf = ClipboardManager.textFromRtf(inItem: item) {
+                    DispatchQueue.main.async {
+                        self.contentsLabel.text = rtf.string
+                    }
+                }
+                else if let html = ClipboardManager.textFromHtml(inItem: item) {
+                    DispatchQueue.main.async {
+                        self.contentsLabel.text = html.string
+                    }
+                }
+                else if let image = ClipboardManager.imageFromImage(inItem: item, maxImageWidth: imageViewSize.width, maxImageHeight: imageViewSize.height) {
+                    DispatchQueue.main.async {
+                        self.contentsLabel.text = ""
+                        self.contentsImageView.image = image
+                    }
+                }
+                else {
+                    print("Couldn't find usable data representations.")
+                    self.contentsLabel.text = "\u{fffd}"
+                }
+            }
+        }
     }
     
     @IBAction func copyButtonTapped(_ sender: UIButton) {
@@ -48,6 +92,9 @@ class WidgetClipTableViewCell: UITableViewCell {
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
+        if self.contents.count > 0 {
+            self.parentViewController.addLastCopied()
+        }
     }
     
 }

@@ -198,5 +198,10 @@ class ClipboardManager: NSObject {
         item[kUTTypePlainText as String] = string.string
         return item
     }
+    
+    static func itemForPlaintext(_ string: String) -> [String : Any] {
+        if string.count == 0 { return [:] }
+        return [kUTTypePlainText as String : string]
+    }
 
 }

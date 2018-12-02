@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import MobileCoreServices
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             self.managedObjectContext = self.persistentContainer.viewContext
             self.addDefaultData()
+            defaults.set(true, forKey: "widgetNeedsUpdate")
             
             defaults.set(true, forKey: "launchedBefore")
         }
@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let clip1 = Clip(entity: entity, insertInto: self.managedObjectContext)
         clip1.title = "Shrug"
-        clip1.contents = [kUTTypePlainText as String : "\u{00af}\\_(\u{30c4})_/\u{00af}"]
+        clip1.contents = ClipboardManager.itemForPlaintext("\u{00af}\\_(\u{30c4})_/\u{00af}")
         clip1.index = 0
         
         let clip2 = Clip(entity: entity, insertInto: self.managedObjectContext)

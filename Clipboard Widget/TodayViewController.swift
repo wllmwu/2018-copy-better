@@ -19,6 +19,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     
     private var managedObjectContext: NSManagedObjectContext!
     private var clips: [Clip] = []
+    private var allClips: [Clip] = []
     private var numClips: Int = 10
     
     private var showLastCopied: Bool = true
@@ -30,6 +31,9 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         super.viewDidLoad()
         // Do any additional setup after loading the view from its nib.
         
+        print("load")
+        
+        self.tableView.estimatedRowHeight = 44
         self.extensionContext?.widgetLargestAvailableDisplayMode = .expanded
         
         let container = ClipboardPersistentContainer(name: "Clipboard")
@@ -50,6 +54,35 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
             }
         })
         self.managedObjectContext = container.viewContext
+        
+        if !self.defaults.bool(forKey: "launchedBefore") {
+            // main app has never been launched - set some default settings and data
+            self.defaults.set(true, forKey: "showLastCopiedInMain")
+            self.defaults.set(true, forKey: "showLastCopiedInWidget")
+            self.defaults.set(10, forKey: "numClipsInWidget")
+            
+            self.addDefaultData()
+            self.defaults.set(true, forKey: "widgetNeedsUpdate")
+            
+            self.defaults.set(true, forKey: "launchedBefore")
+        }
+        else {
+            self.showLastCopied = self.defaults.bool(forKey: "showLastCopiedInWidget")
+            self.numClips = self.defaults.integer(forKey: "numClipsInWidget")
+            
+            let fetchRequest: NSFetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "index", ascending: true)]
+            do {
+                let new: [Clip] = try self.managedObjectContext.fetch(fetchRequest)
+                self.allClips = new
+                self.getClips()
+                self.defaults.set(false, forKey: "widgetNeedsUpdate")
+                self.tableView.reloadData()
+            }
+            catch let error as NSError {
+                print("Couldn't fetch. \(error), \(error.userInfo)")
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -60,25 +93,9 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.showLastCopied = self.defaults.bool(forKey: "showLastCopiedInWidget")
-        self.numClips = self.defaults.integer(forKey: "numClipsInWidget")
+        print("will appear")
         
-        if self.defaults.bool(forKey: "widgetNeedsUpdate") {
-            let fetchRequest: NSFetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
-            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "index", ascending: true)]
-            DispatchQueue.global(qos: .utility).async {
-                do {
-                    let new: [Clip] = try self.managedObjectContext.fetch(fetchRequest)
-                    DispatchQueue.main.async {
-                        self.clips = new
-                        self.tableView.reloadData()
-                    }
-                }
-                catch let error as NSError {
-                    print("Couldn't fetch. \(error), \(error.userInfo)")
-                }
-            }
-        }
+        self.loadData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -98,18 +115,96 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     
     // MARK: - Instance methods
     
-    /*private func updateData() {
-        let fetchRequest: NSFetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "index", ascending: true)]
+    private func addDefaultData() {
+        guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
+            fatalError("Couldn't find entity description.")
+        }
+        
+        let clip1 = Clip(entity: entity, insertInto: self.managedObjectContext)
+        clip1.title = "Shrug"
+        clip1.contents = ClipboardManager.itemForPlaintext("\u{00af}\\_(\u{30c4})_/\u{00af}")
+        clip1.index = 0
+        
+        let clip2 = Clip(entity: entity, insertInto: self.managedObjectContext)
+        clip2.title = "Example"
+        let clip2Text: NSMutableAttributedString = NSMutableAttributedString(string: "Hello ", attributes: [.font : UIFont.boldSystemFont(ofSize: 17), .foregroundColor : UIColor.red])
+        clip2Text.append(NSAttributedString(string: "from ", attributes: [.font : UIFont.systemFont(ofSize: 17), .foregroundColor : UIColor.green]))
+        clip2Text.append(NSAttributedString(string: "Clipboard", attributes: [.font : UIFont.italicSystemFont(ofSize: 17), .foregroundColor : UIColor.blue]))
+        clip2.contents = ClipboardManager.itemForAttributedString(clip2Text)
+        clip2.index = 1
+        
         do {
-            self.clips = try self.managedObjectContext.fetch(fetchRequest)
+            try self.managedObjectContext.save()
         }
         catch let error as NSError {
-            print("Couldn't fetch. \(error), \(error.userInfo)")
+            print("Couldn't save. \(error), \(error.userInfo)")
         }
-    }*/
+    }
+    
+    private func loadData() {
+        self.showLastCopied = self.defaults.bool(forKey: "showLastCopiedInWidget")
+        self.numClips = self.defaults.integer(forKey: "numClipsInWidget")
+        
+        if self.defaults.bool(forKey: "widgetNeedsUpdate") {
+            let fetchRequest: NSFetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "index", ascending: true)]
+            DispatchQueue.global(qos: .utility).async {
+                do {
+                    let new: [Clip] = try self.managedObjectContext.fetch(fetchRequest)
+                    DispatchQueue.main.async {
+                        self.allClips = new
+                        self.getClips()
+                        self.defaults.set(false, forKey: "widgetNeedsUpdate")
+                        self.tableView.reloadData()
+                    }
+                }
+                catch let error as NSError {
+                    print("Couldn't fetch. \(error), \(error.userInfo)")
+                }
+            }
+        }
+    }
+    
+    private func getClips() {
+        self.clips = Array(self.allClips.prefix(self.numClips))
+    }
+    
+    func addLastCopied() {
+        guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
+            fatalError("Couldn't find entity description.")
+        }
+        
+        // create new clip
+        let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
+        clip.title = nil
+        clip.contents = self.lastCopied
+        clip.index = 0
+        self.clips.insert(clip, at: 0)
+        
+        // reassign indices
+        for i in 1..<self.clips.count {
+            self.clips[i].index += 1
+        }
+        
+        self.saveContext()
+        self.tableView.reloadData()
+    }
+    
+    private func saveContext() {
+        do {
+            try self.managedObjectContext.save()
+        }
+        catch let error as NSError {
+            print("Couldn't save. \(error), \(error.userInfo)")
+        }
+    }
     
     @IBAction func openAppButtonTapped(_ sender: UIButton) {
+        self.extensionContext?.open(URL(string: "clipboard://")!, completionHandler: { (success) in
+            if !success {
+                print("Error opening app from Today extension")
+            }
+        })
     }
     
     // MARK: - Widget providing
@@ -143,9 +238,11 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     }
     
     func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
-        let expanded: Bool = activeDisplayMode == .expanded
+        let expanded: Bool = (activeDisplayMode == .expanded)
         let expandedHeight: CGFloat = CGFloat(self.clips.count + (self.showLastCopied ? 1 : 0)) * self.tableView.estimatedRowHeight + 38
+        print("expanded height: \(expandedHeight)")
         self.preferredContentSize = expanded ? CGSize(width: maxSize.width, height: expandedHeight) : maxSize
+        print("preferred size: \(self.preferredContentSize)")
         self.tableView.reloadData()
     }
     
@@ -157,7 +254,9 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.extensionContext?.widgetActiveDisplayMode == .compact {
-            return 2
+            let a: Int = self.showLastCopied ? 1 : 0
+            let b: Int = (self.clips.count > 0) ? 1 : 0
+            return a + b
         }
         return self.clips.count + (self.showLastCopied ? 1 : 0)
     }
