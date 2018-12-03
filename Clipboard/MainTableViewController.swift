@@ -16,6 +16,9 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     
     private var showLastCopied: Bool = true
     private var lastCopied: [String : Any] = [:]
+    private var pasteboardChangeCount: Int = 0
+    
+    private let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clipboard")!
     
     private var selectedClip: Clip?
     
@@ -36,10 +39,11 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             fatalError("Couldn't find AppDelegate")
         }
         self.managedObjectContext = appDelegate.persistentContainer.viewContext
-        self.loadData()
+        self.retrieveData()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.updateLastCopied), name: Notification.Name(rawValue: "UpdateLastCopied"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.updateMain), name: Notification.Name(rawValue: "UpdateMain"), object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.updateLastCopied), name: Notification.Name(rawValue: "UpdateLastCopied"), object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.updateMain), name: Notification.Name(rawValue: "UpdateMain"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.loadData), name: Notification.Name("AppDidBecomeActive"), object: nil)
         
         // set up search controller
         self.searchController.searchResultsUpdater = self
@@ -51,6 +55,8 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.loadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,11 +66,30 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     
     // MARK: - Instance methods
     
-    private func loadData() {
+    @objc private func loadData() {
+        var shouldReload: Bool = false
+        self.showLastCopied = self.defaults.bool(forKey: "showLastCopiedInMain")
+        if self.showLastCopied && self.pasteboardChangeCount != UIPasteboard.general.changeCount {
+            self.retrieveLastCopied()
+            shouldReload = true
+        }
+        
+        if self.defaults.bool(forKey: "mainNeedsUpdate") {
+            self.retrieveData()
+            shouldReload = true
+        }
+        
+        if shouldReload {
+            self.tableView.reloadData()
+        }
+    }
+    
+    private func retrieveData() {
         let fetchRequest: NSFetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "index", ascending: true)]
         do {
             self.clips = try self.managedObjectContext.fetch(fetchRequest)
+            self.defaults.set(false, forKey: "mainNeedsUpdate")
         }
         catch let error as NSError {
             print("Couldn't fetch. \(error), \(error.userInfo)")
@@ -75,24 +100,10 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         self.lastCopied = ClipboardManager.retrieveFromPasteboard()
     }
     
-    @objc private func updateLastCopied() {
-        let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clipboard")!
-        self.showLastCopied = defaults.bool(forKey: "showLastCopiedInMain")
-        if self.showLastCopied {
-            self.retrieveLastCopied()
-        }
-        self.tableView.reloadData()
-    }
-    
-    @objc private func updateMain() {
-        self.loadData()
-        self.tableView.reloadData()
-    }
-    
     private func saveContext() {
         do {
             try self.managedObjectContext.save()
-            self.updateWidget()
+            self.orderUpdates()
         }
         catch let error as NSError {
             print("Couldn't save. \(error), \(error.userInfo)")
@@ -106,9 +117,8 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         }
     }
     
-    private func updateWidget() {
-        let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clipboard")!
-        defaults.set(true, forKey: "widgetNeedsUpdate")
+    private func orderUpdates() {
+        self.defaults.set(true, forKey: "widgetNeedsUpdate")
     }
     
     func addLastCopied() {

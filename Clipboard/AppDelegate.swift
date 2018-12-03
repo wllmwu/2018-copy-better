@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // first launch - set some default settings and data
             defaults.set(true, forKey: "showLastCopiedInMain")
             defaults.set(true, forKey: "showLastCopiedInWidget")
-            defaults.set(10, forKey: "numClipsInWidget")
+            defaults.set(5, forKey: "numClipsInWidget")
             
             self.managedObjectContext = self.persistentContainer.viewContext
             self.addDefaultData()
@@ -79,10 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
-        let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clipboard")!
-        if defaults.bool(forKey: "showLastCopiedInMain") {
-            NotificationCenter.default.post(name: Notification.Name("UpdateLastCopied"), object: nil)
-        }
+        NotificationCenter.default.post(name: Notification.Name("AppDidBecomeActive"), object: nil)
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

@@ -24,6 +24,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     
     private var showLastCopied: Bool = true
     private var lastCopied: [String : Any] = [:]
+    private var pasteboardChangeCount: Int = 0
     
     private let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clipboard")!
     
@@ -142,9 +143,15 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     }
     
     private func loadData() {
+        var shouldReload: Bool = false
         self.showLastCopied = self.defaults.bool(forKey: "showLastCopiedInWidget")
-        self.numClips = self.defaults.integer(forKey: "numClipsInWidget")
+        if self.showLastCopied && self.pasteboardChangeCount != UIPasteboard.general.changeCount {
+            self.pasteboardChangeCount = UIPasteboard.general.changeCount
+            self.lastCopied = ClipboardManager.retrieveFromPasteboard()
+            shouldReload = true
+        }
         
+        self.numClips = self.defaults.integer(forKey: "numClipsInWidget")
         if self.defaults.bool(forKey: "widgetNeedsUpdate") {
             let fetchRequest: NSFetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "index", ascending: true)]
@@ -155,13 +162,17 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
                         self.allClips = new
                         self.getClips()
                         self.defaults.set(false, forKey: "widgetNeedsUpdate")
-                        self.tableView.reloadData()
+                        shouldReload = true
                     }
                 }
                 catch let error as NSError {
                     print("Couldn't fetch. \(error), \(error.userInfo)")
                 }
             }
+        }
+        
+        if shouldReload {
+            self.tableView.reloadData()
         }
     }
     
@@ -179,12 +190,13 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         clip.title = nil
         clip.contents = self.lastCopied
         clip.index = 0
-        self.clips.insert(clip, at: 0)
+        self.allClips.insert(clip, at: 0)
         
         // reassign indices
-        for i in 1..<self.clips.count {
-            self.clips[i].index += 1
+        for i in 1..<self.allClips.count {
+            self.allClips[i].index += 1
         }
+        self.getClips()
         
         self.saveContext()
         self.tableView.reloadData()
@@ -193,10 +205,15 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     private func saveContext() {
         do {
             try self.managedObjectContext.save()
+            self.orderUpdates()
         }
         catch let error as NSError {
             print("Couldn't save. \(error), \(error.userInfo)")
         }
+    }
+    
+    private func orderUpdates() {
+        self.defaults.set(true, forKey: "mainNeedsUpdate")
     }
     
     @IBAction func openAppButtonTapped(_ sender: UIButton) {
@@ -239,10 +256,8 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     
     func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
         let expanded: Bool = (activeDisplayMode == .expanded)
-        let expandedHeight: CGFloat = CGFloat(self.clips.count + (self.showLastCopied ? 1 : 0)) * self.tableView.estimatedRowHeight + 38
-        print("expanded height: \(expandedHeight)")
+        let expandedHeight: CGFloat = CGFloat(self.numClips + (self.showLastCopied ? 1 : 0)) * self.tableView.estimatedRowHeight + 38
         self.preferredContentSize = expanded ? CGSize(width: maxSize.width, height: expandedHeight) : maxSize
-        print("preferred size: \(self.preferredContentSize)")
         self.tableView.reloadData()
     }
     

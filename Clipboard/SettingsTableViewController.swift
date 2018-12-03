@@ -15,7 +15,7 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var numClipsInWidgetStepper: UIStepper!
     @IBOutlet weak var numClipsInWidgetLabel: UILabel!
     
-    private var shouldUpdateLastCopied: Bool = false
+    private let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clipboard")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,10 +26,9 @@ class SettingsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clipboard")!
-        self.showCurrentInMainSwitch.isOn = defaults.bool(forKey: "showLastCopiedInMain")
-        self.showCurrentInWidgetSwitch.isOn = defaults.bool(forKey: "showLastCopiedInWidget")
-        let numClips: Int = defaults.integer(forKey: "numClipsInWidget")
+        self.showCurrentInMainSwitch.isOn = self.defaults.bool(forKey: "showLastCopiedInMain")
+        self.showCurrentInWidgetSwitch.isOn = self.defaults.bool(forKey: "showLastCopiedInWidget")
+        let numClips: Int = self.defaults.integer(forKey: "numClipsInWidget")
         self.numClipsInWidgetStepper.value = Double(numClips)
         self.numClipsInWidgetLabel.text = String(numClips)
     }
@@ -42,19 +41,14 @@ class SettingsTableViewController: UITableViewController {
     // MARK: - Instance methods
     
     @IBAction func close(_ sender: UIBarButtonItem) {
-        let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clipboard")!
-        if self.shouldUpdateLastCopied {
-            defaults.set(self.showCurrentInMainSwitch.isOn, forKey: "showLastCopiedInMain")
-            NotificationCenter.default.post(name: Notification.Name(rawValue: "UpdateLastCopied"), object: nil)
-        }
-        //defaults.set(self.showCurrentInWidgetSwitch.isOn, forKey: "showLastCopiedInWidget")
-        //defaults.set(Int(self.numClipsInWidgetStepper.value), forKey: "numClipsInWidget")
+        self.defaults.set(self.showCurrentInMainSwitch.isOn, forKey: "showLastCopiedInMain")
+        self.defaults.set(self.showCurrentInWidgetSwitch.isOn, forKey: "showLastCopiedInWidget")
+        self.defaults.set(Int(self.numClipsInWidgetStepper.value), forKey: "numClipsInWidget")
         
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func didToggleShowCurrentInMainSwitch(_ sender: UISwitch) {
-        self.shouldUpdateLastCopied = true
     }
     
     @IBAction func toggleShowCurrentInWidgetSwitch(_ sender: UISwitch) {

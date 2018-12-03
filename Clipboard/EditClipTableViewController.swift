@@ -96,8 +96,8 @@ class EditClipTableViewController: UITableViewController {
     private func saveContext() {
         do {
             try self.managedObjectContext.save()
-            NotificationCenter.default.post(name: Notification.Name("UpdateMain"), object: nil)
             let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clipboard")!
+            defaults.set(true, forKey: "mainNeedsUpdate")
             defaults.set(true, forKey: "widgetNeedsUpdate")
         }
         catch let error as NSError {
