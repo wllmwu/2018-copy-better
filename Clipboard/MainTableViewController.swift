@@ -71,6 +71,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         self.showLastCopied = self.defaults.bool(forKey: "showLastCopiedInMain")
         if self.showLastCopied && self.pasteboardChangeCount != UIPasteboard.general.changeCount {
             self.retrieveLastCopied()
+            self.pasteboardChangeCount = UIPasteboard.general.changeCount
             shouldReload = true
         }
         

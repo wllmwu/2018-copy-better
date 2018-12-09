@@ -73,7 +73,7 @@ class WidgetClipTableViewCell: UITableViewCell {
                         self.contentsLabel.text = html.string
                     }
                 }
-                else if let image = ClipboardManager.imageFromImage(inItem: item, maxImageWidth: imageViewSize.width, maxImageHeight: imageViewSize.height) {
+                else if let image = ClipboardManager.imageFromImage(inItem: item, maxWidth: imageViewSize.width, maxHeight: imageViewSize.height) {
                     DispatchQueue.main.async {
                         self.contentsLabel.text = ""
                         self.contentsImageView.image = image

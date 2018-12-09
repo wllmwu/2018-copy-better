@@ -68,7 +68,7 @@ class EditClipTableViewController: UITableViewController {
         else if let plaintext = ClipboardManager.textFromPlaintext(inItem: contents) {
             self.contentsTextView.text = plaintext
         }
-        else if let image = ClipboardManager.imageFromImage(inItem: contents, maxImageWidth: self.contentsTextView.contentSize.width, maxImageHeight: nil) {
+        else if let image = ClipboardManager.imageFromImage(inItem: contents, maxWidth: self.contentsTextView.contentSize.width, maxHeight: 0) {
             self.contentsTextView.attributedText = ClipboardManager.textFromImage(image)
         }
         else {

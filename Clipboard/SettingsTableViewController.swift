@@ -41,21 +41,20 @@ class SettingsTableViewController: UITableViewController {
     // MARK: - Instance methods
     
     @IBAction func close(_ sender: UIBarButtonItem) {
-        self.defaults.set(self.showCurrentInMainSwitch.isOn, forKey: "showLastCopiedInMain")
-        self.defaults.set(self.showCurrentInWidgetSwitch.isOn, forKey: "showLastCopiedInWidget")
-        self.defaults.set(Int(self.numClipsInWidgetStepper.value), forKey: "numClipsInWidget")
-        
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func didToggleShowCurrentInMainSwitch(_ sender: UISwitch) {
+        self.defaults.set(self.showCurrentInMainSwitch.isOn, forKey: "showLastCopiedInMain")
     }
     
     @IBAction func toggleShowCurrentInWidgetSwitch(_ sender: UISwitch) {
+        self.defaults.set(self.showCurrentInWidgetSwitch.isOn, forKey: "showLastCopiedInWidget")
     }
     
     @IBAction func changeNumClips(_ sender: UIStepper) {
         self.numClipsInWidgetLabel.text = String(Int(self.numClipsInWidgetStepper.value))
+        self.defaults.set(Int(self.numClipsInWidgetStepper.value), forKey: "numClipsInWidget")
     }
     
     // MARK: - Table view data source

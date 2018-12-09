@@ -23,7 +23,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="aX5-hp-U9i"/>
                                 </constraints>
-                                <state key="normal" title="Open app"/>
+                                <state key="normal" title="Open app">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="openAppButtonTapped:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="A8k-mL-m5h"/>
                                 </connections>
@@ -54,9 +56,11 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JjV-Pq-txm">
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JjV-Pq-txm">
                                                     <rect key="frame" x="274" y="7" width="30" height="30"/>
-                                                    <state key="normal" title="Add"/>
+                                                    <state key="normal" title="Add">
+                                                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="addButtonTapped:" destination="u4y-ji-99O" eventType="touchUpInside" id="9ym-Mh-D6i"/>
                                                     </connections>
@@ -104,9 +108,11 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0rp-gP-ymg">
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0rp-gP-ymg">
                                                     <rect key="frame" x="268" y="7" width="36" height="30"/>
-                                                    <state key="normal" title="Copy"/>
+                                                    <state key="normal" title="Copy">
+                                                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="copyButtonTapped:" destination="a90-iU-dDE" eventType="touchUpInside" id="OCC-AD-nFz"/>
                                                     </connections>
@@ -149,9 +155,11 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKi-7V-pRM">
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKi-7V-pRM">
                                                     <rect key="frame" x="268" y="7" width="36" height="30"/>
-                                                    <state key="normal" title="Copy"/>
+                                                    <state key="normal" title="Copy">
+                                                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="copyButtonTapped:" destination="uBb-Uf-I9G" eventType="touchUpInside" id="ZOu-MU-XTo"/>
                                                     </connections>

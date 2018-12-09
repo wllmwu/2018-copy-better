@@ -124,7 +124,7 @@ class ClipboardManager: NSObject {
         return nil
     }
     
-    static func imageFromImage(inItem item: [String : Any], maxImageWidth: CGFloat?, maxImageHeight: CGFloat?) -> UIImage? {
+    static func imageFromImage(inItem item: [String : Any], maxWidth: CGFloat, maxHeight: CGFloat) -> UIImage? {
         var image: UIImage
         if let png = item[kUTTypePNG as String] as? UIImage {
             image = png
@@ -147,18 +147,13 @@ class ClipboardManager: NSObject {
         
         let size: CGSize = image.size
         var scaleFactor: CGFloat?
-        if let maxWidth = maxImageWidth {
-            if size.width > maxWidth {
-                // scale image down to fit width
-                scaleFactor = maxWidth / size.width
-                
-            }
+        if size.width > maxWidth && maxWidth <= maxHeight {
+            // scale image down to fit width
+            scaleFactor = maxWidth / size.width
         }
-        else if let maxHeight = maxImageHeight {
-            if size.height > maxHeight {
-                // scale image down to fit height
-                scaleFactor = maxHeight / size.height
-            }
+        else if size.height > maxHeight {
+            // scale image down to fit height
+            scaleFactor = maxHeight / size.height
         }
         
         if let scale = scaleFactor {

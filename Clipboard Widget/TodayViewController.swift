@@ -20,7 +20,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     private var managedObjectContext: NSManagedObjectContext!
     private var clips: [Clip] = []
     private var allClips: [Clip] = []
-    private var numClips: Int = 10
+    private var numClips: Int = 5
     
     private var showLastCopied: Bool = true
     private var lastCopied: [String : Any] = [:]
@@ -31,8 +31,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view from its nib.
-        
-        print("load")
         
         self.tableView.estimatedRowHeight = 44
         self.extensionContext?.widgetLargestAvailableDisplayMode = .expanded
@@ -60,7 +58,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
             // main app has never been launched - set some default settings and data
             self.defaults.set(true, forKey: "showLastCopiedInMain")
             self.defaults.set(true, forKey: "showLastCopiedInWidget")
-            self.defaults.set(10, forKey: "numClipsInWidget")
+            self.defaults.set(5, forKey: "numClipsInWidget")
             
             self.addDefaultData()
             self.defaults.set(true, forKey: "widgetNeedsUpdate")
@@ -93,8 +91,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        print("will appear")
         
         self.loadData()
     }
@@ -143,36 +139,36 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     }
     
     private func loadData() {
-        var shouldReload: Bool = false
-        self.showLastCopied = self.defaults.bool(forKey: "showLastCopiedInWidget")
-        if self.showLastCopied && self.pasteboardChangeCount != UIPasteboard.general.changeCount {
-            self.pasteboardChangeCount = UIPasteboard.general.changeCount
-            self.lastCopied = ClipboardManager.retrieveFromPasteboard()
-            shouldReload = true
-        }
-        
-        self.numClips = self.defaults.integer(forKey: "numClipsInWidget")
-        if self.defaults.bool(forKey: "widgetNeedsUpdate") {
-            let fetchRequest: NSFetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
-            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "index", ascending: true)]
-            DispatchQueue.global(qos: .utility).async {
+        DispatchQueue.global(qos: .utility).async {
+            var shouldReload: Bool = false
+            self.showLastCopied = self.defaults.bool(forKey: "showLastCopiedInWidget")
+            if self.showLastCopied && self.pasteboardChangeCount != UIPasteboard.general.changeCount {
+                self.pasteboardChangeCount = UIPasteboard.general.changeCount
+                self.lastCopied = ClipboardManager.retrieveFromPasteboard()
+                shouldReload = true
+            }
+            
+            self.numClips = self.defaults.integer(forKey: "numClipsInWidget")
+            if self.defaults.bool(forKey: "widgetNeedsUpdate") {
+                let fetchRequest: NSFetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
+                fetchRequest.sortDescriptors = [NSSortDescriptor(key: "index", ascending: true)]
                 do {
                     let new: [Clip] = try self.managedObjectContext.fetch(fetchRequest)
-                    DispatchQueue.main.async {
-                        self.allClips = new
-                        self.getClips()
-                        self.defaults.set(false, forKey: "widgetNeedsUpdate")
-                        shouldReload = true
-                    }
+                    self.allClips = new
+                    self.getClips()
+                    self.defaults.set(false, forKey: "widgetNeedsUpdate")
+                    shouldReload = true
                 }
                 catch let error as NSError {
                     print("Couldn't fetch. \(error), \(error.userInfo)")
                 }
             }
-        }
-        
-        if shouldReload {
-            self.tableView.reloadData()
+            
+            DispatchQueue.main.async {
+                if shouldReload {
+                    self.tableView.reloadData()
+                }
+            }
         }
     }
     
@@ -269,9 +265,15 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.extensionContext?.widgetActiveDisplayMode == .compact {
-            let a: Int = self.showLastCopied ? 1 : 0
-            let b: Int = (self.clips.count > 0) ? 1 : 0
-            return a + b
+            if self.showLastCopied {
+                return 1 + ((self.clips.count > 0) ? 1 : 0)
+            }
+            else if self.clips.count >= 2 {
+                return 2
+            }
+            else {
+                return self.clips.count
+            }
         }
         return self.clips.count + (self.showLastCopied ? 1 : 0)
     }

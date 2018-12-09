@@ -74,7 +74,7 @@ class ClipTableViewCell: UITableViewCell {
                     self.contentsLabel.text = plaintext
                 }
             }
-            else if let image = ClipboardManager.imageFromImage(inItem: self.contents, maxImageWidth: imageViewSize.width, maxImageHeight: imageViewSize.height) {
+            else if let image = ClipboardManager.imageFromImage(inItem: self.contents, maxWidth: imageViewSize.width, maxHeight: imageViewSize.height) {
                 DispatchQueue.main.async {
                     self.contentsLabel.text = ""
                     self.contentsImageView.image = image
