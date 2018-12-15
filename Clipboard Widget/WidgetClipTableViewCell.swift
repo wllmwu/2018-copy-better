@@ -17,7 +17,7 @@ class WidgetClipTableViewCell: UITableViewCell {
     @IBOutlet weak var addButton: UIButton?
     
     private var contents: [String : Any]!
-    private var parentViewController: TodayViewController!
+//    private var parentViewController: TodayViewController!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,9 +36,9 @@ class WidgetClipTableViewCell: UITableViewCell {
         self.contentsImageView.image = nil
     }
     
-    func setParentViewController(_ viewController: TodayViewController) {
-        self.parentViewController = viewController
-    }
+//    func setParentViewController(_ viewController: TodayViewController) {
+//        self.parentViewController = viewController
+//    }
     
     func setTitle(_ title: String) {
         if let label = self.titleLabel {
@@ -93,7 +93,8 @@ class WidgetClipTableViewCell: UITableViewCell {
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
         if self.contents.count > 0 {
-            self.parentViewController.addLastCopied()
+//            self.parentViewController.addLastCopied()
+            NotificationCenter.default.post(name: Notification.Name("AddLastCopiedInWidget"), object: nil)
         }
     }
     

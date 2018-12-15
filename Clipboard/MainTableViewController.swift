@@ -44,6 +44,8 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         //NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.updateLastCopied), name: Notification.Name(rawValue: "UpdateLastCopied"), object: nil)
         //NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.updateMain), name: Notification.Name(rawValue: "UpdateMain"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.loadData), name: Notification.Name("AppDidBecomeActive"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.showCopiedToast), name: Notification.Name("ShowCopiedToast"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.addLastCopied), name: Notification.Name("AddLastCopiedInMain"), object: nil)
         
         // set up search controller
         self.searchController.searchResultsUpdater = self
@@ -122,7 +124,11 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         self.defaults.set(true, forKey: "widgetNeedsUpdate")
     }
     
-    func addLastCopied() {
+    @objc func showCopiedToast() {
+        self.showToast(message: "Copied")
+    }
+    
+    @objc func addLastCopied() {
         guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
             fatalError("Couldn't find entity description.")
         }
@@ -141,6 +147,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         
         self.saveContext()
         self.tableView.reloadData()
+        self.showToast(message: "Added")
     }
     
     // MARK: - Table view data source
@@ -159,7 +166,6 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 && self.showLastCopied && !self.isFiltering() {
             let cell: ClipTableViewCell = tableView.dequeueReusableCell(withIdentifier: "LastCopiedCell", for: indexPath) as! ClipTableViewCell
-            cell.setTableViewController(self)
             cell.setContents(self.lastCopied)
             return cell
         }

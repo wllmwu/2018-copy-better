@@ -1,0 +1,27 @@
+
+/* Class = "UIButton"; normalTitle = "Copy"; ObjectID = "0rp-gP-ymg"; */
+"0rp-gP-ymg.normalTitle" = "Copiar";
+
+/* Class = "UILabel"; text = "Contents"; ObjectID = "H9m-bC-e4K"; */
+"H9m-bC-e4K.text" = "Recorte";
+
+/* Class = "UIButton"; normalTitle = "Open app"; ObjectID = "HMj-84-Dp1"; */
+"HMj-84-Dp1.normalTitle" = "Abrir la app";
+
+/* Class = "UIButton"; normalTitle = "Add"; ObjectID = "JjV-Pq-txm"; */
+"JjV-Pq-txm.normalTitle" = "Agregar";
+
+/* Class = "UILabel"; text = "Contents"; ObjectID = "dXf-ml-lh5"; */
+"dXf-ml-lh5.text" = "Recorte";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "gkn-Jd-RqI"; */
+"gkn-Jd-RqI.text" = "Título";
+
+/* Class = "UILabel"; text = "Contents"; ObjectID = "jk5-vb-u6a"; */
+"jk5-vb-u6a.text" = "Recorte";
+
+/* Class = "UIButton"; normalTitle = "Copy"; ObjectID = "wKi-7V-pRM"; */
+"wKi-7V-pRM.normalTitle" = "Copiar";
+
+/* Class = "UILabel"; text = "Last copied"; ObjectID = "yhW-Aa-uuz"; */
+"yhW-Aa-uuz.text" = "Ya copiado";

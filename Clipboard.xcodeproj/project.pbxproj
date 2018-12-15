@@ -21,12 +21,15 @@
 		E056F8F920CEE46C0025E2FE /* Clipboard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E056F8F720CEE46C0025E2FE /* Clipboard.xcdatamodeld */; };
 		E056F8FB20CEE46E0025E2FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E056F8FA20CEE46E0025E2FE /* Assets.xcassets */; };
 		E056F8FE20CEE46E0025E2FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E056F8FC20CEE46E0025E2FE /* LaunchScreen.storyboard */; };
+		E05EA02D21BD8BB300FC33C9 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05EA02C21BD8BB300FC33C9 /* Toast.swift */; };
 		E06AA128219D31CE0015A30F /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA127219D31CE0015A30F /* MainTableViewController.swift */; };
 		E06AA12A219D32500015A30F /* ClipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA129219D32500015A30F /* ClipTableViewCell.swift */; };
 		E06AA130219D32DE0015A30F /* ClipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA12F219D32DE0015A30F /* ClipViewController.swift */; };
 		E06AA132219D32F60015A30F /* EditClipTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA131219D32F60015A30F /* EditClipTableViewController.swift */; };
 		E06AA134219D331E0015A30F /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA133219D331E0015A30F /* SettingsTableViewController.swift */; };
 		E06AA136219D37BE0015A30F /* ClipboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA135219D37BE0015A30F /* ClipboardManager.swift */; };
+		E06EC94A21C5ACA100687F9E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E06EC94D21C5ACA100687F9E /* Localizable.strings */; };
+		E06EC94B21C5ACA100687F9E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E06EC94D21C5ACA100687F9E /* Localizable.strings */; };
 		E0858C2F21A0F0240089AE53 /* Clip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */; };
 		E0858C3021A0F0240089AE53 /* Clip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */; };
 		E0858C3121A0F0240089AE53 /* Clip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858C2E21A0F0240089AE53 /* Clip+CoreDataProperties.swift */; };
@@ -75,12 +78,18 @@
 		E056F8FA20CEE46E0025E2FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E056F8FD20CEE46E0025E2FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E056F8FF20CEE46E0025E2FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E05EA02C21BD8BB300FC33C9 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		E05EA02E21BD949600FC33C9 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		E05EA02F21BD949600FC33C9 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MainInterface.strings; sourceTree = "<group>"; };
+		E05EA03021BD94B200FC33C9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		E05EA03121BD94B200FC33C9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		E06AA127219D31CE0015A30F /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 		E06AA129219D32500015A30F /* ClipTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipTableViewCell.swift; sourceTree = "<group>"; };
 		E06AA12F219D32DE0015A30F /* ClipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipViewController.swift; sourceTree = "<group>"; };
 		E06AA131219D32F60015A30F /* EditClipTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditClipTableViewController.swift; sourceTree = "<group>"; };
 		E06AA133219D331E0015A30F /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		E06AA135219D37BE0015A30F /* ClipboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardManager.swift; sourceTree = "<group>"; };
+		E06EC94C21C5ACA100687F9E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clip+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E0858C2E21A0F0240089AE53 /* Clip+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clip+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E0C260AE21B8B889007D9BED /* UIViewController+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Toast.swift"; sourceTree = "<group>"; };
@@ -137,6 +146,7 @@
 				E0858C2E21A0F0240089AE53 /* Clip+CoreDataProperties.swift */,
 				E056F8F720CEE46C0025E2FE /* Clipboard.xcdatamodeld */,
 				E029B42A21B32C8F005EFEB6 /* ClipboardPersistentContainer.swift */,
+				E06EC94D21C5ACA100687F9E /* Localizable.strings */,
 				E06AA135219D37BE0015A30F /* ClipboardManager.swift */,
 				E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */,
 				E056F8EF20CEE46C0025E2FE /* Clipboard */,
@@ -169,6 +179,7 @@
 				E0CC277521AD9A04000FEF5A /* AboutTableViewController.swift */,
 				E056F8FC20CEE46E0025E2FE /* LaunchScreen.storyboard */,
 				E0C260AE21B8B889007D9BED /* UIViewController+Toast.swift */,
+				E05EA02C21BD8BB300FC33C9 /* Toast.swift */,
 				E056F8FA20CEE46E0025E2FE /* Assets.xcassets */,
 				E056F8FF20CEE46E0025E2FE /* Info.plist */,
 			);
@@ -249,6 +260,8 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
+				es,
 			);
 			mainGroup = E056F8E420CEE46C0025E2FE;
 			productRefGroup = E056F8EE20CEE46C0025E2FE /* Products */;
@@ -267,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E04106C3219D04F100DD68AD /* MainInterface.storyboard in Resources */,
+				E06EC94B21C5ACA100687F9E /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E056F8FE20CEE46E0025E2FE /* LaunchScreen.storyboard in Resources */,
+				E06EC94A21C5ACA100687F9E /* Localizable.strings in Resources */,
 				E056F8FB20CEE46E0025E2FE /* Assets.xcassets in Resources */,
 				E056F8F620CEE46C0025E2FE /* Main.storyboard in Resources */,
 			);
@@ -309,6 +324,7 @@
 				E06AA136219D37BE0015A30F /* ClipboardManager.swift in Sources */,
 				E06AA132219D32F60015A30F /* EditClipTableViewController.swift in Sources */,
 				E06AA128219D31CE0015A30F /* MainTableViewController.swift in Sources */,
+				E05EA02D21BD8BB300FC33C9 /* Toast.swift in Sources */,
 				E0858C3121A0F0240089AE53 /* Clip+CoreDataProperties.swift in Sources */,
 				E0858C2F21A0F0240089AE53 /* Clip+CoreDataClass.swift in Sources */,
 				E06AA134219D331E0015A30F /* SettingsTableViewController.swift in Sources */,
@@ -334,6 +350,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				E04106C2219D04F100DD68AD /* Base */,
+				E05EA02F21BD949600FC33C9 /* fr */,
+				E05EA03121BD94B200FC33C9 /* es */,
 			);
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
@@ -342,6 +360,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				E056F8F520CEE46C0025E2FE /* Base */,
+				E05EA02E21BD949600FC33C9 /* fr */,
+				E05EA03021BD94B200FC33C9 /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -352,6 +372,14 @@
 				E056F8FD20CEE46E0025E2FE /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		E06EC94D21C5ACA100687F9E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E06EC94C21C5ACA100687F9E /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -403,6 +431,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -463,6 +492,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

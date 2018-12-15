@@ -17,7 +17,6 @@ class ClipTableViewCell: UITableViewCell {
     @IBOutlet weak var addButton: UIButton?
     
     private var contents: [String : Any]!
-    private var tableViewController: MainTableViewController?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -99,10 +98,6 @@ class ClipTableViewCell: UITableViewCell {
         self.contentsLabel.attributedText = string
     }
     
-    func setTableViewController(_ table: MainTableViewController) {
-        self.tableViewController = table
-    }
-    
     func setTitle(_ title: String) {
         if let label = self.titleLabel {
             label.text = title
@@ -116,11 +111,12 @@ class ClipTableViewCell: UITableViewCell {
     
     @IBAction func copyButtonTapped(_ sender: UIButton) {
         ClipboardManager.copyToPasteboard(item: self.contents)
+        NotificationCenter.default.post(name: Notification.Name("ShowCopiedToast"), object: nil)
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
         if self.contents.count > 0 {
-            self.tableViewController?.addLastCopied()
+            NotificationCenter.default.post(name: Notification.Name("AddLastCopiedInMain"), object: nil)
         }
     }
 

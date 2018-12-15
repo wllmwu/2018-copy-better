@@ -54,6 +54,8 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         })
         self.managedObjectContext = container.viewContext
         
+        NotificationCenter.default.addObserver(self, selector: #selector(TodayViewController.addLastCopied), name: Notification.Name("AddLastCopiedInWidget"), object: nil)
+        
         if !self.defaults.bool(forKey: "launchedBefore") {
             // main app has never been launched - set some default settings and data
             self.defaults.set(true, forKey: "showLastCopiedInMain")
@@ -176,7 +178,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         self.clips = Array(self.allClips.prefix(self.numClips))
     }
     
-    func addLastCopied() {
+    @objc func addLastCopied() {
         guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
             fatalError("Couldn't find entity description.")
         }
@@ -281,7 +283,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 && self.showLastCopied {
             let cell: WidgetClipTableViewCell = tableView.dequeueReusableCell(withIdentifier: "LastCopiedCell", for: indexPath) as! WidgetClipTableViewCell
-            cell.setParentViewController(self)
+//            cell.setParentViewController(self)
             cell.setContents(self.lastCopied)
             return cell
         }
