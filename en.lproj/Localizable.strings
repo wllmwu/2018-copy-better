@@ -6,4 +6,29 @@
   Copyright © 2018 William Wu. All rights reserved.
 */
 
+/* default clip title 1 */
 "Shrug" = "Shrug";
+
+/* default clip title 2 */
+"Example" = "Example";
+
+/* search bar placeholder */
+"Search" = "Search";
+
+/* "Copied" toast message */
+"Copied" = "Copied";
+
+/* "Added" toast message */
+"Added" = "Added";
+
+/* empty clip contents placeholder */
+"(Empty)" = "(Empty)";
+
+/* "Copy" button title */
+"Copy" = "Copy";
+
+/* "Add to list" button title */
+"Add to list" = "Add to list";
+
+/* "Last copied" title */
+"Last copied" = "Last copied";

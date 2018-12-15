@@ -50,7 +50,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         // set up search controller
         self.searchController.searchResultsUpdater = self
         self.searchController.obscuresBackgroundDuringPresentation = false
-        self.searchController.searchBar.placeholder = "Search"
+        self.searchController.searchBar.placeholder = NSLocalizedString("Search", comment: "search bar placeholder")
         self.tableView.tableHeaderView = self.searchController.searchBar
         self.definesPresentationContext = true
     }
@@ -125,7 +125,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     @objc func showCopiedToast() {
-        self.showToast(message: "Copied")
+        self.showToast(message: NSLocalizedString("Copied", comment: "\"Copied\" toast message"))
     }
     
     @objc func addLastCopied() {
@@ -147,7 +147,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         
         self.saveContext()
         self.tableView.reloadData()
-        self.showToast(message: "Added")
+        self.showToast(message: NSLocalizedString("Added", comment: "\"Added\" toast message"))
     }
     
     // MARK: - Table view data source

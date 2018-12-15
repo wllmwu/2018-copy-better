@@ -5,3 +5,30 @@
   Created by Bill Wu on 12/15/18.
   Copyright © 2018 William Wu. All rights reserved.
 */
+
+/* default clip title 1 */
+"Shrug" = "Haussement d'épaules";
+
+/* default clip title 2 */
+"Example" = "Exemple";
+
+/* search bar placeholder */
+"Search" = "Rechercher";
+
+/* "Copied" toast message */
+"Copied" = "Copié";
+
+/* "Added" toast message */
+"Added" = "Ajouté";
+
+/* empty clip contents placeholder */
+"(Empty)" = "(Vide)";
+
+/* "Copy" button title */
+"Copy" = "Copier";
+
+/* "Add to list" button title */
+"Add to list" = "Ajouter";
+
+/* "Last copied" title */
+"Last copied" = "Déjà copié";

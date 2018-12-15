@@ -23,14 +23,14 @@ class ClipViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         if self.isLastCopied {
-            let addButton: UIBarButtonItem = UIBarButtonItem(title: "Add to list", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ClipViewController.addLastCopied))
-            self.navigationItem.title = "Last Copied"
+            let addButton: UIBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Add to list", comment: "\"Add to list\" button title"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(ClipViewController.addLastCopied))
+            self.navigationItem.title = NSLocalizedString("Last copied", comment: "\"Last copied\" title")
             self.navigationItem.rightBarButtonItem = addButton
             self.setContentsText(contents: self.contents)
         }
         else {
             if let _ = self.clip {
-                let copyButton: UIBarButtonItem = UIBarButtonItem(title: "Copy", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ClipViewController.copyClip))
+                let copyButton: UIBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Copy", comment: "\"Copy\" button title"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(ClipViewController.copyClip))
                 let editButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(ClipViewController.segueToEdit))
                 self.navigationItem.rightBarButtonItems = [copyButton, editButton]
             }
@@ -57,7 +57,7 @@ class ClipViewController: UIViewController {
     
     private func setContentsText(contents: [String : Any]) {
         if contents.count == 0 {
-            self.contentsTextView.text = "(Empty)"
+            self.contentsTextView.text = NSLocalizedString("(Empty)", comment: "empty clip contents placeholder")
             self.contentsTextView.textColor = UIColor.gray
             return
         }

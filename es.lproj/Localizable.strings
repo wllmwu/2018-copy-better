@@ -5,3 +5,30 @@
   Created by Bill Wu on 12/15/18.
   Copyright © 2018 William Wu. All rights reserved.
 */
+
+/* default clip title 1 */
+"Shrug" = "Encogimiento de hombros";
+
+/* default clip title 2 */
+"Example" = "Ejemplo";
+
+/* search bar placeholder */
+"Search" = "Buscar";
+
+/* "Copied" toast message */
+"Copied" = "Copiado";
+
+/* "Added" toast message */
+"Added" = "Agregado";
+
+/* empty clip contents placeholder */
+"(Empty)" = "(Vacío)";
+
+/* "Copy" button title */
+"Copy" = "Copiar";
+
+/* "Add to list" button title */
+"Add to list" = "Agregar";
+
+/* "Last copied" title */
+"Last copied" = "Ya copiado";

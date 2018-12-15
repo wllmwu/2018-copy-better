@@ -52,7 +52,7 @@ class WidgetClipTableViewCell: UITableViewCell {
         self.contentsImageView.image = nil
         
         if item.count == 0 {
-            self.contentsLabel.text = "(Empty)"
+            self.contentsLabel.text = NSLocalizedString("(Empty)", comment: "empty clip contents placeholder")
             self.contentsLabel.textColor = UIColor.gray
         }
         else {

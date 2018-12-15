@@ -54,8 +54,7 @@ class EditClipTableViewController: UITableViewController {
         self.contents = contents
         
         if contents.count == 0 {
-            self.contentsTextView.text = "(Empty)"
-            self.contentsTextView.textColor = UIColor.gray
+            self.originalContentsText = NSAttributedString()
             return
         }
         

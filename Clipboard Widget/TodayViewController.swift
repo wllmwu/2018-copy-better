@@ -120,15 +120,15 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         }
         
         let clip1 = Clip(entity: entity, insertInto: self.managedObjectContext)
-        clip1.title = "Shrug"
+        clip1.title = NSLocalizedString("Shrug", comment: "default clip title 1")
         clip1.contents = ClipboardManager.itemForPlaintext("\u{00af}\\_(\u{30c4})_/\u{00af}")
         clip1.index = 0
         
         let clip2 = Clip(entity: entity, insertInto: self.managedObjectContext)
-        clip2.title = "Example"
-        let clip2Text: NSMutableAttributedString = NSMutableAttributedString(string: "Hello ", attributes: [.font : UIFont.boldSystemFont(ofSize: 17), .foregroundColor : UIColor.red])
-        clip2Text.append(NSAttributedString(string: "from ", attributes: [.font : UIFont.systemFont(ofSize: 17), .foregroundColor : UIColor.green]))
-        clip2Text.append(NSAttributedString(string: "Clipboard", attributes: [.font : UIFont.italicSystemFont(ofSize: 17), .foregroundColor : UIColor.blue]))
+        clip2.title = NSLocalizedString("Example", comment: "default clip title 2")
+        let clip2Text: NSMutableAttributedString = NSMutableAttributedString(string: "Cli", attributes: [.font : UIFont.boldSystemFont(ofSize: 17), .foregroundColor : UIColor.red])
+        clip2Text.append(NSAttributedString(string: "pbo", attributes: [.font : UIFont.systemFont(ofSize: 17), .foregroundColor : UIColor.green]))
+        clip2Text.append(NSAttributedString(string: "ard", attributes: [.font : UIFont.italicSystemFont(ofSize: 17), .foregroundColor : UIColor.blue]))
         clip2.contents = ClipboardManager.itemForAttributedString(clip2Text)
         clip2.index = 1
         
