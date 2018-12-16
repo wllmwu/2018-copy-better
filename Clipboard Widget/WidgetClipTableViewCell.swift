@@ -89,12 +89,19 @@ class WidgetClipTableViewCell: UITableViewCell {
     
     @IBAction func copyButtonTapped(_ sender: UIButton) {
         ClipboardManager.copyToPasteboard(item: self.contents)
+        sender.setTitle(NSLocalizedString("Copied", comment: "\"Copied\" toast message"), for: .normal)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: {
+            sender.setTitle(NSLocalizedString("Copy", comment: "\"Copy\" button title"), for: .normal)
+        })
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
         if self.contents.count > 0 {
-//            self.parentViewController.addLastCopied()
             NotificationCenter.default.post(name: Notification.Name("AddLastCopiedInWidget"), object: nil)
+            sender.setTitle(NSLocalizedString("Added", comment: "\"Added\" toast message"), for: .normal)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: {
+                sender.setTitle(NSLocalizedString("Add", comment: "\"Add\" button title"), for: .normal)
+            })
         }
     }
     

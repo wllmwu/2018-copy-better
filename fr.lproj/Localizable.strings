@@ -32,3 +32,6 @@
 
 /* "Last copied" title */
 "Last copied" = "Déjà copié";
+
+/* "Saved" toast message */
+"Saved" = "Enregistré";

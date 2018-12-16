@@ -95,13 +95,18 @@ class EditClipTableViewController: UITableViewController {
     private func saveContext() {
         do {
             try self.managedObjectContext.save()
-            let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clipboard")!
-            defaults.set(true, forKey: "mainNeedsUpdate")
-            defaults.set(true, forKey: "widgetNeedsUpdate")
+            self.orderUpdates()
+            self.showToast(message: NSLocalizedString("Saved", comment: "\"Saved\" toast message"))
         }
         catch let error as NSError {
             print("Couldn't save. \(error), \(error.userInfo)")
         }
+    }
+    
+    private func orderUpdates() {
+        let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clipboard")!
+        defaults.set(true, forKey: "mainNeedsUpdate")
+        defaults.set(true, forKey: "widgetNeedsUpdate")
     }
     
     @IBAction func save(_ sender: UIBarButtonItem) {

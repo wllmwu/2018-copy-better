@@ -32,3 +32,6 @@
 
 /* "Last copied" title */
 "Last copied" = "Ya copiado";
+
+/* "Saved" toast message */
+"Saved" = "Guardado";

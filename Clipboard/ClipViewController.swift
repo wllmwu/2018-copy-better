@@ -47,7 +47,14 @@ class ClipViewController: UIViewController {
         
         if !self.isLastCopied {
             if let clip = self.clip {
-                self.navigationItem.title = clip.title
+                if let title = clip.title {
+                    self.navigationItem.title = title
+                }
+                else {
+                    if #available(iOS 11.0, *) {
+                        self.navigationItem.largeTitleDisplayMode = .never
+                    }
+                }
                 self.setContentsText(contents: clip.contents)
             }
         }
@@ -103,6 +110,7 @@ class ClipViewController: UIViewController {
     
     @objc func copyClip() {
         ClipboardManager.copyToPasteboard(item: self.contents)
+        self.showToast(message: NSLocalizedString("Copied", comment: "\"Copied\" toast message"))
     }
     
     @objc func addLastCopied() {

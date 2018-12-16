@@ -283,7 +283,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 && self.showLastCopied {
             let cell: WidgetClipTableViewCell = tableView.dequeueReusableCell(withIdentifier: "LastCopiedCell", for: indexPath) as! WidgetClipTableViewCell
-//            cell.setParentViewController(self)
             cell.setContents(self.lastCopied)
             return cell
         }
