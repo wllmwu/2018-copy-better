@@ -1,6 +1,6 @@
 //
 //  SettingsTableViewController.swift
-//  Clipboard
+//  Clips
 //
 //  Created by Bill Wu on 11/14/18.
 //  Copyright © 2018 William Wu. All rights reserved.
@@ -15,7 +15,7 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var numClipsInWidgetStepper: UIStepper!
     @IBOutlet weak var numClipsInWidgetLabel: UILabel!
     
-    private let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clipboard")!
+    private let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clips")!
     
     override func viewDidLoad() {
         super.viewDidLoad()

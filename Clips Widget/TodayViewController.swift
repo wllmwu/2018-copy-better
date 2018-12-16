@@ -1,6 +1,6 @@
 //
 //  TodayViewController.swift
-//  Clipboard Widget
+//  Clips Widget
 //
 //  Created by Bill Wu on 11/14/18.
 //  Copyright © 2018 William Wu. All rights reserved.
@@ -26,7 +26,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     private var lastCopied: [String : Any] = [:]
     private var pasteboardChangeCount: Int = 0
     
-    private let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clipboard")!
+    private let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clips")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         self.tableView.estimatedRowHeight = 44
         self.extensionContext?.widgetLargestAvailableDisplayMode = .expanded
         
-        let container = ClipboardPersistentContainer(name: "Clipboard")
+        let container = ClipsPersistentContainer(name: "Clips")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
@@ -215,7 +215,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     }
     
     @IBAction func openAppButtonTapped(_ sender: UIButton) {
-        self.extensionContext?.open(URL(string: "clipboard://")!, completionHandler: { (success) in
+        self.extensionContext?.open(URL(string: "clips://")!, completionHandler: { (success) in
             if !success {
                 print("Error opening app from Today extension")
             }

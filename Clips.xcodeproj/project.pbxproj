@@ -8,17 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		E01FFB2821B4451800C69DEF /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */; };
-		E01FFB2921B44BB500C69DEF /* Clipboard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E056F8F720CEE46C0025E2FE /* Clipboard.xcdatamodeld */; };
-		E029B42B21B32C8F005EFEB6 /* ClipboardPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E029B42A21B32C8F005EFEB6 /* ClipboardPersistentContainer.swift */; };
-		E029B42C21B32C8F005EFEB6 /* ClipboardPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E029B42A21B32C8F005EFEB6 /* ClipboardPersistentContainer.swift */; };
+		E01FFB2921B44BB500C69DEF /* Clips.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E056F8F720CEE46C0025E2FE /* Clips.xcdatamodeld */; };
+		E029B42B21B32C8F005EFEB6 /* ClipsPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E029B42A21B32C8F005EFEB6 /* ClipsPersistentContainer.swift */; };
+		E029B42C21B32C8F005EFEB6 /* ClipsPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E029B42A21B32C8F005EFEB6 /* ClipsPersistentContainer.swift */; };
 		E029B42D21B33A30005EFEB6 /* ClipboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA135219D37BE0015A30F /* ClipboardManager.swift */; };
 		E04106BD219D04F100DD68AD /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E04106BC219D04F100DD68AD /* NotificationCenter.framework */; };
 		E04106C0219D04F100DD68AD /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04106BF219D04F100DD68AD /* TodayViewController.swift */; };
 		E04106C3219D04F100DD68AD /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E04106C1219D04F100DD68AD /* MainInterface.storyboard */; };
-		E04106C7219D04F100DD68AD /* Clipboard Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E04106BA219D04F100DD68AD /* Clipboard Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E04106C7219D04F100DD68AD /* Clips Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E04106BA219D04F100DD68AD /* Clips Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E056F8F120CEE46C0025E2FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E056F8F020CEE46C0025E2FE /* AppDelegate.swift */; };
 		E056F8F620CEE46C0025E2FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E056F8F420CEE46C0025E2FE /* Main.storyboard */; };
-		E056F8F920CEE46C0025E2FE /* Clipboard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E056F8F720CEE46C0025E2FE /* Clipboard.xcdatamodeld */; };
+		E056F8F920CEE46C0025E2FE /* Clips.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E056F8F720CEE46C0025E2FE /* Clips.xcdatamodeld */; };
 		E056F8FB20CEE46E0025E2FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E056F8FA20CEE46E0025E2FE /* Assets.xcassets */; };
 		E056F8FE20CEE46E0025E2FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E056F8FC20CEE46E0025E2FE /* LaunchScreen.storyboard */; };
 		E05EA02D21BD8BB300FC33C9 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05EA02C21BD8BB300FC33C9 /* Toast.swift */; };
@@ -34,6 +34,8 @@
 		E0858C3021A0F0240089AE53 /* Clip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */; };
 		E0858C3121A0F0240089AE53 /* Clip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858C2E21A0F0240089AE53 /* Clip+CoreDataProperties.swift */; };
 		E0858C3221A0F0240089AE53 /* Clip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858C2E21A0F0240089AE53 /* Clip+CoreDataProperties.swift */; };
+		E0A51AD721C6CABA00FCCCA9 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A51AD621C6CABA00FCCCA9 /* KeyboardViewController.swift */; };
+		E0A51ADB21C6CABA00FCCCA9 /* Clips Keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E0A51AD421C6CABA00FCCCA9 /* Clips Keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E0C260AF21B8B889007D9BED /* UIViewController+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C260AE21B8B889007D9BED /* UIViewController+Toast.swift */; };
 		E0CC277621AD9A04000FEF5A /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CC277521AD9A04000FEF5A /* AboutTableViewController.swift */; };
 		E0D348C721B2393000BF1F4E /* WidgetClipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D348C621B2393000BF1F4E /* WidgetClipTableViewCell.swift */; };
@@ -48,6 +50,13 @@
 			remoteGlobalIDString = E04106B9219D04F100DD68AD;
 			remoteInfo = "Clipboard Widget";
 		};
+		E0A51AD921C6CABA00FCCCA9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E056F8E520CEE46C0025E2FE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E0A51AD321C6CABA00FCCCA9;
+			remoteInfo = "Clips Keyboard";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,7 +66,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				E04106C7219D04F100DD68AD /* Clipboard Widget.appex in Embed App Extensions */,
+				E0A51ADB21C6CABA00FCCCA9 /* Clips Keyboard.appex in Embed App Extensions */,
+				E04106C7219D04F100DD68AD /* Clips Widget.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,13 +75,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E029B42A21B32C8F005EFEB6 /* ClipboardPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardPersistentContainer.swift; sourceTree = "<group>"; };
-		E04106BA219D04F100DD68AD /* Clipboard Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Clipboard Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E029B42A21B32C8F005EFEB6 /* ClipsPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipsPersistentContainer.swift; sourceTree = "<group>"; };
+		E04106BA219D04F100DD68AD /* Clips Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Clips Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E04106BC219D04F100DD68AD /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		E04106BF219D04F100DD68AD /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		E04106C2219D04F100DD68AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		E04106C4219D04F100DD68AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E056F8ED20CEE46C0025E2FE /* Clipboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clipboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E056F8ED20CEE46C0025E2FE /* Clips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clips.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E056F8F020CEE46C0025E2FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E056F8F520CEE46C0025E2FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E056F8F820CEE46C0025E2FE /* Clipboard_Manager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Clipboard_Manager.xcdatamodel; sourceTree = "<group>"; };
@@ -94,11 +104,14 @@
 		E06EC95121C5B30000687F9E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clip+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E0858C2E21A0F0240089AE53 /* Clip+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clip+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E0A51AD421C6CABA00FCCCA9 /* Clips Keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Clips Keyboard.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0A51AD621C6CABA00FCCCA9 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		E0A51AD821C6CABA00FCCCA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0C260AE21B8B889007D9BED /* UIViewController+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Toast.swift"; sourceTree = "<group>"; };
 		E0CC277521AD9A04000FEF5A /* AboutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
 		E0D348C621B2393000BF1F4E /* WidgetClipTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetClipTableViewCell.swift; sourceTree = "<group>"; };
-		E0D67EE0219E8B6700559CA6 /* Clipboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Clipboard.entitlements; sourceTree = "<group>"; };
-		E0D67EE1219E8CB100559CA6 /* Clipboard Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Clipboard Widget.entitlements"; sourceTree = "<group>"; };
+		E0D67EE0219E8B6700559CA6 /* Clips.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Clips.entitlements; sourceTree = "<group>"; };
+		E0D67EE1219E8CB100559CA6 /* Clips Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Clips Widget.entitlements"; sourceTree = "<group>"; };
 		E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HTML.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,6 +131,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E0A51AD121C6CABA00FCCCA9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -129,16 +149,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E04106BE219D04F100DD68AD /* Clipboard Widget */ = {
+		E04106BE219D04F100DD68AD /* Clips Widget */ = {
 			isa = PBXGroup;
 			children = (
-				E0D67EE1219E8CB100559CA6 /* Clipboard Widget.entitlements */,
+				E0D67EE1219E8CB100559CA6 /* Clips Widget.entitlements */,
 				E04106C1219D04F100DD68AD /* MainInterface.storyboard */,
 				E04106BF219D04F100DD68AD /* TodayViewController.swift */,
 				E0D348C621B2393000BF1F4E /* WidgetClipTableViewCell.swift */,
 				E04106C4219D04F100DD68AD /* Info.plist */,
 			);
-			path = "Clipboard Widget";
+			path = "Clips Widget";
 			sourceTree = "<group>";
 		};
 		E056F8E420CEE46C0025E2FE = {
@@ -146,13 +166,14 @@
 			children = (
 				E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */,
 				E0858C2E21A0F0240089AE53 /* Clip+CoreDataProperties.swift */,
-				E056F8F720CEE46C0025E2FE /* Clipboard.xcdatamodeld */,
-				E029B42A21B32C8F005EFEB6 /* ClipboardPersistentContainer.swift */,
+				E056F8F720CEE46C0025E2FE /* Clips.xcdatamodeld */,
+				E029B42A21B32C8F005EFEB6 /* ClipsPersistentContainer.swift */,
 				E06EC94D21C5ACA100687F9E /* Localizable.strings */,
 				E06AA135219D37BE0015A30F /* ClipboardManager.swift */,
 				E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */,
-				E056F8EF20CEE46C0025E2FE /* Clipboard */,
-				E04106BE219D04F100DD68AD /* Clipboard Widget */,
+				E056F8EF20CEE46C0025E2FE /* Clips */,
+				E04106BE219D04F100DD68AD /* Clips Widget */,
+				E0A51AD521C6CABA00FCCCA9 /* Clips Keyboard */,
 				E04106BB219D04F100DD68AD /* Frameworks */,
 				E056F8EE20CEE46C0025E2FE /* Products */,
 			);
@@ -161,16 +182,17 @@
 		E056F8EE20CEE46C0025E2FE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E056F8ED20CEE46C0025E2FE /* Clipboard.app */,
-				E04106BA219D04F100DD68AD /* Clipboard Widget.appex */,
+				E056F8ED20CEE46C0025E2FE /* Clips.app */,
+				E04106BA219D04F100DD68AD /* Clips Widget.appex */,
+				E0A51AD421C6CABA00FCCCA9 /* Clips Keyboard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E056F8EF20CEE46C0025E2FE /* Clipboard */ = {
+		E056F8EF20CEE46C0025E2FE /* Clips */ = {
 			isa = PBXGroup;
 			children = (
-				E0D67EE0219E8B6700559CA6 /* Clipboard.entitlements */,
+				E0D67EE0219E8B6700559CA6 /* Clips.entitlements */,
 				E056F8F020CEE46C0025E2FE /* AppDelegate.swift */,
 				E056F8F420CEE46C0025E2FE /* Main.storyboard */,
 				E06AA127219D31CE0015A30F /* MainTableViewController.swift */,
@@ -185,15 +207,24 @@
 				E056F8FA20CEE46E0025E2FE /* Assets.xcassets */,
 				E056F8FF20CEE46E0025E2FE /* Info.plist */,
 			);
-			path = Clipboard;
+			path = Clips;
+			sourceTree = "<group>";
+		};
+		E0A51AD521C6CABA00FCCCA9 /* Clips Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				E0A51AD621C6CABA00FCCCA9 /* KeyboardViewController.swift */,
+				E0A51AD821C6CABA00FCCCA9 /* Info.plist */,
+			);
+			path = "Clips Keyboard";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E04106B9219D04F100DD68AD /* Clipboard Widget */ = {
+		E04106B9219D04F100DD68AD /* Clips Widget */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E04106C8219D04F100DD68AD /* Build configuration list for PBXNativeTarget "Clipboard Widget" */;
+			buildConfigurationList = E04106C8219D04F100DD68AD /* Build configuration list for PBXNativeTarget "Clips Widget" */;
 			buildPhases = (
 				E04106B6219D04F100DD68AD /* Sources */,
 				E04106B7219D04F100DD68AD /* Frameworks */,
@@ -203,14 +234,14 @@
 			);
 			dependencies = (
 			);
-			name = "Clipboard Widget";
+			name = "Clips Widget";
 			productName = "Clipboard Widget";
-			productReference = E04106BA219D04F100DD68AD /* Clipboard Widget.appex */;
+			productReference = E04106BA219D04F100DD68AD /* Clips Widget.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		E056F8EC20CEE46C0025E2FE /* Clipboard */ = {
+		E056F8EC20CEE46C0025E2FE /* Clips */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E056F90220CEE46E0025E2FE /* Build configuration list for PBXNativeTarget "Clipboard" */;
+			buildConfigurationList = E056F90220CEE46E0025E2FE /* Build configuration list for PBXNativeTarget "Clips" */;
 			buildPhases = (
 				E056F8E920CEE46C0025E2FE /* Sources */,
 				E056F8EA20CEE46C0025E2FE /* Frameworks */,
@@ -221,11 +252,29 @@
 			);
 			dependencies = (
 				E04106C6219D04F100DD68AD /* PBXTargetDependency */,
+				E0A51ADA21C6CABA00FCCCA9 /* PBXTargetDependency */,
 			);
-			name = Clipboard;
+			name = Clips;
 			productName = "Clipboard Manager";
-			productReference = E056F8ED20CEE46C0025E2FE /* Clipboard.app */;
+			productReference = E056F8ED20CEE46C0025E2FE /* Clips.app */;
 			productType = "com.apple.product-type.application";
+		};
+		E0A51AD321C6CABA00FCCCA9 /* Clips Keyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E0A51ADE21C6CABA00FCCCA9 /* Build configuration list for PBXNativeTarget "Clips Keyboard" */;
+			buildPhases = (
+				E0A51AD021C6CABA00FCCCA9 /* Sources */,
+				E0A51AD121C6CABA00FCCCA9 /* Frameworks */,
+				E0A51AD221C6CABA00FCCCA9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Clips Keyboard";
+			productName = "Clips Keyboard";
+			productReference = E0A51AD421C6CABA00FCCCA9 /* Clips Keyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -233,7 +282,7 @@
 		E056F8E520CEE46C0025E2FE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0940;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "William Wu";
 				TargetAttributes = {
@@ -253,9 +302,12 @@
 							};
 						};
 					};
+					E0A51AD321C6CABA00FCCCA9 = {
+						CreatedOnToolsVersion = 10.1;
+					};
 				};
 			};
-			buildConfigurationList = E056F8E820CEE46C0025E2FE /* Build configuration list for PBXProject "Clipboard" */;
+			buildConfigurationList = E056F8E820CEE46C0025E2FE /* Build configuration list for PBXProject "Clips" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -270,8 +322,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E056F8EC20CEE46C0025E2FE /* Clipboard */,
-				E04106B9219D04F100DD68AD /* Clipboard Widget */,
+				E056F8EC20CEE46C0025E2FE /* Clips */,
+				E04106B9219D04F100DD68AD /* Clips Widget */,
+				E0A51AD321C6CABA00FCCCA9 /* Clips Keyboard */,
 			);
 		};
 /* End PBXProject section */
@@ -297,6 +350,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E0A51AD221C6CABA00FCCCA9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -305,12 +365,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E04106C0219D04F100DD68AD /* TodayViewController.swift in Sources */,
-				E029B42C21B32C8F005EFEB6 /* ClipboardPersistentContainer.swift in Sources */,
+				E029B42C21B32C8F005EFEB6 /* ClipsPersistentContainer.swift in Sources */,
 				E0858C3221A0F0240089AE53 /* Clip+CoreDataProperties.swift in Sources */,
 				E0858C3021A0F0240089AE53 /* Clip+CoreDataClass.swift in Sources */,
 				E01FFB2821B4451800C69DEF /* String+HTML.swift in Sources */,
 				E029B42D21B33A30005EFEB6 /* ClipboardManager.swift in Sources */,
-				E01FFB2921B44BB500C69DEF /* Clipboard.xcdatamodeld in Sources */,
+				E01FFB2921B44BB500C69DEF /* Clips.xcdatamodeld in Sources */,
 				E0D348C721B2393000BF1F4E /* WidgetClipTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,7 +380,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0CC277621AD9A04000FEF5A /* AboutTableViewController.swift in Sources */,
-				E056F8F920CEE46C0025E2FE /* Clipboard.xcdatamodeld in Sources */,
+				E056F8F920CEE46C0025E2FE /* Clips.xcdatamodeld in Sources */,
 				E06AA130219D32DE0015A30F /* ClipViewController.swift in Sources */,
 				E0F5BE0821A8BE9600422DC1 /* String+HTML.swift in Sources */,
 				E06AA136219D37BE0015A30F /* ClipboardManager.swift in Sources */,
@@ -333,7 +393,15 @@
 				E0C260AF21B8B889007D9BED /* UIViewController+Toast.swift in Sources */,
 				E06AA12A219D32500015A30F /* ClipTableViewCell.swift in Sources */,
 				E056F8F120CEE46C0025E2FE /* AppDelegate.swift in Sources */,
-				E029B42B21B32C8F005EFEB6 /* ClipboardPersistentContainer.swift in Sources */,
+				E029B42B21B32C8F005EFEB6 /* ClipsPersistentContainer.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0A51AD021C6CABA00FCCCA9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0A51AD721C6CABA00FCCCA9 /* KeyboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,8 +410,13 @@
 /* Begin PBXTargetDependency section */
 		E04106C6219D04F100DD68AD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E04106B9219D04F100DD68AD /* Clipboard Widget */;
+			target = E04106B9219D04F100DD68AD /* Clips Widget */;
 			targetProxy = E04106C5219D04F100DD68AD /* PBXContainerItemProxy */;
+		};
+		E0A51ADA21C6CABA00FCCCA9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E0A51AD321C6CABA00FCCCA9 /* Clips Keyboard */;
+			targetProxy = E0A51AD921C6CABA00FCCCA9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -392,17 +465,17 @@
 		E04106C9219D04F100DD68AD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "Clipboard Widget/Clipboard Widget.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Clips Widget/Clips Widget.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
-				INFOPLIST_FILE = "Clipboard Widget/Info.plist";
+				INFOPLIST_FILE = "Clips Widget/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.williamwu.Clipboard.Clipboard-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.williamwu.Clips.Clips-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
@@ -413,17 +486,17 @@
 		E04106CA219D04F100DD68AD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "Clipboard Widget/Clipboard Widget.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Clips Widget/Clips Widget.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
-				INFOPLIST_FILE = "Clipboard Widget/Info.plist";
+				INFOPLIST_FILE = "Clips Widget/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.williamwu.Clipboard.Clipboard-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.williamwu.Clips.Clips-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
@@ -552,16 +625,16 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Clipboard/Clipboard.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Clips/Clips.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
-				INFOPLIST_FILE = "$(SRCROOT)/Clipboard/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Clips/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.williamwu.Clipboard;
+				PRODUCT_BUNDLE_IDENTIFIER = com.williamwu.Clips;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -573,18 +646,61 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Clipboard/Clipboard.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Clips/Clips.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
-				INFOPLIST_FILE = "$(SRCROOT)/Clipboard/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Clips/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.williamwu.Clipboard;
+				PRODUCT_BUNDLE_IDENTIFIER = com.williamwu.Clips;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E0A51ADC21C6CABA00FCCCA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FFB5P5C3G7;
+				INFOPLIST_FILE = "Clips Keyboard/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.williamwu.Clips.Clips-Keyboard";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E0A51ADD21C6CABA00FCCCA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FFB5P5C3G7;
+				INFOPLIST_FILE = "Clips Keyboard/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.williamwu.Clips.Clips-Keyboard";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -592,7 +708,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E04106C8219D04F100DD68AD /* Build configuration list for PBXNativeTarget "Clipboard Widget" */ = {
+		E04106C8219D04F100DD68AD /* Build configuration list for PBXNativeTarget "Clips Widget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E04106C9219D04F100DD68AD /* Debug */,
@@ -601,7 +717,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E056F8E820CEE46C0025E2FE /* Build configuration list for PBXProject "Clipboard" */ = {
+		E056F8E820CEE46C0025E2FE /* Build configuration list for PBXProject "Clips" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E056F90020CEE46E0025E2FE /* Debug */,
@@ -610,7 +726,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E056F90220CEE46E0025E2FE /* Build configuration list for PBXNativeTarget "Clipboard" */ = {
+		E056F90220CEE46E0025E2FE /* Build configuration list for PBXNativeTarget "Clips" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E056F90320CEE46E0025E2FE /* Debug */,
@@ -619,16 +735,25 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		E0A51ADE21C6CABA00FCCCA9 /* Build configuration list for PBXNativeTarget "Clips Keyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E0A51ADC21C6CABA00FCCCA9 /* Debug */,
+				E0A51ADD21C6CABA00FCCCA9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E056F8F720CEE46C0025E2FE /* Clipboard.xcdatamodeld */ = {
+		E056F8F720CEE46C0025E2FE /* Clips.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				E056F8F820CEE46C0025E2FE /* Clipboard_Manager.xcdatamodel */,
 			);
 			currentVersion = E056F8F820CEE46C0025E2FE /* Clipboard_Manager.xcdatamodel */;
-			path = Clipboard.xcdatamodeld;
+			path = Clips.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

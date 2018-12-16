@@ -1,6 +1,6 @@
 //
 //  MainTableViewController.swift
-//  Clipboard
+//  Clips
 //
 //  Created by Bill Wu on 11/14/18.
 //  Copyright © 2018 William Wu. All rights reserved.
@@ -18,7 +18,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     private var lastCopied: [String : Any] = [:]
     private var pasteboardChangeCount: Int = 0
     
-    private let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clipboard")!
+    private let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clips")!
     
     private var selectedClip: Clip?
     

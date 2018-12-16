@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  Clipboard
+//  Clips
 //
 //  Created by Bill Wu on 6/11/18.
 //  Copyright © 2018 William Wu. All rights reserved.
@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clipboard")!
+        let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clips")!
         if !defaults.bool(forKey: "launchedBefore") {
             // first launch - set some default settings and data
             defaults.set(true, forKey: "showLastCopiedInMain")
@@ -91,14 +91,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Core Data stack
 
-    lazy var persistentContainer: ClipboardPersistentContainer = {
+    lazy var persistentContainer: ClipsPersistentContainer = {
         /*
          The persistent container for the application. This implementation
          creates and returns a container, having loaded the store for the
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
-        let container = ClipboardPersistentContainer(name: "Clipboard")
+        let container = ClipsPersistentContainer(name: "Clips")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.

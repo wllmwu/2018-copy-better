@@ -1,6 +1,6 @@
 //
 //  EditClipTableViewController.swift
-//  Clipboard
+//  Clips
 //
 //  Created by Bill Wu on 11/14/18.
 //  Copyright © 2018 William Wu. All rights reserved.
@@ -104,7 +104,7 @@ class EditClipTableViewController: UITableViewController {
     }
     
     private func orderUpdates() {
-        let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clipboard")!
+        let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clips")!
         defaults.set(true, forKey: "mainNeedsUpdate")
         defaults.set(true, forKey: "widgetNeedsUpdate")
     }

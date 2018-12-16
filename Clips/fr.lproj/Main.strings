@@ -1,87 +1,87 @@
 
 /* Class = "UINavigationItem"; title = "Edit Clip"; ObjectID = "05A-KI-hkJ"; */
-"05A-KI-hkJ.title" = "Editar";
+"05A-KI-hkJ.title" = "Modifier";
 
-/* Class = "UILabel"; text = "© 2018 William Wu  This app is version 1.0.  Questions or bug reports? Email me at dev.wwu@gmail.com.  For the best use of this app, I recommend that you add the Clipboard widget to the Today View. Then you'll be able to access it from inside any app by swiping down from the top of the screen, then swiping to the right."; ObjectID = "4Nl-cj-gKr"; */
-"4Nl-cj-gKr.text" = "© 2018 William Wu (correo electrónico: dev.wwu@gmail.com)  Versión 1.0  Te recomiendo que agregues el widget Clipboard a la visualización Hoy. Pues, para acceder a la lista de otra aplicación, desliza un dedo hacia abajo desde la parte superior de la pantalla y un dedo hacia la derecha.";
+/* Class = "UILabel"; text = "© 2018 William Wu  This app is version 1.0.  Questions or bug reports? Email me at dev.wwu@gmail.com.  For the best use of this app, I recommend that you add the Clips widget to the Today View. Then you'll be able to access it from inside any app by swiping down from the top of the screen, then swiping to the right."; ObjectID = "4Nl-cj-gKr"; */
+"4Nl-cj-gKr.text" = "© 2018 William Wu  Version 1.0  Posez des questions ou signalez un bug à dev.wwu@gmail.com.  Je vous recommande d'ajouter le widget Clips à l'affichage du jour, afin que vous puissiez y accéder de partout en effectuant un balayage vers le bas depuis la partie supérieure de l'écran, puis un balayage vers la droite.";
 
-/* Class = "UINavigationItem"; title = "Clipboard"; ObjectID = "55l-T6-khl"; */
-"55l-T6-khl.title" = "Clipboard";
+/* Class = "UINavigationItem"; title = "Clips"; ObjectID = "55l-T6-khl"; */
+"55l-T6-khl.title" = "Clips";
 
 /* Class = "UIViewController"; title = "Clip"; ObjectID = "9Ah-HQ-3Ku"; */
-"9Ah-HQ-3Ku.title" = "Recorte";
+"9Ah-HQ-3Ku.title" = "Élément";
 
 /* Class = "UINavigationItem"; title = "Settings"; ObjectID = "9zi-Xh-Iso"; */
-"9zi-Xh-Iso.title" = "Configuración";
+"9zi-Xh-Iso.title" = "Réglages";
 
 /* Class = "UIButton"; normalTitle = "Copy"; ObjectID = "AXt-XT-I7X"; */
-"AXt-XT-I7X.normalTitle" = "Copiar";
+"AXt-XT-I7X.normalTitle" = "Copier";
 
 /* Class = "UITextField"; placeholder = "Title… (optional)"; ObjectID = "BIk-3c-cFB"; */
-"BIk-3c-cFB.placeholder" = "Título… (opcional)";
+"BIk-3c-cFB.placeholder" = "Titre… (optionnel)";
 
 /* Class = "UITableViewSection"; headerTitle = "In app"; ObjectID = "BjC-VA-k4B"; */
-"BjC-VA-k4B.headerTitle" = "Aplicación";
+"BjC-VA-k4B.headerTitle" = "Application";
 
 /* Class = "UILabel"; text = "Show current pasteboard contents"; ObjectID = "C7j-pN-GgP"; */
-"C7j-pN-GgP.text" = "Mostrar el portapapeles actual";
+"C7j-pN-GgP.text" = "Afficher le presse-papier actuel";
 
 /* Class = "UIButton"; normalTitle = "Add to list"; ObjectID = "Gcs-nk-eEx"; */
-"Gcs-nk-eEx.normalTitle" = "Agregar";
+"Gcs-nk-eEx.normalTitle" = "Ajouter";
 
 /* Class = "UITableViewController"; title = "Main"; ObjectID = "Haj-no-mYC"; */
 "Haj-no-mYC.title" = "Principal";
 
 /* Class = "UITableViewController"; title = "About"; ObjectID = "KQb-ND-3vh"; */
-"KQb-ND-3vh.title" = "Información";
+"KQb-ND-3vh.title" = "Informations";
 
 /* Class = "UILabel"; text = "About"; ObjectID = "KqB-Ws-rer"; */
-"KqB-Ws-rer.text" = "Información";
+"KqB-Ws-rer.text" = "Informations";
 
 /* Class = "UILabel"; text = "Contents"; ObjectID = "Lgi-3s-Kbg"; */
-"Lgi-3s-Kbg.text" = "Recorte";
+"Lgi-3s-Kbg.text" = "Élément";
 
 /* Class = "UILabel"; text = "10"; ObjectID = "NzM-rt-96F"; */
 "NzM-rt-96F.text" = "10";
 
 /* Class = "UITableViewSection"; headerTitle = "Contents"; ObjectID = "OqY-5Z-dhI"; */
-"OqY-5Z-dhI.headerTitle" = "Recorte";
+"OqY-5Z-dhI.headerTitle" = "Élément";
 
 /* Class = "UIBarButtonItem"; title = "Settings"; ObjectID = "Qnu-ko-62Q"; */
-"Qnu-ko-62Q.title" = "Configuración";
+"Qnu-ko-62Q.title" = "Réglages";
 
 /* Class = "UILabel"; text = "Last copied"; ObjectID = "SOG-VC-fzC"; */
-"SOG-VC-fzC.text" = "Ya copiado";
+"SOG-VC-fzC.text" = "Déjà copié";
 
 /* Class = "UITableViewSection"; headerTitle = "Today View"; ObjectID = "SQq-CT-Spn"; */
-"SQq-CT-Spn.headerTitle" = "Visualización Hoy";
+"SQq-CT-Spn.headerTitle" = "Affichage du jour";
 
 /* Class = "UIButton"; normalTitle = "Copy"; ObjectID = "TJ8-tS-zk3"; */
-"TJ8-tS-zk3.normalTitle" = "Copiar";
+"TJ8-tS-zk3.normalTitle" = "Copier";
 
 /* Class = "UITableViewSection"; headerTitle = "Title"; ObjectID = "Ymy-zL-M8M"; */
-"Ymy-zL-M8M.headerTitle" = "Título";
+"Ymy-zL-M8M.headerTitle" = "Titre";
 
 /* Class = "UITableViewController"; title = "Edit Clip"; ObjectID = "c12-NJ-Wss"; */
-"c12-NJ-Wss.title" = "Editar";
+"c12-NJ-Wss.title" = "Modifier";
 
 /* Class = "UILabel"; text = "Show current pasteboard contents"; ObjectID = "cOF-UE-d6A"; */
-"cOF-UE-d6A.text" = "Mostrar el portapapeles actual";
+"cOF-UE-d6A.text" = "Afficher le presse-papier actuel";
 
 /* Class = "UILabel"; text = "Contents"; ObjectID = "d6d-Bl-fOw"; */
-"d6d-Bl-fOw.text" = "Recorte";
+"d6d-Bl-fOw.text" = "Élément";
 
 /* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "fvL-xS-aiC"; */
-"fvL-xS-aiC.title" = "Atrás";
+"fvL-xS-aiC.title" = "Retour";
 
 /* Class = "UILabel"; text = "Contents"; ObjectID = "o1t-hn-ih7"; */
-"o1t-hn-ih7.text" = "Recorte";
+"o1t-hn-ih7.text" = "Élément";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "sBM-4M-D6k"; */
-"sBM-4M-D6k.text" = "Título";
+"sBM-4M-D6k.text" = "Titre";
 
 /* Class = "UIButton"; normalTitle = "Copy"; ObjectID = "yoX-S0-ffx"; */
-"yoX-S0-ffx.normalTitle" = "Copiar";
+"yoX-S0-ffx.normalTitle" = "Copier";
 
 /* Class = "UILabel"; text = "Number of clips"; ObjectID = "ytH-gW-dY9"; */
-"ytH-gW-dY9.text" = "Número de recortes";
+"ytH-gW-dY9.text" = "Nombre d'éléments";
