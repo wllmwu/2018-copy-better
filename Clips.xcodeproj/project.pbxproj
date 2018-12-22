@@ -38,6 +38,7 @@
 		E06AA136219D37BE0015A30F /* ClipboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA135219D37BE0015A30F /* ClipboardManager.swift */; };
 		E06EC94A21C5ACA100687F9E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E06EC94D21C5ACA100687F9E /* Localizable.strings */; };
 		E06EC94B21C5ACA100687F9E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E06EC94D21C5ACA100687F9E /* Localizable.strings */; };
+		E07E7FF121CEB0C100F06B8C /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */; };
 		E0858C2F21A0F0240089AE53 /* Clip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */; };
 		E0858C3021A0F0240089AE53 /* Clip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */; };
 		E0858C3121A0F0240089AE53 /* Clip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858C2E21A0F0240089AE53 /* Clip+CoreDataProperties.swift */; };
@@ -433,6 +434,7 @@
 				E0A51AD721C6CABA00FCCCA9 /* KeyboardViewController.swift in Sources */,
 				E05CAEE621CB3BCD003C3BB4 /* Clips.xcdatamodeld in Sources */,
 				E05CAEE321CB3BAD003C3BB4 /* ClipsPersistentContainer.swift in Sources */,
+				E07E7FF121CEB0C100F06B8C /* String+HTML.swift in Sources */,
 				E05CAEE121CB3BA9003C3BB4 /* Clip+CoreDataClass.swift in Sources */,
 				E0071DE921CB171100B75D4C /* ClipsKeyboardCollectionViewCell.swift in Sources */,
 				E05CAEE521CB3BB6003C3BB4 /* ClipboardManager.swift in Sources */,
@@ -501,6 +503,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Clips Widget/Clips Widget.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Widget/Info.plist";
@@ -522,6 +525,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Clips Widget/Clips Widget.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Widget/Info.plist";
@@ -661,6 +665,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Clips/Clips.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "$(SRCROOT)/Clips/Info.plist";
@@ -682,6 +687,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Clips/Clips.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "$(SRCROOT)/Clips/Info.plist";
@@ -701,6 +707,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Clips Keyboard/Clips Keyboard.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Keyboard/Info.plist";
@@ -724,6 +731,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Clips Keyboard/Clips Keyboard.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Keyboard/Info.plist";

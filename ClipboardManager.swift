@@ -62,7 +62,7 @@ class ClipboardManager: NSObject {
     
     static func copyToPasteboard(item: [String : Any]) {
         var itemVar: [String : Any] = item
-        if let png = itemVar[kUTTypePNG as String] as? UIImage {
+        /*if let png = itemVar[kUTTypePNG as String] as? UIImage {
             if let pngData = UIImagePNGRepresentation(png) {
                 itemVar[kUTTypePNG as String] = pngData
             }
@@ -71,7 +71,7 @@ class ClipboardManager: NSObject {
             if let jpgData = UIImageJPEGRepresentation(jpg, 1) {
                 itemVar[kUTTypeJPEG as String] = jpgData
             }
-        }
+        }*/
         UIPasteboard.general.items = [itemVar]
     }
     
