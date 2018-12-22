@@ -119,18 +119,8 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
             fatalError("Couldn't find entity description.")
         }
         
-        let clip1 = Clip(entity: entity, insertInto: self.managedObjectContext)
-        clip1.title = NSLocalizedString("Shrug", comment: "default clip title 1")
-        clip1.contents = ClipboardManager.itemForPlaintext("\u{00af}\\_(\u{30c4})_/\u{00af}")
-        clip1.index = 0
-        
-        let clip2 = Clip(entity: entity, insertInto: self.managedObjectContext)
-        clip2.title = NSLocalizedString("Example", comment: "default clip title 2")
-        let clip2Text: NSMutableAttributedString = NSMutableAttributedString(string: "Cli", attributes: [.font : UIFont.boldSystemFont(ofSize: 17), .foregroundColor : UIColor.red])
-        clip2Text.append(NSAttributedString(string: "pbo", attributes: [.font : UIFont.systemFont(ofSize: 17), .foregroundColor : UIColor.green]))
-        clip2Text.append(NSAttributedString(string: "ard", attributes: [.font : UIFont.italicSystemFont(ofSize: 17), .foregroundColor : UIColor.blue]))
-        clip2.contents = ClipboardManager.itemForAttributedString(clip2Text)
-        clip2.index = 1
+        Clip.addDefaultClip1(entity: entity, context: self.managedObjectContext)
+        Clip.addDefaultClip2(entity: entity, context: self.managedObjectContext)
         
         do {
             try self.managedObjectContext.save()
@@ -179,25 +169,27 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     }
     
     @objc func addLastCopied() {
-        guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
-            fatalError("Couldn't find entity description.")
+        if self.lastCopied.count > 0 {
+            guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
+                fatalError("Couldn't find entity description.")
+            }
+            
+            // create new clip
+            let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
+            clip.title = nil
+            clip.contents = self.lastCopied
+            clip.index = 0
+            self.allClips.insert(clip, at: 0)
+            
+            // reassign indices
+            for i in 1..<self.allClips.count {
+                self.allClips[i].index += 1
+            }
+            self.getClips()
+            
+            self.saveContext()
+            self.tableView.reloadData()
         }
-        
-        // create new clip
-        let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
-        clip.title = nil
-        clip.contents = self.lastCopied
-        clip.index = 0
-        self.allClips.insert(clip, at: 0)
-        
-        // reassign indices
-        for i in 1..<self.allClips.count {
-            self.allClips[i].index += 1
-        }
-        self.getClips()
-        
-        self.saveContext()
-        self.tableView.reloadData()
     }
     
     private func saveContext() {
@@ -212,6 +204,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     
     private func orderUpdates() {
         self.defaults.set(true, forKey: "mainNeedsUpdate")
+        self.defaults.set(true, forKey: "keyboardNeedsUpdate")
     }
     
     @IBAction func openAppButtonTapped(_ sender: UIButton) {

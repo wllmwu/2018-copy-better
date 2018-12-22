@@ -122,6 +122,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     
     private func orderUpdates() {
         self.defaults.set(true, forKey: "widgetNeedsUpdate")
+        self.defaults.set(true, forKey: "keyboardNeedsUpdate")
     }
     
     @objc func showCopiedToast() {
@@ -129,25 +130,27 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     @objc func addLastCopied() {
-        guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
-            fatalError("Couldn't find entity description.")
+        if self.lastCopied.count > 0 {
+            guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
+                fatalError("Couldn't find entity description.")
+            }
+            
+            // create new clip
+            let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
+            clip.title = nil
+            clip.contents = self.lastCopied
+            clip.index = 0
+            self.clips.insert(clip, at: 0)
+            
+            // reassign indices
+            for i in 1..<self.clips.count {
+                self.clips[i].index += 1
+            }
+            
+            self.saveContext()
+            self.tableView.reloadData()
+            self.showToast(message: NSLocalizedString("Added", comment: "\"Added\" toast message"))
         }
-        
-        // create new clip
-        let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
-        clip.title = nil
-        clip.contents = self.lastCopied
-        clip.index = 0
-        self.clips.insert(clip, at: 0)
-        
-        // reassign indices
-        for i in 1..<self.clips.count {
-            self.clips[i].index += 1
-        }
-        
-        self.saveContext()
-        self.tableView.reloadData()
-        self.showToast(message: NSLocalizedString("Added", comment: "\"Added\" toast message"))
     }
     
     // MARK: - Table view data source

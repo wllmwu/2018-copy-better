@@ -41,19 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             fatalError("Couldn't find entity description.")
         }
         
-        let clip1 = Clip(entity: entity, insertInto: self.managedObjectContext)
-        clip1.title = NSLocalizedString("Shrug", comment: "default clip title 1")
-        clip1.contents = ClipboardManager.itemForPlaintext("\u{00af}\\_(\u{30c4})_/\u{00af}")
-        clip1.index = 0
-        
-        let clip2 = Clip(entity: entity, insertInto: self.managedObjectContext)
-        clip2.title = NSLocalizedString("Example", comment: "default clip title 2")
-        let clip2Text: NSMutableAttributedString = NSMutableAttributedString(string: "Clipboard", attributes: [.font : UIFont.italicSystemFont(ofSize: 17)])
-        clip2Text.addAttribute(.foregroundColor, value: UIColor.red, range: NSRange(location: 0, length: 3))
-        clip2Text.addAttribute(.foregroundColor, value: UIColor.green, range: NSRange(location: 3, length: 3))
-        clip2Text.addAttribute(.foregroundColor, value: UIColor.blue, range: NSRange(location: 6, length: 3))
-        clip2.contents = ClipboardManager.itemForAttributedString(clip2Text)
-        clip2.index = 1
+        Clip.addDefaultClip1(entity: entity, context: self.managedObjectContext)
+        Clip.addDefaultClip2(entity: entity, context: self.managedObjectContext)
         
         do {
             try self.managedObjectContext.save()

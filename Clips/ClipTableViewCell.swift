@@ -44,7 +44,7 @@ class ClipTableViewCell: UITableViewCell {
             defaultSize = 11
         }
         self.contentsLabel.font = UIFont.systemFont(ofSize: defaultSize)
-        self.contentsLabel.textColor = UIColor.black
+        self.contentsLabel.textColor = UIColor.darkText
         self.contentsImageView.image = nil
     }
     
@@ -90,7 +90,7 @@ class ClipTableViewCell: UITableViewCell {
         // remove font and attachments
         let string: NSMutableAttributedString = NSMutableAttributedString(attributedString: attributedString)
         string.removeAttribute(.font, range: NSMakeRange(0, string.length))
-        string.enumerateAttribute(NSAttributedStringKey.attachment, in: NSMakeRange(0, string.length), options: []) { (value, range, stop) in
+        string.enumerateAttribute(.attachment, in: NSMakeRange(0, string.length), options: []) { (value, range, stop) in
             if let _ = value as? NSTextAttachment {
                 string.replaceCharacters(in: range, with: "")
             }

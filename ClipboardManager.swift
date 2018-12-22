@@ -198,5 +198,18 @@ class ClipboardManager: NSObject {
         if string.count == 0 { return [:] }
         return [kUTTypePlainText as String : string]
     }
+    
+    static func stringFromItem(_ item: [String : Any]) -> String? {
+        if let rtf = ClipboardManager.textFromRtf(inItem: item) {
+            return rtf.string
+        }
+        else if let html = ClipboardManager.textFromHtml(inItem: item) {
+            return html.string
+        }
+        else if let plaintext = ClipboardManager.textFromPlaintext(inItem: item) {
+            return plaintext
+        }
+        return nil
+    }
 
 }

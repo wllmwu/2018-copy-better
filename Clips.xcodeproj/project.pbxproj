@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E0071DE721CB154D00B75D4C /* ClipsKeyboardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0071DE621CB154D00B75D4C /* ClipsKeyboardCell.xib */; };
+		E0071DE921CB171100B75D4C /* ClipsKeyboardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0071DE821CB171100B75D4C /* ClipsKeyboardCollectionViewCell.swift */; };
 		E01FFB2821B4451800C69DEF /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */; };
 		E01FFB2921B44BB500C69DEF /* Clips.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E056F8F720CEE46C0025E2FE /* Clips.xcdatamodeld */; };
 		E029B42B21B32C8F005EFEB6 /* ClipsPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E029B42A21B32C8F005EFEB6 /* ClipsPersistentContainer.swift */; };
@@ -21,6 +23,12 @@
 		E056F8F920CEE46C0025E2FE /* Clips.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E056F8F720CEE46C0025E2FE /* Clips.xcdatamodeld */; };
 		E056F8FB20CEE46E0025E2FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E056F8FA20CEE46E0025E2FE /* Assets.xcassets */; };
 		E056F8FE20CEE46E0025E2FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E056F8FC20CEE46E0025E2FE /* LaunchScreen.storyboard */; };
+		E05CAEE121CB3BA9003C3BB4 /* Clip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */; };
+		E05CAEE221CB3BA9003C3BB4 /* Clip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858C2E21A0F0240089AE53 /* Clip+CoreDataProperties.swift */; };
+		E05CAEE321CB3BAD003C3BB4 /* ClipsPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E029B42A21B32C8F005EFEB6 /* ClipsPersistentContainer.swift */; };
+		E05CAEE421CB3BB2003C3BB4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E06EC94D21C5ACA100687F9E /* Localizable.strings */; };
+		E05CAEE521CB3BB6003C3BB4 /* ClipboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA135219D37BE0015A30F /* ClipboardManager.swift */; };
+		E05CAEE621CB3BCD003C3BB4 /* Clips.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E056F8F720CEE46C0025E2FE /* Clips.xcdatamodeld */; };
 		E05EA02D21BD8BB300FC33C9 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05EA02C21BD8BB300FC33C9 /* Toast.swift */; };
 		E06AA128219D31CE0015A30F /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA127219D31CE0015A30F /* MainTableViewController.swift */; };
 		E06AA12A219D32500015A30F /* ClipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA129219D32500015A30F /* ClipTableViewCell.swift */; };
@@ -77,6 +85,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E0071DE621CB154D00B75D4C /* ClipsKeyboardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClipsKeyboardCell.xib; sourceTree = "<group>"; };
+		E0071DE821CB171100B75D4C /* ClipsKeyboardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipsKeyboardCollectionViewCell.swift; sourceTree = "<group>"; };
 		E029B42A21B32C8F005EFEB6 /* ClipsPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipsPersistentContainer.swift; sourceTree = "<group>"; };
 		E04106BA219D04F100DD68AD /* Clips Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Clips Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E04106BC219D04F100DD68AD /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
@@ -219,8 +229,10 @@
 			isa = PBXGroup;
 			children = (
 				E0A51ADF21C6CBD400FCCCA9 /* Clips Keyboard.entitlements */,
-				E0A51AD621C6CABA00FCCCA9 /* KeyboardViewController.swift */,
 				E0A51AE021C6CF9200FCCCA9 /* ClipsKeyboardView.xib */,
+				E0A51AD621C6CABA00FCCCA9 /* KeyboardViewController.swift */,
+				E0071DE621CB154D00B75D4C /* ClipsKeyboardCell.xib */,
+				E0071DE821CB171100B75D4C /* ClipsKeyboardCollectionViewCell.swift */,
 				E0EBB4D521C7482F0037E136 /* Keyboard.xcassets */,
 				E0A51AD821C6CABA00FCCCA9 /* Info.plist */,
 			);
@@ -368,6 +380,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0EBB4D621C7482F0037E136 /* Keyboard.xcassets in Resources */,
+				E05CAEE421CB3BB2003C3BB4 /* Localizable.strings in Resources */,
+				E0071DE721CB154D00B75D4C /* ClipsKeyboardCell.xib in Resources */,
 				E0A51AE121C6CF9200FCCCA9 /* ClipsKeyboardView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,6 +431,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0A51AD721C6CABA00FCCCA9 /* KeyboardViewController.swift in Sources */,
+				E05CAEE621CB3BCD003C3BB4 /* Clips.xcdatamodeld in Sources */,
+				E05CAEE321CB3BAD003C3BB4 /* ClipsPersistentContainer.swift in Sources */,
+				E05CAEE121CB3BA9003C3BB4 /* Clip+CoreDataClass.swift in Sources */,
+				E0071DE921CB171100B75D4C /* ClipsKeyboardCollectionViewCell.swift in Sources */,
+				E05CAEE521CB3BB6003C3BB4 /* ClipboardManager.swift in Sources */,
+				E05CAEE221CB3BA9003C3BB4 /* Clip+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

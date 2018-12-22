@@ -107,6 +107,7 @@ class EditClipTableViewController: UITableViewController {
         let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clips")!
         defaults.set(true, forKey: "mainNeedsUpdate")
         defaults.set(true, forKey: "widgetNeedsUpdate")
+        defaults.set(true, forKey: "keyboardNeedsUpdate")
     }
     
     @IBAction func save(_ sender: UIBarButtonItem) {

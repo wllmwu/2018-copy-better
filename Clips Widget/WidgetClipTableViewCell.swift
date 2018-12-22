@@ -48,7 +48,7 @@ class WidgetClipTableViewCell: UITableViewCell {
     
     func setContents(_ item: [String : Any]) {
         self.contents = item
-        self.contentsLabel.textColor = UIColor.black
+        self.contentsLabel.textColor = UIColor.darkText
         self.contentsImageView.image = nil
         
         if item.count == 0 {
