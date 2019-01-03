@@ -31,13 +31,23 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ev-0G-gGS">
+                        <rect key="frame" x="16" y="43" width="359" height="1"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="28P-IY-azK"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="Myd-J4-QNF" firstAttribute="leading" secondItem="vF2-fU-6dO" secondAttribute="trailing" priority="750" constant="8" id="4YU-cG-Yxg"/>
                 <constraint firstAttribute="trailing" secondItem="Myd-J4-QNF" secondAttribute="trailing" constant="16" id="8Jh-wl-8aT"/>
                 <constraint firstItem="vF2-fU-6dO" firstAttribute="leading" secondItem="64e-CN-iRw" secondAttribute="leading" constant="16" id="8b9-5g-2uQ"/>
+                <constraint firstAttribute="bottom" secondItem="9ev-0G-gGS" secondAttribute="bottom" id="CiG-JV-Fq3"/>
+                <constraint firstAttribute="trailing" secondItem="9ev-0G-gGS" secondAttribute="trailing" id="EAw-bC-wcV"/>
                 <constraint firstItem="vF2-fU-6dO" firstAttribute="centerY" secondItem="64e-CN-iRw" secondAttribute="centerY" id="ZJW-TH-AYu"/>
+                <constraint firstItem="9ev-0G-gGS" firstAttribute="leading" secondItem="64e-CN-iRw" secondAttribute="leading" constant="16" id="wtA-ca-GWW"/>
                 <constraint firstItem="Myd-J4-QNF" firstAttribute="centerY" secondItem="vF2-fU-6dO" secondAttribute="centerY" id="xtR-cV-HvU"/>
                 <constraint firstItem="Myd-J4-QNF" firstAttribute="leading" secondItem="64e-CN-iRw" secondAttribute="leading" priority="250" constant="16" id="ya6-Wd-Nf0"/>
             </constraints>

@@ -30,6 +30,8 @@
 		E05CAEE521CB3BB6003C3BB4 /* ClipboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA135219D37BE0015A30F /* ClipboardManager.swift */; };
 		E05CAEE621CB3BCD003C3BB4 /* Clips.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E056F8F720CEE46C0025E2FE /* Clips.xcdatamodeld */; };
 		E05EA02D21BD8BB300FC33C9 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05EA02C21BD8BB300FC33C9 /* Toast.swift */; };
+		E0619E0021DE871B00A69332 /* ClipsKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0619DFF21DE871B00A69332 /* ClipsKeyboardView.swift */; };
+		E0619E0621DEA3BC00A69332 /* KeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0619E0521DEA3BC00A69332 /* KeyboardButton.swift */; };
 		E06AA128219D31CE0015A30F /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA127219D31CE0015A30F /* MainTableViewController.swift */; };
 		E06AA12A219D32500015A30F /* ClipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA129219D32500015A30F /* ClipTableViewCell.swift */; };
 		E06AA130219D32DE0015A30F /* ClipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA12F219D32DE0015A30F /* ClipViewController.swift */; };
@@ -106,6 +108,8 @@
 		E05EA02F21BD949600FC33C9 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		E05EA03021BD94B200FC33C9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		E05EA03121BD94B200FC33C9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/MainInterface.strings; sourceTree = "<group>"; };
+		E0619DFF21DE871B00A69332 /* ClipsKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipsKeyboardView.swift; sourceTree = "<group>"; };
+		E0619E0521DEA3BC00A69332 /* KeyboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardButton.swift; sourceTree = "<group>"; };
 		E06AA127219D31CE0015A30F /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 		E06AA129219D32500015A30F /* ClipTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipTableViewCell.swift; sourceTree = "<group>"; };
 		E06AA12F219D32DE0015A30F /* ClipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipViewController.swift; sourceTree = "<group>"; };
@@ -230,8 +234,10 @@
 			isa = PBXGroup;
 			children = (
 				E0A51ADF21C6CBD400FCCCA9 /* Clips Keyboard.entitlements */,
-				E0A51AE021C6CF9200FCCCA9 /* ClipsKeyboardView.xib */,
 				E0A51AD621C6CABA00FCCCA9 /* KeyboardViewController.swift */,
+				E0A51AE021C6CF9200FCCCA9 /* ClipsKeyboardView.xib */,
+				E0619DFF21DE871B00A69332 /* ClipsKeyboardView.swift */,
+				E0619E0521DEA3BC00A69332 /* KeyboardButton.swift */,
 				E0071DE621CB154D00B75D4C /* ClipsKeyboardCell.xib */,
 				E0071DE821CB171100B75D4C /* ClipsKeyboardCollectionViewCell.swift */,
 				E0EBB4D521C7482F0037E136 /* Keyboard.xcassets */,
@@ -309,6 +315,7 @@
 				TargetAttributes = {
 					E04106B9219D04F100DD68AD = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1010;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -317,6 +324,7 @@
 					};
 					E056F8EC20CEE46C0025E2FE = {
 						CreatedOnToolsVersion = 9.3.1;
+						LastSwiftMigration = 1010;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -431,11 +439,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0619E0621DEA3BC00A69332 /* KeyboardButton.swift in Sources */,
 				E0A51AD721C6CABA00FCCCA9 /* KeyboardViewController.swift in Sources */,
 				E05CAEE621CB3BCD003C3BB4 /* Clips.xcdatamodeld in Sources */,
 				E05CAEE321CB3BAD003C3BB4 /* ClipsPersistentContainer.swift in Sources */,
 				E07E7FF121CEB0C100F06B8C /* String+HTML.swift in Sources */,
 				E05CAEE121CB3BA9003C3BB4 /* Clip+CoreDataClass.swift in Sources */,
+				E0619E0021DE871B00A69332 /* ClipsKeyboardView.swift in Sources */,
 				E0071DE921CB171100B75D4C /* ClipsKeyboardCollectionViewCell.swift in Sources */,
 				E05CAEE521CB3BB6003C3BB4 /* ClipboardManager.swift in Sources */,
 				E05CAEE221CB3BA9003C3BB4 /* Clip+CoreDataProperties.swift in Sources */,
@@ -507,7 +517,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Widget/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -516,7 +526,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.williamwu.Clips.Clips-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -529,7 +539,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Widget/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -538,7 +548,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.williamwu.Clips.Clips-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -669,14 +679,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "$(SRCROOT)/Clips/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.williamwu.Clips;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -691,14 +701,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "$(SRCROOT)/Clips/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.williamwu.Clips;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -711,7 +721,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Keyboard/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -735,7 +745,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Keyboard/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

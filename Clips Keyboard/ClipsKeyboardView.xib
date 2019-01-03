@@ -10,20 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KeyboardViewController" customModule="Clips_Keyboard" customModuleProvider="target">
-            <connections>
-                <outlet property="backspaceKey" destination="aeo-Xp-SNY" id="Txt-e7-WAV"/>
-                <outlet property="collectionView" destination="8z4-Li-KCR" id="rE0-ZF-s7N"/>
-                <outlet property="lastCopiedLabel" destination="hg9-Pr-SgV" id="po6-9L-TFS"/>
-                <outlet property="nextColumnButton" destination="o3J-Q6-hpE" id="mrZ-nq-lLk"/>
-                <outlet property="nextKeyboardButton" destination="bas-aS-K5R" id="xVo-Af-tos"/>
-                <outlet property="previousColumnButton" destination="pHs-tw-hN9" id="8uv-W3-dFs"/>
-                <outlet property="spaceKey" destination="Ec3-KT-jiv" id="Wya-sH-T3W"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="260"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ClipsKeyboardView" customModule="Clips_Keyboard" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="278"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="75w-yv-2I7">
@@ -40,7 +30,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gN3-kZ-ZNV">
                             <rect key="frame" x="6" y="9" width="269" height="30"/>
                             <connections>
-                                <action selector="insertLastCopied:" destination="-1" eventType="touchUpInside" id="0YP-P6-kL6"/>
+                                <action selector="addLastCopied:" destination="iN0-l3-epB" eventType="touchUpInside" id="aAY-pf-Xmx"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last copied:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jes-DN-0mn">
@@ -58,7 +48,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vEp-c9-L75">
                             <rect key="frame" x="276" y="9" width="93" height="30"/>
                             <connections>
-                                <action selector="addLastCopied:" destination="-1" eventType="touchUpInside" id="mey-8a-uxv"/>
+                                <action selector="insertLastCopied:" destination="iN0-l3-epB" eventType="touchUpInside" id="Gqt-KL-MZK"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add to list" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qp0-G3-Iw7">
@@ -90,16 +80,25 @@
                         <constraint firstItem="ecY-mG-zYY" firstAttribute="leading" secondItem="gN3-kZ-ZNV" secondAttribute="trailing" id="w1k-xy-WLk"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bas-aS-K5R">
-                    <rect key="frame" x="54" y="212" width="42" height="42"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bas-aS-K5R" customClass="KeyboardButton" customModule="Clips_Keyboard" customModuleProvider="target">
+                    <rect key="frame" x="54" y="230" width="42" height="42"/>
                     <color key="backgroundColor" red="0.63469039589999998" green="0.66973983510000001" blue="0.72409137459999995" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="bas-aS-K5R" secondAttribute="height" multiplier="1:1" id="vl5-8T-suk"/>
                     </constraints>
                     <state key="normal" image="Globe"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isControlKey" value="YES"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                            <color key="value" red="0.63469039589999998" green="0.66973983510000001" blue="0.72409137459999995" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
+                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ec3-KT-jiv">
-                    <rect key="frame" x="102" y="212" width="171" height="42"/>
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ec3-KT-jiv" customClass="KeyboardButton" customModule="Clips_Keyboard" customModuleProvider="target">
+                    <rect key="frame" x="102" y="230" width="171" height="42"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="42" id="wv5-xq-RbZ"/>
@@ -107,18 +106,42 @@
                     <state key="normal" title="space">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isControlKey" value="NO"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
+                            <color key="value" red="0.63469039589999998" green="0.66973983510000001" blue="0.72409137459999995" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="space:" destination="iN0-l3-epB" eventType="touchUpInside" id="wAI-Fa-3iH"/>
+                    </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aeo-Xp-SNY">
-                    <rect key="frame" x="279" y="212" width="42" height="42"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aeo-Xp-SNY" customClass="KeyboardButton" customModule="Clips_Keyboard" customModuleProvider="target">
+                    <rect key="frame" x="279" y="230" width="42" height="42"/>
                     <color key="backgroundColor" red="0.63469039585012088" green="0.66973983514638735" blue="0.72409137456352402" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="aeo-Xp-SNY" secondAttribute="height" multiplier="1:1" id="EU1-c7-2F6"/>
                     </constraints>
                     <state key="normal" image="Backspace0"/>
                     <state key="selected" image="Backspace1"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isControlKey" value="YES"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                            <color key="value" red="0.63469039589999998" green="0.66973983510000001" blue="0.72409137459999995" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
+                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="backspace:" destination="iN0-l3-epB" eventType="touchUpInside" id="BVk-vW-QoC"/>
+                    </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHs-tw-hN9">
-                    <rect key="frame" x="6" y="212" width="42" height="42"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHs-tw-hN9" customClass="KeyboardButton" customModule="Clips_Keyboard" customModuleProvider="target">
+                    <rect key="frame" x="6" y="230" width="42" height="42"/>
                     <color key="backgroundColor" red="0.63469039589999998" green="0.66973983510000001" blue="0.72409137459999995" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="pHs-tw-hN9" secondAttribute="height" multiplier="1:1" id="yBQ-ap-H4P"/>
@@ -127,9 +150,21 @@
                     <state key="normal" title="⬅︎">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isControlKey" value="YES"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                            <color key="value" red="0.63469039589999998" green="0.66973983510000001" blue="0.72409137459999995" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
+                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="scrollToPreviousColumn:" destination="iN0-l3-epB" eventType="touchUpInside" id="Epr-dd-0M4"/>
+                    </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3J-Q6-hpE">
-                    <rect key="frame" x="327" y="212" width="42" height="42"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3J-Q6-hpE" customClass="KeyboardButton" customModule="Clips_Keyboard" customModuleProvider="target">
+                    <rect key="frame" x="327" y="230" width="42" height="42"/>
                     <color key="backgroundColor" red="0.63469039589999998" green="0.66973983510000001" blue="0.72409137459999995" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="o3J-Q6-hpE" secondAttribute="height" multiplier="1:1" id="qdt-Pi-WVL"/>
@@ -138,19 +173,34 @@
                     <state key="normal" title="➡︎">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isControlKey" value="YES"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                            <color key="value" red="0.63469039589999998" green="0.66973983510000001" blue="0.72409137459999995" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
+                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="scrollToNextColumn:" destination="iN0-l3-epB" eventType="touchUpInside" id="e63-5N-NLT"/>
+                    </connections>
                 </button>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="8z4-Li-KCR">
-                    <rect key="frame" x="0.0" y="48" width="375" height="158"/>
+                    <rect key="frame" x="0.0" y="48" width="375" height="176"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="K6Q-aB-L1E">
-                        <size key="itemSize" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" priority="750" constant="176" id="Q3I-Np-XWd"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="K6Q-aB-L1E">
+                        <size key="itemSize" width="375" height="44"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="xAR-X1-GKY"/>
-                        <outlet property="delegate" destination="-1" id="7By-o0-abp"/>
+                        <outlet property="dataSource" destination="iN0-l3-epB" id="neV-MQ-xXy"/>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="H2D-cN-b17"/>
                     </connections>
                 </collectionView>
             </subviews>
@@ -180,6 +230,16 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="backspaceKey" destination="aeo-Xp-SNY" id="iUg-Ah-L60"/>
+                <outlet property="collectionView" destination="8z4-Li-KCR" id="JJE-E7-XFw"/>
+                <outlet property="collectionViewLayout" destination="K6Q-aB-L1E" id="oSO-H2-MyR"/>
+                <outlet property="lastCopiedLabel" destination="hg9-Pr-SgV" id="DWx-nA-bPb"/>
+                <outlet property="nextColumnButton" destination="o3J-Q6-hpE" id="YUM-6X-Rs4"/>
+                <outlet property="nextKeyboardButton" destination="bas-aS-K5R" id="0B3-Ze-oKo"/>
+                <outlet property="previousColumnButton" destination="pHs-tw-hN9" id="egP-d2-tvi"/>
+                <outlet property="spaceKey" destination="Ec3-KT-jiv" id="MLB-Li-vCz"/>
+            </connections>
             <point key="canvasLocation" x="40.799999999999997" y="46.776611694152926"/>
         </view>
     </objects>

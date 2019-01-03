@@ -62,16 +62,16 @@ class ClipboardManager: NSObject {
     
     static func copyToPasteboard(item: [String : Any]) {
         var itemVar: [String : Any] = item
-        /*if let png = itemVar[kUTTypePNG as String] as? UIImage {
-            if let pngData = UIImagePNGRepresentation(png) {
+        if let png = itemVar[kUTTypePNG as String] as? UIImage {
+            if let pngData = png.pngData() {
                 itemVar[kUTTypePNG as String] = pngData
             }
         }
         if let jpg = itemVar[kUTTypeJPEG as String] as? UIImage {
-            if let jpgData = UIImageJPEGRepresentation(jpg, 1) {
+            if let jpgData = jpg.jpegData(compressionQuality: 1) {
                 itemVar[kUTTypeJPEG as String] = jpgData
             }
-        }*/
+        }
         UIPasteboard.general.items = [itemVar]
     }
     
@@ -200,14 +200,14 @@ class ClipboardManager: NSObject {
     }
     
     static func stringFromItem(_ item: [String : Any]) -> String? {
-        if let rtf = ClipboardManager.textFromRtf(inItem: item) {
+        if let plaintext = ClipboardManager.textFromPlaintext(inItem: item) {
+            return plaintext
+        }
+        else if let rtf = ClipboardManager.textFromRtf(inItem: item) {
             return rtf.string
         }
         else if let html = ClipboardManager.textFromHtml(inItem: item) {
             return html.string
-        }
-        else if let plaintext = ClipboardManager.textFromPlaintext(inItem: item) {
-            return plaintext
         }
         return nil
     }
