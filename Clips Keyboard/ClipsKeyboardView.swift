@@ -18,6 +18,7 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     
     private var titles: [String?] = []
     private var strings: [String] = []
+    private var indices: [Int] = []
     private var lastCopied: String?
     private var pasteboardChangeCount: Int = 0
     
@@ -29,6 +30,9 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     @IBOutlet var spaceKey: KeyboardButton!
     @IBOutlet var backspaceKey: KeyboardButton!
     @IBOutlet var nextColumnButton: KeyboardButton!
+    
+    @IBOutlet var spaceKeyToNextKeyboardButtonConstraint: NSLayoutConstraint!
+    @IBOutlet var spaceKeyToPreviousColumnButtonConstraint: NSLayoutConstraint!
     
     weak var delegate: ClipsKeyboardViewDelegate?
 
@@ -62,16 +66,18 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
         
         self.collectionView.register(UINib(nibName: "ClipsKeyboardCell", bundle: nil), forCellWithReuseIdentifier: "ClipsKeyboardCell")
         self.collectionViewLayout.itemSize = CGSize(width: UIScreen.main.bounds.size.width, height: 44)
-        self.setupKeyStyle(self.previousColumnButton)
-        self.setupKeyStyle(self.nextKeyboardButton)
-        self.setupKeyStyle(self.spaceKey)
-        self.setupKeyStyle(self.backspaceKey)
-        self.setupKeyStyle(self.nextColumnButton)
-        self.setNextKeyboardButtonVisible(false)
+        //self.setNextKeyboardButtonVisible(false)
     }
     
     func setNextKeyboardButtonVisible(_ visible: Bool) {
-        
+        if visible {
+            self.spaceKeyToNextKeyboardButtonConstraint.priority = .defaultHigh
+            self.spaceKeyToPreviousColumnButtonConstraint.priority = .defaultLow
+        }
+        else {
+            self.spaceKeyToNextKeyboardButtonConstraint.priority = .defaultLow
+            self.spaceKeyToPreviousColumnButtonConstraint.priority = .defaultHigh
+        }
     }
     
     func loadData(clips: [Clip]) {
@@ -91,14 +97,12 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     // MARK: - Actions
     
     @IBAction func insertLastCopied(_ sender: UIButton) {
-        self.showButtonTapFeedback(forTopButton: sender)
         if let string = self.lastCopied {
             self.delegate?.insertText(string)
         }
     }
     
     @IBAction func addLastCopied(_ sender: UIButton) {
-        self.showButtonTapFeedback(forTopButton: sender)
         if let string = self.lastCopied {
             self.delegate?.addLastCopied(string)
         }
@@ -122,7 +126,7 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     
     @IBAction func scrollToNextColumn(_ sender: UIButton) {
         let col: Int = self.currentColumn()
-        if col < self.strings.count / 4 {
+        if col < (self.strings.count - 1) / 4 {
             let indexPath: IndexPath = IndexPath(row: (col + 1) * 4, section: 0)
             self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
@@ -130,41 +134,24 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     
     // MARK: - Private instance methods
     
-    private func setupKeyStyle(_ button: UIButton) {
-        button.layer.cornerRadius = 5
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOpacity = 0.25
-        button.layer.shadowRadius = 1
-        button.layer.shadowOffset = CGSize(width: 0, height: 2)
-        button.layer.masksToBounds = false
-    }
-    
-    private func showButtonTapFeedback(forTopButton button: UIButton) {
-        button.backgroundColor = UIColor.lightGray
-        button.layer.cornerRadius = 4
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            button.backgroundColor = nil
-        }
-    }
-    
     private func extractTitlesAndStrings(from clips: [Clip]) {
+        self.titles = []
+        self.strings = []
         for i in 0..<clips.count {
             if let string = ClipboardManager.stringFromItem(clips[i].contents) {
                 self.titles.append(clips[i].title)
                 self.strings.append(string)
+                self.indices.append(Int(clips[i].index))
             }
         }
     }
     
     private func currentColumn() -> Int {
         let indexPaths: [IndexPath] = self.collectionView.indexPathsForVisibleItems
-        var maxIndex: Int = 0
-        for indexPath in indexPaths {
-            if maxIndex < indexPath.row {
-                maxIndex = indexPath.row
-            }
+        if let indexPath = indexPaths.first {
+            return indexPath.row / 4
         }
-        return maxIndex / 4
+        return 0
     }
     
     // MARK: - Collection view data source
@@ -175,12 +162,24 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ClipsKeyboardCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ClipsKeyboardCell", for: indexPath) as! ClipsKeyboardCollectionViewCell
-        cell.setup(title: self.titles[indexPath.row], contents: self.strings[indexPath.row])
+        cell.setup(title: self.titles[indexPath.row], contents: self.strings[indexPath.row], index: self.indices[indexPath.row])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.delegate?.insertText(self.strings[indexPath.row])
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        let cell: ClipsKeyboardCollectionViewCell = collectionView.cellForItem(at: indexPath) as! ClipsKeyboardCollectionViewCell
+        cell.backgroundColor = UIColor.lightGray
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        let cell: ClipsKeyboardCollectionViewCell = collectionView.cellForItem(at: indexPath) as! ClipsKeyboardCollectionViewCell
+        UIView.animate(withDuration: 0.2) {
+            cell.backgroundColor = nil
+        }
     }
     
 }

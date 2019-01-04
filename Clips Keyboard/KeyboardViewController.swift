@@ -26,6 +26,7 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
         super.viewDidLoad()
         
         self.loadInterface()
+        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardViewController.deleteClip(_:)), name: Notification.Name("DeleteClip"), object: nil)
         
         // Perform custom UI setup here
         /*self.nextKeyboardButton = UIButton(type: .system)
@@ -178,6 +179,23 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
     private func orderUpdates() {
         self.defaults.set(true, forKey: "mainNeedsUpdate")
         self.defaults.set(true, forKey: "widgetNeedsUpdate")
+    }
+    
+    @objc func deleteClip(_ notification: Notification) {
+        guard let index: Int = notification.userInfo?["index"] as? Int else {
+            return
+        }
+        
+        let clip: Clip = self.clips[index]
+        self.managedObjectContext.delete(clip)
+        self.clips.remove(at: index)
+        
+        for i in 0..<self.clips.count {
+            self.clips[i].index = Int16(i)
+        }
+        
+        self.saveContext()
+        self.keyboardView.loadData(clips: self.clips)
     }
     
     // MARK: - Clips keyboard view delegate

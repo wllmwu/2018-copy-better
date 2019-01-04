@@ -10,37 +10,40 @@ import UIKit
 
 class ClipsKeyboardCollectionViewCell: UICollectionViewCell {
     
+    private var index: Int = 0
+    
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var contentsLabel: UILabel!
+    @IBOutlet var xButton: UIButton!
+    @IBOutlet var deleteButton: UIButton!
+    @IBOutlet var cancelButton: UIButton!
     
     @IBOutlet var contentsLabelLeadingToTitleLabel: NSLayoutConstraint!
     @IBOutlet var contentsLabelLeadingToEdge: NSLayoutConstraint!
+    @IBOutlet var contentsLabelTrailingToXButton: NSLayoutConstraint!
+    @IBOutlet var contentsLabelTrailingToDeleteButton: NSLayoutConstraint!
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.resetConstraints()
+        self.resetLabels()
     }
     
-    private func resetConstraints() {
+    private func resetLabels() {
         self.contentsLabelLeadingToTitleLabel.priority = .defaultHigh
         self.contentsLabelLeadingToEdge.priority = .defaultLow
     }
     
-    /*func setup(clip: Clip) {
-        self.reset()
-        if let title = clip.title {
-            self.titleLabel.text = title
-        }
-        else {
-            self.titleLabel.text = nil
-            self.contentsLabelLeadingToTitleLabel.priority = .defaultLow
-            self.contentsLabelLeadingToEdge.priority = .defaultHigh
-        }
-        self.setContents(clip.contents)
-    }*/
+    private func resetButtons() {
+        self.deleteButton.isHidden = true
+        self.cancelButton.isHidden = true
+        self.contentsLabelTrailingToXButton.priority = .defaultHigh
+        self.contentsLabelTrailingToDeleteButton.priority = .defaultLow
+        self.xButton.isHidden = false
+    }
     
-    func setup(title clipTitle: String?, contents: String) {
-        self.resetConstraints()
+    func setup(title clipTitle: String?, contents: String, index: Int) {
+        self.resetLabels()
+        self.resetButtons()
         if let title = clipTitle {
             self.titleLabel.text = title
         }
@@ -50,55 +53,25 @@ class ClipsKeyboardCollectionViewCell: UICollectionViewCell {
             self.contentsLabelLeadingToEdge.priority = .defaultHigh
         }
         self.contentsLabel.text = contents
+        self.index = index
     }
     
-    /*private func setContents(_ item: [String : Any]) {
-        if item.count == 0 {
-            self.contentsLabel.text = NSLocalizedString("(Empty)", comment: "empty clip contents placeholder")
-            self.contentsLabel.textColor = UIColor.gray
-            return
-        }
-        
-        let imageViewSize: CGSize = self.contentsImageView.frame.size
-        DispatchQueue.global(qos: .utility).async {
-            if let rtf = ClipboardManager.textFromRtf(inItem: item) {
-                DispatchQueue.main.async {
-                    self.setContentsLabelAttributedText(rtf)
-                }
-            }
-            else if let html = ClipboardManager.textFromHtml(inItem: item) {
-                DispatchQueue.main.async {
-                    self.setContentsLabelAttributedText(html)
-                }
-            }
-            else if let plaintext = ClipboardManager.textFromPlaintext(inItem: item) {
-                DispatchQueue.main.async {
-                    self.contentsLabel.text = plaintext
-                }
-            }
-            else if let image = ClipboardManager.imageFromImage(inItem: item, maxWidth: imageViewSize.width, maxHeight: imageViewSize.height) {
-                DispatchQueue.main.async {
-                    self.contentsLabel.text = ""
-                    self.contentsImageView.image = image
-                }
-            }
-            else {
-                print("ClipsKeyboardCollectionViewCell: couldn't find usable data representations.")
-                self.contentsLabel.text = "\u{fffd}"
-            }
-        }
+    // MARK: - Actions
+    
+    @IBAction func xTapped(_ sender: UIButton) {
+        self.xButton.isHidden = true
+        self.contentsLabelTrailingToXButton.priority = .defaultLow
+        self.contentsLabelTrailingToDeleteButton.priority = .defaultHigh
+        self.deleteButton.isHidden = false
+        self.cancelButton.isHidden = false
     }
     
-    private func setContentsLabelAttributedText(_ attributedString: NSAttributedString) {
-        // remove font and attachments
-        let string: NSMutableAttributedString = NSMutableAttributedString(attributedString: attributedString)
-        string.removeAttribute(.font, range: NSMakeRange(0, string.length))
-        string.enumerateAttribute(.attachment, in: NSMakeRange(0, string.length), options: []) { (value, range, stop) in
-            if let _ = value as? NSTextAttachment {
-                string.replaceCharacters(in: range, with: "")
-            }
-        }
-        self.contentsLabel.attributedText = string
-    }*/
+    @IBAction func deleteTapped(_ sender: UIButton) {
+        NotificationCenter.default.post(name: Notification.Name("DeleteClip"), object: nil, userInfo: ["index" : self.index])
+    }
+    
+    @IBAction func cancelTapped(_ sender: UIButton) {
+        self.resetButtons()
+    }
     
 }

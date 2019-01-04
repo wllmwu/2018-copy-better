@@ -20,39 +20,39 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ecY-mG-zYY">
-                            <rect key="frame" x="275" y="12" width="1" height="24"/>
+                            <rect key="frame" x="276" y="12" width="1" height="24"/>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="24" id="8h9-ez-Zlx"/>
                                 <constraint firstAttribute="width" constant="1" id="t7o-lH-afz"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gN3-kZ-ZNV">
-                            <rect key="frame" x="6" y="9" width="269" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gN3-kZ-ZNV" customClass="KeyboardUpperButton" customModule="Clips_Keyboard" customModuleProvider="target">
+                            <rect key="frame" x="6" y="7" width="271" height="34"/>
                             <connections>
-                                <action selector="addLastCopied:" destination="iN0-l3-epB" eventType="touchUpInside" id="aAY-pf-Xmx"/>
+                                <action selector="insertLastCopied:" destination="iN0-l3-epB" eventType="touchUpInside" id="qI2-lj-zrC"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last copied:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jes-DN-0mn">
-                            <rect key="frame" x="14" y="13" width="93.5" height="22"/>
+                            <rect key="frame" x="14" y="11" width="93.5" height="26"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hg9-Pr-SgV">
-                            <rect key="frame" x="115.5" y="13" width="151.5" height="22"/>
+                            <rect key="frame" x="115.5" y="11" width="153.5" height="26"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vEp-c9-L75">
-                            <rect key="frame" x="276" y="9" width="93" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vEp-c9-L75" customClass="KeyboardUpperButton" customModule="Clips_Keyboard" customModuleProvider="target">
+                            <rect key="frame" x="276" y="7" width="93" height="34"/>
                             <connections>
-                                <action selector="insertLastCopied:" destination="iN0-l3-epB" eventType="touchUpInside" id="Gqt-KL-MZK"/>
+                                <action selector="addLastCopied:" destination="iN0-l3-epB" eventType="touchUpInside" id="EZz-n3-Bx0"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add to list" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qp0-G3-Iw7">
-                            <rect key="frame" x="284" y="13" width="77" height="22"/>
+                            <rect key="frame" x="284" y="11" width="77" height="26"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -63,7 +63,7 @@
                         <constraint firstItem="hg9-Pr-SgV" firstAttribute="trailing" secondItem="gN3-kZ-ZNV" secondAttribute="trailing" constant="-8" id="3G9-wF-EMQ"/>
                         <constraint firstAttribute="trailing" secondItem="vEp-c9-L75" secondAttribute="trailing" constant="6" id="ADX-pI-3t7"/>
                         <constraint firstItem="vEp-c9-L75" firstAttribute="bottom" secondItem="qp0-G3-Iw7" secondAttribute="bottom" constant="4" id="JaU-4r-xaq"/>
-                        <constraint firstItem="vEp-c9-L75" firstAttribute="leading" secondItem="ecY-mG-zYY" secondAttribute="trailing" id="KKv-zY-JkK"/>
+                        <constraint firstItem="vEp-c9-L75" firstAttribute="leading" secondItem="ecY-mG-zYY" secondAttribute="leading" id="KKv-zY-JkK"/>
                         <constraint firstItem="ecY-mG-zYY" firstAttribute="centerY" secondItem="gN3-kZ-ZNV" secondAttribute="centerY" id="RGG-Jc-nGK"/>
                         <constraint firstItem="Jes-DN-0mn" firstAttribute="bottom" secondItem="gN3-kZ-ZNV" secondAttribute="bottom" constant="-4" id="TWx-CT-6AV"/>
                         <constraint firstItem="ecY-mG-zYY" firstAttribute="centerY" secondItem="75w-yv-2I7" secondAttribute="centerY" id="UxO-E0-sxK"/>
@@ -77,71 +77,55 @@
                         <constraint firstAttribute="height" constant="48" id="d7N-cT-jCC"/>
                         <constraint firstItem="vEp-c9-L75" firstAttribute="top" secondItem="qp0-G3-Iw7" secondAttribute="top" constant="-4" id="jh7-5d-mbm"/>
                         <constraint firstItem="gN3-kZ-ZNV" firstAttribute="leading" secondItem="Jes-DN-0mn" secondAttribute="leading" constant="-8" id="uvl-hN-Spj"/>
-                        <constraint firstItem="ecY-mG-zYY" firstAttribute="leading" secondItem="gN3-kZ-ZNV" secondAttribute="trailing" id="w1k-xy-WLk"/>
+                        <constraint firstItem="ecY-mG-zYY" firstAttribute="trailing" secondItem="gN3-kZ-ZNV" secondAttribute="trailing" id="w1k-xy-WLk"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bas-aS-K5R" customClass="KeyboardButton" customModule="Clips_Keyboard" customModuleProvider="target">
-                    <rect key="frame" x="54" y="230" width="42" height="42"/>
+                    <rect key="frame" x="56" y="228" width="44" height="44"/>
                     <color key="backgroundColor" red="0.63469039589999998" green="0.66973983510000001" blue="0.72409137459999995" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="bas-aS-K5R" secondAttribute="height" multiplier="1:1" id="vl5-8T-suk"/>
                     </constraints>
+                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                     <state key="normal" image="Globe"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isControlKey" value="YES"/>
-                        <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
-                            <color key="value" red="0.63469039589999998" green="0.66973983510000001" blue="0.72409137459999995" alpha="1" colorSpace="calibratedRGB"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
-                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ec3-KT-jiv" customClass="KeyboardButton" customModule="Clips_Keyboard" customModuleProvider="target">
-                    <rect key="frame" x="102" y="230" width="171" height="42"/>
+                    <rect key="frame" x="106" y="228" width="163" height="44"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="42" id="wv5-xq-RbZ"/>
+                        <constraint firstAttribute="height" constant="44" id="wv5-xq-RbZ"/>
                     </constraints>
                     <state key="normal" title="space">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                     </state>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isControlKey" value="NO"/>
-                        <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
-                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
-                            <color key="value" red="0.63469039589999998" green="0.66973983510000001" blue="0.72409137459999995" alpha="1" colorSpace="calibratedRGB"/>
-                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="space:" destination="iN0-l3-epB" eventType="touchUpInside" id="wAI-Fa-3iH"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aeo-Xp-SNY" customClass="KeyboardButton" customModule="Clips_Keyboard" customModuleProvider="target">
-                    <rect key="frame" x="279" y="230" width="42" height="42"/>
+                    <rect key="frame" x="275" y="228" width="44" height="44"/>
                     <color key="backgroundColor" red="0.63469039585012088" green="0.66973983514638735" blue="0.72409137456352402" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="aeo-Xp-SNY" secondAttribute="height" multiplier="1:1" id="EU1-c7-2F6"/>
                     </constraints>
+                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                     <state key="normal" image="Backspace0"/>
-                    <state key="selected" image="Backspace1"/>
+                    <state key="highlighted" image="Backspace1"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isControlKey" value="YES"/>
-                        <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
-                            <color key="value" red="0.63469039589999998" green="0.66973983510000001" blue="0.72409137459999995" alpha="1" colorSpace="calibratedRGB"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
-                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="backspace:" destination="iN0-l3-epB" eventType="touchUpInside" id="BVk-vW-QoC"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHs-tw-hN9" customClass="KeyboardButton" customModule="Clips_Keyboard" customModuleProvider="target">
-                    <rect key="frame" x="6" y="230" width="42" height="42"/>
+                    <rect key="frame" x="6" y="228" width="44" height="44"/>
                     <color key="backgroundColor" red="0.63469039589999998" green="0.66973983510000001" blue="0.72409137459999995" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="pHs-tw-hN9" secondAttribute="height" multiplier="1:1" id="yBQ-ap-H4P"/>
@@ -152,19 +136,13 @@
                     </state>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isControlKey" value="YES"/>
-                        <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
-                            <color key="value" red="0.63469039589999998" green="0.66973983510000001" blue="0.72409137459999995" alpha="1" colorSpace="calibratedRGB"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
-                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="scrollToPreviousColumn:" destination="iN0-l3-epB" eventType="touchUpInside" id="Epr-dd-0M4"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3J-Q6-hpE" customClass="KeyboardButton" customModule="Clips_Keyboard" customModuleProvider="target">
-                    <rect key="frame" x="327" y="230" width="42" height="42"/>
+                    <rect key="frame" x="325" y="228" width="44" height="44"/>
                     <color key="backgroundColor" red="0.63469039589999998" green="0.66973983510000001" blue="0.72409137459999995" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="o3J-Q6-hpE" secondAttribute="height" multiplier="1:1" id="qdt-Pi-WVL"/>
@@ -175,19 +153,13 @@
                     </state>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isControlKey" value="YES"/>
-                        <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
-                            <color key="value" red="0.63469039589999998" green="0.66973983510000001" blue="0.72409137459999995" alpha="1" colorSpace="calibratedRGB"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
-                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="scrollToNextColumn:" destination="iN0-l3-epB" eventType="touchUpInside" id="e63-5N-NLT"/>
                     </connections>
                 </button>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="8z4-Li-KCR">
-                    <rect key="frame" x="0.0" y="48" width="375" height="176"/>
+                    <rect key="frame" x="0.0" y="48" width="375" height="174"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" priority="750" constant="176" id="Q3I-Np-XWd"/>
@@ -205,7 +177,7 @@
                 </collectionView>
             </subviews>
             <constraints>
-                <constraint firstItem="Ec3-KT-jiv" firstAttribute="leading" secondItem="bas-aS-K5R" secondAttribute="trailing" constant="6" id="33e-CL-XeS"/>
+                <constraint firstItem="Ec3-KT-jiv" firstAttribute="leading" secondItem="bas-aS-K5R" secondAttribute="trailing" priority="750" constant="6" id="33e-CL-XeS"/>
                 <constraint firstItem="8z4-Li-KCR" firstAttribute="top" secondItem="75w-yv-2I7" secondAttribute="bottom" id="352-aZ-stj"/>
                 <constraint firstItem="75w-yv-2I7" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="75k-0P-jhO"/>
                 <constraint firstItem="aeo-Xp-SNY" firstAttribute="height" secondItem="Ec3-KT-jiv" secondAttribute="height" id="8u4-vN-FJM"/>
@@ -213,6 +185,7 @@
                 <constraint firstItem="75w-yv-2I7" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="CUB-AC-AUc"/>
                 <constraint firstItem="bas-aS-K5R" firstAttribute="leading" secondItem="pHs-tw-hN9" secondAttribute="trailing" constant="6" id="Eyx-m6-6az"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="8z4-Li-KCR" secondAttribute="trailing" id="HUe-sl-tfx"/>
+                <constraint firstItem="Ec3-KT-jiv" firstAttribute="leading" secondItem="pHs-tw-hN9" secondAttribute="trailing" priority="250" constant="6" id="IsK-NF-Xjb"/>
                 <constraint firstItem="aeo-Xp-SNY" firstAttribute="leading" secondItem="Ec3-KT-jiv" secondAttribute="trailing" constant="6" id="KEt-or-1RE"/>
                 <constraint firstItem="Ec3-KT-jiv" firstAttribute="bottom" secondItem="bas-aS-K5R" secondAttribute="bottom" id="LCh-xI-f29"/>
                 <constraint firstItem="pHs-tw-hN9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="6" id="NAb-dR-8ut"/>
@@ -239,6 +212,8 @@
                 <outlet property="nextKeyboardButton" destination="bas-aS-K5R" id="0B3-Ze-oKo"/>
                 <outlet property="previousColumnButton" destination="pHs-tw-hN9" id="egP-d2-tvi"/>
                 <outlet property="spaceKey" destination="Ec3-KT-jiv" id="MLB-Li-vCz"/>
+                <outlet property="spaceKeyToNextKeyboardButtonConstraint" destination="33e-CL-XeS" id="3MS-6T-GZV"/>
+                <outlet property="spaceKeyToPreviousColumnButtonConstraint" destination="IsK-NF-Xjb" id="O7c-6S-Qfd"/>
             </connections>
             <point key="canvasLocation" x="40.799999999999997" y="46.776611694152926"/>
         </view>

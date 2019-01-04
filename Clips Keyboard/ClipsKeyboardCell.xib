@@ -21,12 +21,15 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vF2-fU-6dO">
                         <rect key="frame" x="16" y="11.5" width="37" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="hYS-2s-i4V"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Contents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Myd-J4-QNF">
-                        <rect key="frame" x="61" y="11.5" width="298" height="21"/>
+                        <rect key="frame" x="61" y="11.5" width="262" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -38,27 +41,77 @@
                             <constraint firstAttribute="height" constant="1" id="28P-IY-azK"/>
                         </constraints>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gDK-kF-5pq">
+                        <rect key="frame" x="323" y="0.0" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="uGK-kI-uBx"/>
+                            <constraint firstAttribute="width" secondItem="gDK-kF-5pq" secondAttribute="height" multiplier="1:1" id="uQh-Fb-Plf"/>
+                        </constraints>
+                        <color key="tintColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <state key="normal" image="X"/>
+                        <connections>
+                            <action selector="xTapped:" destination="64e-CN-iRw" eventType="touchUpInside" id="yOB-j5-N7b"/>
+                        </connections>
+                    </button>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="faH-6Y-ydd">
+                        <rect key="frame" x="263" y="7" width="48" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="vDQ-9d-yPA"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                        <state key="normal" title="Delete">
+                            <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="deleteTapped:" destination="64e-CN-iRw" eventType="touchUpInside" id="TmM-MX-Bkw"/>
+                        </connections>
+                    </button>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Npq-xe-iFe">
+                        <rect key="frame" x="319" y="7" width="48" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="PW2-qU-sc7"/>
+                        </constraints>
+                        <state key="normal" title="Cancel"/>
+                        <connections>
+                            <action selector="cancelTapped:" destination="64e-CN-iRw" eventType="touchUpInside" id="hIe-y0-fG4"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="Npq-xe-iFe" secondAttribute="trailing" constant="8" id="25E-aD-CdD"/>
                 <constraint firstItem="Myd-J4-QNF" firstAttribute="leading" secondItem="vF2-fU-6dO" secondAttribute="trailing" priority="750" constant="8" id="4YU-cG-Yxg"/>
-                <constraint firstAttribute="trailing" secondItem="Myd-J4-QNF" secondAttribute="trailing" constant="16" id="8Jh-wl-8aT"/>
                 <constraint firstItem="vF2-fU-6dO" firstAttribute="leading" secondItem="64e-CN-iRw" secondAttribute="leading" constant="16" id="8b9-5g-2uQ"/>
+                <constraint firstItem="gDK-kF-5pq" firstAttribute="leading" secondItem="Myd-J4-QNF" secondAttribute="trailing" priority="750" id="CBv-Iz-waK"/>
                 <constraint firstAttribute="bottom" secondItem="9ev-0G-gGS" secondAttribute="bottom" id="CiG-JV-Fq3"/>
+                <constraint firstItem="faH-6Y-ydd" firstAttribute="leading" secondItem="Myd-J4-QNF" secondAttribute="trailing" priority="250" constant="8" id="DgM-og-ayg"/>
                 <constraint firstAttribute="trailing" secondItem="9ev-0G-gGS" secondAttribute="trailing" id="EAw-bC-wcV"/>
+                <constraint firstAttribute="trailing" secondItem="gDK-kF-5pq" secondAttribute="trailing" constant="8" id="JU4-qy-Hel"/>
+                <constraint firstItem="faH-6Y-ydd" firstAttribute="centerY" secondItem="vF2-fU-6dO" secondAttribute="centerY" id="P8v-pP-5Qn"/>
+                <constraint firstItem="Npq-xe-iFe" firstAttribute="centerY" secondItem="vF2-fU-6dO" secondAttribute="centerY" id="REP-vW-qLQ"/>
                 <constraint firstItem="vF2-fU-6dO" firstAttribute="centerY" secondItem="64e-CN-iRw" secondAttribute="centerY" id="ZJW-TH-AYu"/>
+                <constraint firstItem="Npq-xe-iFe" firstAttribute="leading" secondItem="faH-6Y-ydd" secondAttribute="trailing" constant="8" id="a3b-Cx-Bca"/>
                 <constraint firstItem="9ev-0G-gGS" firstAttribute="leading" secondItem="64e-CN-iRw" secondAttribute="leading" constant="16" id="wtA-ca-GWW"/>
+                <constraint firstItem="gDK-kF-5pq" firstAttribute="centerY" secondItem="vF2-fU-6dO" secondAttribute="centerY" id="xbW-bd-2Tp"/>
                 <constraint firstItem="Myd-J4-QNF" firstAttribute="centerY" secondItem="vF2-fU-6dO" secondAttribute="centerY" id="xtR-cV-HvU"/>
                 <constraint firstItem="Myd-J4-QNF" firstAttribute="leading" secondItem="64e-CN-iRw" secondAttribute="leading" priority="250" constant="16" id="ya6-Wd-Nf0"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="eNq-2S-AUX"/>
             <connections>
+                <outlet property="cancelButton" destination="Npq-xe-iFe" id="UKs-6W-3gj"/>
                 <outlet property="contentsLabel" destination="Myd-J4-QNF" id="uH5-Po-tEO"/>
                 <outlet property="contentsLabelLeadingToEdge" destination="ya6-Wd-Nf0" id="jmr-L5-JFJ"/>
                 <outlet property="contentsLabelLeadingToTitleLabel" destination="4YU-cG-Yxg" id="zCk-JV-gYm"/>
+                <outlet property="contentsLabelTrailingToDeleteButton" destination="DgM-og-ayg" id="H84-Hv-Mbo"/>
+                <outlet property="contentsLabelTrailingToXButton" destination="CBv-Iz-waK" id="8Bm-Ev-zz6"/>
+                <outlet property="deleteButton" destination="faH-6Y-ydd" id="SJc-fp-JaJ"/>
                 <outlet property="titleLabel" destination="vF2-fU-6dO" id="tcd-L3-rQX"/>
+                <outlet property="xButton" destination="gDK-kF-5pq" id="DjC-5T-pfJ"/>
             </connections>
             <point key="canvasLocation" x="18.399999999999999" y="53.973013493253376"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="X" width="88" height="88"/>
+    </resources>
 </document>

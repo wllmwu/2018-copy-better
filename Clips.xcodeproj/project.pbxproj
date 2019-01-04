@@ -48,6 +48,7 @@
 		E0A51AD721C6CABA00FCCCA9 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A51AD621C6CABA00FCCCA9 /* KeyboardViewController.swift */; };
 		E0A51ADB21C6CABA00FCCCA9 /* Clips Keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E0A51AD421C6CABA00FCCCA9 /* Clips Keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E0A51AE121C6CF9200FCCCA9 /* ClipsKeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0A51AE021C6CF9200FCCCA9 /* ClipsKeyboardView.xib */; };
+		E0AF325521DED6A500743158 /* KeyboardUpperButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AF325421DED6A500743158 /* KeyboardUpperButton.swift */; };
 		E0C260AF21B8B889007D9BED /* UIViewController+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C260AE21B8B889007D9BED /* UIViewController+Toast.swift */; };
 		E0CC277621AD9A04000FEF5A /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CC277521AD9A04000FEF5A /* AboutTableViewController.swift */; };
 		E0D348C721B2393000BF1F4E /* WidgetClipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D348C621B2393000BF1F4E /* WidgetClipTableViewCell.swift */; };
@@ -126,6 +127,7 @@
 		E0A51AD821C6CABA00FCCCA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0A51ADF21C6CBD400FCCCA9 /* Clips Keyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Clips Keyboard.entitlements"; sourceTree = "<group>"; };
 		E0A51AE021C6CF9200FCCCA9 /* ClipsKeyboardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClipsKeyboardView.xib; sourceTree = "<group>"; };
+		E0AF325421DED6A500743158 /* KeyboardUpperButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardUpperButton.swift; sourceTree = "<group>"; };
 		E0C260AE21B8B889007D9BED /* UIViewController+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Toast.swift"; sourceTree = "<group>"; };
 		E0CC277521AD9A04000FEF5A /* AboutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
 		E0D348C621B2393000BF1F4E /* WidgetClipTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetClipTableViewCell.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				E0A51AE021C6CF9200FCCCA9 /* ClipsKeyboardView.xib */,
 				E0619DFF21DE871B00A69332 /* ClipsKeyboardView.swift */,
 				E0619E0521DEA3BC00A69332 /* KeyboardButton.swift */,
+				E0AF325421DED6A500743158 /* KeyboardUpperButton.swift */,
 				E0071DE621CB154D00B75D4C /* ClipsKeyboardCell.xib */,
 				E0071DE821CB171100B75D4C /* ClipsKeyboardCollectionViewCell.swift */,
 				E0EBB4D521C7482F0037E136 /* Keyboard.xcassets */,
@@ -439,6 +442,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0AF325521DED6A500743158 /* KeyboardUpperButton.swift in Sources */,
 				E0619E0621DEA3BC00A69332 /* KeyboardButton.swift in Sources */,
 				E0A51AD721C6CABA00FCCCA9 /* KeyboardViewController.swift in Sources */,
 				E05CAEE621CB3BCD003C3BB4 /* Clips.xcdatamodeld in Sources */,
