@@ -77,11 +77,14 @@ class ClipboardManager: NSObject {
     
     // MARK: - Interpreters for data representations in pasteboard items
     
-    static func textFromRtf(inItem item: [String : Any]) -> NSAttributedString? {
-        if let rtfData = item[kUTTypeRTF as String] as? Data {
+    static func attributedStringFromRtf(inItem item: [String : Any]) -> NSAttributedString? {
+        return ClipboardManager.attributedStringFromRtf(data: item[kUTTypeRTF as String] as? Data)
+    }
+    
+    static func attributedStringFromRtf(data: Data?) -> NSAttributedString? {
+        if let rtfData = data {
             do {
-                let rtf: NSAttributedString = try NSAttributedString(data: rtfData, options: [.documentType : NSAttributedString.DocumentType.rtf], documentAttributes: nil)
-                return rtf
+                return try NSAttributedString(data: rtfData, options: [.documentType : NSAttributedString.DocumentType.rtf], documentAttributes: nil)
             }
             catch let error as NSError {
                 print("Found RTF data, but couldn't convert to NSAttributedString. \(error), \(error.userInfo)")
@@ -90,8 +93,12 @@ class ClipboardManager: NSObject {
         return nil
     }
     
-    static func textFromHtml(inItem item: [String : Any]) -> NSAttributedString? {
-        if let htmlString = item[kUTTypeHTML as String] as? String {
+    static func attributedStringFromHtml(inItem item: [String : Any]) -> NSAttributedString? {
+        return ClipboardManager.attributedStringFromHtml(string: item[kUTTypeHTML as String] as? String)
+    }
+    
+    static func attributedStringFromHtml(string: String?) -> NSAttributedString? {
+        if let htmlString = string {
             if let html = htmlString.htmlToAttributed {
                 return html
             }
@@ -99,24 +106,12 @@ class ClipboardManager: NSObject {
         return nil
     }
     
-    static func textFromPlaintext(inItem item: [String : Any]) -> String? {
+    static func stringFromPlaintext(inItem item: [String : Any]) -> String? {
         if let utf8Plaintext = item[kUTTypeUTF8PlainText as String] {
-            if let string = utf8Plaintext as? String {
-                return string
-            }
-            else if let stringData = utf8Plaintext as? Data {
-                // will substitute characters it can't decode with the replacement character
-                return String(decoding: stringData, as: UTF8.self)
-            }
+            return ClipboardManager.stringFromPlaintext(utf8Plaintext: utf8Plaintext)
         }
         else if let utf16Plaintext = item[kUTTypeUTF16PlainText as String] {
-            if let string = utf16Plaintext as? String {
-                return string
-            }
-            else if let stringData = utf16Plaintext as? Data {
-                // will return nil if it can't decode - String(decoding:as:) doesn't work
-                return String(data: stringData, encoding: .utf16)
-            }
+            return ClipboardManager.stringFromPlaintext(utf16Plaintext: utf16Plaintext)
         }
         else if let plaintext = item[kUTTypePlainText as String] as? String {
             return plaintext
@@ -124,34 +119,82 @@ class ClipboardManager: NSObject {
         return nil
     }
     
+    static func stringFromPlaintext(utf8Plaintext: Any) -> String? {
+        if let string = utf8Plaintext as? String {
+            return string
+        }
+        else if let stringData = utf8Plaintext as? Data {
+            // will substitute characters it can't decode with the replacement character
+            return String(decoding: stringData, as: UTF8.self)
+        }
+        return nil
+    }
+    
+    static func stringFromPlaintext(utf16Plaintext: Any) -> String? {
+        if let string = utf16Plaintext as? String {
+            return string
+        }
+        else if let stringData = utf16Plaintext as? Data {
+            // will return nil if it can't decode - String(decoding:as:) doesn't work
+            return String(data: stringData, encoding: .utf16)
+        }
+        return nil
+    }
+    
     static func imageFromImage(inItem item: [String : Any], maxWidth: CGFloat, maxHeight: CGFloat) -> UIImage? {
-        var image: UIImage
-        if let png = item[kUTTypePNG as String] as? UIImage {
-            image = png
+        var image: UIImage?
+        if let img = item[kUTTypeImage as String] {
+            image = getUIImage(from: img)
         }
-        else if let jpg = item[kUTTypeJPEG as String] as? UIImage {
-            image = jpg
+        else if let png = item[kUTTypePNG as String] {
+            image = getUIImage(from: png)
         }
-        else if let gif = item[kUTTypeGIF as String] as? UIImage {
-            image = gif
+        else if let jpg = item[kUTTypeJPEG as String] {
+            image = getUIImage(from: jpg)
         }
-        else if let tif = item[kUTTypeTIFF as String] as? UIImage {
-            image = tif
+        else if let gif = item[kUTTypeGIF as String] {
+            image = getUIImage(from: gif)
         }
-        else if let bmp = item[kUTTypeBMP as String] as? UIImage {
-            image = bmp
+        else if let tif = item[kUTTypeTIFF as String] {
+            image = getUIImage(from: tif)
+        }
+        else if let bmp = item[kUTTypeBMP as String] {
+            image = getUIImage(from: bmp)
         }
         else {
             return nil
         }
         
+        if let _ = image {
+            return resizeImage(image!, maxWidth: maxWidth, maxHeight: maxHeight)
+        }
+        return nil
+    }
+    
+    private static func getUIImage(from thing: Any) -> UIImage? {
+        if let image = thing as? UIImage {
+            return image
+        }
+        else if let data = thing as? Data {
+            return UIImage(data: data)
+        }
+        else if let url = thing as? URL {
+            if let data = try? Data(contentsOf: url) {
+                return UIImage(data: data)
+            }
+        }
+        return nil
+    }
+    
+    static func resizeImage(_ originalImage: UIImage, maxWidth: CGFloat, maxHeight: CGFloat) -> UIImage {
+        var image: UIImage = originalImage
         let size: CGSize = image.size
         var scaleFactor: CGFloat?
-        if size.width > maxWidth && maxWidth <= maxHeight {
+        if maxWidth > 0 && size.width > maxWidth && (maxHeight == 0 || maxWidth < maxHeight) {
             // scale image down to fit width
             scaleFactor = maxWidth / size.width
         }
-        else if size.height > maxHeight {
+        else if maxHeight > 0 && size.height > maxHeight {
             // scale image down to fit height
             scaleFactor = maxHeight / size.height
         }
@@ -169,13 +212,13 @@ class ClipboardManager: NSObject {
         return image
     }
     
-    static func textFromImage(_ image: UIImage) -> NSAttributedString {
+    static func attributedStringWithImage(_ image: UIImage) -> NSAttributedString {
         let attachment: NSTextAttachment = NSTextAttachment()
         attachment.image = image
         return NSAttributedString(attachment: attachment)
     }
     
-    static func itemForAttributedString(_ string: NSAttributedString) -> [String : Any] {
+    static func itemFromAttributedString(_ string: NSAttributedString) -> [String : Any] {
         if string.length == 0 { return [:] }
         
         var item: [String : Any] = [:]
@@ -194,19 +237,19 @@ class ClipboardManager: NSObject {
         return item
     }
     
-    static func itemForPlaintext(_ string: String) -> [String : Any] {
+    static func itemFromPlaintext(_ string: String) -> [String : Any] {
         if string.count == 0 { return [:] }
         return [kUTTypePlainText as String : string]
     }
     
     static func stringFromItem(_ item: [String : Any]) -> String? {
-        if let plaintext = ClipboardManager.textFromPlaintext(inItem: item) {
+        if let plaintext = ClipboardManager.stringFromPlaintext(inItem: item) {
             return plaintext
         }
-        else if let rtf = ClipboardManager.textFromRtf(inItem: item) {
+        else if let rtf = ClipboardManager.attributedStringFromRtf(inItem: item) {
             return rtf.string
         }
-        else if let html = ClipboardManager.textFromHtml(inItem: item) {
+        else if let html = ClipboardManager.attributedStringFromHtml(inItem: item) {
             return html.string
         }
         return nil

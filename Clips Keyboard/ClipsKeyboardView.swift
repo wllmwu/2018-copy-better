@@ -22,17 +22,17 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     private var lastCopied: String?
     private var pasteboardChangeCount: Int = 0
     
-    @IBOutlet var lastCopiedLabel: UILabel!
-    @IBOutlet var collectionView: UICollectionView!
-    @IBOutlet var collectionViewLayout: UICollectionViewFlowLayout!
-    @IBOutlet var previousColumnButton: KeyboardButton!
-    @IBOutlet var nextKeyboardButton: KeyboardButton!
-    @IBOutlet var spaceKey: KeyboardButton!
-    @IBOutlet var backspaceKey: KeyboardButton!
-    @IBOutlet var nextColumnButton: KeyboardButton!
+    @IBOutlet weak var lastCopiedLabel: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionViewLayout: UICollectionViewFlowLayout!
+    @IBOutlet weak var previousColumnButton: KeyboardButton!
+    @IBOutlet weak var nextKeyboardButton: KeyboardButton!
+    @IBOutlet weak var spaceKey: KeyboardButton!
+    @IBOutlet weak var backspaceKey: KeyboardButton!
+    @IBOutlet weak var nextColumnButton: KeyboardButton!
     
-    @IBOutlet var spaceKeyToNextKeyboardButtonConstraint: NSLayoutConstraint!
-    @IBOutlet var spaceKeyToPreviousColumnButtonConstraint: NSLayoutConstraint!
+    @IBOutlet weak var spaceKeyToNextKeyboardButtonConstraint: NSLayoutConstraint!
+    @IBOutlet weak var spaceKeyToPreviousColumnButtonConstraint: NSLayoutConstraint!
     
     weak var delegate: ClipsKeyboardViewDelegate?
 
@@ -44,32 +44,17 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     }
     */
     
-    /*override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        self.collectionView.register(UINib(nibName: "ClipsKeyboardCell", bundle: nil), forCellWithReuseIdentifier: "ClipsKeyboardCell")
-        self.collectionViewLayout.itemSize = CGSize(width: self.frame.size.width, height: 44)
-        self.setupKeyStyle(self.previousColumnButton)
-        self.setupKeyStyle(self.nextKeyboardButton)
-        self.setupKeyStyle(self.spaceKey)
-        self.setupKeyStyle(self.backspaceKey)
-        self.setupKeyStyle(self.nextColumnButton)
-        self.setNextKeyboardButtonVisible(false)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }*/
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         self.collectionView.register(UINib(nibName: "ClipsKeyboardCell", bundle: nil), forCellWithReuseIdentifier: "ClipsKeyboardCell")
         self.collectionViewLayout.itemSize = CGSize(width: UIScreen.main.bounds.size.width, height: 44)
-        //self.setNextKeyboardButtonVisible(false)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(ClipsKeyboardView.updateLastCopied), name: UIPasteboard.changedNotification, object: nil)
     }
     
     func setNextKeyboardButtonVisible(_ visible: Bool) {
+        self.nextKeyboardButton.isHidden = !visible
         if visible {
             self.spaceKeyToNextKeyboardButtonConstraint.priority = .defaultHigh
             self.spaceKeyToPreviousColumnButtonConstraint.priority = .defaultLow
@@ -85,13 +70,17 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
         self.collectionView.reloadData()
         DispatchQueue.global(qos: .utility).async {
             if self.pasteboardChangeCount != UIPasteboard.general.changeCount {
-                self.pasteboardChangeCount = UIPasteboard.general.changeCount
-                self.lastCopied = ClipboardManager.stringFromItem(ClipboardManager.retrieveFromPasteboard())
+                self.updateLastCopied()
                 DispatchQueue.main.async {
                     self.lastCopiedLabel.text = self.lastCopied
                 }
             }
         }
+    }
+    
+    @objc func updateLastCopied() {
+        self.pasteboardChangeCount = UIPasteboard.general.changeCount
+        self.lastCopied = ClipboardManager.stringFromItem(ClipboardManager.retrieveFromPasteboard())
     }
     
     // MARK: - Actions

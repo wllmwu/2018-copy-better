@@ -58,17 +58,17 @@ class ClipTableViewCell: UITableViewCell {
         self.reset()
         let imageViewSize: CGSize = self.contentsImageView.bounds.size
         DispatchQueue.global(qos: .utility).async {
-            if let rtf = ClipboardManager.textFromRtf(inItem: self.contents) {
+            if let rtf = ClipboardManager.attributedStringFromRtf(inItem: self.contents) {
                 DispatchQueue.main.async {
                     self.setContentsLabelAttributedText(rtf)
                 }
             }
-            else if let html = ClipboardManager.textFromHtml(inItem: self.contents) {
+            else if let html = ClipboardManager.attributedStringFromHtml(inItem: self.contents) {
                 DispatchQueue.main.async {
                     self.setContentsLabelAttributedText(html)
                 }
             }
-            else if let plaintext = ClipboardManager.textFromPlaintext(inItem: self.contents) {
+            else if let plaintext = ClipboardManager.stringFromPlaintext(inItem: self.contents) {
                 DispatchQueue.main.async {
                     self.contentsLabel.text = plaintext
                 }
@@ -80,8 +80,10 @@ class ClipTableViewCell: UITableViewCell {
                 }
             }
             else {
-                print("ClipTableViewCell: couldn't find usable data representations.")
-                self.contentsLabel.text = "\u{fffd}"
+                DispatchQueue.main.async {
+                    print("ClipTableViewCell: couldn't find usable data representations.")
+                    self.contentsLabel.text = "\u{fffd}"
+                }
             }
         }
     }

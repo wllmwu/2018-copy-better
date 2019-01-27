@@ -58,17 +58,17 @@ class EditClipTableViewController: UITableViewController {
             return
         }
         
-        if let rtf = ClipboardManager.textFromRtf(inItem: contents) {
+        if let rtf = ClipboardManager.attributedStringFromRtf(inItem: contents) {
             self.contentsTextView.attributedText = rtf
         }
-        else if let html = ClipboardManager.textFromHtml(inItem: contents) {
+        else if let html = ClipboardManager.attributedStringFromHtml(inItem: contents) {
             self.contentsTextView.attributedText = html
         }
-        else if let plaintext = ClipboardManager.textFromPlaintext(inItem: contents) {
+        else if let plaintext = ClipboardManager.stringFromPlaintext(inItem: contents) {
             self.contentsTextView.text = plaintext
         }
         else if let image = ClipboardManager.imageFromImage(inItem: contents, maxWidth: self.contentsTextView.contentSize.width, maxHeight: 0) {
-            self.contentsTextView.attributedText = ClipboardManager.textFromImage(image)
+            self.contentsTextView.attributedText = ClipboardManager.attributedStringWithImage(image)
         }
         else {
             print("EditClipTableViewController: couldn't find usable data representations.")
@@ -149,7 +149,7 @@ class EditClipTableViewController: UITableViewController {
         
         if let text = self.contentsTextView.attributedText {
             if self.mode == .Add || !text.isEqual(to: self.originalContentsText) {
-                clip.contents = ClipboardManager.itemForAttributedString(text)
+                clip.contents = ClipboardManager.itemFromAttributedString(text)
             }
             // else the text hasn't changed when Save is pressed, so just leave the clip as it is
         }

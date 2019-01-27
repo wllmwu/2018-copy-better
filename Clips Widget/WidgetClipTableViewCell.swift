@@ -58,17 +58,17 @@ class WidgetClipTableViewCell: UITableViewCell {
         else {
             let imageViewSize: CGSize = self.contentsImageView.bounds.size
             DispatchQueue.global(qos: .utility).async {
-                if let plaintext = ClipboardManager.textFromPlaintext(inItem: item) {
+                if let plaintext = ClipboardManager.stringFromPlaintext(inItem: item) {
                     DispatchQueue.main.async {
                         self.contentsLabel.text = plaintext
                     }
                 }
-                else if let rtf = ClipboardManager.textFromRtf(inItem: item) {
+                else if let rtf = ClipboardManager.attributedStringFromRtf(inItem: item) {
                     DispatchQueue.main.async {
                         self.contentsLabel.text = rtf.string
                     }
                 }
-                else if let html = ClipboardManager.textFromHtml(inItem: item) {
+                else if let html = ClipboardManager.attributedStringFromHtml(inItem: item) {
                     DispatchQueue.main.async {
                         self.contentsLabel.text = html.string
                     }

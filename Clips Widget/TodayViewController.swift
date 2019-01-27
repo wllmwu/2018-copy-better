@@ -33,7 +33,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         // Do any additional setup after loading the view from its nib.
         
         self.tableView.estimatedRowHeight = 44
-        self.extensionContext?.widgetLargestAvailableDisplayMode = .expanded
+        self.extensionContext!.widgetLargestAvailableDisplayMode = .expanded
         
         let container = ClipsPersistentContainer(name: "Clips")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -100,7 +100,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        if self.extensionContext?.widgetActiveDisplayMode == .expanded {
+        if self.extensionContext!.widgetActiveDisplayMode == .expanded {
             self.tableViewBottomExpandedConstraint.priority = .defaultHigh
             self.tableViewBottomCompactConstraint.priority = .defaultLow
             self.openAppButton.isHidden = false
@@ -208,7 +208,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     }
     
     @IBAction func openAppButtonTapped(_ sender: UIButton) {
-        self.extensionContext?.open(URL(string: "clips://")!, completionHandler: { (success) in
+        self.extensionContext!.open(URL(string: "clips://")!, completionHandler: { (success) in
             if !success {
                 print("Error opening app from Today extension")
             }
@@ -259,7 +259,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.extensionContext?.widgetActiveDisplayMode == .compact {
+        if self.extensionContext!.widgetActiveDisplayMode == .compact {
             if self.showLastCopied {
                 return 1 + ((self.clips.count > 0) ? 1 : 0)
             }

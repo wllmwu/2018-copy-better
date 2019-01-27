@@ -12,16 +12,16 @@ class ClipsKeyboardCollectionViewCell: UICollectionViewCell {
     
     private var index: Int = 0
     
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var contentsLabel: UILabel!
-    @IBOutlet var xButton: UIButton!
-    @IBOutlet var deleteButton: UIButton!
-    @IBOutlet var cancelButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var contentsLabel: UILabel!
+    @IBOutlet weak var xButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     
-    @IBOutlet var contentsLabelLeadingToTitleLabel: NSLayoutConstraint!
-    @IBOutlet var contentsLabelLeadingToEdge: NSLayoutConstraint!
-    @IBOutlet var contentsLabelTrailingToXButton: NSLayoutConstraint!
-    @IBOutlet var contentsLabelTrailingToDeleteButton: NSLayoutConstraint!
+    @IBOutlet weak var contentsLabelLeadingToTitleLabel: NSLayoutConstraint!
+    @IBOutlet weak var contentsLabelLeadingToEdge: NSLayoutConstraint!
+    @IBOutlet weak var contentsLabelTrailingToXButton: NSLayoutConstraint!
+    @IBOutlet weak var contentsLabelTrailingToDeleteButton: NSLayoutConstraint!
     
     override func prepareForReuse() {
         super.prepareForReuse()

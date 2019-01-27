@@ -18,6 +18,18 @@
 		E04106C0219D04F100DD68AD /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04106BF219D04F100DD68AD /* TodayViewController.swift */; };
 		E04106C3219D04F100DD68AD /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E04106C1219D04F100DD68AD /* MainInterface.storyboard */; };
 		E04106C7219D04F100DD68AD /* Clips Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E04106BA219D04F100DD68AD /* Clips Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E041A72E21E3D65700B58DD5 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E041A72D21E3D65700B58DD5 /* ShareViewController.swift */; };
+		E041A73121E3D65700B58DD5 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E041A72F21E3D65700B58DD5 /* MainInterface.storyboard */; };
+		E041A73521E3D65800B58DD5 /* Clips Share.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E041A72B21E3D65700B58DD5 /* Clips Share.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E041A73A21E3DA3E00B58DD5 /* ShareConfigureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E041A73921E3DA3E00B58DD5 /* ShareConfigureViewController.swift */; };
+		E041A73C21E3DAC200B58DD5 /* ShareConfigureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E041A73B21E3DAC200B58DD5 /* ShareConfigureView.xib */; };
+		E041A73D21E3DBD000B58DD5 /* Clip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */; };
+		E041A73E21E3DBD300B58DD5 /* Clip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858C2E21A0F0240089AE53 /* Clip+CoreDataProperties.swift */; };
+		E041A73F21E3DBD600B58DD5 /* Clips.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E056F8F720CEE46C0025E2FE /* Clips.xcdatamodeld */; };
+		E041A74021E3DBD900B58DD5 /* ClipsPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E029B42A21B32C8F005EFEB6 /* ClipsPersistentContainer.swift */; };
+		E041A74121E3DBDC00B58DD5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E06EC94D21C5ACA100687F9E /* Localizable.strings */; };
+		E041A74221E3DBDF00B58DD5 /* ClipboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA135219D37BE0015A30F /* ClipboardManager.swift */; };
+		E041A74321E3DBE200B58DD5 /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */; };
 		E056F8F120CEE46C0025E2FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E056F8F020CEE46C0025E2FE /* AppDelegate.swift */; };
 		E056F8F620CEE46C0025E2FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E056F8F420CEE46C0025E2FE /* Main.storyboard */; };
 		E056F8F920CEE46C0025E2FE /* Clips.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E056F8F720CEE46C0025E2FE /* Clips.xcdatamodeld */; };
@@ -64,6 +76,13 @@
 			remoteGlobalIDString = E04106B9219D04F100DD68AD;
 			remoteInfo = "Clipboard Widget";
 		};
+		E041A73321E3D65800B58DD5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E056F8E520CEE46C0025E2FE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E041A72A21E3D65700B58DD5;
+			remoteInfo = "Clips Share";
+		};
 		E0A51AD921C6CABA00FCCCA9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E056F8E520CEE46C0025E2FE /* Project object */;
@@ -82,6 +101,7 @@
 			files = (
 				E0A51ADB21C6CABA00FCCCA9 /* Clips Keyboard.appex in Embed App Extensions */,
 				E04106C7219D04F100DD68AD /* Clips Widget.appex in Embed App Extensions */,
+				E041A73521E3D65800B58DD5 /* Clips Share.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -97,6 +117,12 @@
 		E04106BF219D04F100DD68AD /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		E04106C2219D04F100DD68AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		E04106C4219D04F100DD68AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E041A72B21E3D65700B58DD5 /* Clips Share.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Clips Share.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E041A72D21E3D65700B58DD5 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		E041A73021E3D65700B58DD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		E041A73221E3D65800B58DD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E041A73921E3DA3E00B58DD5 /* ShareConfigureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareConfigureViewController.swift; sourceTree = "<group>"; };
+		E041A73B21E3DAC200B58DD5 /* ShareConfigureView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareConfigureView.xib; sourceTree = "<group>"; };
 		E056F8ED20CEE46C0025E2FE /* Clips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clips.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E056F8F020CEE46C0025E2FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E056F8F520CEE46C0025E2FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -135,6 +161,7 @@
 		E0D67EE1219E8CB100559CA6 /* Clips Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Clips Widget.entitlements"; sourceTree = "<group>"; };
 		E0EBB4D521C7482F0037E136 /* Keyboard.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Keyboard.xcassets; sourceTree = "<group>"; };
 		E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HTML.swift"; sourceTree = "<group>"; };
+		E0F80E4221E434D700458330 /* Clips Share.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Clips Share.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +170,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E04106BD219D04F100DD68AD /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E041A72821E3D65700B58DD5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +217,19 @@
 			path = "Clips Widget";
 			sourceTree = "<group>";
 		};
+		E041A72C21E3D65700B58DD5 /* Clips Share */ = {
+			isa = PBXGroup;
+			children = (
+				E0F80E4221E434D700458330 /* Clips Share.entitlements */,
+				E041A72D21E3D65700B58DD5 /* ShareViewController.swift */,
+				E041A72F21E3D65700B58DD5 /* MainInterface.storyboard */,
+				E041A73921E3DA3E00B58DD5 /* ShareConfigureViewController.swift */,
+				E041A73B21E3DAC200B58DD5 /* ShareConfigureView.xib */,
+				E041A73221E3D65800B58DD5 /* Info.plist */,
+			);
+			path = "Clips Share";
+			sourceTree = "<group>";
+		};
 		E056F8E420CEE46C0025E2FE = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +243,7 @@
 				E056F8EF20CEE46C0025E2FE /* Clips */,
 				E04106BE219D04F100DD68AD /* Clips Widget */,
 				E0A51AD521C6CABA00FCCCA9 /* Clips Keyboard */,
+				E041A72C21E3D65700B58DD5 /* Clips Share */,
 				E04106BB219D04F100DD68AD /* Frameworks */,
 				E056F8EE20CEE46C0025E2FE /* Products */,
 			);
@@ -207,6 +255,7 @@
 				E056F8ED20CEE46C0025E2FE /* Clips.app */,
 				E04106BA219D04F100DD68AD /* Clips Widget.appex */,
 				E0A51AD421C6CABA00FCCCA9 /* Clips Keyboard.appex */,
+				E041A72B21E3D65700B58DD5 /* Clips Share.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -269,6 +318,23 @@
 			productReference = E04106BA219D04F100DD68AD /* Clips Widget.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		E041A72A21E3D65700B58DD5 /* Clips Share */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E041A73621E3D65800B58DD5 /* Build configuration list for PBXNativeTarget "Clips Share" */;
+			buildPhases = (
+				E041A72721E3D65700B58DD5 /* Sources */,
+				E041A72821E3D65700B58DD5 /* Frameworks */,
+				E041A72921E3D65700B58DD5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Clips Share";
+			productName = "Clips Share";
+			productReference = E041A72B21E3D65700B58DD5 /* Clips Share.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		E056F8EC20CEE46C0025E2FE /* Clips */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E056F90220CEE46E0025E2FE /* Build configuration list for PBXNativeTarget "Clips" */;
@@ -283,6 +349,7 @@
 			dependencies = (
 				E04106C6219D04F100DD68AD /* PBXTargetDependency */,
 				E0A51ADA21C6CABA00FCCCA9 /* PBXTargetDependency */,
+				E041A73421E3D65800B58DD5 /* PBXTargetDependency */,
 			);
 			name = Clips;
 			productName = "Clipboard Manager";
@@ -319,6 +386,14 @@
 					E04106B9219D04F100DD68AD = {
 						CreatedOnToolsVersion = 9.4.1;
 						LastSwiftMigration = 1010;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					E041A72A21E3D65700B58DD5 = {
+						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -362,6 +437,7 @@
 				E056F8EC20CEE46C0025E2FE /* Clips */,
 				E04106B9219D04F100DD68AD /* Clips Widget */,
 				E0A51AD321C6CABA00FCCCA9 /* Clips Keyboard */,
+				E041A72A21E3D65700B58DD5 /* Clips Share */,
 			);
 		};
 /* End PBXProject section */
@@ -373,6 +449,16 @@
 			files = (
 				E04106C3219D04F100DD68AD /* MainInterface.storyboard in Resources */,
 				E06EC94B21C5ACA100687F9E /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E041A72921E3D65700B58DD5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E041A73121E3D65700B58DD5 /* MainInterface.storyboard in Resources */,
+				E041A74121E3DBDC00B58DD5 /* Localizable.strings in Resources */,
+				E041A73C21E3DAC200B58DD5 /* ShareConfigureView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +499,21 @@
 				E029B42D21B33A30005EFEB6 /* ClipboardManager.swift in Sources */,
 				E01FFB2921B44BB500C69DEF /* Clips.xcdatamodeld in Sources */,
 				E0D348C721B2393000BF1F4E /* WidgetClipTableViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E041A72721E3D65700B58DD5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E041A72E21E3D65700B58DD5 /* ShareViewController.swift in Sources */,
+				E041A73D21E3DBD000B58DD5 /* Clip+CoreDataClass.swift in Sources */,
+				E041A74021E3DBD900B58DD5 /* ClipsPersistentContainer.swift in Sources */,
+				E041A74321E3DBE200B58DD5 /* String+HTML.swift in Sources */,
+				E041A73A21E3DA3E00B58DD5 /* ShareConfigureViewController.swift in Sources */,
+				E041A73E21E3DBD300B58DD5 /* Clip+CoreDataProperties.swift in Sources */,
+				E041A73F21E3DBD600B58DD5 /* Clips.xcdatamodeld in Sources */,
+				E041A74221E3DBDF00B58DD5 /* ClipboardManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +565,11 @@
 			target = E04106B9219D04F100DD68AD /* Clips Widget */;
 			targetProxy = E04106C5219D04F100DD68AD /* PBXContainerItemProxy */;
 		};
+		E041A73421E3D65800B58DD5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E041A72A21E3D65700B58DD5 /* Clips Share */;
+			targetProxy = E041A73321E3D65800B58DD5 /* PBXContainerItemProxy */;
+		};
 		E0A51ADA21C6CABA00FCCCA9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E0A51AD321C6CABA00FCCCA9 /* Clips Keyboard */;
@@ -478,6 +584,14 @@
 				E04106C2219D04F100DD68AD /* Base */,
 				E05EA02F21BD949600FC33C9 /* fr */,
 				E05EA03121BD94B200FC33C9 /* es */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+		E041A72F21E3D65700B58DD5 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E041A73021E3D65700B58DD5 /* Base */,
 			);
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
@@ -557,6 +671,53 @@
 			};
 			name = Release;
 		};
+		E041A73721E3D65800B58DD5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Clips Share/Clips Share.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FFB5P5C3G7;
+				INFOPLIST_FILE = "Clips Share/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.williamwu.Clips.Clips-Share";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E041A73821E3D65800B58DD5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Clips Share/Clips Share.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FFB5P5C3G7;
+				INFOPLIST_FILE = "Clips Share/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.williamwu.Clips.Clips-Share";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		E056F90020CEE46E0025E2FE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -609,7 +770,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -664,7 +825,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -772,6 +933,15 @@
 			buildConfigurations = (
 				E04106C9219D04F100DD68AD /* Debug */,
 				E04106CA219D04F100DD68AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E041A73621E3D65800B58DD5 /* Build configuration list for PBXNativeTarget "Clips Share" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E041A73721E3D65800B58DD5 /* Debug */,
+				E041A73821E3D65800B58DD5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

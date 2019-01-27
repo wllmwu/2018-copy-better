@@ -194,7 +194,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Nl-cj-gKr">
                                                     <rect key="frame" x="16" y="-100" width="343" height="243.5"/>
-                                                    <mutableString key="text">© 2018 William Wu  This app is version 1.0.  Questions or bug reports? Email me at dev.wwu@gmail.com.  For the best use of this app, I recommend that you add the Clips widget to the Today View. Then you'll be able to access it from inside any app by swiping down from the top of the screen, then swiping to the right.</mutableString>
+                                                    <string key="text">© 2018 William Wu  This app is version 1.0.  Questions or bug reports? Email me at dev.wwu@gmail.com.  For the best use of this app, I recommend that you add the Clips widget to the Today View. Then you'll be able to access it from inside any app by swiping down from the top of the screen, then swiping to the right.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -532,7 +532,7 @@
                                 <action selector="cancel:" destination="c12-NJ-Wss" id="lX3-9V-qTM"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="i0u-a0-TR0">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="i0u-a0-TR0">
                             <connections>
                                 <action selector="save:" destination="c12-NJ-Wss" id="3ar-nr-vQa"/>
                             </connections>

@@ -67,20 +67,34 @@ class ClipViewController: UIViewController {
             return
         }
         
-        if let rtf = ClipboardManager.textFromRtf(inItem: contents) {
-            self.contentsTextView.attributedText = rtf
-        }
-        else if let html = ClipboardManager.textFromHtml(inItem: contents) {
-            self.contentsTextView.attributedText = html
-        }
-        else if let plaintext = ClipboardManager.textFromPlaintext(inItem: contents) {
-            self.contentsTextView.text = plaintext
-        }
-        else if let image = ClipboardManager.imageFromImage(inItem: contents, maxWidth: self.contentsTextView.contentSize.width, maxHeight: 0) {
-            self.contentsTextView.attributedText = ClipboardManager.textFromImage(image)
-        }
-        else {
-            print("ClipViewController: couldn't find usable data representations.")
+        let textViewSize: CGSize = self.contentsTextView.contentSize
+        DispatchQueue.global(qos: .utility).async {
+            if let rtf = ClipboardManager.attributedStringFromRtf(inItem: contents) {
+                DispatchQueue.main.async {
+                    self.contentsTextView.attributedText = rtf
+                }
+            }
+            else if let html = ClipboardManager.attributedStringFromHtml(inItem: contents) {
+                DispatchQueue.main.async {
+                    self.contentsTextView.attributedText = html
+                }
+            }
+            else if let plaintext = ClipboardManager.stringFromPlaintext(inItem: contents) {
+                DispatchQueue.main.async {
+                    self.contentsTextView.text = plaintext
+                }
+            }
+            else if let image = ClipboardManager.imageFromImage(inItem: contents, maxWidth: textViewSize.width, maxHeight: 0) {
+                DispatchQueue.main.async {
+                    self.contentsTextView.attributedText = ClipboardManager.attributedStringWithImage(image)
+                }
+            }
+            else {
+                DispatchQueue.main.async {
+                    print("ClipViewController: couldn't find usable data representations.")
+                    self.contentsTextView.text = "\u{fffd}"
+                }
+            }
         }
     }
     

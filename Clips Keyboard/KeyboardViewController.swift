@@ -216,7 +216,7 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
         // create new clip
         let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
         clip.title = nil
-        clip.contents = ClipboardManager.itemForPlaintext(text)
+        clip.contents = ClipboardManager.itemFromPlaintext(text)
         clip.index = 0
         self.clips.insert(clip, at: 0)
         

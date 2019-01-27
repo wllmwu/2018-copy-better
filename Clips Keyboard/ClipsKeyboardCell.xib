@@ -47,7 +47,7 @@
                             <constraint firstAttribute="height" constant="44" id="uGK-kI-uBx"/>
                             <constraint firstAttribute="width" secondItem="gDK-kF-5pq" secondAttribute="height" multiplier="1:1" id="uQh-Fb-Plf"/>
                         </constraints>
-                        <color key="tintColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <state key="normal" image="X"/>
                         <connections>
                             <action selector="xTapped:" destination="64e-CN-iRw" eventType="touchUpInside" id="yOB-j5-N7b"/>
