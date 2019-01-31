@@ -90,20 +90,13 @@ class ShareViewController: SLComposeServiceViewController, ShareConfigureViewCon
         // This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
         
         var item: [String : Any] = [:]
-        if let text = self.clipContentsText {
-            print("found text: \"\(text)\"")
-            let mutableText: NSMutableAttributedString = NSMutableAttributedString(attributedString: text)
-            if let imageData = self.clipContentsImageData {
-                print("found image too")
-                let attachment: NSTextAttachment = NSTextAttachment()
-                attachment.image = UIImage(data: imageData)!
-                mutableText.append(NSAttributedString(attachment: attachment))
-            }
-            item = ClipboardManager.itemFromAttributedString(mutableText)
-        }
-        else if let imageData = self.clipContentsImageData {
+        if let imageData = self.clipContentsImageData {
             print("found image")
             item = [kUTTypeImage as String : imageData]
+        }
+        else if let text = self.clipContentsText {
+            print("found text: \"\(text)\"")
+            item = ClipboardManager.itemFromAttributedString(text)
         }
         
         if item.count > 0 {
