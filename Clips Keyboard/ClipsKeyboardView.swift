@@ -50,6 +50,7 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
         self.collectionView.register(UINib(nibName: "ClipsKeyboardCell", bundle: nil), forCellWithReuseIdentifier: "ClipsKeyboardCell")
         self.collectionViewLayout.itemSize = CGSize(width: UIScreen.main.bounds.size.width, height: 44)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(ClipsKeyboardView.updateLastCopied), name: Notification.Name("KeyboardUpdateLastCopied"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ClipsKeyboardView.updateLastCopied), name: UIPasteboard.changedNotification, object: nil)
     }
     
@@ -68,19 +69,17 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     func loadData(clips: [Clip]) {
         self.extractTitlesAndStrings(from: clips)
         self.collectionView.reloadData()
-        DispatchQueue.global(qos: .utility).async {
-            if self.pasteboardChangeCount != UIPasteboard.general.changeCount {
-                self.updateLastCopied()
-                DispatchQueue.main.async {
-                    self.lastCopiedLabel.text = self.lastCopied
-                }
-            }
-        }
+        self.updateLastCopied()
     }
     
     @objc func updateLastCopied() {
-        self.pasteboardChangeCount = UIPasteboard.general.changeCount
-        self.lastCopied = ClipboardManager.stringFromItem(ClipboardManager.retrieveFromPasteboard())
+        print("updating last copied")
+        if self.pasteboardChangeCount != UIPasteboard.general.changeCount {
+            print("actually updating")
+            self.pasteboardChangeCount = UIPasteboard.general.changeCount
+            self.lastCopied = ClipboardManager.stringFromItem(ClipboardManager.retrieveFromPasteboard())
+            self.lastCopiedLabel.text = self.lastCopied
+        }
     }
     
     // MARK: - Actions

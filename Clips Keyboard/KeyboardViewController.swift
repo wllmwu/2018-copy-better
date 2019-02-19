@@ -163,6 +163,11 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
                     print("Couldn't fetch. \(error), \(error.userInfo)")
                 }
             }
+            else {
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: Notification.Name("KeyboardUpdateLastCopied"), object: nil)
+                }
+            }
         }
     }
     

@@ -35,3 +35,6 @@
 
 /* "Saved" toast message */
 "Saved" = "Enregistré";
+
+/* "Add clip" title */
+"Add Clip" = "Adjouter";

@@ -103,14 +103,16 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         self.lastCopied = ClipboardManager.retrieveFromPasteboard()
     }
     
-    private func saveContext() {
+    @discardableResult private func saveContext() -> Bool {
         do {
             try self.managedObjectContext.save()
             self.orderUpdates()
+            return true
         }
         catch let error as NSError {
             print("Couldn't save. \(error), \(error.userInfo)")
         }
+        return false
     }
     
     private func reassignIndices() {
@@ -147,9 +149,10 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
                 self.clips[i].index += 1
             }
             
-            self.saveContext()
-            self.tableView.reloadData()
-            self.showToast(message: NSLocalizedString("Added", comment: "\"Added\" toast message"))
+            if self.saveContext() {
+                self.tableView.reloadData()
+                self.showToast(message: NSLocalizedString("Added", comment: "\"Added\" toast message"))
+            }
         }
     }
     
@@ -195,7 +198,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        if !self.isEditing || self.isFiltering() { return false }
+        if self.isFiltering() { return false }
         if indexPath.row == 0 && self.showLastCopied { return false }
         return true
     }
@@ -278,7 +281,17 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     
     private func filterContentForSearchText(_ searchText: String) {
         self.filteredClips = self.clips.filter({( clip: Clip ) -> Bool in
-            return clip.title?.lowercased().contains(searchText.lowercased()) ?? false
+            if let title = clip.title {
+                if title.lowercased().contains(searchText.lowercased()) {
+                    return true
+                }
+            }
+            if let contents = ClipboardManager.stringFromItem(clip.contents) { // async?
+                if contents.lowercased().contains(searchText.lowercased()) {
+                    return true
+                }
+            }
+            return false
         })
         
         self.tableView.reloadData()

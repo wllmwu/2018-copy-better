@@ -47,12 +47,6 @@ class ClipViewController: UIViewController {
         
         if !self.isLastCopied {
             if let clip = self.clip {
-                if let title = clip.title {
-                    self.navigationItem.title = title
-                }
-                else {
-                    self.navigationItem.largeTitleDisplayMode = .never
-                }
                 self.setContentsText(contents: clip.contents)
             }
         }
@@ -69,7 +63,12 @@ class ClipViewController: UIViewController {
         
         let textViewSize: CGSize = self.contentsTextView.contentSize
         DispatchQueue.global(qos: .utility).async {
-            if let rtf = ClipboardManager.attributedStringFromRtf(inItem: contents) {
+            if let rtfd = ClipboardManager.attributedStringFromRtfd(inItem: contents) {
+                DispatchQueue.main.async {
+                    self.contentsTextView.attributedText = rtfd
+                }
+            }
+            else if let rtf = ClipboardManager.attributedStringFromRtf(inItem: contents) {
                 DispatchQueue.main.async {
                     self.contentsTextView.attributedText = rtf
                 }
@@ -143,13 +142,29 @@ class ClipViewController: UIViewController {
                 self.allClips![i].index += 1
             }
             
-            do {
-                try self.managedObjectContext.save()
-            }
-            catch let error as NSError {
-                print("Couldn't save. \(error), \(error.userInfo)")
+            if self.saveContext() {
+                self.showToast(message: NSLocalizedString("Added", comment: "\"Added\" toast message"))
             }
         }
+    }
+    
+    @discardableResult private func saveContext() -> Bool {
+        do {
+            try self.managedObjectContext.save()
+            self.orderUpdates()
+            return true
+        }
+        catch let error as NSError {
+            print("Couldn't save. \(error), \(error.userInfo)")
+        }
+        return false
+    }
+    
+    private func orderUpdates() {
+        let defaults: UserDefaults = UserDefaults(suiteName: "group.com.williamwu.clips")!
+        defaults.set(true, forKey: "mainNeedsUpdate")
+        defaults.set(true, forKey: "widgetNeedsUpdate")
+        defaults.set(true, forKey: "keyboardNeedsUpdate")
     }
     
     // MARK: - Navigation

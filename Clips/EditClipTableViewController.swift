@@ -37,7 +37,10 @@ class EditClipTableViewController: UITableViewController {
         
         self.tableView.rowHeight = UITableView.automaticDimension
         
-        if let clip = self.clip {
+        if self.mode == .Add {
+            self.navigationItem.title = NSLocalizedString("Add Clip", comment: "\"Add clip\" title")
+        }
+        else if let clip = self.clip {
             self.titleTextField.text = clip.title
             self.setContents(clip.contents)
         }
@@ -58,7 +61,10 @@ class EditClipTableViewController: UITableViewController {
             return
         }
         
-        if let rtf = ClipboardManager.attributedStringFromRtf(inItem: contents) {
+        if let rtfd = ClipboardManager.attributedStringFromRtfd(inItem: contents) {
+            self.contentsTextView.attributedText = rtfd
+        }
+        else if let rtf = ClipboardManager.attributedStringFromRtf(inItem: contents) {
             self.contentsTextView.attributedText = rtf
         }
         else if let html = ClipboardManager.attributedStringFromHtml(inItem: contents) {
@@ -92,15 +98,16 @@ class EditClipTableViewController: UITableViewController {
         self.clip = clip
     }
     
-    private func saveContext() {
+    @discardableResult private func saveContext() -> Bool {
         do {
             try self.managedObjectContext.save()
             self.orderUpdates()
-            self.showToast(message: NSLocalizedString("Saved", comment: "\"Saved\" toast message"))
+            return true
         }
         catch let error as NSError {
             print("Couldn't save. \(error), \(error.userInfo)")
         }
+        return false
     }
     
     private func orderUpdates() {
@@ -120,7 +127,9 @@ class EditClipTableViewController: UITableViewController {
                 let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
                 self.saveClipTitleAndContents(clip: clip)
                 clip.index = Int16(i)
-                self.saveContext()
+                if self.saveContext() {
+                    self.showToast(message: NSLocalizedString("Saved", comment: "\"Saved\" toast message"))
+                }
             }
             else {
                 print("Error when adding: index wasn't set.")
@@ -129,7 +138,9 @@ class EditClipTableViewController: UITableViewController {
         else {
             if let clip = self.clip {
                 self.saveClipTitleAndContents(clip: clip)
-                self.saveContext()
+                if self.saveContext() {
+                    self.showToast(message: NSLocalizedString("Saved", comment: "\"Saved\" toast message"))
+                }
             }
             else {
                 print("Error when saving: clip wasn't set.")
