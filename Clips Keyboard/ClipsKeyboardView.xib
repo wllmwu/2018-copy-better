@@ -121,7 +121,9 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isControlKey" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <action selector="backspace:" destination="iN0-l3-epB" eventType="touchUpInside" id="BVk-vW-QoC"/>
+                        <action selector="backspaceDown:" destination="iN0-l3-epB" eventType="touchDown" id="fH7-nb-uS4"/>
+                        <action selector="backspaceUp:" destination="iN0-l3-epB" eventType="touchUpInside" id="J9W-C9-ULD"/>
+                        <action selector="backspaceUp:" destination="iN0-l3-epB" eventType="touchUpOutside" id="lMw-hQ-8iQ"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHs-tw-hN9" customClass="KeyboardButton" customModule="Clips_Keyboard" customModuleProvider="target">
@@ -131,7 +133,8 @@
                         <constraint firstAttribute="width" secondItem="pHs-tw-hN9" secondAttribute="height" multiplier="1:1" id="yBQ-ap-H4P"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                    <state key="normal" title="⬅︎">
+                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <state key="normal" image="LeftArrow">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                     </state>
                     <userDefinedRuntimeAttributes>
@@ -148,7 +151,8 @@
                         <constraint firstAttribute="width" secondItem="o3J-Q6-hpE" secondAttribute="height" multiplier="1:1" id="qdt-Pi-WVL"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                    <state key="normal" title="➡︎">
+                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <state key="normal" image="RightArrow">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                     </state>
                     <userDefinedRuntimeAttributes>
@@ -222,5 +226,7 @@
         <image name="Backspace0" width="84" height="84"/>
         <image name="Backspace1" width="84" height="84"/>
         <image name="Globe" width="84" height="84"/>
+        <image name="LeftArrow" width="63" height="63"/>
+        <image name="RightArrow" width="63" height="63"/>
     </resources>
 </document>

@@ -30,6 +30,7 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     @IBOutlet weak var spaceKey: KeyboardButton!
     @IBOutlet weak var backspaceKey: KeyboardButton!
     @IBOutlet weak var nextColumnButton: KeyboardButton!
+    private var backspaceKeyTimer: Timer?
     
     @IBOutlet weak var spaceKeyToNextKeyboardButtonConstraint: NSLayoutConstraint!
     @IBOutlet weak var spaceKeyToPreviousColumnButtonConstraint: NSLayoutConstraint!
@@ -73,9 +74,7 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     }
     
     @objc func updateLastCopied() {
-        print("updating last copied")
         if self.pasteboardChangeCount != UIPasteboard.general.changeCount {
-            print("actually updating")
             self.pasteboardChangeCount = UIPasteboard.general.changeCount
             self.lastCopied = ClipboardManager.stringFromItem(ClipboardManager.retrieveFromPasteboard())
             self.lastCopiedLabel.text = self.lastCopied
@@ -100,7 +99,18 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
         self.delegate?.insertText(" ")
     }
     
-    @IBAction func backspace(_ sender: UIButton) {
+    @IBAction func backspaceDown(_ sender: UIButton) {
+        self.backspace()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.backspaceKeyTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ClipsKeyboardView.backspace), userInfo: nil, repeats: true)
+        }
+    }
+    
+    @IBAction func backspaceUp(_ sender: UIButton) {
+        self.backspaceKeyTimer?.invalidate()
+    }
+    
+    @objc func backspace() {
         self.delegate?.deleteBackwards()
     }
     

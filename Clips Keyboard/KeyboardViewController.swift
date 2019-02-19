@@ -15,6 +15,7 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
     private var clips: [Clip] = []
     private var keyboardView: ClipsKeyboardView!
     private var defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clips")!
+    private var pasteboardCheckTimer: Timer?
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -90,6 +91,18 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
         super.viewWillAppear(animated)
         
         self.loadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.pasteboardCheckTimer = Timer.scheduledTimer(timeInterval: 1, target: self.keyboardView, selector: #selector(ClipsKeyboardView.updateLastCopied), userInfo: nil, repeats: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.pasteboardCheckTimer?.invalidate()
     }
     
     override func textWillChange(_ textInput: UITextInput?) {
