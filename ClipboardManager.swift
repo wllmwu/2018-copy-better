@@ -72,6 +72,7 @@ class ClipboardManager: NSObject {
      */
     static func copyToPasteboard(item: [String : Any]) {
         var itemVar: [String : Any] = item
+        itemVar.removeValue(forKey: kUTTypeRTFD as String)
         if let png = itemVar[kUTTypePNG as String] as? UIImage {
             if let pngData = png.pngData() {
                 itemVar[kUTTypePNG as String] = pngData

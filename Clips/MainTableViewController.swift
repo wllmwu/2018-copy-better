@@ -36,7 +36,8 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         self.navigationItem.rightBarButtonItems?.append(self.editButtonItem)
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            fatalError("Couldn't find AppDelegate")
+            AppDelegate.alertFatalError(message: "Couldn't find AppDelegate.")
+            return
         }
         self.managedObjectContext = appDelegate.persistentContainer.viewContext
         self.retrieveData()
@@ -69,22 +70,17 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     // MARK: - Instance methods
     
     @objc private func loadData() {
-        var shouldReload: Bool = false
         self.showLastCopied = self.defaults.bool(forKey: "showLastCopiedInMain")
         if self.showLastCopied && self.pasteboardChangeCount != UIPasteboard.general.changeCount {
             self.retrieveLastCopied()
             self.pasteboardChangeCount = UIPasteboard.general.changeCount
-            shouldReload = true
         }
         
         if self.defaults.bool(forKey: "mainNeedsUpdate") {
             self.retrieveData()
-            shouldReload = true
         }
         
-        if shouldReload {
-            self.tableView.reloadData()
-        }
+        self.tableView.reloadData()
     }
     
     private func retrieveData() {
@@ -134,7 +130,8 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     @objc func addLastCopied() {
         if self.lastCopied.count > 0 {
             guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
-                fatalError("Couldn't find entity description.")
+                AppDelegate.alertFatalError(message: "Couldn't find entity description.")
+                return
             }
             
             // create new clip
@@ -309,7 +306,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
                 let destination: EditClipTableViewController = destinationNav.viewControllers.first as! EditClipTableViewController
                 destination.setContext(self.managedObjectContext)
                 destination.setMode(.Add)
-                destination.setIndex(self.clips.count) // append new clip to end of list
+                destination.setAllClips(self.clips)
             }
             else if identifier == "LastCopiedToClip" {
                 let destination: ClipViewController = segue.destination as! ClipViewController

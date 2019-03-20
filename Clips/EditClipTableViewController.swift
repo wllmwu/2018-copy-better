@@ -21,8 +21,8 @@ class EditClipTableViewController: UITableViewController {
     private var mode: Mode = .Add
     private var contents: [String : Any] = [:]
     private var originalContentsText: NSAttributedString!
-    private var index: Int?
     private var clip: Clip?
+    private var allClips: [Clip]?
     
     private var managedObjectContext: NSManagedObjectContext!
 
@@ -90,12 +90,12 @@ class EditClipTableViewController: UITableViewController {
         self.mode = mode
     }
     
-    func setIndex(_ index: Int) {
-        self.index = index
-    }
-    
     func setClip(_ clip: Clip) {
         self.clip = clip
+    }
+    
+    func setAllClips(_ clips: [Clip]) {
+        self.allClips = clips
     }
     
     @discardableResult private func saveContext() -> Bool {
@@ -119,20 +119,22 @@ class EditClipTableViewController: UITableViewController {
     
     @IBAction func save(_ sender: UIBarButtonItem) {
         if self.mode == .Add {
-            if let i = self.index {
-                guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
-                    fatalError("Couldn't find entity description.")
-                }
-                
-                let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
-                self.saveClipTitleAndContents(clip: clip)
-                clip.index = Int16(i)
-                if self.saveContext() {
-                    self.showToast(message: NSLocalizedString("Saved", comment: "\"Saved\" toast message"))
+            guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
+                AppDelegate.alertFatalError(message: "Couldn't find entity description.")
+                return
+            }
+            
+            let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
+            self.saveClipTitleAndContents(clip: clip)
+            clip.index = 0
+            if let clips = self.allClips {
+                for c in clips {
+                    c.index += 1
                 }
             }
-            else {
-                print("Error when adding: index wasn't set.")
+            
+            if self.saveContext() {
+                self.showToast(message: NSLocalizedString("Saved", comment: "\"Saved\" toast message"))
             }
         }
         else {

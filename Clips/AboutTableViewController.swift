@@ -10,6 +10,7 @@ import UIKit
 
 class AboutTableViewController: UITableViewController {
     
+    @IBOutlet weak var tipsLabel: UILabel!
     @IBOutlet weak var aboutLabel: UILabel!
     
     override func viewDidLoad() {
@@ -26,7 +27,7 @@ class AboutTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -35,6 +36,9 @@ class AboutTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return self.tipsLabel.bounds.height + 16
+        }
         return self.aboutLabel.bounds.height + 16
     }
 

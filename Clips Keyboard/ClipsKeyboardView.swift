@@ -31,6 +31,7 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     @IBOutlet weak var backspaceKey: KeyboardButton!
     @IBOutlet weak var nextColumnButton: KeyboardButton!
     private var backspaceKeyTimer: Timer?
+    private var backspaceKeyIsDown: Bool = false
     
     @IBOutlet weak var spaceKeyToNextKeyboardButtonConstraint: NSLayoutConstraint!
     @IBOutlet weak var spaceKeyToPreviousColumnButtonConstraint: NSLayoutConstraint!
@@ -101,13 +102,17 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     
     @IBAction func backspaceDown(_ sender: UIButton) {
         self.backspace()
+        self.backspaceKeyIsDown = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.backspaceKeyTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ClipsKeyboardView.backspace), userInfo: nil, repeats: true)
+            if (self.backspaceKeyIsDown) {
+                self.backspaceKeyTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ClipsKeyboardView.backspace), userInfo: nil, repeats: true)
+            }
         }
     }
     
     @IBAction func backspaceUp(_ sender: UIButton) {
         self.backspaceKeyTimer?.invalidate()
+        self.backspaceKeyIsDown = false
     }
     
     @objc func backspace() {

@@ -17,7 +17,8 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="cgU-5O-pTN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.84705882352941175" green="0.6470588235294118" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection headerTitle="In app" id="BjC-VA-k4B">
                                 <cells>
@@ -181,20 +182,46 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="fdD-vG-J61">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.84705882349999995" green="0.64705882349999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
+                            <tableViewSection id="Qga-kv-hFl">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="5XC-qn-92A">
+                                        <rect key="frame" x="0.0" y="35" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5XC-qn-92A" id="ZkO-Ri-XmH">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZBR-yv-hNc">
+                                                    <rect key="frame" x="16" y="-201.5" width="343" height="446.5"/>
+                                                    <string key="text">You can access your clips more easily from inside other apps by adding the Clips widget to the Today view.  When you need to paste a clip, just swipe down from the top of the screen, then swipe right. Next, tap Copy next to the clip you need, and you can now paste it normally anywhere.  Another simple way to paste clips is to use the Clips keyboard, which you can enable in Settings &gt; Clips &gt; Keyboards. Make sure to turn on both Clips and Allow Full Access (the keyboard needs this to be able to read the main app's list of clips – it will not record keystrokes or send any data).  NOTE: the Clips keyboard can only handle plain text – no formatting or images. However, you can paste with formatting and images from the widget or the app itself.</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ZBR-yv-hNc" firstAttribute="centerY" secondItem="ZkO-Ri-XmH" secondAttribute="centerY" id="IJG-Hl-9Eg"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ZBR-yv-hNc" secondAttribute="trailing" id="TqE-2H-Y8e"/>
+                                                <constraint firstItem="ZBR-yv-hNc" firstAttribute="leading" secondItem="ZkO-Ri-XmH" secondAttribute="leadingMargin" id="tVw-4B-tj5"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection id="bzG-fP-j7K">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="JWb-9a-NRG">
-                                        <rect key="frame" x="0.0" y="35" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="115" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JWb-9a-NRG" id="Rju-5u-SQ3">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Nl-cj-gKr">
-                                                    <rect key="frame" x="16" y="-100" width="343" height="243.5"/>
-                                                    <string key="text">© 2018 William Wu  This app is version 1.0.  Questions or bug reports? Email me at dev.wwu@gmail.com.  For the best use of this app, I recommend that you add the Clips widget to the Today View. Then you'll be able to access it from inside any app by swiping down from the top of the screen, then swiping to the right.</string>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© 2019 William Wu  This app is version 1.0.  Questions or bug reports? Email me at dev.wwu@gmail.com." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Nl-cj-gKr">
+                                                    <rect key="frame" x="16" y="-39.5" width="343" height="122.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -217,11 +244,12 @@
                     </tableView>
                     <connections>
                         <outlet property="aboutLabel" destination="4Nl-cj-gKr" id="TI9-6q-eZl"/>
+                        <outlet property="tipsLabel" destination="ZBR-yv-hNc" id="IVc-1t-clF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dj6-5O-gHn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3633" y="-638"/>
+            <point key="canvasLocation" x="3632.8000000000002" y="-638.2308845577212"/>
         </scene>
         <!--Main-->
         <scene sceneID="es6-c5-mlw">
@@ -250,7 +278,7 @@
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last copied" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOG-VC-fzC">
                                             <rect key="frame" x="60" y="11" width="196" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -317,7 +345,7 @@
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBM-4M-D6k">
                                             <rect key="frame" x="60" y="11" width="273" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -408,7 +436,7 @@
                             <outlet property="delegate" destination="Haj-no-mYC" id="uab-HN-5NO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Clips" id="55l-T6-khl">
+                    <navigationItem key="navigationItem" title="Clips Manager" id="55l-T6-khl">
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="Qnu-ko-62Q">
                             <connections>
                                 <segue destination="zou-yU-NyZ" kind="presentation" identifier="MainToSettings" modalTransitionStyle="coverVertical" id="oCp-9y-Yt3"/>
@@ -574,6 +602,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hT0-bA-Edf">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.84705882349999995" green="0.64705882349999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

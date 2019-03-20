@@ -38,7 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func addDefaultData() {
         guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
-            fatalError("Couldn't find entity description.")
+            print("Couldn't find entity description.")
+            return
         }
         
         Clip.addDefaultClip1(entity: entity, context: self.managedObjectContext)
@@ -90,9 +91,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let container = ClipsPersistentContainer(name: "Clips")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                 
                 /*
                  Typical reasons for an error here include:
                  * The parent directory does not exist, cannot be created, or disallows writing.
@@ -101,7 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                  * The store could not be migrated to the current model version.
                  Check the error message to determine what the actual problem was.
                  */
-                fatalError("Unresolved error \(error), \(error.userInfo)")
+                AppDelegate.alertFatalError(error: error)
             }
         })
         return container
@@ -115,12 +113,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             do {
                 try context.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                AppDelegate.alertFatalError(error: nserror)
             }
         }
+    }
+    
+    // MARK: - If this function is called, things are bad
+    
+    static func alertFatalError(error: NSError) {
+        alertFatalError(message: "Unresolved error: \(error), \(error.userInfo)")
+    }
+    
+    static func alertFatalError(message: String) {
+        print(message)
+        let alert = UIAlertController(title: "An error occurred", message: "Failed to access the container or Core Data in some way, most likely because the phone is out of storage space. The app may not work properly.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        let root: UINavigationController? = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+        root?.present(alert, animated: true, completion: nil)
     }
 
 }

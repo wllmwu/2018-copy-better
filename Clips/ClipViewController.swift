@@ -127,7 +127,8 @@ class ClipViewController: UIViewController {
     @objc func addLastCopied() {
         if self.contents.count > 0 {
             guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
-                fatalError("Couldn't find entity description.")
+                AppDelegate.alertFatalError(message: "Couldn't find entity description.")
+                return
             }
             
             // create new clip

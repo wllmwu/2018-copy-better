@@ -29,35 +29,10 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
         self.loadInterface()
         NotificationCenter.default.addObserver(self, selector: #selector(KeyboardViewController.deleteClip(_:)), name: Notification.Name("DeleteClip"), object: nil)
         
-        // Perform custom UI setup here
-        /*self.nextKeyboardButton = UIButton(type: .system)
-        
-        self.nextKeyboardButton.setTitle(NSLocalizedString("Next Keyboard", comment: "Title for 'Next Keyboard' button"), for: [])
-        self.nextKeyboardButton.sizeToFit()
-        self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
-        
-        self.view.addSubview(self.nextKeyboardButton)
-        
-        self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-        self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true*/
-        
         let container = ClipsPersistentContainer(name: "Clips")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                
-                /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
-                fatalError("Unresolved error \(error), \(error.userInfo)")
+                print("Unresolved error \(error), \(error.userInfo)")
             }
         })
         self.managedObjectContext = container.viewContext
@@ -146,7 +121,8 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
     
     private func addDefaultData() {
         guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
-            fatalError("Couldn't find entity description.")
+            print("Couldn't find entity description.")
+            return
         }
         
         Clip.addDefaultClip1(entity: entity, context: self.managedObjectContext)
@@ -228,7 +204,8 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
     
     func addLastCopied(_ text: String) {
         guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
-            fatalError("Couldn't find entity description.")
+            print("Couldn't find entity description.")
+            return
         }
         
         // create new clip
