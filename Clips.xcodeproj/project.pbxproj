@@ -22,7 +22,6 @@
 		E041A73121E3D65700B58DD5 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E041A72F21E3D65700B58DD5 /* MainInterface.storyboard */; };
 		E041A73521E3D65800B58DD5 /* Clips Share.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E041A72B21E3D65700B58DD5 /* Clips Share.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E041A73A21E3DA3E00B58DD5 /* ShareConfigureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E041A73921E3DA3E00B58DD5 /* ShareConfigureViewController.swift */; };
-		E041A73C21E3DAC200B58DD5 /* ShareConfigureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E041A73B21E3DAC200B58DD5 /* ShareConfigureView.xib */; };
 		E041A73D21E3DBD000B58DD5 /* Clip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */; };
 		E041A73E21E3DBD300B58DD5 /* Clip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858C2E21A0F0240089AE53 /* Clip+CoreDataProperties.swift */; };
 		E041A73F21E3DBD600B58DD5 /* Clips.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E056F8F720CEE46C0025E2FE /* Clips.xcdatamodeld */; };
@@ -53,6 +52,7 @@
 		E06CAC642241374B008347AA /* ClipsKeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E06CAC662241374B008347AA /* ClipsKeyboardView.xib */; };
 		E06EC94A21C5ACA100687F9E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E06EC94D21C5ACA100687F9E /* Localizable.strings */; };
 		E06EC94B21C5ACA100687F9E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E06EC94D21C5ACA100687F9E /* Localizable.strings */; };
+		E07DC2FD2243495B00736DBD /* ShareConfigureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E07DC2FF2243495B00736DBD /* ShareConfigureView.xib */; };
 		E07E7FF121CEB0C100F06B8C /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */; };
 		E0858C2F21A0F0240089AE53 /* Clip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */; };
 		E0858C3021A0F0240089AE53 /* Clip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */; };
@@ -122,7 +122,6 @@
 		E041A73021E3D65700B58DD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		E041A73221E3D65800B58DD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E041A73921E3DA3E00B58DD5 /* ShareConfigureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareConfigureViewController.swift; sourceTree = "<group>"; };
-		E041A73B21E3DAC200B58DD5 /* ShareConfigureView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareConfigureView.xib; sourceTree = "<group>"; };
 		E051A19E223E086D0059B7CA /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		E056F8ED20CEE46C0025E2FE /* Clips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clips.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E056F8F020CEE46C0025E2FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +147,9 @@
 		E06EC94C21C5ACA100687F9E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E06EC95021C5B2FD00687F9E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E06EC95121C5B30000687F9E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E07DC2FE2243495B00736DBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ShareConfigureView.xib; sourceTree = "<group>"; };
+		E07DC3012243496100736DBD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ShareConfigureView.strings; sourceTree = "<group>"; };
+		E07DC3032243496C00736DBD /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/ShareConfigureView.strings; sourceTree = "<group>"; };
 		E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clip+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E0858C2E21A0F0240089AE53 /* Clip+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clip+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E0A51AD421C6CABA00FCCCA9 /* Clips Keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Clips Keyboard.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -226,7 +228,7 @@
 				E041A72D21E3D65700B58DD5 /* ShareViewController.swift */,
 				E041A72F21E3D65700B58DD5 /* MainInterface.storyboard */,
 				E041A73921E3DA3E00B58DD5 /* ShareConfigureViewController.swift */,
-				E041A73B21E3DAC200B58DD5 /* ShareConfigureView.xib */,
+				E07DC2FF2243495B00736DBD /* ShareConfigureView.xib */,
 				E041A73221E3D65800B58DD5 /* Info.plist */,
 			);
 			path = "Clips Share";
@@ -460,7 +462,7 @@
 			files = (
 				E041A73121E3D65700B58DD5 /* MainInterface.storyboard in Resources */,
 				E041A74121E3DBDC00B58DD5 /* Localizable.strings in Resources */,
-				E041A73C21E3DAC200B58DD5 /* ShareConfigureView.xib in Resources */,
+				E07DC2FD2243495B00736DBD /* ShareConfigureView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -634,6 +636,16 @@
 				E06EC95121C5B30000687F9E /* es */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		E07DC2FF2243495B00736DBD /* ShareConfigureView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E07DC2FE2243495B00736DBD /* Base */,
+				E07DC3012243496100736DBD /* fr */,
+				E07DC3032243496C00736DBD /* es */,
+			);
+			name = ShareConfigureView.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

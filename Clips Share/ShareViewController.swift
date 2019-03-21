@@ -51,7 +51,6 @@ class ShareViewController: SLComposeServiceViewController, ShareConfigureViewCon
             if provider.hasItemConformingToTypeIdentifier(kUTTypeImage as String) {
                 provider.loadItem(forTypeIdentifier: kUTTypeImage as String, options: nil) { (image, error) in
                     OperationQueue.main.addOperation {
-                        print("\(String(describing: image))")
                         if let url = image as? URL {
                             self.clipContentsImageData = try! Data(contentsOf: url)
                         }
@@ -80,11 +79,9 @@ class ShareViewController: SLComposeServiceViewController, ShareConfigureViewCon
         
         var item: [String : Any] = [:]
         if let imageData = self.clipContentsImageData {
-            print("found image")
             item = [kUTTypeImage as String : imageData]
         }
         else if let text = self.clipContentsText {
-            print("found text: \"\(text)\"")
             item = ClipboardManager.itemFromAttributedString(text)
         }
         
@@ -99,7 +96,7 @@ class ShareViewController: SLComposeServiceViewController, ShareConfigureViewCon
     override func configurationItems() -> [Any]! {
         // To add configuration options via table cells at the bottom of the sheet, return an array of SLComposeSheetConfigurationItem here.
         if let titleConfig = SLComposeSheetConfigurationItem() {
-            titleConfig.title = "Title"
+            titleConfig.title = NSLocalizedString("Title", comment: "\"Title\" share configuration item title")
             titleConfig.value = self.clipTitle ?? ""
             titleConfig.tapHandler = {
                 let viewController = ShareConfigureViewController()

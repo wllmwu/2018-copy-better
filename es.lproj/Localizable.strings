@@ -31,10 +31,13 @@
 "Add to list" = "Agregar";
 
 /* "Last copied" title */
-"Last copied" = "Ya copiado";
+"Last copied" = "Prev. copiado";
 
 /* "Saved" toast message */
 "Saved" = "Guardado";
 
 /* "Add clip" title */
 "Add Clip" = "Agregar";
+
+/* "Title" share configuration item title */
+"Title" = "Título";
