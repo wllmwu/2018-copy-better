@@ -26,7 +26,6 @@ class ClipboardManager: NSObject {
      */
     static func retrieveFromPasteboard() -> [String : Any] {
         let pasteboard: UIPasteboard = UIPasteboard.general
-        print("Pasteboard items: \(pasteboard.items)")
         if let item = pasteboard.items.first {
             var newItem: [String : Any] = [:]
             if let rtfd = item[kUTTypeRTFD as String] {

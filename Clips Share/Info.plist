@@ -27,9 +27,9 @@
 			<key>NSExtensionActivationRule</key>
 			<dict>
 				<key>NSExtensionActivationSupportsText</key>
-				<integer>1</integer>
+				<true/>
 				<key>NSExtensionActivationSupportsImageWithMaxCount</key>
-				<integer>1</integer>
+				<true/>
 			</dict>
 		</dict>
 		<key>NSExtensionMainStoryboard</key>
