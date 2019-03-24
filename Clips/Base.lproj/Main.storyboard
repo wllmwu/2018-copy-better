@@ -13,7 +13,7 @@
         <!--Settings-->
         <scene sceneID="W4b-il-UZl">
             <objects>
-                <tableViewController id="BlK-IM-OGN" customClass="SettingsTableViewController" customModule="Clips" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="BlK-IM-OGN" customClass="SettingsTableViewController" customModule="Copy_Better" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="cgU-5O-pTN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -178,7 +178,7 @@
         <!--About-->
         <scene sceneID="Lpt-Vh-KfW">
             <objects>
-                <tableViewController title="About" id="KQb-ND-3vh" customClass="AboutTableViewController" customModule="Clips" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="About" id="KQb-ND-3vh" customClass="AboutTableViewController" customModule="Copy_Better" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="fdD-vG-J61">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -195,8 +195,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZBR-yv-hNc">
-                                                    <rect key="frame" x="16" y="-201.5" width="343" height="446.5"/>
-                                                    <string key="text">You can access your clips more easily from inside other apps by adding the Clips widget to the Today view.  When you need to paste a clip, just swipe down from the top of the screen, then swipe right. Next, tap Copy next to the clip you need, and you can now paste it normally anywhere.  Another simple way to paste clips is to use the Clips keyboard, which you can enable in Settings &gt; Clips &gt; Keyboards. Make sure to turn on both Clips and Allow Full Access (the keyboard needs this to be able to read the main app's list of clips – it will not record keystrokes or send any data).  NOTE: the Clips keyboard can only handle plain text – no formatting or images. However, you can paste with formatting and images from the widget or the app itself.</string>
+                                                    <rect key="frame" x="16" y="-212" width="343" height="467.5"/>
+                                                    <mutableString key="text">You can access your clips more easily from inside other apps by adding the Copy Better widget to the Today view.  When you need to paste a clip, just swipe down from the top of the screen, then swipe right. Next, tap Copy next to the clip you need, and you can now paste it normally anywhere.  Another simple way to paste clips is to use the Copy Better keyboard, which you can enable in Settings &gt; Copy Better &gt; Keyboards. Make sure to turn on both Copy Better and Allow Full Access (the keyboard needs this to be able to read the main app's list of clips – it will not record keystrokes or send any data).  NOTE: the Copy Better keyboard can only handle plain text – no formatting or images. However, you can paste with formatting and images from the widget or the app itself.</mutableString>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -254,7 +254,7 @@
         <!--Main-->
         <scene sceneID="es6-c5-mlw">
             <objects>
-                <tableViewController title="Main" id="Haj-no-mYC" customClass="MainTableViewController" customModule="Clips" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Main" id="Haj-no-mYC" customClass="MainTableViewController" customModule="Copy_Better" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="uiC-iC-gr4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -262,7 +262,7 @@
                         <color key="tintColor" red="0.84705882352941175" green="0.6470588235294118" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.70588235294117641" green="0.70588235294117641" blue="0.70588235294117641" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="LastCopiedCell" id="HgL-Ev-V2n" customClass="ClipTableViewCell" customModule="Clips" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="LastCopiedCell" id="HgL-Ev-V2n" customClass="ClipTableViewCell" customModule="Copy_Better" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HgL-Ev-V2n" id="pjn-Ma-mMc">
@@ -329,7 +329,7 @@
                                     <segue destination="9Ah-HQ-3Ku" kind="show" identifier="LastCopiedToClip" id="1pd-qj-QPy"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ClipWithTitleCell" id="LK3-ka-3An" customClass="ClipTableViewCell" customModule="Clips" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ClipWithTitleCell" id="LK3-ka-3An" customClass="ClipTableViewCell" customModule="Copy_Better" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="88" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LK3-ka-3An" id="tCf-pS-C3b">
@@ -385,7 +385,7 @@
                                     <segue destination="9Ah-HQ-3Ku" kind="show" identifier="ClipWithTitleToClip" id="OQy-tm-RJB"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ClipNoTitleCell" id="A58-0s-LVh" customClass="ClipTableViewCell" customModule="Clips" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ClipNoTitleCell" id="A58-0s-LVh" customClass="ClipTableViewCell" customModule="Copy_Better" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="148" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A58-0s-LVh" id="XKn-Oo-xf0">
@@ -436,7 +436,7 @@
                             <outlet property="delegate" destination="Haj-no-mYC" id="uab-HN-5NO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Clips Manager" id="55l-T6-khl">
+                    <navigationItem key="navigationItem" title="Copy Better" id="55l-T6-khl">
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="Qnu-ko-62Q">
                             <connections>
                                 <segue destination="zou-yU-NyZ" kind="presentation" identifier="MainToSettings" modalTransitionStyle="coverVertical" id="oCp-9y-Yt3"/>
@@ -456,7 +456,7 @@
         <!--Clip-->
         <scene sceneID="auW-EL-kvS">
             <objects>
-                <viewController title="Clip" id="9Ah-HQ-3Ku" customClass="ClipViewController" customModule="Clips" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Clip" id="9Ah-HQ-3Ku" customClass="ClipViewController" customModule="Copy_Better" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="olz-Yc-cne">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -491,7 +491,7 @@
         <!--Edit Clip-->
         <scene sceneID="nwi-s5-uLu">
             <objects>
-                <tableViewController title="Edit Clip" id="c12-NJ-Wss" customClass="EditClipTableViewController" customModule="Clips" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Edit Clip" id="c12-NJ-Wss" customClass="EditClipTableViewController" customModule="Copy_Better" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Jgs-Zu-sYs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

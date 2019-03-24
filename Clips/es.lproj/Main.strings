@@ -5,8 +5,8 @@
 /* Class = "UILabel"; text = "© 2019 William Wu  This app is version 1.0.  Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "4Nl-cj-gKr"; */
 "4Nl-cj-gKr.text" = "© 2019 William Wu (correo electrónico: dev.wwu@gmail.com)  Versión 1.0";
 
-/* Class = "UINavigationItem"; title = "Clips Manager"; ObjectID = "55l-T6-khl"; */
-"55l-T6-khl.title" = "Clips Manager";
+/* Class = "UINavigationItem"; title = "Copy Better"; ObjectID = "55l-T6-khl"; */
+"55l-T6-khl.title" = "Copiar Mejor";
 
 /* Class = "UIViewController"; title = "Clip"; ObjectID = "9Ah-HQ-3Ku"; */
 "9Ah-HQ-3Ku.title" = "Recorte";
@@ -62,8 +62,8 @@
 /* Class = "UITableViewSection"; headerTitle = "Title"; ObjectID = "Ymy-zL-M8M"; */
 "Ymy-zL-M8M.headerTitle" = "Título";
 
-/* Class = "UILabel"; text = "You can access your clips more easily from inside other apps by adding the Clips widget to the Today view.  When you need to paste a clip, just swipe down from the top of the screen, then swipe right. Next, tap Copy next to the clip you need, and you can now paste it normally anywhere.  Another simple way to paste clips is to use the Clips keyboard, which you can enable in Settings > Clips > Keyboards. Make sure to turn on both Clips and Allow Full Access (the keyboard needs this to be able to read the main app's list of clips – it will not record keystrokes or send any data).  NOTE: the Clips keyboard can only handle plain text – no formatting or images. However, you can paste with formatting and images from the widget or the app itself."; ObjectID = "ZBR-yv-hNc"; */
-"ZBR-yv-hNc.text" = "Para acceder más fácilmente a la lista de recortes, agregue el widget Clips a la visualización Hoy y habilite el teclado Clips (Configuración > Clips > Teclados).";
+/* Class = "UILabel"; text = "You can access your clips more easily from inside other apps by adding the Copy Better widget to the Today view.  When you need to paste a clip, just swipe down from the top of the screen, then swipe right. Next, tap Copy next to the clip you need, and you can now paste it normally anywhere.  Another simple way to paste clips is to use the Copy Better keyboard, which you can enable in Settings > Copy Better > Keyboards. Make sure to turn on both Copy Better and Allow Full Access (the keyboard needs this to be able to read the main app's list of clips – it will not record keystrokes or send any data).  NOTE: the Copy Better keyboard can only handle plain text – no formatting or images. However, you can paste with formatting and images from the widget or the app itself."; ObjectID = "ZBR-yv-hNc"; */
+"ZBR-yv-hNc.text" = "Para acceder más fácilmente a la lista de recortes, agregue el widget Copiar Mejor a la visualización Hoy y habilite el teclado Copiar Mejor (Configuración > Copiar Mejor > Teclados).";
 
 /* Class = "UITableViewController"; title = "Edit Clip"; ObjectID = "c12-NJ-Wss"; */
 "c12-NJ-Wss.title" = "Editar";
