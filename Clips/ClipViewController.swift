@@ -29,9 +29,12 @@ class ClipViewController: UIViewController {
             self.setContentsText(contents: self.contents)
         }
         else {
-            if let _ = self.clip {
+            if let clip = self.clip {
                 let copyButton: UIBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Copy", comment: "\"Copy\" button title"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(ClipViewController.copyClip))
                 let editButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(ClipViewController.segueToEdit))
+                if let title = clip.title {
+                    self.navigationItem.title = title
+                }
                 self.navigationItem.rightBarButtonItems = [copyButton, editButton]
             }
         }
