@@ -52,6 +52,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         self.searchController.searchResultsUpdater = self
         self.searchController.obscuresBackgroundDuringPresentation = false
         self.searchController.searchBar.placeholder = NSLocalizedString("Search", comment: "search bar placeholder")
+        self.searchController.searchBar.tintColor = UIColor(named: "Accent")
         self.tableView.tableHeaderView = self.searchController.searchBar
         self.definesPresentationContext = true
     }

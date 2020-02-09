@@ -14,6 +14,8 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var showCurrentInWidgetSwitch: UISwitch!
     @IBOutlet weak var numClipsInWidgetStepper: UIStepper!
     @IBOutlet weak var numClipsInWidgetLabel: UILabel!
+    @IBOutlet weak var tipsLabel: UILabel!
+    @IBOutlet weak var aboutLabel: UILabel!
     
     private let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clips")!
     
@@ -31,6 +33,8 @@ class SettingsTableViewController: UITableViewController {
         let numClips: Int = self.defaults.integer(forKey: "numClipsInWidget")
         self.numClipsInWidgetStepper.value = Double(numClips)
         self.numClipsInWidgetLabel.text = String(numClips)
+        self.tipsLabel.sizeToFit()
+        self.aboutLabel.sizeToFit()
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,15 +68,15 @@ class SettingsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 1 { return 2 }
-        return 1
+        if section == 0 { return 1 }
+        return 2
     }
     
-    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 2 {
-            return indexPath
+            return (indexPath.row == 0) ? self.tipsLabel.bounds.height + 16 : self.aboutLabel.bounds.height + 16
         }
-        return nil
+        return 45
     }
 
     /*

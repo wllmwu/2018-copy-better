@@ -48,12 +48,12 @@ class WidgetClipTableViewCell: UITableViewCell {
     
     func setContents(_ item: [String : Any]) {
         self.contents = item
-        self.contentsLabel.textColor = UIColor.darkText
+        self.contentsLabel.textColor = UIColor.label
         self.contentsImageView.image = nil
         
         if item.count == 0 {
             self.contentsLabel.text = NSLocalizedString("(Empty)", comment: "empty clip contents placeholder")
-            self.contentsLabel.textColor = UIColor.gray
+            self.contentsLabel.textColor = UIColor.secondaryLabel
         }
         else {
             let imageViewSize: CGSize = self.contentsImageView.bounds.size

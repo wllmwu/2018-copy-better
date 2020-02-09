@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ClipsKeyboardView" customModule="Clips_Keyboard" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ClipsKeyboardView" customModule="Copy_Better_Keyboard" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="278"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -27,7 +26,7 @@
                                 <constraint firstAttribute="width" constant="1" id="t7o-lH-afz"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gN3-kZ-ZNV" customClass="KeyboardUpperButton" customModule="Clips_Keyboard" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gN3-kZ-ZNV" customClass="KeyboardUpperButton" customModule="Copy_Better_Keyboard" customModuleProvider="target">
                             <rect key="frame" x="6" y="7" width="271" height="34"/>
                             <connections>
                                 <action selector="insertLastCopied:" destination="iN0-l3-epB" eventType="touchUpInside" id="qI2-lj-zrC"/>
@@ -45,7 +44,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vEp-c9-L75" customClass="KeyboardUpperButton" customModule="Clips_Keyboard" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vEp-c9-L75" customClass="KeyboardUpperButton" customModule="Copy_Better_Keyboard" customModuleProvider="target">
                             <rect key="frame" x="276" y="7" width="93" height="34"/>
                             <connections>
                                 <action selector="addLastCopied:" destination="iN0-l3-epB" eventType="touchUpInside" id="EZz-n3-Bx0"/>
@@ -80,9 +79,9 @@
                         <constraint firstItem="ecY-mG-zYY" firstAttribute="trailing" secondItem="gN3-kZ-ZNV" secondAttribute="trailing" id="w1k-xy-WLk"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bas-aS-K5R" customClass="KeyboardButton" customModule="Clips_Keyboard" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bas-aS-K5R" customClass="KeyboardButton" customModule="Copy_Better_Keyboard" customModuleProvider="target">
                     <rect key="frame" x="56" y="228" width="44" height="44"/>
-                    <color key="backgroundColor" red="0.63469039589999998" green="0.66973983510000001" blue="0.72409137459999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" name="Key"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="bas-aS-K5R" secondAttribute="height" multiplier="1:1" id="vl5-8T-suk"/>
                     </constraints>
@@ -92,14 +91,14 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isControlKey" value="YES"/>
                     </userDefinedRuntimeAttributes>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ec3-KT-jiv" customClass="KeyboardButton" customModule="Clips_Keyboard" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ec3-KT-jiv" customClass="KeyboardButton" customModule="Copy_Better_Keyboard" customModuleProvider="target">
                     <rect key="frame" x="106" y="228" width="163" height="44"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" name="Key White"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="wv5-xq-RbZ"/>
                     </constraints>
                     <state key="normal" title="space">
-                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                     </state>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isControlKey" value="NO"/>
@@ -108,9 +107,9 @@
                         <action selector="space:" destination="iN0-l3-epB" eventType="touchUpInside" id="wAI-Fa-3iH"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aeo-Xp-SNY" customClass="KeyboardButton" customModule="Clips_Keyboard" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aeo-Xp-SNY" customClass="KeyboardButton" customModule="Copy_Better_Keyboard" customModuleProvider="target">
                     <rect key="frame" x="275" y="228" width="44" height="44"/>
-                    <color key="backgroundColor" red="0.63469039585012088" green="0.66973983514638735" blue="0.72409137456352402" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" name="Key"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="aeo-Xp-SNY" secondAttribute="height" multiplier="1:1" id="EU1-c7-2F6"/>
                     </constraints>
@@ -126,9 +125,9 @@
                         <action selector="backspaceUp:" destination="iN0-l3-epB" eventType="touchUpOutside" id="lMw-hQ-8iQ"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHs-tw-hN9" customClass="KeyboardButton" customModule="Clips_Keyboard" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHs-tw-hN9" customClass="KeyboardButton" customModule="Copy_Better_Keyboard" customModuleProvider="target">
                     <rect key="frame" x="6" y="228" width="44" height="44"/>
-                    <color key="backgroundColor" red="0.63469039589999998" green="0.66973983510000001" blue="0.72409137459999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" name="Key"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="pHs-tw-hN9" secondAttribute="height" multiplier="1:1" id="yBQ-ap-H4P"/>
                     </constraints>
@@ -144,9 +143,9 @@
                         <action selector="scrollToPreviousColumn:" destination="iN0-l3-epB" eventType="touchUpInside" id="Epr-dd-0M4"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3J-Q6-hpE" customClass="KeyboardButton" customModule="Clips_Keyboard" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3J-Q6-hpE" customClass="KeyboardButton" customModule="Copy_Better_Keyboard" customModuleProvider="target">
                     <rect key="frame" x="325" y="228" width="44" height="44"/>
-                    <color key="backgroundColor" red="0.63469039589999998" green="0.66973983510000001" blue="0.72409137459999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" name="Key"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="o3J-Q6-hpE" secondAttribute="height" multiplier="1:1" id="qdt-Pi-WVL"/>
                     </constraints>
@@ -164,7 +163,7 @@
                 </button>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="8z4-Li-KCR">
                     <rect key="frame" x="0.0" y="48" width="375" height="174"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstAttribute="height" priority="750" constant="176" id="Q3I-Np-XWd"/>
                     </constraints>
@@ -223,10 +222,16 @@
         </view>
     </objects>
     <resources>
-        <image name="Backspace0" width="84" height="84"/>
-        <image name="Backspace1" width="84" height="84"/>
-        <image name="Globe" width="84" height="84"/>
-        <image name="LeftArrow" width="63" height="63"/>
-        <image name="RightArrow" width="63" height="63"/>
+        <image name="Backspace0" width="42" height="42"/>
+        <image name="Backspace1" width="42" height="42"/>
+        <image name="Globe" width="42" height="42"/>
+        <image name="LeftArrow" width="42" height="42"/>
+        <image name="RightArrow" width="42" height="42"/>
+        <namedColor name="Key">
+            <color red="0.63529411764705879" green="0.6705882352941176" blue="0.72549019607843135" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Key White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

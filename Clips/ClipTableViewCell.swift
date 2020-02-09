@@ -44,14 +44,14 @@ class ClipTableViewCell: UITableViewCell {
             defaultSize = 11
         }
         self.contentsLabel.font = UIFont.systemFont(ofSize: defaultSize)
-        self.contentsLabel.textColor = UIColor.darkText
+        self.contentsLabel.textColor = UIColor.label
         self.contentsImageView.image = nil
     }
     
     private func setContentsLabelText() {
         if self.contents.count == 0 {
             self.contentsLabel.text = NSLocalizedString("(Empty)", comment: "empty clip contents placeholder")
-            self.contentsLabel.textColor = UIColor.gray
+            self.contentsLabel.textColor = UIColor.secondaryLabel
             return
         }
         
