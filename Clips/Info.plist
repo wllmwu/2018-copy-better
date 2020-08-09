@@ -27,7 +27,7 @@
 			<string>com.williamwu.Clips</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>clips</string>
+				<string>copybetter</string>
 			</array>
 		</dict>
 	</array>
@@ -50,6 +50,7 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

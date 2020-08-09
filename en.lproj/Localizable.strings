@@ -41,3 +41,9 @@
 
 /* "Title" share configuration item title */
 "Title" = "Title";
+
+/* keyboard error message */
+"Error retrieving clips[...]" = "Error retrieving clips! Please open the app and read the About text in the settings to troubleshoot.";
+
+/* keyboard empty list message */
+"(No items)" = "(No items)";

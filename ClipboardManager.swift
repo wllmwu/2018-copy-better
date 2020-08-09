@@ -46,6 +46,9 @@ class ClipboardManager: NSObject {
             if let plaintext = item[kUTTypePlainText as String] {
                 newItem[kUTTypePlainText as String] = plaintext
             }
+            if let url = item[kUTTypeURL as String] {
+                newItem[kUTTypeURL as String] = url
+            }
             if let png = item[kUTTypePNG as String] {
                 newItem[kUTTypePNG as String] = png
             }

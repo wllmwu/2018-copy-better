@@ -41,3 +41,9 @@
 
 /* "Title" share configuration item title */
 "Title" = "Título";
+
+/* keyboard error message */
+"Error retrieving clips[...]" = "Error al recuperar datos! Copiar Mejor > Configuración > Información.";
+
+/* keyboard empty list message */
+"(No items)" = "(No se encontraron artículos)";

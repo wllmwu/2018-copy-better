@@ -21,6 +21,7 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     private var indices: [Int] = []
     private var lastCopied: String?
     private var pasteboardChangeCount: Int = 0
+    private static let numClipsOnPage: Int = 5
     
     @IBOutlet weak var lastCopiedLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -30,6 +31,7 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     @IBOutlet weak var spaceKey: KeyboardButton!
     @IBOutlet weak var backspaceKey: KeyboardButton!
     @IBOutlet weak var nextColumnButton: KeyboardButton!
+    @IBOutlet weak var messageLabel: UILabel!
     private var backspaceKeyTimer: Timer?
     private var backspaceKeyIsDown: Bool = false
     
@@ -71,6 +73,12 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     func loadData(clips: [Clip]) {
         self.extractTitlesAndStrings(from: clips)
         self.collectionView.reloadData()
+        if clips.count == 0 {
+            self.showEmptyMessage()
+        }
+        else {
+            self.setMessageLabelVisible(false)
+        }
         self.updateLastCopied()
     }
     
@@ -80,6 +88,24 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
             self.lastCopied = ClipboardManager.stringFromItem(ClipboardManager.retrieveFromPasteboard())
             self.lastCopiedLabel.text = self.lastCopied
         }
+    }
+    
+    func setMessageLabelVisible(_ visible: Bool) {
+        self.messageLabel.isHidden = !visible
+    }
+    
+    func setMessageLabelText(_ text: String) {
+        self.messageLabel.text = text
+    }
+    
+    func showErrorMessage() {
+        self.setMessageLabelText(NSLocalizedString("Error retrieving clips[...]", comment: "keyboard error message"))
+        self.setMessageLabelVisible(true)
+    }
+    
+    func showEmptyMessage() {
+        self.setMessageLabelText(NSLocalizedString("(No items)", comment: "keyboard empty list message"))
+        self.setMessageLabelVisible(true)
     }
     
     // MARK: - Actions
@@ -120,17 +146,17 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     }
     
     @IBAction func scrollToPreviousColumn(_ sender: UIButton) {
-        let col: Int = self.currentColumn()
+        let col: Int = self.getCurrentColumn()
         if col > 0 {
-            let indexPath: IndexPath = IndexPath(row: (col - 1) * 4, section: 0)
+            let indexPath: IndexPath = IndexPath(row: (col - 1) * ClipsKeyboardView.numClipsOnPage, section: 0)
             self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
     }
     
     @IBAction func scrollToNextColumn(_ sender: UIButton) {
-        let col: Int = self.currentColumn()
+        let col: Int = self.getCurrentColumn()
         if col < (self.strings.count - 1) / 4 {
-            let indexPath: IndexPath = IndexPath(row: (col + 1) * 4, section: 0)
+            let indexPath: IndexPath = IndexPath(row: (col + 1) * ClipsKeyboardView.numClipsOnPage, section: 0)
             self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
     }
@@ -149,10 +175,10 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
         }
     }
     
-    private func currentColumn() -> Int {
+    private func getCurrentColumn() -> Int {
         let indexPaths: [IndexPath] = self.collectionView.indexPathsForVisibleItems
         if let indexPath = indexPaths.first {
-            return indexPath.row / 4
+            return indexPath.row / ClipsKeyboardView.numClipsOnPage
         }
         return 0
     }

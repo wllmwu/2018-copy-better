@@ -2,8 +2,8 @@
 /* Class = "UINavigationItem"; title = "Edit Clip"; ObjectID = "05A-KI-hkJ"; */
 "05A-KI-hkJ.title" = "Modifier";
 
-/* Class = "UILabel"; text = "© 2019 William Wu  This app is version 1.1.  Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "4Nl-cj-gKr"; */
-"4Nl-cj-gKr.text" = "© 2019 William Wu  Version 1.1  Posez des questions ou signalez un bug à dev.wwu@gmail.com.";
+/* Class = "UILabel"; text = "© 2020 William Wu  This app is version 1.1.  Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "4Nl-cj-gKr"; */
+"4Nl-cj-gKr.text" = "© 2020 William Wu  Version 1.1  Posez des questions ou signalez un bug à dev.wwu@gmail.com.";
 
 /* Class = "UINavigationItem"; title = "Copy Better"; ObjectID = "55l-T6-khl"; */
 "55l-T6-khl.title" = "Copier Mieux";

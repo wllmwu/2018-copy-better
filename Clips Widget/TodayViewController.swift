@@ -199,7 +199,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     }
     
     @IBAction func openAppButtonTapped(_ sender: UIButton) {
-        self.extensionContext!.open(URL(string: "clips://")!, completionHandler: { (success) in
+        self.extensionContext!.open(URL(string: "copybetter://")!, completionHandler: { (success) in
             if !success {
                 print("Error opening app from Today extension")
             }

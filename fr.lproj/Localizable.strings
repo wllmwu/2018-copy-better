@@ -41,3 +41,9 @@
 
 /* "Title" share configuration item title */
 "Title" = "Titre";
+
+/* keyboard error message */
+"Error retrieving clips[...]" = "N'a pas pu récupérer les données! Ouvrir l'application et lire les Informations dans les paramètres pour dépanner.";
+
+/* keyboard empty list message */
+"(No items)" = "(Aucun élément)";

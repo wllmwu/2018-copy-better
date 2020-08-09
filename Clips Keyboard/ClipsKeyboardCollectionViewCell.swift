@@ -62,6 +62,8 @@ class ClipsKeyboardCollectionViewCell: UICollectionViewCell {
         self.xButton.isHidden = true
         self.contentsLabelTrailingToXButton.priority = .defaultLow
         self.contentsLabelTrailingToDeleteButton.priority = .defaultHigh
+        //print("to x", self.contentsLabelTrailingToXButton.isActive)
+        //print("to delete", self.contentsLabelTrailingToDeleteButton.isActive)
         self.deleteButton.isHidden = false
         self.cancelButton.isHidden = false
     }

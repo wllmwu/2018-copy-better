@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -165,7 +164,7 @@
                     <rect key="frame" x="0.0" y="48" width="375" height="174"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" priority="750" constant="176" id="Q3I-Np-XWd"/>
+                        <constraint firstAttribute="height" priority="750" constant="220" id="Q3I-Np-XWd"/>
                     </constraints>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="K6Q-aB-L1E">
                         <size key="itemSize" width="375" height="44"/>
@@ -178,6 +177,12 @@
                         <outlet property="delegate" destination="iN0-l3-epB" id="H2D-cN-b17"/>
                     </connections>
                 </collectionView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Exl-xm-tBI">
+                    <rect key="frame" x="30" y="78" width="315" height="120"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <constraints>
                 <constraint firstItem="Ec3-KT-jiv" firstAttribute="leading" secondItem="bas-aS-K5R" secondAttribute="trailing" priority="750" constant="6" id="33e-CL-XeS"/>
@@ -186,6 +191,8 @@
                 <constraint firstItem="aeo-Xp-SNY" firstAttribute="height" secondItem="Ec3-KT-jiv" secondAttribute="height" id="8u4-vN-FJM"/>
                 <constraint firstItem="Ec3-KT-jiv" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="-6" id="8xJ-3X-tqC"/>
                 <constraint firstItem="75w-yv-2I7" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="CUB-AC-AUc"/>
+                <constraint firstItem="Exl-xm-tBI" firstAttribute="top" secondItem="75w-yv-2I7" secondAttribute="bottom" constant="30" id="Ce1-4Q-o8q"/>
+                <constraint firstItem="bas-aS-K5R" firstAttribute="top" secondItem="Exl-xm-tBI" secondAttribute="bottom" constant="30" id="DB7-Ex-Wzb"/>
                 <constraint firstItem="bas-aS-K5R" firstAttribute="leading" secondItem="pHs-tw-hN9" secondAttribute="trailing" constant="6" id="Eyx-m6-6az"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="8z4-Li-KCR" secondAttribute="trailing" id="HUe-sl-tfx"/>
                 <constraint firstItem="Ec3-KT-jiv" firstAttribute="leading" secondItem="pHs-tw-hN9" secondAttribute="trailing" priority="250" constant="6" id="IsK-NF-Xjb"/>
@@ -203,6 +210,8 @@
                 <constraint firstItem="Ec3-KT-jiv" firstAttribute="height" secondItem="bas-aS-K5R" secondAttribute="height" id="peX-f6-rq2"/>
                 <constraint firstItem="aeo-Xp-SNY" firstAttribute="bottom" secondItem="Ec3-KT-jiv" secondAttribute="bottom" id="qeC-TC-Rm4"/>
                 <constraint firstItem="Ec3-KT-jiv" firstAttribute="top" secondItem="8z4-Li-KCR" secondAttribute="bottom" constant="6" id="tNu-xf-Toh"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Exl-xm-tBI" secondAttribute="trailing" constant="30" id="yia-mj-0Kn"/>
+                <constraint firstItem="Exl-xm-tBI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="zhH-vK-Qg5"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -211,6 +220,7 @@
                 <outlet property="collectionView" destination="8z4-Li-KCR" id="JJE-E7-XFw"/>
                 <outlet property="collectionViewLayout" destination="K6Q-aB-L1E" id="oSO-H2-MyR"/>
                 <outlet property="lastCopiedLabel" destination="hg9-Pr-SgV" id="DWx-nA-bPb"/>
+                <outlet property="messageLabel" destination="Exl-xm-tBI" id="7Qe-Hu-FyQ"/>
                 <outlet property="nextColumnButton" destination="o3J-Q6-hpE" id="YUM-6X-Rs4"/>
                 <outlet property="nextKeyboardButton" destination="bas-aS-K5R" id="0B3-Ze-oKo"/>
                 <outlet property="previousColumnButton" destination="pHs-tw-hN9" id="egP-d2-tvi"/>

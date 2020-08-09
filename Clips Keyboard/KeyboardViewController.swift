@@ -33,20 +33,22 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 print("Unresolved error \(error), \(error.userInfo)")
+                self.keyboardView.showErrorMessage()
             }
         })
         self.managedObjectContext = container.viewContext
         
         if !self.defaults.bool(forKey: "launchedBefore") {
             // main app has never been launched - set some default settings and data
-            self.defaults.set(true, forKey: "showLastCopiedInMain")
+            /*self.defaults.set(true, forKey: "showLastCopiedInMain")
             self.defaults.set(true, forKey: "showLastCopiedInWidget")
             self.defaults.set(5, forKey: "numClipsInWidget")
             
             self.addDefaultData()
             self.defaults.set(true, forKey: "keyboardNeedsUpdate")
             
-            self.defaults.set(true, forKey: "launchedBefore")
+            self.defaults.set(true, forKey: "launchedBefore")*/
+            self.keyboardView.showErrorMessage()
         }
         else {
             let fetchRequest: NSFetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
@@ -58,6 +60,7 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
             }
             catch let error as NSError {
                 print("Couldn't fetch. \(error), \(error.userInfo)")
+                self.keyboardView.showErrorMessage()
             }
         }
     }
@@ -117,9 +120,10 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
             ])
         self.keyboardView.setNextKeyboardButtonVisible(self.needsInputModeSwitchKey)
         self.keyboardView.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
+        self.keyboardView.setMessageLabelVisible(false)
     }
     
-    private func addDefaultData() {
+    /*private func addDefaultData() {
         guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
             print("Couldn't find entity description.")
             return
@@ -134,7 +138,7 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
         catch let error as NSError {
             print("Couldn't save. \(error), \(error.userInfo)")
         }
-    }
+    }*/
     
     private func loadData() {
         DispatchQueue.global(qos: .utility).async {
@@ -150,6 +154,7 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
                 }
                 catch let error as NSError {
                     print("Couldn't fetch. \(error), \(error.userInfo)")
+                    self.keyboardView.showErrorMessage()
                 }
             }
             else {
