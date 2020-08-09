@@ -18,6 +18,8 @@ extension Clip {
     }
 
     @NSManaged public var contents: [String : Any]
+    @NSManaged public var folderID: Int32
+    @NSManaged public var id: Int32
     @NSManaged public var index: Int16
     @NSManaged public var title: String?
 

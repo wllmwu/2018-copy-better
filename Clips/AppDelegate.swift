@@ -21,16 +21,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clips")!
         if !defaults.bool(forKey: "launchedBefore") {
-            // first launch - set some default settings and data
+            // first launch ever - set some default settings and data
             defaults.set(true, forKey: "showLastCopiedInMain")
             defaults.set(true, forKey: "showLastCopiedInWidget")
             defaults.set(5, forKey: "numClipsInWidget")
             
             self.managedObjectContext = self.persistentContainer.viewContext
             self.addDefaultData()
+            defaults.set(2, forKey: "nextClipID")
+            defaults.set(0, forKey: "nextFolderID")
             defaults.set(true, forKey: "widgetNeedsUpdate")
             
             defaults.set(true, forKey: "launchedBefore")
+            defaults.set(true, forKey: "launched2.0")
+        }
+        else if !defaults.bool(forKey: "launched2.0") {
+            // launched before updating to version 2.0 - migrate old clips to the new model
+            self.migrateModelV1To2(defaults: defaults)
+            defaults.set(true, forKey: "launched2.0")
         }
         
         return true
@@ -50,6 +58,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         catch let error as NSError {
             print("Couldn't save. \(error), \(error.userInfo)")
+        }
+    }
+    
+    private func migrateModelV1To2(defaults: UserDefaults) {
+        let fetchRequest: NSFetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "index", ascending: true)]
+        do {
+            let clips: [Clip] = try self.managedObjectContext.fetch(fetchRequest)
+            for i in 0...clips.count {
+                let clip: Clip = clips[i]
+                clip.id = Int32(i)
+                clip.folderID = -1
+            }
+            try self.managedObjectContext.save()
+            defaults.set(clips.count, forKey: "nextClipID")
+            defaults.set(0, forKey: "nextFolderID")
+        }
+        catch let error as NSError {
+            print("Couldn't fetch/save. \(error), \(error.userInfo)")
         }
     }
 

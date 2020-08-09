@@ -19,6 +19,8 @@ public class Clip: NSManagedObject {
         clip.title = NSLocalizedString("Shrug", comment: "default clip title 1")
         clip.contents = ClipboardManager.itemFromPlaintext("\u{00af}\\_(\u{30c4})_/\u{00af}")
         clip.index = 0
+        clip.id = 0
+        clip.folderID = -1
     }
     
     static func addDefaultClip2(entity: NSEntityDescription, context: NSManagedObjectContext) {
@@ -29,6 +31,8 @@ public class Clip: NSManagedObject {
         clip2Text.append(NSAttributedString(string: "ard", attributes: [.font : UIFont.italicSystemFont(ofSize: 17), .foregroundColor : UIColor.blue]))
         clip.contents = ClipboardManager.itemFromAttributedString(clip2Text)
         clip.index = 1
+        clip.id = 1
+        clip.folderID = -1
     }
     
 }

@@ -2,11 +2,12 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Clip" representedClassName="Clip" syncable="YES">
         <attribute name="contents" attributeType="Transformable"/>
-        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="folderID" optional="YES" attributeType="Integer 32" defaultValueString="-1" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="Integer 32" defaultValueString="-1" usesScalarValueType="YES"/>
         <attribute name="index" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Clip" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="Clip" positionX="-63" positionY="-18" width="128" height="118"/>
     </elements>
 </model>
