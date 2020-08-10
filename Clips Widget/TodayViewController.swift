@@ -47,16 +47,14 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         
         if !self.defaults.bool(forKey: "launchedBefore") {
             // main app has never been launched - set some default settings and data
-            self.defaults.set(true, forKey: "showLastCopiedInMain")
-            self.defaults.set(true, forKey: "showLastCopiedInWidget")
-            self.defaults.set(5, forKey: "numClipsInWidget")
-            
-            self.addDefaultData()
-            self.defaults.set(true, forKey: "widgetNeedsUpdate")
-            
-            self.defaults.set(true, forKey: "launchedBefore")
+            container.setUpFirstLaunch()
         }
-        else {
+        else if !self.defaults.bool(forKey: "launched2.0") {
+            // has launched before updating to version 2.0 - migrate old clips to the new model
+            container.migrateModelV1To2()
+            defaults.set(true, forKey: "launched2.0")
+        }
+        /*else {
             self.showLastCopied = self.defaults.bool(forKey: "showLastCopiedInWidget")
             self.numClips = self.defaults.integer(forKey: "numClipsInWidget")
             
@@ -72,7 +70,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
             catch let error as NSError {
                 print("Couldn't fetch. \(error), \(error.userInfo)")
             }
-        }
+        }*/
     }
     
     override func didReceiveMemoryWarning() {
@@ -103,7 +101,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     
     // MARK: - Instance methods
     
-    private func addDefaultData() {
+    /*private func addDefaultData() {
         guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
             print("Couldn't find entity description.")
             return
@@ -118,7 +116,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         catch let error as NSError {
             print("Couldn't save. \(error), \(error.userInfo)")
         }
-    }
+    }*/
     
     private func loadData() {
         DispatchQueue.global(qos: .utility).async {

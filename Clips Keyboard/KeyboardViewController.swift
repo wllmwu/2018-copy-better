@@ -39,18 +39,15 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
         self.managedObjectContext = container.viewContext
         
         if !self.defaults.bool(forKey: "launchedBefore") {
-            // main app has never been launched - set some default settings and data
-            /*self.defaults.set(true, forKey: "showLastCopiedInMain")
-            self.defaults.set(true, forKey: "showLastCopiedInWidget")
-            self.defaults.set(5, forKey: "numClipsInWidget")
-            
-            self.addDefaultData()
-            self.defaults.set(true, forKey: "keyboardNeedsUpdate")
-            
-            self.defaults.set(true, forKey: "launchedBefore")*/
+            // main app has never been launched - tell the user to check the app first
             self.keyboardView.showErrorMessage()
         }
-        else {
+        else if !self.defaults.bool(forKey: "launched2.0") {
+            // has launched before updating to version 2.0 - migrate old clips to the new model
+            container.migrateModelV1To2()
+            defaults.set(true, forKey: "launched2.0")
+        }
+        /*else {
             let fetchRequest: NSFetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "index", ascending: true)]
             do {
@@ -62,7 +59,7 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
                 print("Couldn't fetch. \(error), \(error.userInfo)")
                 self.keyboardView.showErrorMessage()
             }
-        }
+        }*/
     }
     
     override func viewWillAppear(_ animated: Bool) {

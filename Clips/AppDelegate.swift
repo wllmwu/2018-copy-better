@@ -22,29 +22,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clips")!
         if !defaults.bool(forKey: "launchedBefore") {
             // first launch ever - set some default settings and data
-            defaults.set(true, forKey: "showLastCopiedInMain")
-            defaults.set(true, forKey: "showLastCopiedInWidget")
-            defaults.set(5, forKey: "numClipsInWidget")
-            
             self.managedObjectContext = self.persistentContainer.viewContext
-            self.addDefaultData()
-            defaults.set(2, forKey: "nextClipID")
-            defaults.set(0, forKey: "nextFolderID")
-            defaults.set(true, forKey: "widgetNeedsUpdate")
-            
-            defaults.set(true, forKey: "launchedBefore")
-            defaults.set(true, forKey: "launched2.0")
+            self.persistentContainer.setUpFirstLaunch()
         }
         else if !defaults.bool(forKey: "launched2.0") {
-            // launched before updating to version 2.0 - migrate old clips to the new model
-            self.migrateModelV1To2(defaults: defaults)
+            // has launched before updating to version 2.0 - migrate old clips to the new model
+            self.managedObjectContext = self.persistentContainer.viewContext
+            self.persistentContainer.migrateModelV1To2()
             defaults.set(true, forKey: "launched2.0")
         }
         
         return true
     }
     
-    private func addDefaultData() {
+    /*private func addDefaultData() {
         guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
             print("Couldn't find entity description.")
             return
@@ -78,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         catch let error as NSError {
             print("Couldn't fetch/save. \(error), \(error.userInfo)")
         }
-    }
+    }*/
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
