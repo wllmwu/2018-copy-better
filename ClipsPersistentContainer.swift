@@ -54,7 +54,7 @@ class ClipsPersistentContainer: NSPersistentContainer {
     }
     
     /**
-     Migrates the existing clip records from version 1 to version 2 of the Core Data model (adding `id` and `folderID` attributes, assuming that the model itself has already been migrated automatically). Existing clips will have `id` equal to their current index in the list, and will have `folderID` of -1. Also sets the next available ID numbers in the user defaults.
+     Migrates the existing clip records from version 1 to version 2 of the Core Data model (adding `id` and `folderID` attributes, assuming that the model itself has already been migrated automatically). Existing clips will have `id` equal to their current index in the list, and will have `folderID` -1. Also sets the next available ID numbers in the user defaults.
      */
     func migrateModelV1To2() {
         let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clips")!

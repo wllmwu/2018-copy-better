@@ -190,6 +190,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             cell = tableView.dequeueReusableCell(withIdentifier: "ClipNoTitleCell", for: indexPath) as! ClipTableViewCell
         }
         cell.setContents(clip.contents)
+        cell.tempSetID(id: clip.id) // TEMP
         return cell
     }
 

@@ -32,10 +32,12 @@ class ClipViewController: UIViewController {
             if let clip = self.clip {
                 let copyButton: UIBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Copy", comment: "\"Copy\" button title"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(ClipViewController.copyClip))
                 let editButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(ClipViewController.segueToEdit))
-                if let title = clip.title {
-                    self.navigationItem.title = title
-                }
                 self.navigationItem.rightBarButtonItems = [copyButton, editButton]
+                
+                if let title = clip.title {
+                    self.setTitle(title)
+                }
+                self.setContentsText(contents: clip.contents)
             }
         }
     }
@@ -45,7 +47,7 @@ class ClipViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    /*override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if !self.isLastCopied {
@@ -53,9 +55,13 @@ class ClipViewController: UIViewController {
                 self.setContentsText(contents: clip.contents)
             }
         }
-    }
+    }*/
     
     // MARK: - Instance methods
+    
+    private func setTitle(_ title: String) {
+        self.navigationItem.title = title
+    }
     
     private func setContentsText(contents: [String : Any]) {
         if contents.count == 0 {
@@ -185,6 +191,15 @@ class ClipViewController: UIViewController {
                 destination.setMode(.Edit)
                 destination.setClip(self.clip!)
             }
+        }
+    }
+    
+    @IBAction func unwindFromEdit(unwindSegue: UIStoryboardSegue) {
+        if let clip = self.clip {
+            if let title = clip.title {
+                self.setTitle(title)
+            }
+            self.setContentsText(contents: clip.contents)
         }
     }
 

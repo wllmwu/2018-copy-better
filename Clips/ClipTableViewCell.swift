@@ -15,6 +15,7 @@ class ClipTableViewCell: UITableViewCell {
     @IBOutlet weak var contentsImageView: UIImageView!
     @IBOutlet weak var copyButton: UIButton!
     @IBOutlet weak var addButton: UIButton?
+    @IBOutlet weak var tempIdLabel: UILabel?
     
     private var contents: [String : Any]!
     
@@ -36,6 +37,12 @@ class ClipTableViewCell: UITableViewCell {
     }
     
     // MARK: - Instance methods
+    
+    func tempSetID(id: Int32) { // TEMP
+        if let label = self.tempIdLabel {
+            label.text = String(format: "%d", id)
+        }
+    }
     
     private func reset() {
         // reset contentsLabel's font, text size, and text color

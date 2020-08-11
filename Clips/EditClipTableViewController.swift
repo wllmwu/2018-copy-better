@@ -149,7 +149,8 @@ class EditClipTableViewController: UITableViewController {
             }
         }
         
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
+        self.performSegue(withIdentifier: "UnwindFromEdit", sender: self)
     }
     
     private func saveClipTitleAndContents(clip: Clip) {
