@@ -6,8 +6,18 @@
         <attribute name="id" attributeType="Integer 32" defaultValueString="-1" usesScalarValueType="YES"/>
         <attribute name="index" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="folder" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Folder" inverseName="clips" inverseEntity="Folder"/>
+    </entity>
+    <entity name="Folder" representedClassName="Folder" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="Integer 32" defaultValueString="-1" usesScalarValueType="YES"/>
+        <attribute name="index" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String" defaultValueString=""/>
+        <relationship name="clips" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Clip" inverseName="folder" inverseEntity="Clip"/>
+        <relationship name="subfolders" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Folder" inverseName="superfolder" inverseEntity="Folder"/>
+        <relationship name="superfolder" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Folder" inverseName="subfolders" inverseEntity="Folder"/>
     </entity>
     <elements>
-        <element name="Clip" positionX="-63" positionY="-18" width="128" height="118"/>
+        <element name="Clip" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="Folder" positionX="-63" positionY="18" width="128" height="133"/>
     </elements>
 </model>
