@@ -8,7 +8,7 @@
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="folder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Folder" inverseName="clips" inverseEntity="Folder"/>
     </entity>
-    <entity name="Folder" representedClassName="Folder" syncable="YES" codeGenerationType="class">
+    <entity name="Folder" representedClassName="Folder" syncable="YES">
         <attribute name="id" attributeType="Integer 32" defaultValueString="-1" usesScalarValueType="YES"/>
         <attribute name="index" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" attributeType="String" defaultValueString=""/>

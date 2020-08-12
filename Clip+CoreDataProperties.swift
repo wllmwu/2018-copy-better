@@ -17,7 +17,7 @@ extension Clip {
         return NSFetchRequest<Clip>(entityName: "Clip")
     }
 
-    @NSManaged public var contents: NSObject?
+    @NSManaged public var contents: [String : Any]
     @NSManaged public var folderID: Int32
     @NSManaged public var id: Int32
     @NSManaged public var index: Int16
