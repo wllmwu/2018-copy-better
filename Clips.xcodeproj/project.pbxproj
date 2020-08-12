@@ -71,6 +71,14 @@
 		E0BB9D282245FDAF00BAC38F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E0BB9D2A2245FDAF00BAC38F /* InfoPlist.strings */; };
 		E0C260AF21B8B889007D9BED /* UIViewController+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C260AE21B8B889007D9BED /* UIViewController+Toast.swift */; };
 		E0CC277621AD9A04000FEF5A /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CC277521AD9A04000FEF5A /* AboutTableViewController.swift */; };
+		E0CD5AE924E44E3C0035FDC8 /* Folder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD5AE724E44E3C0035FDC8 /* Folder+CoreDataClass.swift */; };
+		E0CD5AEA24E44E3C0035FDC8 /* Folder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD5AE724E44E3C0035FDC8 /* Folder+CoreDataClass.swift */; };
+		E0CD5AEB24E44E3C0035FDC8 /* Folder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD5AE724E44E3C0035FDC8 /* Folder+CoreDataClass.swift */; };
+		E0CD5AEC24E44E3C0035FDC8 /* Folder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD5AE724E44E3C0035FDC8 /* Folder+CoreDataClass.swift */; };
+		E0CD5AED24E44E3C0035FDC8 /* Folder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD5AE824E44E3C0035FDC8 /* Folder+CoreDataProperties.swift */; };
+		E0CD5AEE24E44E3C0035FDC8 /* Folder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD5AE824E44E3C0035FDC8 /* Folder+CoreDataProperties.swift */; };
+		E0CD5AEF24E44E3C0035FDC8 /* Folder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD5AE824E44E3C0035FDC8 /* Folder+CoreDataProperties.swift */; };
+		E0CD5AF024E44E3C0035FDC8 /* Folder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD5AE824E44E3C0035FDC8 /* Folder+CoreDataProperties.swift */; };
 		E0D348C721B2393000BF1F4E /* WidgetClipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D348C621B2393000BF1F4E /* WidgetClipTableViewCell.swift */; };
 		E0EBB4D621C7482F0037E136 /* Keyboard.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0EBB4D521C7482F0037E136 /* Keyboard.xcassets */; };
 		E0F5BE0821A8BE9600422DC1 /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */; };
@@ -181,6 +189,8 @@
 		E0BB9D2C2245FDB300BAC38F /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E0C260AE21B8B889007D9BED /* UIViewController+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Toast.swift"; sourceTree = "<group>"; };
 		E0CC277521AD9A04000FEF5A /* AboutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
+		E0CD5AE724E44E3C0035FDC8 /* Folder+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Folder+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E0CD5AE824E44E3C0035FDC8 /* Folder+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Folder+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E0D348C621B2393000BF1F4E /* WidgetClipTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetClipTableViewCell.swift; sourceTree = "<group>"; };
 		E0D67EE0219E8B6700559CA6 /* Clips.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Clips.entitlements; sourceTree = "<group>"; };
 		E0D67EE1219E8CB100559CA6 /* Clips Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Clips Widget.entitlements"; sourceTree = "<group>"; };
@@ -262,6 +272,8 @@
 			isa = PBXGroup;
 			children = (
 				E03B9EB823E7DE25001206EF /* Colors.xcassets */,
+				E0CD5AE724E44E3C0035FDC8 /* Folder+CoreDataClass.swift */,
+				E0CD5AE824E44E3C0035FDC8 /* Folder+CoreDataProperties.swift */,
 				E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */,
 				E0858C2E21A0F0240089AE53 /* Clip+CoreDataProperties.swift */,
 				E056F8F720CEE46C0025E2FE /* Clips.xcdatamodeld */,
@@ -532,6 +544,8 @@
 			files = (
 				E04106C0219D04F100DD68AD /* TodayViewController.swift in Sources */,
 				E029B42C21B32C8F005EFEB6 /* ClipsPersistentContainer.swift in Sources */,
+				E0CD5AEA24E44E3C0035FDC8 /* Folder+CoreDataClass.swift in Sources */,
+				E0CD5AEE24E44E3C0035FDC8 /* Folder+CoreDataProperties.swift in Sources */,
 				E0858C3221A0F0240089AE53 /* Clip+CoreDataProperties.swift in Sources */,
 				E0858C3021A0F0240089AE53 /* Clip+CoreDataClass.swift in Sources */,
 				E01FFB2821B4451800C69DEF /* String+HTML.swift in Sources */,
@@ -547,6 +561,8 @@
 			files = (
 				E041A72E21E3D65700B58DD5 /* ShareViewController.swift in Sources */,
 				E041A73D21E3DBD000B58DD5 /* Clip+CoreDataClass.swift in Sources */,
+				E0CD5AEC24E44E3C0035FDC8 /* Folder+CoreDataClass.swift in Sources */,
+				E0CD5AF024E44E3C0035FDC8 /* Folder+CoreDataProperties.swift in Sources */,
 				E041A74021E3DBD900B58DD5 /* ClipsPersistentContainer.swift in Sources */,
 				E041A74321E3DBE200B58DD5 /* String+HTML.swift in Sources */,
 				E041A73A21E3DA3E00B58DD5 /* ShareConfigureViewController.swift in Sources */,
@@ -561,10 +577,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0CC277621AD9A04000FEF5A /* AboutTableViewController.swift in Sources */,
+				E0CD5AED24E44E3C0035FDC8 /* Folder+CoreDataProperties.swift in Sources */,
 				E056F8F920CEE46C0025E2FE /* Clips.xcdatamodeld in Sources */,
 				E06AA130219D32DE0015A30F /* ClipViewController.swift in Sources */,
 				E0F5BE0821A8BE9600422DC1 /* String+HTML.swift in Sources */,
 				E06AA136219D37BE0015A30F /* ClipboardManager.swift in Sources */,
+				E0CD5AE924E44E3C0035FDC8 /* Folder+CoreDataClass.swift in Sources */,
 				E06AA132219D32F60015A30F /* EditClipTableViewController.swift in Sources */,
 				E06AA128219D31CE0015A30F /* MainTableViewController.swift in Sources */,
 				E05EA02D21BD8BB300FC33C9 /* Toast.swift in Sources */,
@@ -587,7 +605,9 @@
 				E0A51AD721C6CABA00FCCCA9 /* KeyboardViewController.swift in Sources */,
 				E05CAEE621CB3BCD003C3BB4 /* Clips.xcdatamodeld in Sources */,
 				E05CAEE321CB3BAD003C3BB4 /* ClipsPersistentContainer.swift in Sources */,
+				E0CD5AEB24E44E3C0035FDC8 /* Folder+CoreDataClass.swift in Sources */,
 				E07E7FF121CEB0C100F06B8C /* String+HTML.swift in Sources */,
+				E0CD5AEF24E44E3C0035FDC8 /* Folder+CoreDataProperties.swift in Sources */,
 				E05CAEE121CB3BA9003C3BB4 /* Clip+CoreDataClass.swift in Sources */,
 				E0619E0021DE871B00A69332 /* ClipsKeyboardView.swift in Sources */,
 				E0071DE921CB171100B75D4C /* ClipsKeyboardCollectionViewCell.swift in Sources */,

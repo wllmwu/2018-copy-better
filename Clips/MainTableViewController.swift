@@ -13,18 +13,17 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     
     private var managedObjectContext: NSManagedObjectContext!
     private var clips: [Clip] = []
+    private var selectedClip: Clip?
+    private let searchController: UISearchController = UISearchController(searchResultsController: nil)
+    private var filteredClips: [Clip] = []
     
     private var showLastCopied: Bool = true
     private var lastCopied: [String : Any] = [:]
     private var pasteboardChangeCount: Int = 0
-    
     private let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clips")!
     
-    private var selectedClip: Clip?
+    @IBOutlet weak var addButton: UIBarButtonItem!
     
-    private let searchController: UISearchController = UISearchController(searchResultsController: nil)
-    private var filteredClips: [Clip] = []
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -152,6 +151,23 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
                 self.showToast(message: NSLocalizedString("Added", comment: "\"Added\" toast message"))
             }
         }
+    }
+    
+    @IBAction func addItem() {
+        let addFolderAction: UIAlertAction = UIAlertAction(title: "New folder", style: .default) { (action) in
+            // add a folder
+        }
+        let addClipAction: UIAlertAction = UIAlertAction(title: "New clip", style: .default) { (action) in
+            // add a clip
+            self.performSegue(withIdentifier: "MainToAddClip", sender: self)
+        }
+        
+        let alert: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(addFolderAction)
+        alert.addAction(addClipAction)
+        alert.popoverPresentationController?.barButtonItem = self.addButton // for iPads
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     // MARK: - Table view data source

@@ -405,10 +405,14 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="f4M-pE-6hk">
                             <connections>
-                                <segue destination="j6B-tm-cbu" kind="presentation" identifier="MainToAddClip" id="dAW-D8-Ny7"/>
+                                <action selector="addItem" destination="Haj-no-mYC" id="rZM-9N-4B5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addButton" destination="f4M-pE-6hk" id="y2P-qm-ArB"/>
+                        <segue destination="j6B-tm-cbu" kind="presentation" identifier="MainToAddClip" id="QqE-G5-atx"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EE1-qK-7A8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -423,8 +427,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MmT-bY-Fx2">
-                                <rect key="frame" x="0.0" y="96" width="375" height="571"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <rect key="frame" x="8" y="96" width="359" height="571"/>
                                 <color key="tintColor" name="Accent"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -435,8 +438,8 @@
                         <color key="backgroundColor" name="Background"/>
                         <color key="tintColor" name="Accent"/>
                         <constraints>
-                            <constraint firstItem="MmT-bY-Fx2" firstAttribute="leading" secondItem="rWH-zQ-aTB" secondAttribute="leading" id="OWE-lQ-jYL"/>
-                            <constraint firstItem="rWH-zQ-aTB" firstAttribute="trailing" secondItem="MmT-bY-Fx2" secondAttribute="trailing" id="Vbj-M4-tdT"/>
+                            <constraint firstItem="MmT-bY-Fx2" firstAttribute="leading" secondItem="rWH-zQ-aTB" secondAttribute="leading" constant="8" id="OWE-lQ-jYL"/>
+                            <constraint firstItem="rWH-zQ-aTB" firstAttribute="trailing" secondItem="MmT-bY-Fx2" secondAttribute="trailing" constant="8" id="Vbj-M4-tdT"/>
                             <constraint firstItem="MmT-bY-Fx2" firstAttribute="top" secondItem="rWH-zQ-aTB" secondAttribute="top" id="Vz9-kq-eiR"/>
                             <constraint firstItem="rWH-zQ-aTB" firstAttribute="bottom" secondItem="MmT-bY-Fx2" secondAttribute="bottom" id="u5h-cz-ZBe"/>
                         </constraints>
@@ -609,7 +612,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="atL-tM-tp5"/>
+        <segue reference="QqE-G5-atx"/>
         <segue reference="OQy-tm-RJB"/>
     </inferredMetricsTieBreakers>
 </document>
