@@ -23,14 +23,14 @@ class ClipViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         if self.isLastCopied {
-            let addButton: UIBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Add to list", comment: "\"Add to list\" button title"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(ClipViewController.addLastCopied))
-            self.navigationItem.title = NSLocalizedString("Last copied", comment: "\"Last copied\" title")
+            let addButton: UIBarButtonItem = UIBarButtonItem(title: AppStrings.ADD_TO_LIST_BUTTON_TITLE, style: UIBarButtonItem.Style.plain, target: self, action: #selector(ClipViewController.addLastCopied))
+            self.navigationItem.title = AppStrings.LAST_COPIED_TITLE
             self.navigationItem.rightBarButtonItem = addButton
             self.setContentsText(contents: self.contents)
         }
         else {
             if let clip = self.clip {
-                let copyButton: UIBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Copy", comment: "\"Copy\" button title"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(ClipViewController.copyClip))
+                let copyButton: UIBarButtonItem = UIBarButtonItem(title: AppStrings.COPY_BUTTON_TITLE, style: UIBarButtonItem.Style.plain, target: self, action: #selector(ClipViewController.copyClip))
                 let editButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(ClipViewController.segueToEdit))
                 self.navigationItem.rightBarButtonItems = [copyButton, editButton]
                 
@@ -65,7 +65,7 @@ class ClipViewController: UIViewController {
     
     private func setContentsText(contents: [String : Any]) {
         if contents.count == 0 {
-            self.contentsTextView.text = NSLocalizedString("(Empty)", comment: "empty clip contents placeholder")
+            self.contentsTextView.text = AppStrings.EMPTY_CLIP_PLACEHOLDER
             self.contentsTextView.textColor = UIColor.gray
             return
         }
@@ -130,7 +130,7 @@ class ClipViewController: UIViewController {
     
     @objc func copyClip() {
         ClipboardManager.copyToPasteboard(item: self.contents)
-        self.showToast(message: NSLocalizedString("Copied", comment: "\"Copied\" toast message"))
+        self.showToast(message: AppStrings.TOAST_MESSAGE_COPIED)
     }
     
     @objc func addLastCopied() {
@@ -153,7 +153,7 @@ class ClipViewController: UIViewController {
             }
             
             if self.saveContext() {
-                self.showToast(message: NSLocalizedString("Added", comment: "\"Added\" toast message"))
+                self.showToast(message: AppStrings.TOAST_MESSAGE_ADDED)
             }
         }
     }

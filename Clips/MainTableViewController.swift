@@ -50,7 +50,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         // set up search controller
         self.searchController.searchResultsUpdater = self
         self.searchController.obscuresBackgroundDuringPresentation = false
-        self.searchController.searchBar.placeholder = NSLocalizedString("Search", comment: "search bar placeholder")
+        self.searchController.searchBar.placeholder = AppStrings.SEARCH_BAR_PLACEHOLDER
         self.searchController.searchBar.tintColor = UIColor(named: "Accent")
         self.tableView.tableHeaderView = self.searchController.searchBar
         self.definesPresentationContext = true
@@ -124,7 +124,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     @objc func showCopiedToast() {
-        self.showToast(message: NSLocalizedString("Copied", comment: "\"Copied\" toast message"))
+        self.showToast(message: AppStrings.TOAST_MESSAGE_COPIED)
     }
     
     @objc func addLastCopied() {
@@ -148,23 +148,59 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             
             if self.saveContext() {
                 self.tableView.reloadData()
-                self.showToast(message: NSLocalizedString("Added", comment: "\"Added\" toast message"))
+                self.showToast(message: AppStrings.TOAST_MESSAGE_ADDED)
             }
         }
     }
     
-    @IBAction func addItem() {
-        let addFolderAction: UIAlertAction = UIAlertAction(title: "New folder", style: .default) { (action) in
-            // add a folder
+    private func addClip() {
+        self.performSegue(withIdentifier: "MainToAddClip", sender: self)
+    }
+    
+    private func addFolder(retrying: Bool) {
+        var message: String? = nil
+        if retrying {
+            message = AppStrings.EMPTY_FOLDER_NAME_MESSAGE
         }
-        let addClipAction: UIAlertAction = UIAlertAction(title: "New clip", style: .default) { (action) in
-            // add a clip
-            self.performSegue(withIdentifier: "MainToAddClip", sender: self)
-        }
+        let alert: UIAlertController = UIAlertController(title: AppStrings.NEW_FOLDER_ACTION, message: message, preferredStyle: .alert)
         
-        let alert: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let cancelAction: UIAlertAction = UIAlertAction(title: AppStrings.CANCEL_ACTION, style: .cancel, handler: nil)
+        let saveAction: UIAlertAction = UIAlertAction(title: AppStrings.SAVE_ACTION, style: .default) { (action) in
+            if let textField = alert.textFields?.first {
+                if let text = textField.text, !text.isEmpty {
+                    self.createNewFolder(name: text)
+                }
+                else {
+                    
+                }
+            }
+        }
+        alert.addTextField { (textfield) in
+            textfield.placeholder = AppStrings.FOLDER_NAME_PLACEHOLDER
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(saveAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func createNewFolder(name: String) {
+        //
+    }
+    
+    @IBAction func addItem() {
+        let addFolderAction: UIAlertAction = UIAlertAction(title: AppStrings.NEW_FOLDER_ACTION, style: .default) { (action) in
+            self.addFolder(retrying: false)
+        }
+        let addClipAction: UIAlertAction = UIAlertAction(title: AppStrings.NEW_CLIP_ACTION, style: .default) { (action) in
+            self.addClip()
+        }
+        let cancelAction: UIAlertAction = UIAlertAction(title: AppStrings.CANCEL_ACTION, style: .cancel, handler: nil)
+        
+        let alert: UIAlertController = UIAlertController(title: AppStrings.ADD_ITEM_TITLE, message: nil, preferredStyle: .actionSheet)
         alert.addAction(addFolderAction)
         alert.addAction(addClipAction)
+        alert.addAction(cancelAction)
         alert.popoverPresentationController?.barButtonItem = self.addButton // for iPads
         
         self.present(alert, animated: true, completion: nil)
@@ -344,6 +380,10 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
                 }
             }
         }
+    }
+    
+    @IBAction func unwindFromAddClip(unwindSegue: UIStoryboardSegue) {
+        self.loadData()
     }
 
 }

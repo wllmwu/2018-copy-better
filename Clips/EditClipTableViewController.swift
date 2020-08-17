@@ -38,7 +38,7 @@ class EditClipTableViewController: UITableViewController {
         self.tableView.rowHeight = UITableView.automaticDimension
         
         if self.mode == .Add {
-            self.navigationItem.title = NSLocalizedString("Add Clip", comment: "\"Add clip\" title")
+            self.navigationItem.title = AppStrings.ADD_CLIP_TITLE
         }
         else if let clip = self.clip {
             self.titleTextField.text = clip.title
@@ -134,23 +134,24 @@ class EditClipTableViewController: UITableViewController {
             }
             
             if self.saveContext() {
-                self.showToast(message: NSLocalizedString("Saved", comment: "\"Saved\" toast message"))
+                self.showToast(message: AppStrings.TOAST_MESSAGE_SAVED)
             }
+            
+            self.performSegue(withIdentifier: "UnwindFromAddClip", sender: self)
         }
         else {
             if let clip = self.clip {
                 self.saveClipTitleAndContents(clip: clip)
                 if self.saveContext() {
-                    self.showToast(message: NSLocalizedString("Saved", comment: "\"Saved\" toast message"))
+                    self.showToast(message: AppStrings.TOAST_MESSAGE_SAVED)
                 }
             }
             else {
                 print("Error when saving: clip wasn't set.")
             }
+            
+            self.performSegue(withIdentifier: "UnwindFromEdit", sender: self)
         }
-        
-        //self.dismiss(animated: true, completion: nil)
-        self.performSegue(withIdentifier: "UnwindFromEdit", sender: self)
     }
     
     private func saveClipTitleAndContents(clip: Clip) {

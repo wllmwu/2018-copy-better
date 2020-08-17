@@ -52,7 +52,7 @@ class WidgetClipTableViewCell: UITableViewCell {
         self.contentsImageView.image = nil
         
         if item.count == 0 {
-            self.contentsLabel.text = NSLocalizedString("(Empty)", comment: "empty clip contents placeholder")
+            self.contentsLabel.text = AppStrings.EMPTY_CLIP_PLACEHOLDER
             self.contentsLabel.textColor = UIColor.secondaryLabel
         }
         else {
@@ -89,18 +89,18 @@ class WidgetClipTableViewCell: UITableViewCell {
     
     @IBAction func copyButtonTapped(_ sender: UIButton) {
         ClipboardManager.copyToPasteboard(item: self.contents)
-        sender.setTitle(NSLocalizedString("Copied", comment: "\"Copied\" toast message"), for: .normal)
+        sender.setTitle(AppStrings.TOAST_MESSAGE_COPIED, for: .normal)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: {
-            sender.setTitle(NSLocalizedString("Copy", comment: "\"Copy\" button title"), for: .normal)
+            sender.setTitle(AppStrings.COPY_BUTTON_TITLE, for: .normal)
         })
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
         if self.contents.count > 0 {
             NotificationCenter.default.post(name: Notification.Name("AddLastCopiedInWidget"), object: nil)
-            sender.setTitle(NSLocalizedString("Added", comment: "\"Added\" toast message"), for: .normal)
+            sender.setTitle(AppStrings.TOAST_MESSAGE_ADDED, for: .normal)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: {
-                sender.setTitle(NSLocalizedString("Add", comment: "\"Add\" button title"), for: .normal)
+                sender.setTitle(AppStrings.ADD_BUTTON_TITLE, for: .normal)
             })
         }
     }

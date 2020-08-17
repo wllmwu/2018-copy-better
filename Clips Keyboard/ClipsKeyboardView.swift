@@ -99,12 +99,12 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func showErrorMessage() {
-        self.setMessageLabelText(NSLocalizedString("Error retrieving clips[...]", comment: "keyboard error message"))
+        self.setMessageLabelText(AppStrings.KEYBOARD_ERROR_MESSAGE)
         self.setMessageLabelVisible(true)
     }
     
     func showEmptyMessage() {
-        self.setMessageLabelText(NSLocalizedString("(No items)", comment: "keyboard empty list message"))
+        self.setMessageLabelText(AppStrings.KEYBOARD_EMPTY_MESSAGE)
         self.setMessageLabelVisible(true)
     }
     

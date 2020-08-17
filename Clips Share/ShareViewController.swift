@@ -96,7 +96,7 @@ class ShareViewController: SLComposeServiceViewController, ShareConfigureViewCon
     override func configurationItems() -> [Any]! {
         // To add configuration options via table cells at the bottom of the sheet, return an array of SLComposeSheetConfigurationItem here.
         if let titleConfig = SLComposeSheetConfigurationItem() {
-            titleConfig.title = NSLocalizedString("Title", comment: "\"Title\" share configuration item title")
+            titleConfig.title = AppStrings.TITLE_CONFIG_TITLE
             titleConfig.value = self.clipTitle ?? ""
             titleConfig.tapHandler = {
                 let viewController = ShareConfigureViewController()

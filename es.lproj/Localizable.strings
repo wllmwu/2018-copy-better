@@ -37,7 +37,10 @@
 "Saved" = "Guardado";
 
 /* "Add clip" title */
-"Add Clip" = "Agregar";
+"Add Clip" = "Nuevo Clip";
+
+/* "Add" button title */
+"Add" = "Agregar";
 
 /* "Title" share configuration item title */
 "Title" = "Título";
@@ -47,3 +50,24 @@
 
 /* keyboard empty list message */
 "(No items)" = "(No se encontraron artículos)";
+
+/* "Add item" title */
+"Add item" = "Agregar un artículo";
+
+/* "New folder" action */
+"New folder" = "Nueva carpeta";
+
+/* "New clip" action */
+"New clip" = "Nuevo clip";
+
+/* "Cancel" action */
+"Cancel" = "Cancelar";
+
+/* "Save" action */
+"Save" = "Guardar";
+
+/* "Folder name" placeholder */
+"Folder name" = "Nombre de la carpeta";
+
+/* empty folder name error message */
+"Name cannot be empty!" = "Se requiere el nombre!";

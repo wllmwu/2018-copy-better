@@ -57,7 +57,7 @@ class ClipTableViewCell: UITableViewCell {
     
     private func setContentsLabelText() {
         if self.contents.count == 0 {
-            self.contentsLabel.text = NSLocalizedString("(Empty)", comment: "empty clip contents placeholder")
+            self.contentsLabel.text = AppStrings.EMPTY_CLIP_PLACEHOLDER
             self.contentsLabel.textColor = UIColor.secondaryLabel
             return
         }

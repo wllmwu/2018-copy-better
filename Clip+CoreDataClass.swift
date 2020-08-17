@@ -16,7 +16,7 @@ public class Clip: NSManagedObject {
     
     static func addDefaultClip1(entity: NSEntityDescription, context: NSManagedObjectContext) {
         let clip = Clip(entity: entity, insertInto: context)
-        clip.title = NSLocalizedString("Shrug", comment: "default clip title 1")
+        clip.title = AppStrings.DEFAULT_CLIP_TITLE_1
         clip.contents = ClipboardManager.itemFromPlaintext("\u{00af}\\_(\u{30c4})_/\u{00af}")
         clip.index = 0
         clip.id = 0
@@ -25,7 +25,7 @@ public class Clip: NSManagedObject {
     
     static func addDefaultClip2(entity: NSEntityDescription, context: NSManagedObjectContext) {
         let clip = Clip(entity: entity, insertInto: context)
-        clip.title = NSLocalizedString("Example", comment: "default clip title 2")
+        clip.title = AppStrings.DEFAULT_CLIP_TITLE_2
         let clip2Text: NSMutableAttributedString = NSMutableAttributedString(string: "Cli", attributes: [.font : UIFont.boldSystemFont(ofSize: 17), .foregroundColor : UIColor.red])
         clip2Text.append(NSAttributedString(string: "pbo", attributes: [.font : UIFont.systemFont(ofSize: 17), .foregroundColor : UIColor.green]))
         clip2Text.append(NSAttributedString(string: "ard", attributes: [.font : UIFont.italicSystemFont(ofSize: 17), .foregroundColor : UIColor.blue]))

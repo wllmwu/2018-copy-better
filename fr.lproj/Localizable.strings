@@ -37,7 +37,10 @@
 "Saved" = "Enregistré";
 
 /* "Add clip" title */
-"Add Clip" = "Adjouter";
+"Add Clip" = "Nouveau Clip";
+
+/* "Add" button title */
+"Add" = "Ajouter";
 
 /* "Title" share configuration item title */
 "Title" = "Titre";
@@ -47,3 +50,24 @@
 
 /* keyboard empty list message */
 "(No items)" = "(Aucun élément)";
+
+/* "Add item" title */
+"Add item" = "Ajouter un élément";
+
+/* "New folder" action */
+"New folder" = "Nouveau dossier";
+
+/* "New clip" action */
+"New clip" = "Nouveau clip";
+
+/* "Cancel" action */
+"Cancel" = "Annuler";
+
+/* "Save" action */
+"Save" = "Enregistrer";
+
+/* "Folder name" placeholder */
+"Folder name" = "Nom du dossier";
+
+/* empty folder name error message */
+"Name cannot be empty!" = "Le nom ne peut pas être blanc!";

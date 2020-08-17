@@ -279,24 +279,27 @@
                                     <rect key="frame" x="0.0" y="0.0" width="348" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWA-zg-jbb">
-                                            <rect key="frame" x="16" y="11" width="30" height="38"/>
-                                            <state key="normal" title="asdf"/>
-                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Folder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SM7-Tq-Q5c">
-                                            <rect key="frame" x="54" y="20" width="286" height="20.5"/>
+                                            <rect key="frame" x="60" y="20" width="280" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="folder.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="M24-hP-pBn">
+                                            <rect key="frame" x="16" y="13" width="36" height="33.5"/>
+                                            <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="36" id="Got-bb-fcu"/>
+                                                <constraint firstAttribute="height" constant="36" id="z3E-KY-5GT"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="M24-hP-pBn" firstAttribute="leading" secondItem="tqA-As-nCy" secondAttribute="leading" constant="16" id="1uW-gk-H6A"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="SM7-Tq-Q5c" secondAttribute="trailing" id="Hlq-HC-fhn"/>
-                                        <constraint firstItem="jWA-zg-jbb" firstAttribute="leading" secondItem="tqA-As-nCy" secondAttribute="leadingMargin" id="MUF-oa-t2P"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="jWA-zg-jbb" secondAttribute="bottom" id="dcu-SR-eBJ"/>
-                                        <constraint firstItem="SM7-Tq-Q5c" firstAttribute="leading" secondItem="jWA-zg-jbb" secondAttribute="trailing" constant="8" id="oxc-Dj-PaM"/>
-                                        <constraint firstItem="jWA-zg-jbb" firstAttribute="top" secondItem="tqA-As-nCy" secondAttribute="topMargin" id="wgi-D5-jL2"/>
-                                        <constraint firstItem="SM7-Tq-Q5c" firstAttribute="centerY" secondItem="jWA-zg-jbb" secondAttribute="centerY" id="xq5-Ea-0FX"/>
+                                        <constraint firstItem="SM7-Tq-Q5c" firstAttribute="centerY" secondItem="M24-hP-pBn" secondAttribute="centerY" id="NYj-fr-FRC"/>
+                                        <constraint firstItem="M24-hP-pBn" firstAttribute="centerY" secondItem="tqA-As-nCy" secondAttribute="centerY" id="gWW-Ed-5i9"/>
+                                        <constraint firstItem="SM7-Tq-Q5c" firstAttribute="leading" secondItem="M24-hP-pBn" secondAttribute="trailing" constant="8" id="jch-qj-2J6"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" name="Background"/>
@@ -570,6 +573,7 @@
                         <outlet property="contentsTextView" destination="kra-BP-Mbe" id="mbf-Jm-dPn"/>
                         <outlet property="titleTextField" destination="BIk-3c-cFB" id="8fJ-31-hHZ"/>
                         <segue destination="K9o-PH-V4M" kind="unwind" identifier="UnwindFromEdit" unwindAction="unwindFromEditWithUnwindSegue:" id="Shj-za-veX"/>
+                        <segue destination="K9o-PH-V4M" kind="unwind" identifier="UnwindFromAddClip" unwindAction="unwindFromAddClipWithUnwindSegue:" id="vJI-Kw-nsW"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gc9-F6-52Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -636,6 +640,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="folder.fill" catalog="system" width="64" height="46"/>
         <namedColor name="Accent">
             <color red="0.84705882352941175" green="0.6470588235294118" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

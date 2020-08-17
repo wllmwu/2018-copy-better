@@ -37,7 +37,10 @@
 "Saved" = "Saved";
 
 /* "Add clip" title */
-"Add Clip" = "Add Clip";
+"Add Clip" = "New Clip";
+
+/* "Add" button title */
+"Add" = "Add";
 
 /* "Title" share configuration item title */
 "Title" = "Title";
@@ -47,3 +50,24 @@
 
 /* keyboard empty list message */
 "(No items)" = "(No items)";
+
+/* "Add item" title */
+"Add item" = "Add item";
+
+/* "New folder" action */
+"New folder" = "New folder";
+
+/* "New clip" action */
+"New clip" = "New clip";
+
+/* "Cancel" action */
+"Cancel" = "Cancel";
+
+/* "Save" action */
+"Save" = "Save";
+
+/* "Folder name" placeholder */
+"Folder name" = "Folder name";
+
+/* empty folder name error message */
+"Name cannot be empty!" = "Name cannot be empty!";
