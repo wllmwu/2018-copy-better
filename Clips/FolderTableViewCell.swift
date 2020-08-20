@@ -23,4 +23,8 @@ class FolderTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setName(_ name: String) {
+        self.nameLabel.text = name
+    }
+    
 }

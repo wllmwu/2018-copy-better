@@ -45,7 +45,7 @@ class SettingsTableViewController: UITableViewController {
     // MARK: - Instance methods
     
     @IBAction func close(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
+        self.performSegue(withIdentifier: "UnwindFromSettings", sender: self)
     }
     
     @IBAction func didToggleShowCurrentInMainSwitch(_ sender: UISwitch) {
@@ -74,7 +74,7 @@ class SettingsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 2 {
-            return (indexPath.row == 0) ? self.tipsLabel.bounds.height + 16 : self.aboutLabel.bounds.height + 16
+            return (indexPath.row == 0) ? self.tipsLabel.bounds.height + 8 : self.aboutLabel.bounds.height + 16
         }
         return 45
     }

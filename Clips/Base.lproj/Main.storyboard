@@ -188,9 +188,11 @@
                         <outlet property="showCurrentInMainSwitch" destination="quD-o9-F9g" id="Wen-w6-FSQ"/>
                         <outlet property="showCurrentInWidgetSwitch" destination="OEm-6q-V9t" id="lc5-xD-VnV"/>
                         <outlet property="tipsLabel" destination="ZBR-yv-hNc" id="wDL-8z-lHI"/>
+                        <segue destination="lOE-qf-mlW" kind="unwind" identifier="UnwindFromSettings" unwindAction="unwindAndReloadDataWithUnwindSegue:" id="lfX-tG-9yA"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bCe-be-UTs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="lOE-qf-mlW" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2665" y="-638"/>
         </scene>
@@ -269,7 +271,7 @@
                                     <outlet property="contentsLabel" destination="Lgi-3s-Kbg" id="Rt5-08-FiY"/>
                                     <outlet property="copyButton" destination="TJ8-tS-zk3" id="fOL-LM-kb1"/>
                                     <outlet property="titleLabel" destination="SOG-VC-fzC" id="fLq-79-RPF"/>
-                                    <segue destination="9Ah-HQ-3Ku" kind="show" identifier="LastCopiedToClip" id="1pd-qj-QPy"/>
+                                    <segue destination="9Ah-HQ-3Ku" kind="show" identifier="MainToLastCopied" id="1pd-qj-QPy"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FolderCell" id="koy-xP-eKz" customClass="FolderTableViewCell" customModule="Copy_Better" customModuleProvider="target">
@@ -305,6 +307,7 @@
                                 <color key="backgroundColor" name="Background"/>
                                 <connections>
                                     <outlet property="nameLabel" destination="SM7-Tq-Q5c" id="oyN-7h-iWF"/>
+                                    <segue destination="Haj-no-mYC" kind="show" identifier="MainToMain" id="izi-ny-xaT"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ClipWithTitleCell" id="LK3-ka-3An" customClass="ClipTableViewCell" customModule="Copy_Better" customModuleProvider="target">
@@ -369,7 +372,7 @@
                                     <outlet property="copyButton" destination="AXt-XT-I7X" id="Z9X-ev-Fa4"/>
                                     <outlet property="tempIdLabel" destination="lDD-hA-dqx" id="8xj-c7-4hz"/>
                                     <outlet property="titleLabel" destination="sBM-4M-D6k" id="qXM-uo-p03"/>
-                                    <segue destination="9Ah-HQ-3Ku" kind="show" identifier="ClipWithTitleToClip" id="OQy-tm-RJB"/>
+                                    <segue destination="9Ah-HQ-3Ku" kind="show" identifier="MainToClipTitle" id="OQy-tm-RJB"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ClipNoTitleCell" id="A58-0s-LVh" customClass="ClipTableViewCell" customModule="Copy_Better" customModuleProvider="target">
@@ -423,7 +426,7 @@
                                     <outlet property="contentsLabel" destination="d6d-Bl-fOw" id="Ajh-DU-vOu"/>
                                     <outlet property="copyButton" destination="yoX-S0-ffx" id="COW-Cc-ttc"/>
                                     <outlet property="tempIdLabel" destination="lVu-sP-vFE" id="AA9-CI-Ydg"/>
-                                    <segue destination="9Ah-HQ-3Ku" kind="show" identifier="ClipNoTitleToClip" id="T1C-MY-kRL"/>
+                                    <segue destination="9Ah-HQ-3Ku" kind="show" identifier="MainToClipNoTitle" id="T1C-MY-kRL"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -480,6 +483,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rWH-zQ-aTB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Rwf-4l-1B6"/>
                     <connections>
                         <outlet property="contentsTextView" destination="MmT-bY-Fx2" id="W6j-OE-SGC"/>
                         <segue destination="j6B-tm-cbu" kind="presentation" identifier="ClipToEditClip" modalTransitionStyle="coverVertical" id="atL-tM-tp5"/>
@@ -573,7 +577,7 @@
                         <outlet property="contentsTextView" destination="kra-BP-Mbe" id="mbf-Jm-dPn"/>
                         <outlet property="titleTextField" destination="BIk-3c-cFB" id="8fJ-31-hHZ"/>
                         <segue destination="K9o-PH-V4M" kind="unwind" identifier="UnwindFromEdit" unwindAction="unwindFromEditWithUnwindSegue:" id="Shj-za-veX"/>
-                        <segue destination="K9o-PH-V4M" kind="unwind" identifier="UnwindFromAddClip" unwindAction="unwindFromAddClipWithUnwindSegue:" id="vJI-Kw-nsW"/>
+                        <segue destination="K9o-PH-V4M" kind="unwind" unwindAction="unwindAndReloadDataWithUnwindSegue:" id="CJw-KH-hNB"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gc9-F6-52Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -650,6 +654,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="QqE-G5-atx"/>
-        <segue reference="OQy-tm-RJB"/>
+        <segue reference="1pd-qj-QPy"/>
     </inferredMetricsTieBreakers>
 </document>
