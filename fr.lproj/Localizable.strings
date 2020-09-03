@@ -66,8 +66,20 @@
 /* "Save" action */
 "Save" = "Enregistrer";
 
+/* "OK" action */
+"OK" = "OK";
+
 /* "Folder name" placeholder */
 "Folder name" = "Nom du dossier";
 
 /* empty folder name error message */
 "Name cannot be empty!" = "Le nom ne peut pas être blanc!";
+
+/* delete folder confirm 1 */
+"Delete folder" = "Supprimer le dossier «";
+
+/* delete folder confirm 2 */
+"and its contents" = "» et son contenu?";
+
+/* no undo message */
+"You cannot undo[...]" = "Vous ne pouvez pas annuler cette action.";

@@ -17,6 +17,9 @@
 /* Class = "UIButton"; normalTitle = "Copy"; ObjectID = "AXt-XT-I7X"; */
 "AXt-XT-I7X.normalTitle" = "Copier";
 
+/* Class = "UIButton"; normalTitle = "Copy"; ObjectID = "Vv3-ln-OwR"; */
+"Vv3-ln-OwR.normalTitle" = "Copier";
+
 /* Class = "UITextField"; placeholder = "Title… (optional)"; ObjectID = "BIk-3c-cFB"; */
 "BIk-3c-cFB.placeholder" = "Titre… (optionnel)";
 
@@ -85,6 +88,9 @@
 
 /* Class = "UIButton"; normalTitle = "Copy"; ObjectID = "yoX-S0-ffx"; */
 "yoX-S0-ffx.normalTitle" = "Copier";
+
+/* Class = "UIButton"; normalTitle = "Copy"; ObjectID = "DdU-ZW-ZGp"; */
+"DdU-ZW-ZGp.normalTitle" = "Copier";
 
 /* Class = "UILabel"; text = "Number of clips"; ObjectID = "ytH-gW-dY9"; */
 "ytH-gW-dY9.text" = "Nombre d'éléments";

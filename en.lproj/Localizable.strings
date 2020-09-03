@@ -66,8 +66,20 @@
 /* "Save" action */
 "Save" = "Save";
 
+/* "OK" action */
+"OK" = "OK";
+
 /* "Folder name" placeholder */
 "Folder name" = "Folder name";
 
 /* empty folder name error message */
 "Name cannot be empty!" = "Name cannot be empty!";
+
+/* delete folder confirm 1 */
+"Delete folder" = "Delete folder \"";
+
+/* delete folder confirm 2 */
+"and its contents" = "\" and its contents?";
+
+/* no undo message */
+"You cannot undo[...]" = "You cannot undo this action.";

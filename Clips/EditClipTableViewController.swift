@@ -22,7 +22,9 @@ class EditClipTableViewController: UITableViewController {
     private var contents: [String : Any] = [:]
     private var originalContentsText: NSAttributedString!
     private var clip: Clip?
-    private var allClips: [Clip]?
+    private var containingFolder: Folder?
+    private var indexInFolder: Int?
+    //private var allClips: [Clip]?
     
     private var managedObjectContext: NSManagedObjectContext!
 
@@ -39,6 +41,7 @@ class EditClipTableViewController: UITableViewController {
         
         if self.mode == .Add {
             self.navigationItem.title = AppStrings.ADD_CLIP_TITLE
+            self.titleTextField.becomeFirstResponder()
         }
         else if let clip = self.clip {
             self.titleTextField.text = clip.title
@@ -94,8 +97,13 @@ class EditClipTableViewController: UITableViewController {
         self.clip = clip
     }
     
-    func setAllClips(_ clips: [Clip]) {
+    /*func setAllClips(_ clips: [Clip]) {
         self.allClips = clips
+    }*/
+    
+    func setLocationToAdd(folder: Folder?, index: Int) {
+        self.containingFolder = folder
+        self.indexInFolder = index
     }
     
     @discardableResult private func saveContext() -> Bool {
@@ -112,7 +120,12 @@ class EditClipTableViewController: UITableViewController {
     
     private func orderUpdates() {
         let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clips")!
-        defaults.set(true, forKey: "mainNeedsUpdate")
+        if let containing = self.containingFolder { // refresh the folder containing this clip
+            self.managedObjectContext.refresh(containing, mergeChanges: true)
+        }
+        else { // refresh the root folder
+            defaults.set(true, forKey: "mainNeedsUpdate")
+        }
         defaults.set(true, forKey: "widgetNeedsUpdate")
         defaults.set(true, forKey: "keyboardNeedsUpdate")
     }
@@ -126,18 +139,19 @@ class EditClipTableViewController: UITableViewController {
             
             let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
             self.saveClipTitleAndContents(clip: clip)
-            clip.index = 0
-            if let clips = self.allClips {
+            clip.index = Int16(self.indexInFolder!)
+            clip.folder = self.containingFolder
+            /*if let clips = self.allClips {
                 for c in clips {
                     c.index += 1
                 }
-            }
+            }*/
             
             if self.saveContext() {
                 self.showToast(message: AppStrings.TOAST_MESSAGE_SAVED)
             }
             
-            self.performSegue(withIdentifier: "UnwindFromAddClip", sender: self)
+            self.performSegue(withIdentifier: "UnwindFromAdd", sender: self)
         }
         else {
             if let clip = self.clip {

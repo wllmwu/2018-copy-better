@@ -89,11 +89,27 @@ struct AppStrings {
         return NSLocalizedString("Save", comment: "\"Save\" action")
     }
     
+    static var OK_ACTION: String {
+        return NSLocalizedString("OK", comment: "\"OK\" action")
+    }
+    
     static var FOLDER_NAME_PLACEHOLDER: String {
         return NSLocalizedString("Folder name", comment: "\"Folder name\" placeholder")
     }
     
     static var EMPTY_FOLDER_NAME_MESSAGE: String {
         return NSLocalizedString("Name cannot be empty!", comment: "empty folder name error message")
+    }
+    
+    static var DELETE_FOLDER_CONFIRM_MESSAGE_1: String {
+        return NSLocalizedString("Delete folder", comment: "delete folder confirm 1")
+    }
+    
+    static var DELETE_FOLDER_CONFIRM_MESSAGE_2: String {
+        return NSLocalizedString("and its contents", comment: "delete folder confirm 2")
+    }
+    
+    static var NO_UNDO_MESSAGE: String {
+        return NSLocalizedString("You cannot undo[...]", comment: "no undo message")
     }
 }

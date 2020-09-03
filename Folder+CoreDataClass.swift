@@ -14,7 +14,7 @@ import CoreData
 public class Folder: NSManagedObject {
     
     /**
-     A computed property that converts this folder's `subfolders` attribute into a `[Folder]` array.
+     A computed property that converts this folder's `subfolders` attribute into a `[Folder]` array, sorted by the `index` attribute.
      */
     public var subfoldersArray: [Folder] {
         let set = self.subfolders as? Set<Folder> ?? []
@@ -24,7 +24,7 @@ public class Folder: NSManagedObject {
     }
     
     /**
-     A computed property that converts this folder's `clips` attribute into a `[Clip]` array.
+     A computed property that converts this folder's `clips` attribute into a `[Clip]` array, sorted by the `index` attribute.
      */
     public var clipsArray: [Clip] {
         let set = self.clips as? Set<Clip> ?? []

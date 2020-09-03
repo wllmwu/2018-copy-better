@@ -37,6 +37,9 @@ class ClipViewController: UIViewController {
                 if let title = clip.title {
                     self.setTitle(title)
                 }
+                else {
+                    self.navigationItem.largeTitleDisplayMode = .never
+                }
                 self.setContentsText(contents: clip.contents)
             }
         }
@@ -201,6 +204,10 @@ class ClipViewController: UIViewController {
             }
             self.setContentsText(contents: clip.contents)
         }
+    }
+    
+    @IBAction func swipeBack() {
+        self.dismiss(animated: true, completion: nil)
     }
 
 }

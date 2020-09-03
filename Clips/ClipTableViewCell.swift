@@ -38,7 +38,7 @@ class ClipTableViewCell: UITableViewCell {
     
     // MARK: - Instance methods
     
-    func tempSetID(id: Int32) { // TEMP
+    func tempSetID(id: Int16) { // TEMP
         if let label = self.tempIdLabel {
             label.text = String(format: "%d", id)
         }
