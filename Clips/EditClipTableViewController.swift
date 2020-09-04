@@ -21,8 +21,17 @@ class EditClipTableViewController: UITableViewController {
     private var mode: Mode = .Add
     private var contents: [String : Any] = [:]
     private var originalContentsText: NSAttributedString!
-    private var clip: Clip?
-    private var containingFolder: Folder?
+    /**
+     The clip being edited. Should be set when `mode` is `.Edit`; otherwise, may be left as `nil`.
+     */
+    private var clip: Clip!
+    /**
+     The folder where the new clip should be inserted. Should be set when `mode` is `.Add`; otherwise, may be left as `nil`.
+     */
+    private var containingFolder: Folder!
+    /**
+     The index in the containing folder where the new clip should be inserted. Should be set when `mode` is `.Add`; otherwise, may be left as `nil`.
+     */
     private var indexInFolder: Int?
     //private var allClips: [Clip]?
     
@@ -43,9 +52,9 @@ class EditClipTableViewController: UITableViewController {
             self.navigationItem.title = AppStrings.ADD_CLIP_TITLE
             self.titleTextField.becomeFirstResponder()
         }
-        else if let clip = self.clip {
-            self.titleTextField.text = clip.title
-            self.setContents(clip.contents)
+        else {
+            self.titleTextField.text = self.clip.title
+            self.setContents(self.clip.contents)
         }
     }
 
@@ -101,7 +110,7 @@ class EditClipTableViewController: UITableViewController {
         self.allClips = clips
     }*/
     
-    func setLocationToAdd(folder: Folder?, index: Int) {
+    func setLocationToAdd(folder: Folder, index: Int) {
         self.containingFolder = folder
         self.indexInFolder = index
     }
@@ -120,12 +129,13 @@ class EditClipTableViewController: UITableViewController {
     
     private func orderUpdates() {
         let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clips")!
-        if let containing = self.containingFolder { // refresh the folder containing this clip
+        /*if let containing = self.containingFolder { // refresh the folder containing this clip
             self.managedObjectContext.refresh(containing, mergeChanges: true)
         }
         else { // refresh the root folder
             defaults.set(true, forKey: "mainNeedsUpdate")
-        }
+        }*/
+        // the unwind segue should result in a refresh for the clip/folder view
         defaults.set(true, forKey: "widgetNeedsUpdate")
         defaults.set(true, forKey: "keyboardNeedsUpdate")
     }
@@ -154,15 +164,12 @@ class EditClipTableViewController: UITableViewController {
             self.performSegue(withIdentifier: "UnwindFromAdd", sender: self)
         }
         else {
-            if let clip = self.clip {
+            //if let clip = self.clip {
                 self.saveClipTitleAndContents(clip: clip)
                 if self.saveContext() {
                     self.showToast(message: AppStrings.TOAST_MESSAGE_SAVED)
                 }
-            }
-            else {
-                print("Error when saving: clip wasn't set.")
-            }
+            //}
             
             self.performSegue(withIdentifier: "UnwindFromEdit", sender: self)
         }
@@ -172,7 +179,7 @@ class EditClipTableViewController: UITableViewController {
         clip.title = self.titleTextField.text
         if let title = self.titleTextField.text {
             if title.isEmpty {
-                clip.title = nil
+                clip.title = nil // no empty strings
             }
         }
         

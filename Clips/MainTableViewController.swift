@@ -12,8 +12,8 @@ import CoreData
 class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     
     private var managedObjectContext: NSManagedObjectContext!
-    private var folder: Folder?
-    private var isRootFolder: Bool = true
+    private var folder: Folder!
+    //private var isRootFolder: Bool = true
     private var subfolders: [Folder] = []
     private var selectedFolder: Folder?
     private var clips: [Clip] = []
@@ -33,9 +33,9 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     
     func setFolder(_ folder: Folder) {
         self.folder = folder
-        self.isRootFolder = false
+        //self.isRootFolder = false
         self.navigationItem.title = folder.name!
-        self.showLastCopied = false
+        //self.showLastCopied = false
         //self.retrieveData()
     }
     
@@ -56,12 +56,16 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             return
         }
         self.managedObjectContext = appDelegate.persistentContainer.viewContext
-        //self.retrieveData()
-        
-        //NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.loadData), name: Notification.Name("AppDidBecomeActive"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.showCopiedToast), name: Notification.Name("ShowCopiedToast"), object: nil)
-        if self.isRootFolder {
-            NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.addLastCopied), name: Notification.Name("AddLastCopiedInMain"), object: nil)
+        if self.folder == nil {
+            // fetch the root folder
+            let request: NSFetchRequest = NSFetchRequest<Folder>(entityName: "Folder")
+            request.predicate = NSPredicate(format: "superfolder == nil")
+            do {
+                self.folder = try self.managedObjectContext.fetch(request).first
+            }
+            catch let error as NSError {
+                print("Couldn't fetch. \(error), \(error.userInfo)")
+            }
         }
         
         // set up search controller
@@ -76,7 +80,17 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.showCopiedToast), name: Notification.Name("ShowCopiedToast"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.addLastCopied), name: Notification.Name("AddLastCopiedInMain"), object: nil)
+        
         self.loadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("ShowCopiedToast"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("AddLastCopiedInMain"), object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -87,16 +101,17 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     // MARK: - Instance methods
     
     @objc private func loadData() {
-        if self.isRootFolder {
+        //if self.isRootFolder {
             self.showLastCopied = self.defaults.bool(forKey: "showLastCopiedInMain")
             if self.showLastCopied && self.pasteboardChangeCount != UIPasteboard.general.changeCount {
+                // the pasteboard changeCount gets reset to 0 when the device is restarted
                 self.retrieveLastCopied()
                 self.pasteboardChangeCount = UIPasteboard.general.changeCount
             }
-        }
-        else {
-            self.showLastCopied = false
-        }
+        //}
+        //else {
+        //    self.showLastCopied = false
+        //}
         
         self.retrieveData()
         self.tableView.reloadData()
@@ -106,7 +121,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
      Fetches folders and clips to display, storing them in `self.subfolders` and `self.clips`.
      */
     private func retrieveData() {
-        if self.isRootFolder { // TODO: don't fetch from the store as often when unnecessary / when do we use this defaults key?
+        /*if self.isRootFolder { // TODO: don't fetch from the store as often when unnecessary / when do we use this defaults key?
             //if self.defaults.bool(forKey: "mainNeedsUpdate") {
                 print("fetching")
                 let foldersRequest: NSFetchRequest = NSFetchRequest<Folder>(entityName: "Folder")
@@ -127,13 +142,13 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
                 }
             //}
         }
-        else {
+        else {*/
             //if self.folder!.isFault { // need to refresh?
                 print("refreshing")
-                self.subfolders = self.folder!.subfoldersArray
-                self.clips = self.folder!.clipsArray
+                self.subfolders = self.folder.subfoldersArray
+                self.clips = self.folder.clipsArray
             //}
-        }
+        //}
     }
     
     private func retrieveLastCopied() {
@@ -207,8 +222,9 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             clip.title = nil
             clip.contents = self.lastCopied
             clip.index = 0
-            self.clips.insert(clip, at: 0)
+            clip.folder = self.folder
             
+            self.clips.insert(clip, at: 0)
             self.updateClipIndices(from: 1, to: self.clips.count)
             
             if self.saveContext() {
@@ -259,9 +275,9 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         let folder = Folder(entity: entity, insertInto: self.managedObjectContext)
         folder.name = name
         folder.index = Int16(self.subfolders.count)
-        if !self.isRootFolder {
+        //if !self.isRootFolder {
             folder.superfolder = self.folder
-        }
+        //}
         self.subfolders.append(folder)
         
         if self.saveContext() {
@@ -373,6 +389,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             if indexPath.row < self.subfolders.count + offset {
                 let index = indexPath.row - offset
                 let folder: Folder = self.subfolders[index]
+                
                 let title: String = AppStrings.DELETE_FOLDER_CONFIRM_MESSAGE_1 + folder.name! + AppStrings.DELETE_FOLDER_CONFIRM_MESSAGE_2
                 let confirmAlert: UIAlertController = UIAlertController(title: title, message: AppStrings.NO_UNDO_MESSAGE, preferredStyle: .alert) // confirm deletion
                 let cancelAction: UIAlertAction = UIAlertAction(title: AppStrings.CANCEL_ACTION, style: .cancel, handler: nil)
@@ -542,8 +559,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             else if identifier == "MainToLastCopied" {
                 let destination: ClipViewController = segue.destination as! ClipViewController
                 destination.setContext(self.managedObjectContext)
-                destination.setIsLastCopied(true)
-                destination.setLastCopied(contents: self.lastCopied, allClipsList: self.clips)
+                destination.setLastCopied(contents: self.lastCopied, folder: self.folder)
             }
             else if identifier == "MainToMain" {
                 if let folder = self.selectedFolder {
@@ -555,7 +571,6 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
                 if let clip = self.selectedClip {
                     let destination: ClipViewController = segue.destination as! ClipViewController
                     destination.setContext(self.managedObjectContext)
-                    destination.setIsLastCopied(false)
                     destination.setClip(clip)
                 }
                 else {

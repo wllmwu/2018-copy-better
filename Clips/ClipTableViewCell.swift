@@ -77,7 +77,7 @@ class ClipTableViewCell: UITableViewCell {
             }
             else if let plaintext = ClipboardManager.stringFromPlaintext(inItem: self.contents) {
                 DispatchQueue.main.async {
-                    self.contentsLabel.text = plaintext
+                    self.contentsLabel.text = plaintext.trimmingCharacters(in: .whitespacesAndNewlines)
                 }
             }
             else if let image = ClipboardManager.imageFromImage(inItem: self.contents, maxWidth: imageViewSize.width, maxHeight: imageViewSize.height) {

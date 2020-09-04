@@ -34,42 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
-    
-    /*private func addDefaultData() {
-        guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
-            print("Couldn't find entity description.")
-            return
-        }
-        
-        Clip.addDefaultClip1(entity: entity, context: self.managedObjectContext)
-        Clip.addDefaultClip2(entity: entity, context: self.managedObjectContext)
-        
-        do {
-            try self.managedObjectContext.save()
-        }
-        catch let error as NSError {
-            print("Couldn't save. \(error), \(error.userInfo)")
-        }
-    }
-    
-    private func migrateModelV1To2(defaults: UserDefaults) {
-        let fetchRequest: NSFetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "index", ascending: true)]
-        do {
-            let clips: [Clip] = try self.managedObjectContext.fetch(fetchRequest)
-            for i in 0...clips.count {
-                let clip: Clip = clips[i]
-                clip.id = Int32(i)
-                clip.folderID = -1
-            }
-            try self.managedObjectContext.save()
-            defaults.set(clips.count, forKey: "nextClipID")
-            defaults.set(0, forKey: "nextFolderID")
-        }
-        catch let error as NSError {
-            print("Couldn't fetch/save. \(error), \(error.userInfo)")
-        }
-    }*/
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -87,8 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        
-        NotificationCenter.default.post(name: Notification.Name("AppDidBecomeActive"), object: nil)
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

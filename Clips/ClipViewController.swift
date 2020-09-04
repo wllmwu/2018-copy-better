@@ -11,11 +11,18 @@ import CoreData
 
 class ClipViewController: UIViewController {
     
-    private var clip: Clip?
+    /**
+     The clip that this view is displaying. Should be set when `isLastCopied` is `false`; otherwise, may be left as `nil`.
+     */
+    private var clip: Clip!
     private var contents: [String : Any] = [:]
     private var managedObjectContext: NSManagedObjectContext!
-    private var allClips: [Clip]?
+    //private var allClips: [Clip]?
     private var isLastCopied: Bool = false
+    /**
+     The folder from where this view was entered. Should be set when `isLastCopied` is `true`; otherwise, may be left as `nil`. If the last copied clip is added to records, it should be inserted into this folder.
+     */
+    private var currentFolder: Folder!
     @IBOutlet weak var contentsTextView: UITextView!
     
     override func viewDidLoad() {
@@ -29,19 +36,17 @@ class ClipViewController: UIViewController {
             self.setContentsText(contents: self.contents)
         }
         else {
-            if let clip = self.clip {
-                let copyButton: UIBarButtonItem = UIBarButtonItem(title: AppStrings.COPY_BUTTON_TITLE, style: UIBarButtonItem.Style.plain, target: self, action: #selector(ClipViewController.copyClip))
-                let editButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(ClipViewController.segueToEdit))
-                self.navigationItem.rightBarButtonItems = [copyButton, editButton]
-                
-                if let title = clip.title {
-                    self.setTitle(title)
-                }
-                else {
-                    self.navigationItem.largeTitleDisplayMode = .never
-                }
-                self.setContentsText(contents: clip.contents)
+            let copyButton: UIBarButtonItem = UIBarButtonItem(title: AppStrings.COPY_BUTTON_TITLE, style: UIBarButtonItem.Style.plain, target: self, action: #selector(ClipViewController.copyClip))
+            let editButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(ClipViewController.segueToEdit))
+            self.navigationItem.rightBarButtonItems = [copyButton, editButton]
+            
+            if let title = self.clip.title {
+                self.setTitle(title)
             }
+            else {
+                self.navigationItem.largeTitleDisplayMode = .never
+            }
+            self.setContentsText(contents: clip.contents)
         }
     }
 
@@ -49,16 +54,6 @@ class ClipViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    /*override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if !self.isLastCopied {
-            if let clip = self.clip {
-                self.setContentsText(contents: clip.contents)
-            }
-        }
-    }*/
     
     // MARK: - Instance methods
     
@@ -113,18 +108,15 @@ class ClipViewController: UIViewController {
         self.managedObjectContext = context
     }
     
-    func setIsLastCopied(_ isLastCopied: Bool) {
-        self.isLastCopied = isLastCopied
-    }
-    
     func setClip(_ clip: Clip) {
         self.clip = clip
         self.contents = clip.contents
     }
     
-    func setLastCopied(contents: [String : Any], allClipsList: [Clip]) {
-        self.allClips = allClipsList
+    func setLastCopied(contents: [String : Any], folder: Folder) {
         self.contents = contents
+        self.currentFolder = folder
+        self.isLastCopied = true
     }
     
     @objc func segueToEdit() {
@@ -148,12 +140,14 @@ class ClipViewController: UIViewController {
             clip.title = nil
             clip.contents = self.contents
             clip.index = 0
-            self.allClips!.insert(clip, at: 0)
             
             // reassign indices
-            for i in 1..<self.allClips!.count {
-                self.allClips![i].index += 1
+            for c in self.currentFolder.clipsArray {
+                c.index += 1
             }
+            
+            // insert the clip
+            clip.folder = self.currentFolder
             
             if self.saveContext() {
                 self.showToast(message: AppStrings.TOAST_MESSAGE_ADDED)

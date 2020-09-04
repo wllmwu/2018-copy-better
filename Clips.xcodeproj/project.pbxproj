@@ -63,6 +63,7 @@
 		E07E7FF121CEB0C100F06B8C /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */; };
 		E0858C2F21A0F0240089AE53 /* Clip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */; };
 		E0858C3021A0F0240089AE53 /* Clip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */; };
+		E08A5A2F25029E0A009524DB /* FolderPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08A5A2E25029E0A009524DB /* FolderPickerTableViewController.swift */; };
 		E0A51AD721C6CABA00FCCCA9 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A51AD621C6CABA00FCCCA9 /* KeyboardViewController.swift */; };
 		E0A51ADB21C6CABA00FCCCA9 /* Copy Better Keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E0A51AD421C6CABA00FCCCA9 /* Copy Better Keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E0AF325521DED6A500743158 /* KeyboardUpperButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AF325421DED6A500743158 /* KeyboardUpperButton.swift */; };
@@ -175,6 +176,7 @@
 		E07DC3012243496100736DBD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ShareConfigureView.strings; sourceTree = "<group>"; };
 		E07DC3032243496C00736DBD /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/ShareConfigureView.strings; sourceTree = "<group>"; };
 		E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clip+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E08A5A2E25029E0A009524DB /* FolderPickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderPickerTableViewController.swift; sourceTree = "<group>"; };
 		E09B79A224DE03F7005E1736 /* Clipboard_Manager v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Clipboard_Manager v2.xcdatamodel"; sourceTree = "<group>"; };
 		E0A51AD421C6CABA00FCCCA9 /* Copy Better Keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Copy Better Keyboard.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0A51AD621C6CABA00FCCCA9 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 				E06AA129219D32500015A30F /* ClipTableViewCell.swift */,
 				E06AA12F219D32DE0015A30F /* ClipViewController.swift */,
 				E06AA131219D32F60015A30F /* EditClipTableViewController.swift */,
+				E08A5A2E25029E0A009524DB /* FolderPickerTableViewController.swift */,
 				E06AA133219D331E0015A30F /* SettingsTableViewController.swift */,
 				E0CC277521AD9A04000FEF5A /* AboutTableViewController.swift */,
 				E056F8FC20CEE46E0025E2FE /* LaunchScreen.storyboard */,
@@ -596,6 +599,7 @@
 				E06AA136219D37BE0015A30F /* ClipboardManager.swift in Sources */,
 				E0CD5AE924E44E3C0035FDC8 /* Folder+CoreDataClass.swift in Sources */,
 				E06AA132219D32F60015A30F /* EditClipTableViewController.swift in Sources */,
+				E08A5A2F25029E0A009524DB /* FolderPickerTableViewController.swift in Sources */,
 				E06AA128219D31CE0015A30F /* MainTableViewController.swift in Sources */,
 				E05EA02D21BD8BB300FC33C9 /* Toast.swift in Sources */,
 				E0E373BD24EAFFD7006A2816 /* AppStrings.swift in Sources */,
