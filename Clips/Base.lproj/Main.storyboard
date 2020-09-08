@@ -463,6 +463,7 @@
                     <connections>
                         <outlet property="addButton" destination="f4M-pE-6hk" id="y2P-qm-ArB"/>
                         <segue destination="j6B-tm-cbu" kind="presentation" identifier="MainToAddClip" id="QqE-G5-atx"/>
+                        <segue destination="Oi3-TZ-c4G" kind="presentation" identifier="MainToMoveItem" id="SI3-HK-EbX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EE1-qK-7A8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -923,6 +924,7 @@
                     <connections>
                         <outlet property="addButton" destination="age-v1-TsR" id="veQ-ac-bOC"/>
                         <segue destination="j6B-tm-cbu" kind="presentation" identifier="MainToAddClip" id="SyV-So-uVv"/>
+                        <segue destination="Oi3-TZ-c4G" kind="presentation" identifier="MainToMoveItem" id="p24-k2-B1G"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qla-E1-pZw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -938,14 +940,14 @@
         <!--Folder Picker-->
         <scene sceneID="yBI-18-zf7">
             <objects>
-                <tableViewController title="Folder Picker" id="Uj1-6V-PFg" sceneMemberID="viewController">
+                <tableViewController title="Folder Picker" id="Uj1-6V-PFg" customClass="FolderPickerTableViewController" customModule="Copy_Better" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="b95-ml-k4X">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <color key="tintColor" name="Accent"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SuperfolderCell" id="wVz-Pg-9QZ">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SuperfolderCell" id="wVz-Pg-9QZ" customClass="FolderPickerTableViewCell" customModule="Copy_Better" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wVz-Pg-9QZ" id="beJ-nI-yBC">
@@ -975,8 +977,11 @@
                                         <constraint firstItem="NyR-mF-ajo" firstAttribute="leading" secondItem="WQh-ls-X3n" secondAttribute="trailing" constant="4" id="zKA-su-iZh"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="label" destination="NyR-mF-ajo" id="UeA-I0-AZS"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FolderCell" id="ewq-Qg-4A8">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FolderCell" id="ewq-Qg-4A8" customClass="FolderPickerTableViewCell" customModule="Copy_Better" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="71.5" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ewq-Qg-4A8" id="HV5-N8-uwe">
@@ -1006,8 +1011,11 @@
                                         <constraint firstItem="48K-aj-ZZn" firstAttribute="centerY" secondItem="HV5-N8-uwe" secondAttribute="centerY" id="uOf-av-l41"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="label" destination="48K-aj-ZZn" id="x4T-5q-63Y"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ClipTitleCell" id="c1O-Wx-Hyq">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ClipTitleCell" id="c1O-Wx-Hyq" customClass="FolderPickerTableViewCell" customModule="Copy_Better" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="115" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c1O-Wx-Hyq" id="Wo8-pi-1Jr">
@@ -1037,8 +1045,11 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="lvZ-ER-xyx" secondAttribute="trailing" id="UKH-6U-zu5"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="label" destination="lvZ-ER-xyx" id="L9g-dN-ca7"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ClipNoTitleCell" id="9pX-bo-myZ">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ClipNoTitleCell" id="9pX-bo-myZ" customClass="FolderPickerTableViewCell" customModule="Copy_Better" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="158.5" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9pX-bo-myZ" id="Q3G-k3-I1c">
@@ -1068,6 +1079,9 @@
                                         <constraint firstItem="feP-5p-amh" firstAttribute="centerY" secondItem="Q3G-k3-I1c" secondAttribute="centerY" id="lbU-NG-Xbc"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="label" destination="feP-5p-amh" id="Bgj-Kv-BNL"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1076,11 +1090,23 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Move to Folder" id="Xdn-yD-b5c">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="cm0-uf-tjh"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="CnC-4f-VnS"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="cm0-uf-tjh">
+                            <connections>
+                                <action selector="cancel:" destination="Uj1-6V-PFg" id="2pI-Vo-FVt"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="CnC-4f-VnS">
+                            <connections>
+                                <action selector="save:" destination="Uj1-6V-PFg" id="Yjy-T5-DdS"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="EJe-UY-oxj" kind="unwind" identifier="UnwindFromFolderPicker" unwindAction="unwindFromFolderPickerWithUnwindSegue:" id="kTh-9j-jGQ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wU8-xb-YQH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="EJe-UY-oxj" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3633" y="159"/>
         </scene>
@@ -1090,7 +1116,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Oi3-TZ-c4G" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ENe-FW-NCh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" name="Accent"/>
                     </navigationBar>
@@ -1119,7 +1145,8 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QqE-G5-atx"/>
-        <segue reference="1pd-qj-QPy"/>
+        <segue reference="p24-k2-B1G"/>
+        <segue reference="SyV-So-uVv"/>
+        <segue reference="lCp-ka-Hs9"/>
     </inferredMetricsTieBreakers>
 </document>

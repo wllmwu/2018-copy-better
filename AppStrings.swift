@@ -112,4 +112,16 @@ struct AppStrings {
     static var NO_UNDO_MESSAGE: String {
         return NSLocalizedString("You cannot undo[...]", comment: "no undo message")
     }
+    
+    static var IMAGE_CLIP_PLACEHOLDER: String {
+        return NSLocalizedString("(Image)", comment: "image clip placeholder")
+    }
+    
+    static var MOVE_ACTION_TITLE: String {
+        return NSLocalizedString("Move", comment: "\"Move\" action title")
+    }
+    
+    static var TOAST_MESSAGE_MOVED: String {
+        return NSLocalizedString("Moved", comment: "\"Moved\" toast message")
+    }
 }

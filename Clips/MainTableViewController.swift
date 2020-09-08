@@ -112,6 +112,8 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         //else {
         //    self.showLastCopied = false
         //}
+        self.selectedFolder = nil
+        self.selectedClip = nil
         
         self.retrieveData()
         self.tableView.reloadData()
@@ -144,7 +146,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         }
         else {*/
             //if self.folder!.isFault { // need to refresh?
-                print("refreshing")
+                //print("refreshing")
                 self.subfolders = self.folder.subfoldersArray
                 self.clips = self.folder.clipsArray
             //}
@@ -367,7 +369,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
                 return cell
             }
         }
-    } // TODO: implement moving clips and folders to other folders - add some ui for this
+    }
 
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -464,7 +466,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             if self.showLastCopied && proposedDestinationIndexPath.row == 0 { // can't move Last Copied
                 return IndexPath(row: 1, section: 0)
             }
-            else if proposedDestinationIndexPath.row >= self.subfolders.count + offset { // can't move into the clips
+            else if proposedDestinationIndexPath.row >= self.subfolders.count + offset { // can't move a folder into the clips
                 return IndexPath(row: self.subfolders.count + offset - 1, section: 0)
             }
         }
@@ -472,6 +474,28 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             return IndexPath(row: self.subfolders.count + offset, section: 0)
         }
         return proposedDestinationIndexPath
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        if self.isFiltering() || (self.showLastCopied && indexPath.row == 0) {
+            return nil
+        }
+        
+        let action: UIContextualAction = UIContextualAction(style: .normal, title: AppStrings.MOVE_ACTION_TITLE) { (action, view, completionHandler) in
+            let offset = self.showLastCopied ? 1 : 0
+            if indexPath.row < self.subfolders.count + offset {
+                self.selectedFolder = self.subfolders[indexPath.row - offset]
+            }
+            else {
+                self.selectedClip = self.clips[indexPath.row - self.subfolders.count - offset]
+            }
+            self.performSegue(withIdentifier: "MainToMoveItem", sender: self)
+            completionHandler(true)
+        }
+        action.backgroundColor = UIColor(named: "Accent")
+        
+        let configuration: UISwipeActionsConfiguration = UISwipeActionsConfiguration(actions: [action])
+        return configuration
     }
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
@@ -577,6 +601,14 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
                     print("Error with segue: selected clip wasn't set.")
                 }
             }
+            else if identifier == "MainToMoveItem" {
+                let destinationNav: UINavigationController = segue.destination as! UINavigationController
+                let destination: FolderPickerTableViewController = destinationNav.viewControllers.first as! FolderPickerTableViewController
+                destination.setFolder(self.folder)
+                if let selected = self.selectedFolder {
+                    destination.setFolderToMove(selected) // if moving a clip, don't need to bother
+                }
+            }
         }
     }
     
@@ -586,6 +618,34 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     
     @IBAction func swipeBack() {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func unwindFromFolderPicker(unwindSegue: UIStoryboardSegue) {
+        let source: FolderPickerTableViewController = unwindSegue.source as! FolderPickerTableViewController
+        let chosenFolder: Folder = source.getSelectedFolder()
+        
+        if chosenFolder.objectID != self.folder.objectID {
+            if let selected = self.selectedFolder {
+                selected.superfolder = chosenFolder
+                let index = Int(selected.index)
+                self.subfolders.remove(at: index)
+                tableView.deleteRows(at: [IndexPath(row: index + (self.showLastCopied ? 1 : 0), section: 0)], with: .fade)
+                self.updateFolderIndices(from: index, to: self.subfolders.count)
+                selected.index = Int16(chosenFolder.subfolders!.count - 1)
+                self.saveContext()
+            }
+            else if let selected = self.selectedClip {
+                selected.folder = chosenFolder
+                let index = Int(selected.index)
+                self.clips.remove(at: index)
+                tableView.deleteRows(at: [IndexPath(row: index + self.subfolders.count + (self.showLastCopied ? 1 : 0), section: 0)], with: .fade)
+                self.updateClipIndices(from: index, to: self.clips.count)
+                selected.index = Int16(chosenFolder.clips!.count - 1)
+                self.saveContext()
+            }
+        }
+        
+        self.showToast(message: AppStrings.TOAST_MESSAGE_MOVED)
     }
 
 }

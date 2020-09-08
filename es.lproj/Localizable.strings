@@ -83,3 +83,12 @@
 
 /* no undo message */
 "You cannot undo[...]" = "No puede deshacer esta acción.";
+
+/* image clip placeholder */
+"(Image)" = "(Imagen)";
+
+/* "Move" action title */
+"Move" = "Mover";
+
+/* "Moved" toast message */
+"Moved" = "Movido";

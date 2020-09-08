@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E0071DE721CB154D00B75D4C /* ClipsKeyboardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0071DE621CB154D00B75D4C /* ClipsKeyboardCell.xib */; };
 		E0071DE921CB171100B75D4C /* ClipsKeyboardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0071DE821CB171100B75D4C /* ClipsKeyboardCollectionViewCell.swift */; };
+		E0079EDC25068C9100F3BC10 /* FolderPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0079EDB25068C9100F3BC10 /* FolderPickerTableViewCell.swift */; };
 		E017418324E49B0C0007E667 /* FolderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E017418224E49B0C0007E667 /* FolderTableViewCell.swift */; };
 		E01FFB2821B4451800C69DEF /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */; };
 		E01FFB2921B44BB500C69DEF /* Clips.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E056F8F720CEE46C0025E2FE /* Clips.xcdatamodeld */; };
@@ -133,6 +134,7 @@
 /* Begin PBXFileReference section */
 		E0071DE621CB154D00B75D4C /* ClipsKeyboardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClipsKeyboardCell.xib; sourceTree = "<group>"; };
 		E0071DE821CB171100B75D4C /* ClipsKeyboardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipsKeyboardCollectionViewCell.swift; sourceTree = "<group>"; };
+		E0079EDB25068C9100F3BC10 /* FolderPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderPickerTableViewCell.swift; sourceTree = "<group>"; };
 		E017418224E49B0C0007E667 /* FolderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderTableViewCell.swift; sourceTree = "<group>"; };
 		E029B42A21B32C8F005EFEB6 /* ClipsPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipsPersistentContainer.swift; sourceTree = "<group>"; };
 		E03B9EB823E7DE25001206EF /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 				E06AA12F219D32DE0015A30F /* ClipViewController.swift */,
 				E06AA131219D32F60015A30F /* EditClipTableViewController.swift */,
 				E08A5A2E25029E0A009524DB /* FolderPickerTableViewController.swift */,
+				E0079EDB25068C9100F3BC10 /* FolderPickerTableViewCell.swift */,
 				E06AA133219D331E0015A30F /* SettingsTableViewController.swift */,
 				E0CC277521AD9A04000FEF5A /* AboutTableViewController.swift */,
 				E056F8FC20CEE46E0025E2FE /* LaunchScreen.storyboard */,
@@ -605,6 +608,7 @@
 				E0E373BD24EAFFD7006A2816 /* AppStrings.swift in Sources */,
 				E0858C2F21A0F0240089AE53 /* Clip+CoreDataClass.swift in Sources */,
 				E06AA134219D331E0015A30F /* SettingsTableViewController.swift in Sources */,
+				E0079EDC25068C9100F3BC10 /* FolderPickerTableViewCell.swift in Sources */,
 				E0C260AF21B8B889007D9BED /* UIViewController+Toast.swift in Sources */,
 				E06AA12A219D32500015A30F /* ClipTableViewCell.swift in Sources */,
 				E04BC4C824E48DCC009BEE48 /* Clip+CoreDataProperties.swift in Sources */,
