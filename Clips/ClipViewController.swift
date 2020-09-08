@@ -17,7 +17,6 @@ class ClipViewController: UIViewController {
     private var clip: Clip!
     private var contents: [String : Any] = [:]
     private var managedObjectContext: NSManagedObjectContext!
-    //private var allClips: [Clip]?
     private var isLastCopied: Bool = false
     /**
      The folder from where this view was entered. Should be set when `isLastCopied` is `true`; otherwise, may be left as `nil`. If the last copied clip is added to records, it should be inserted into this folder.

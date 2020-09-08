@@ -33,10 +33,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     
     func setFolder(_ folder: Folder) {
         self.folder = folder
-        //self.isRootFolder = false
         self.navigationItem.title = folder.name!
-        //self.showLastCopied = false
-        //self.retrieveData()
     }
     
     // MARK: - Lifecycle functions
@@ -101,17 +98,12 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     // MARK: - Instance methods
     
     @objc private func loadData() {
-        //if self.isRootFolder {
-            self.showLastCopied = self.defaults.bool(forKey: "showLastCopiedInMain")
-            if self.showLastCopied && self.pasteboardChangeCount != UIPasteboard.general.changeCount {
-                // the pasteboard changeCount gets reset to 0 when the device is restarted
-                self.retrieveLastCopied()
-                self.pasteboardChangeCount = UIPasteboard.general.changeCount
-            }
-        //}
-        //else {
-        //    self.showLastCopied = false
-        //}
+        self.showLastCopied = self.defaults.bool(forKey: "showLastCopiedInMain")
+        if self.showLastCopied && self.pasteboardChangeCount != UIPasteboard.general.changeCount {
+            // the pasteboard changeCount gets reset to 0 when the device is restarted
+            self.retrieveLastCopied()
+            self.pasteboardChangeCount = UIPasteboard.general.changeCount
+        }
         self.selectedFolder = nil
         self.selectedClip = nil
         
@@ -123,34 +115,8 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
      Fetches folders and clips to display, storing them in `self.subfolders` and `self.clips`.
      */
     private func retrieveData() {
-        /*if self.isRootFolder { // TODO: don't fetch from the store as often when unnecessary / when do we use this defaults key?
-            //if self.defaults.bool(forKey: "mainNeedsUpdate") {
-                print("fetching")
-                let foldersRequest: NSFetchRequest = NSFetchRequest<Folder>(entityName: "Folder")
-                foldersRequest.predicate = NSPredicate(format: "superfolder == nil")
-                foldersRequest.sortDescriptors = [NSSortDescriptor(key: "index", ascending: true)]
-                
-                let clipsRequest: NSFetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
-                clipsRequest.predicate = NSPredicate(format:"folder == nil")
-                clipsRequest.sortDescriptors = [NSSortDescriptor(key: "index", ascending: true)]
-                
-                do {
-                    self.subfolders = try self.managedObjectContext.fetch(foldersRequest)
-                    self.clips = try self.managedObjectContext.fetch(clipsRequest)
-                    self.defaults.set(false, forKey: "mainNeedsUpdate")
-                }
-                catch let error as NSError {
-                    print("Couldn't fetch. \(error), \(error.userInfo)")
-                }
-            //}
-        }
-        else {*/
-            //if self.folder!.isFault { // need to refresh?
-                //print("refreshing")
-                self.subfolders = self.folder.subfoldersArray
-                self.clips = self.folder.clipsArray
-            //}
-        //}
+        self.subfolders = self.folder.subfoldersArray
+        self.clips = self.folder.clipsArray
     }
     
     private func retrieveLastCopied() {
@@ -277,9 +243,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         let folder = Folder(entity: entity, insertInto: self.managedObjectContext)
         folder.name = name
         folder.index = Int16(self.subfolders.count)
-        //if !self.isRootFolder {
-            folder.superfolder = self.folder
-        //}
+        folder.superfolder = self.folder
         self.subfolders.append(folder)
         
         if self.saveContext() {

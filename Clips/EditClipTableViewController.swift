@@ -33,7 +33,6 @@ class EditClipTableViewController: UITableViewController {
      The index in the containing folder where the new clip should be inserted. Should be set when `mode` is `.Add`; otherwise, may be left as `nil`.
      */
     private var indexInFolder: Int?
-    //private var allClips: [Clip]?
     
     private var managedObjectContext: NSManagedObjectContext!
 
@@ -106,10 +105,6 @@ class EditClipTableViewController: UITableViewController {
         self.clip = clip
     }
     
-    /*func setAllClips(_ clips: [Clip]) {
-        self.allClips = clips
-    }*/
-    
     func setLocationToAdd(folder: Folder, index: Int) {
         self.containingFolder = folder
         self.indexInFolder = index
@@ -129,12 +124,6 @@ class EditClipTableViewController: UITableViewController {
     
     private func orderUpdates() {
         let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clips")!
-        /*if let containing = self.containingFolder { // refresh the folder containing this clip
-            self.managedObjectContext.refresh(containing, mergeChanges: true)
-        }
-        else { // refresh the root folder
-            defaults.set(true, forKey: "mainNeedsUpdate")
-        }*/
         // the unwind segue should result in a refresh for the clip/folder view
         defaults.set(true, forKey: "widgetNeedsUpdate")
         defaults.set(true, forKey: "keyboardNeedsUpdate")
@@ -151,11 +140,6 @@ class EditClipTableViewController: UITableViewController {
             self.saveClipTitleAndContents(clip: clip)
             clip.index = Int16(self.indexInFolder!)
             clip.folder = self.containingFolder
-            /*if let clips = self.allClips {
-                for c in clips {
-                    c.index += 1
-                }
-            }*/
             
             if self.saveContext() {
                 self.showToast(message: AppStrings.TOAST_MESSAGE_SAVED)
@@ -164,12 +148,10 @@ class EditClipTableViewController: UITableViewController {
             self.performSegue(withIdentifier: "UnwindFromAdd", sender: self)
         }
         else {
-            //if let clip = self.clip {
-                self.saveClipTitleAndContents(clip: clip)
-                if self.saveContext() {
-                    self.showToast(message: AppStrings.TOAST_MESSAGE_SAVED)
-                }
-            //}
+            self.saveClipTitleAndContents(clip: clip)
+            if self.saveContext() {
+                self.showToast(message: AppStrings.TOAST_MESSAGE_SAVED)
+            }
             
             self.performSegue(withIdentifier: "UnwindFromEdit", sender: self)
         }
