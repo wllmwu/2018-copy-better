@@ -18,7 +18,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     private var selectedFolder: Folder?
     private var clips: [Clip] = []
     private var selectedClip: Clip?
-    private let searchController: UISearchController = UISearchController(searchResultsController: nil)
+    private var searchController: UISearchController!
     private var filteredFolders: [Folder] = []
     private var filteredClips: [Clip] = []
     
@@ -56,22 +56,24 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         if self.folder == nil {
             // fetch the root folder
             let request: NSFetchRequest = NSFetchRequest<Folder>(entityName: "Folder")
-            request.predicate = NSPredicate(format: "superfolder == nil")
+            request.predicate = NSPredicate(format: "superfolder == NIL")
             do {
                 self.folder = try self.managedObjectContext.fetch(request).first
             }
             catch let error as NSError {
                 print("Couldn't fetch. \(error), \(error.userInfo)")
             }
+            
+            // set up search controller
+            self.searchController = UISearchController(searchResultsController: nil)
+            self.searchController.searchResultsUpdater = self
+            self.searchController.obscuresBackgroundDuringPresentation = false
+            self.searchController.searchBar.placeholder = AppStrings.SEARCH_BAR_PLACEHOLDER
+            self.searchController.searchBar.tintColor = UIColor(named: "Accent")
+            self.searchController.searchBar.searchBarStyle = .minimal
+            self.tableView.tableHeaderView = self.searchController.searchBar
+            self.definesPresentationContext = true
         }
-        
-        // set up search controller
-        self.searchController.searchResultsUpdater = self
-        self.searchController.obscuresBackgroundDuringPresentation = false
-        self.searchController.searchBar.placeholder = AppStrings.SEARCH_BAR_PLACEHOLDER
-        self.searchController.searchBar.tintColor = UIColor(named: "Accent")
-        self.tableView.tableHeaderView = self.searchController.searchBar
-        self.definesPresentationContext = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -498,34 +500,45 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     // MARK: - Search bar helper methods
     
     private func isFiltering() -> Bool {
+        if self.searchController == nil {
+            return false
+        }
         return self.searchController.isActive && !self.searchBarIsEmpty()
     }
     
     private func searchBarIsEmpty() -> Bool {
+        if self.searchController == nil {
+            return true
+        }
         return self.searchController.searchBar.text?.isEmpty ?? true
     }
     
-    private func filterContentForSearchText(_ searchText: String) { // TODO: search subfolders too
-        self.filteredFolders = self.subfolders.filter({ (folder: Folder) -> Bool in
-            if folder.name!.lowercased().contains(searchText.lowercased()) {
-                return true
+    private func filterContentForSearchText(_ searchText: String) {
+        if searchText.isEmpty {
+            self.filteredFolders = []
+            self.filteredClips = []
+        }
+        else {
+            // search folders
+            let folderRequest: NSFetchRequest = NSFetchRequest<Folder>(entityName: "Folder")
+            folderRequest.predicate = NSPredicate(format: "name CONTAINS[cd] %@", searchText)
+            do {
+                self.filteredFolders = try self.managedObjectContext.fetch(folderRequest)
             }
-            return false
-        })
-        
-        self.filteredClips = self.clips.filter({ (clip: Clip) -> Bool in
-            if let title = clip.title {
-                if title.lowercased().contains(searchText.lowercased()) {
-                    return true
-                }
+            catch let error as NSError {
+                print("Couldn't fetch. \(error), \(error.userInfo)")
             }
-            if let contents = ClipboardManager.stringFromItem(clip.contents) { // async?
-                if contents.lowercased().contains(searchText.lowercased()) {
-                    return true
-                }
+            
+            // search clips
+            let clipRequest: NSFetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
+            clipRequest.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchText)
+            do {
+                self.filteredClips = try self.managedObjectContext.fetch(clipRequest)
             }
-            return false
-        })
+            catch let error as NSError {
+                print("Couldn't fetch. \(error), \(error.userInfo)")
+            }
+        }
         
         self.tableView.reloadData()
     }
