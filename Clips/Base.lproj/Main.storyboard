@@ -497,9 +497,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rWH-zQ-aTB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Rwf-4l-1B6"/>
+                    <navigationItem key="navigationItem" id="Rwf-4l-1B6">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="hQK-3i-W2P">
+                            <connections>
+                                <action selector="openShareSheet:" destination="9Ah-HQ-3Ku" id="Hrz-o8-yYB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="contentsTextView" destination="MmT-bY-Fx2" id="W6j-OE-SGC"/>
+                        <outlet property="shareButton" destination="hQK-3i-W2P" id="YYZ-pi-rPl"/>
                         <segue destination="j6B-tm-cbu" kind="presentation" identifier="ClipToEditClip" modalTransitionStyle="coverVertical" id="atL-tM-tp5"/>
                     </connections>
                 </viewController>
@@ -1146,7 +1153,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="SI3-HK-EbX"/>
-        <segue reference="QqE-G5-atx"/>
+        <segue reference="atL-tM-tp5"/>
         <segue reference="T1C-MY-kRL"/>
     </inferredMetricsTieBreakers>
 </document>

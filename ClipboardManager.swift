@@ -48,6 +48,7 @@ class ClipboardManager: NSObject {
             }
             if let url = item[kUTTypeURL as String] {
                 newItem[kUTTypeURL as String] = url
+                print(url)
             }
             if let png = item[kUTTypePNG as String] {
                 newItem[kUTTypePNG as String] = png
@@ -91,14 +92,14 @@ class ClipboardManager: NSObject {
     // MARK: - Interpreters for data representations in pasteboard items
     
     /**
-     Looks for data represented by the type identifier kUTTypeRTFD in the given item dictionary, and attempts to convert it to an NSAttributedString.
+     Looks for data represented by the type identifier `kUTTypeRTFD` in the given item dictionary, and attempts to convert it to an `NSAttributedString`.
      */
     static func attributedStringFromRtfd(inItem item: [String : Any]) -> NSAttributedString? {
         return ClipboardManager.attributedStringFromRtfd(data: item[kUTTypeRTFD as String] as? Data)
     }
     
     /**
-     Attempts to convert the given Data to an NSAttributedString with the document type RTFD.
+     Attempts to convert the given `Data` to an `NSAttributedString` with the document type `RTFD`.
      */
     static func attributedStringFromRtfd(data: Data?) -> NSAttributedString? {
         if let rtfdData = data {
@@ -113,14 +114,14 @@ class ClipboardManager: NSObject {
     }
     
     /**
-     Looks for data represented by the type identifier kUTTypeRTF in the given item dictionary, and attempts to convert it to an NSAttributedString.
+     Looks for data represented by the type identifier `kUTTypeRTF` in the given item dictionary, and attempts to convert it to an `NSAttributedString`.
      */
     static func attributedStringFromRtf(inItem item: [String : Any]) -> NSAttributedString? {
         return ClipboardManager.attributedStringFromRtf(data: item[kUTTypeRTF as String] as? Data)
     }
     
     /**
-     Attempts to convert the given Data to an NSAttributedString with the document type RTF.
+     Attempts to convert the given `Data` to an `NSAttributedString` with the document type `RTF`.
      */
     static func attributedStringFromRtf(data: Data?) -> NSAttributedString? {
         if let rtfData = data {
@@ -135,14 +136,14 @@ class ClipboardManager: NSObject {
     }
     
     /**
-     Looks for data represented by the type identifier kUTTypeHTML in the given item dictionary, and attempts to convert it to an NSAttributedString.
+     Looks for data represented by the type identifier `kUTTypeHTML` in the given item dictionary, and attempts to convert it to an `NSAttributedString`.
      */
     static func attributedStringFromHtml(inItem item: [String : Any]) -> NSAttributedString? {
         return ClipboardManager.attributedStringFromHtml(string: item[kUTTypeHTML as String] as? String)
     }
     
     /**
-     Attempts to convert the given String to an NSAttributedString by interpreting the String as HTML text.
+     Attempts to convert the given `String` to an `NSAttributedString` by interpreting it as HTML text.
      */
     static func attributedStringFromHtml(string: String?) -> NSAttributedString? {
         if let htmlString = string {
@@ -154,7 +155,7 @@ class ClipboardManager: NSObject {
     }
     
     /**
-     Looks for data represented by the type identifiers kUTTypeUTF8PlainText, kUTTypeUTF16PlainText, or kUTTypePlainText in the given item dictionary, and attempts to convert it to a String.
+     Looks for data represented by the type identifiers `kUTTypeUTF8PlainText`, `kUTTypeUTF16PlainText`, or `kUTTypePlainText` in the given item dictionary, and attempts to convert it to a `String`.
      */
     static func stringFromPlaintext(inItem item: [String : Any]) -> String? {
         if let utf8Plaintext = item[kUTTypeUTF8PlainText as String] {
@@ -170,7 +171,7 @@ class ClipboardManager: NSObject {
     }
     
     /**
-     Attempts to convert the given object to a String by interpreting it as UTF8-encoded text.
+     Attempts to convert the given object to a `String` by interpreting it as UTF8-encoded text.
      */
     static func stringFromPlaintext(utf8Plaintext: Any) -> String? {
         if let string = utf8Plaintext as? String {
@@ -184,7 +185,7 @@ class ClipboardManager: NSObject {
     }
     
     /**
-     Attempts to convert the given object to a String by interpreting it as UTF16-encoded text.
+     Attempts to convert the given object to a `String` by interpreting it as UTF16-encoded text.
      */
     static func stringFromPlaintext(utf16Plaintext: Any) -> String? {
         if let string = utf16Plaintext as? String {
@@ -198,7 +199,14 @@ class ClipboardManager: NSObject {
     }
     
     /**
-     Looks for data represented by the type identifiers kUTTypeImage, kUTTypePNG, kUTTypeJPEG, kUTTypeGIF, kUTTypeTIFF, or kUTTypeBMP in the given item dictionary, and attempts to convert it to a UIImage. The returned image is scaled to the given maximum width and/or maximum height, if their value is not 0 and not greater than the original width and/or height.
+     Looks for data represented by the type identifier `kUTTypeURL` in the given item dictionary, and attempts to convert it to a `URL`.
+     */
+    static func urlFromURL(inItem item: [String : Any]) -> URL? {
+        return item[kUTTypeURL as String] as? URL
+    }
+    
+    /**
+     Looks for data represented by the type identifiers `kUTTypeImage`, `kUTTypePNG`, `kUTTypeJPEG`, `kUTTypeGIF`, `kUTTypeTIFF`, or `kUTTypeBMP` in the given item dictionary, and attempts to convert it to a `UIImage`. The returned image is scaled to the given maximum width and/or maximum height, if their value is not 0 and not greater than the original width and/or height.
      - Parameter maxWidth: The maximum point width of the returned image. If this value is 0, the image will not be scaled to fit a maximum width.
      - Parameter maxHeight: The maximum point height of the returned image. If this value is 0, the image will not be scaled to fit a maximum height.
      */
@@ -233,7 +241,7 @@ class ClipboardManager: NSObject {
     }
     
     /**
-     Attempts to convert the given object to a UIImage by interpreting it as a UIImage, Data, or a URL.
+     Attempts to convert the given object to a `UIImage` by interpreting it as a `UIImage`, `Data`, or a `URL`.
      */
     private static func getUIImage(from thing: Any) -> UIImage? {
         if let image = thing as? UIImage {
@@ -282,7 +290,7 @@ class ClipboardManager: NSObject {
     }
     
     /**
-     Creates an NSAttributedString consisting of one attachment containing the given image.
+     Creates an `NSAttributedString` consisting of one attachment containing the given image.
      */
     static func attributedStringWithImage(_ image: UIImage) -> NSAttributedString {
         let attachment: NSTextAttachment = NSTextAttachment()
@@ -291,7 +299,7 @@ class ClipboardManager: NSObject {
     }
     
     /**
-     Creates a pasteboard item dictionary from the given NSAttributedString. The item will include whichever data representations possible with the type identifiers kUTTypeRTFD, kUTTypeRTF, kUTTypeHTML, kUTTypeUTF8PlainText, kUTTypeUTF16PlainText, and kUTTypePlainText.
+     Creates a pasteboard item dictionary from the given `NSAttributedString`. The item will include whichever data representations possible with the type identifiers `kUTTypeRTFD`, `kUTTypeRTF`, `kUTTypeHTML`, `kUTTypeUTF8PlainText`, `kUTTypeUTF16PlainText`, and `kUTTypePlainText`.
      */
     static func itemFromAttributedString(_ string: NSAttributedString) -> [String : Any] {
         if string.length == 0 { return [:] }
@@ -327,7 +335,7 @@ class ClipboardManager: NSObject {
     }
     
     /**
-     Creates a pasteboard item from the given String. If the String has length greater than 0, the item will include a data representation with the type identifier kUTTypePlainText.
+     Creates a pasteboard item from the given `String`. If the `String` has length greater than 0, the item will include a data representation with the type identifier `kUTTypePlainText`.
      */
     static func itemFromPlaintext(_ string: String) -> [String : Any] {
         if string.count == 0 { return [:] }
@@ -351,6 +359,29 @@ class ClipboardManager: NSObject {
             return html.string
         }
         return nil
+    }
+    
+    static func arrayFromItem(_ item: [String : Any]) -> [Any] {
+        var array: [Any] = []
+        if let rtfd = ClipboardManager.attributedStringFromRtfd(inItem: item) {
+            array.append(rtfd)
+        }
+        if let rtf = ClipboardManager.attributedStringFromRtf(inItem: item) {
+            array.append(rtf)
+        }
+        if let html = ClipboardManager.attributedStringFromHtml(inItem: item) {
+            array.append(html)
+        }
+        if let plaintext = ClipboardManager.stringFromPlaintext(inItem: item) {
+            array.append(plaintext)
+        }
+        if let url = ClipboardManager.urlFromURL(inItem: item) {
+            array.append(url)
+        }
+        if let image = ClipboardManager.imageFromImage(inItem: item, maxWidth: 0, maxHeight: 0) {
+            array.append(image)
+        }
+        return array
     }
 
 }

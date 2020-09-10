@@ -22,6 +22,7 @@ class ClipViewController: UIViewController {
      The folder from where this view was entered. Should be set when `isLastCopied` is `true`; otherwise, may be left as `nil`. If the last copied clip is added to records, it should be inserted into this folder.
      */
     private var currentFolder: Folder!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var contentsTextView: UITextView!
     
     override func viewDidLoad() {
@@ -29,15 +30,20 @@ class ClipViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         if self.isLastCopied {
+            //let shareButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(ClipViewController.openShareSheet))
             let addButton: UIBarButtonItem = UIBarButtonItem(title: AppStrings.ADD_TO_LIST_BUTTON_TITLE, style: UIBarButtonItem.Style.plain, target: self, action: #selector(ClipViewController.addLastCopied))
             self.navigationItem.title = AppStrings.LAST_COPIED_TITLE
-            self.navigationItem.rightBarButtonItem = addButton
+            //self.navigationItem.rightBarButtonItems = [shareButton, addButton]
+            self.navigationItem.rightBarButtonItems?.append(addButton)
             self.setContentsText(contents: self.contents)
         }
         else {
-            let copyButton: UIBarButtonItem = UIBarButtonItem(title: AppStrings.COPY_BUTTON_TITLE, style: UIBarButtonItem.Style.plain, target: self, action: #selector(ClipViewController.copyClip))
+            //let shareButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(ClipViewController.openShareSheet))
             let editButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(ClipViewController.segueToEdit))
-            self.navigationItem.rightBarButtonItems = [copyButton, editButton]
+            let copyButton: UIBarButtonItem = UIBarButtonItem(title: AppStrings.COPY_BUTTON_TITLE, style: UIBarButtonItem.Style.plain, target: self, action: #selector(ClipViewController.copyClip))
+            //self.navigationItem.rightBarButtonItems = [shareButton, editButton, copyButton]
+            self.navigationItem.rightBarButtonItems?.append(editButton)
+            self.navigationItem.rightBarButtonItems?.append(copyButton)
             
             if let title = self.clip.title {
                 self.setTitle(title)
@@ -64,7 +70,11 @@ class ClipViewController: UIViewController {
         if contents.count == 0 {
             self.contentsTextView.text = AppStrings.EMPTY_CLIP_PLACEHOLDER
             self.contentsTextView.textColor = UIColor.gray
+            self.shareButton.isEnabled = false
             return
+        }
+        else {
+            self.shareButton.isEnabled = true
         }
         
         let textViewSize: CGSize = self.contentsTextView.contentSize
@@ -152,6 +162,13 @@ class ClipViewController: UIViewController {
                 self.showToast(message: AppStrings.TOAST_MESSAGE_ADDED)
             }
         }
+    }
+    
+    @IBAction func openShareSheet(_ sender: UIBarButtonItem) {
+        let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: ClipboardManager.arrayFromItem(self.contents), applicationActivities: nil)
+        activityViewController.popoverPresentationController?.barButtonItem = sender
+        activityViewController.isModalInPresentation = true
+        self.present(activityViewController, animated: true, completion: nil)
     }
     
     @discardableResult private func saveContext() -> Bool {
