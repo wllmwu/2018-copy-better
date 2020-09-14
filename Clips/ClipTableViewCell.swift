@@ -15,7 +15,10 @@ class ClipTableViewCell: UITableViewCell {
     @IBOutlet weak var contentsImageView: UIImageView!
     @IBOutlet weak var copyButton: UIButton!
     @IBOutlet weak var addButton: UIButton?
-    @IBOutlet weak var tempIdLabel: UILabel?
+    @IBOutlet weak var favoriteIcon: UIImageView?
+    
+    @IBOutlet weak var primaryLabelToEdge: NSLayoutConstraint?
+    @IBOutlet weak var primaryLabelToFavoriteIcon: NSLayoutConstraint?
     
     private var contents: [String : Any]!
     
@@ -38,12 +41,6 @@ class ClipTableViewCell: UITableViewCell {
     
     // MARK: - Instance methods
     
-    func tempSetID(id: Int16) { // TEMP
-        if let label = self.tempIdLabel {
-            label.text = String(format: "%d", id)
-        }
-    }
-    
     private func reset() {
         // reset contentsLabel's font, text size, and text color
         var defaultSize: CGFloat = 17
@@ -53,6 +50,9 @@ class ClipTableViewCell: UITableViewCell {
         self.contentsLabel.font = UIFont.systemFont(ofSize: defaultSize)
         self.contentsLabel.textColor = UIColor.label
         self.contentsImageView.image = nil
+        self.primaryLabelToFavoriteIcon?.priority = .defaultLow
+        self.primaryLabelToEdge?.priority = .defaultHigh
+        self.favoriteIcon?.isHidden = true
     }
     
     private func setContentsLabelText() {
@@ -116,6 +116,19 @@ class ClipTableViewCell: UITableViewCell {
     func setContents(_ contents: [String : Any]) {
         self.contents = contents
         self.setContentsLabelText()
+    }
+    
+    func setFavorite(_ isFavorite: Bool) {
+        if isFavorite {
+            self.favoriteIcon?.isHidden = false
+            self.primaryLabelToEdge?.priority = .defaultLow
+            self.primaryLabelToFavoriteIcon?.priority = .defaultHigh
+        }
+        else {
+            self.primaryLabelToFavoriteIcon?.priority = .defaultLow
+            self.primaryLabelToEdge?.priority = .defaultHigh
+            self.favoriteIcon?.isHidden = true
+        }
     }
     
     @IBAction func copyButtonTapped(_ sender: UIButton) {

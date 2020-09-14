@@ -92,3 +92,6 @@
 
 /* "Moved" toast message */
 "Moved" = "Movido";
+
+/* "Delete" action title */
+"Delete" = "Eliminar";

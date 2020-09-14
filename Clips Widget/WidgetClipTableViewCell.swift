@@ -60,17 +60,17 @@ class WidgetClipTableViewCell: UITableViewCell {
             DispatchQueue.global(qos: .utility).async {
                 if let plaintext = ClipboardManager.stringFromPlaintext(inItem: item) {
                     DispatchQueue.main.async {
-                        self.contentsLabel.text = plaintext
+                        self.contentsLabel.text = plaintext.trimmingCharacters(in: .whitespacesAndNewlines)
                     }
                 }
                 else if let rtf = ClipboardManager.attributedStringFromRtf(inItem: item) {
                     DispatchQueue.main.async {
-                        self.contentsLabel.text = rtf.string
+                        self.contentsLabel.text = rtf.string.trimmingCharacters(in: .whitespacesAndNewlines)
                     }
                 }
                 else if let html = ClipboardManager.attributedStringFromHtml(inItem: item) {
                     DispatchQueue.main.async {
-                        self.contentsLabel.text = html.string
+                        self.contentsLabel.text = html.string.trimmingCharacters(in: .whitespacesAndNewlines)
                     }
                 }
                 else if let image = ClipboardManager.imageFromImage(inItem: item, maxWidth: imageViewSize.width, maxHeight: imageViewSize.height) {

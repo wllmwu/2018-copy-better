@@ -124,4 +124,8 @@ struct AppStrings {
     static var TOAST_MESSAGE_MOVED: String {
         return NSLocalizedString("Moved", comment: "\"Moved\" toast message")
     }
+    
+    static var DELETE_ACTION_TITLE: String {
+        return NSLocalizedString("Delete", comment: "\"Delete\" action title")
+    }
 }

@@ -20,8 +20,6 @@ public class Clip: NSManagedObject {
         clip.contents = ClipboardManager.itemFromPlaintext("\u{00af}\\_(\u{30c4})_/\u{00af}")
         clip.folder = rootFolder
         clip.index = 0
-        //clip.id = 0
-        //clip.folderID = -1
     }
     
     static func addDefaultClip2(entity: NSEntityDescription, context: NSManagedObjectContext, rootFolder: Folder) {
@@ -33,8 +31,6 @@ public class Clip: NSManagedObject {
         clip.contents = ClipboardManager.itemFromAttributedString(clip2Text)
         clip.folder = rootFolder
         clip.index = 1
-        //clip.id = 1
-        //clip.folderID = -1
     }
     
 }

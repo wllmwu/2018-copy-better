@@ -304,6 +304,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
                     cell = tableView.dequeueReusableCell(withIdentifier: "ClipNoTitleCell", for: indexPath) as! ClipTableViewCell
                 }
                 cell.setContents(clip.contents)
+                cell.setFavorite(clip.isFavorite)
                 return cell
             }
         }
@@ -331,7 +332,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
                     cell = tableView.dequeueReusableCell(withIdentifier: "ClipNoTitleCell", for: indexPath) as! ClipTableViewCell
                 }
                 cell.setContents(clip.contents)
-                cell.tempSetID(id: clip.index)
+                cell.setFavorite(clip.isFavorite)
                 return cell
             }
         }
@@ -447,21 +448,50 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             return nil
         }
         
-        let action: UIContextualAction = UIContextualAction(style: .normal, title: AppStrings.MOVE_ACTION_TITLE) { (action, view, completionHandler) in
-            let offset = self.showLastCopied ? 1 : 0
-            if indexPath.row < self.subfolders.count + offset {
-                self.selectedFolder = self.subfolders[indexPath.row - offset]
+        var actions: [UIContextualAction] = []
+        if self.isEditing {
+            let deleteAction: UIContextualAction = UIContextualAction(style: .destructive, title: AppStrings.DELETE_ACTION_TITLE) { (action, view, completionHandler) in
+                self.tableView(self.tableView, commit: .delete, forRowAt: indexPath)
+                completionHandler(true)
             }
-            else {
-                self.selectedClip = self.clips[indexPath.row - self.subfolders.count - offset]
-            }
-            self.performSegue(withIdentifier: "MainToMoveItem", sender: self)
-            completionHandler(true)
+            actions.append(deleteAction)
         }
-        action.backgroundColor = UIColor(named: "Accent")
+        else {
+            let offset = self.showLastCopied ? 1 : 0
+            let moveAction: UIContextualAction = UIContextualAction(style: .normal, title: AppStrings.MOVE_ACTION_TITLE) { (action, view, completionHandler) in
+                if indexPath.row < self.subfolders.count + offset {
+                    self.selectedFolder = self.subfolders[indexPath.row - offset]
+                }
+                else {
+                    self.selectedClip = self.clips[indexPath.row - self.subfolders.count - offset]
+                }
+                self.performSegue(withIdentifier: "MainToMoveItem", sender: self)
+                completionHandler(true)
+            }
+            moveAction.backgroundColor = UIColor(named: "Accent")
+            actions.append(moveAction)
+            
+            if indexPath.row >= self.subfolders.count + offset {
+                let clip: Clip = self.clips[indexPath.row - self.subfolders.count - offset]
+                let favoriteAction: UIContextualAction = UIContextualAction(style: .normal, title: nil) { (action, view, completionHandler) in
+                    clip.isFavorite = !clip.isFavorite
+                    self.saveContext()
+                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                    completionHandler(true)
+                }
+                if clip.isFavorite {
+                    favoriteAction.image = UIImage(systemName: "star.slash")
+                    favoriteAction.backgroundColor = UIColor.systemRed
+                }
+                else {
+                    favoriteAction.image = UIImage(systemName: "star")
+                    favoriteAction.backgroundColor = UIColor.systemGreen
+                }
+                actions.append(favoriteAction)
+            }
+        }
         
-        let configuration: UISwipeActionsConfiguration = UISwipeActionsConfiguration(actions: [action])
-        return configuration
+        return UISwipeActionsConfiguration(actions: actions)
     }
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {

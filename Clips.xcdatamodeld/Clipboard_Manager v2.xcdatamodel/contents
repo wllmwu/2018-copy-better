@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Clip" representedClassName="Clip" syncable="YES">
         <attribute name="contents" attributeType="Transformable" valueTransformerName=""/>
-        <attribute name="folderID" optional="YES" attributeType="Integer 32" defaultValueString="-1" usesScalarValueType="YES"/>
-        <attribute name="id" attributeType="Integer 32" defaultValueString="-1" usesScalarValueType="YES"/>
         <attribute name="index" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isFavorite" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="folder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Folder" inverseName="clips" inverseEntity="Folder"/>
     </entity>
     <entity name="Folder" representedClassName="Folder" syncable="YES">
-        <attribute name="id" attributeType="Integer 32" defaultValueString="-1" usesScalarValueType="YES"/>
         <attribute name="index" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" attributeType="String" defaultValueString=""/>
         <relationship name="clips" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Clip" inverseName="folder" inverseEntity="Clip"/>
@@ -17,7 +15,7 @@
         <relationship name="superfolder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Folder" inverseName="subfolders" inverseEntity="Folder"/>
     </entity>
     <elements>
-        <element name="Clip" positionX="-63" positionY="-18" width="128" height="133"/>
-        <element name="Folder" positionX="-63" positionY="18" width="128" height="133"/>
+        <element name="Clip" positionX="-63" positionY="-18" width="128" height="118"/>
+        <element name="Folder" positionX="-63" positionY="18" width="128" height="118"/>
     </elements>
 </model>

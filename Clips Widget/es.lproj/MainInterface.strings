@@ -25,3 +25,6 @@
 
 /* Class = "UILabel"; text = "Last copied"; ObjectID = "yhW-Aa-uuz"; */
 "yhW-Aa-uuz.text" = "Prev. copiado";
+
+/* Class = "UILabel"; text = "This widget displays favorite clips. Swipe on a clip in the app to mark it as a favorite."; ObjectID = "FQD-i9-Jck"; */
+"FQD-i9-Jck.text" = "Este widget muestra favoritos. Desliza el dedo en un artículo en la app para marcarlo como favorito.";

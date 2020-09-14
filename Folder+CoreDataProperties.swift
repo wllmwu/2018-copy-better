@@ -17,7 +17,6 @@ extension Folder {
         return NSFetchRequest<Folder>(entityName: "Folder")
     }
 
-    @NSManaged public var id: Int32
     @NSManaged public var index: Int16
     @NSManaged public var name: String?
     @NSManaged public var clips: NSSet?
