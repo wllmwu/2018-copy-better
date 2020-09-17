@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E0071DE721CB154D00B75D4C /* ClipsKeyboardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0071DE621CB154D00B75D4C /* ClipsKeyboardCell.xib */; };
-		E0071DE921CB171100B75D4C /* ClipsKeyboardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0071DE821CB171100B75D4C /* ClipsKeyboardCollectionViewCell.swift */; };
+		E0025F3D2511239A00DB66DC /* KeyboardFolderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0025F3C2511239A00DB66DC /* KeyboardFolderCell.xib */; };
+		E0025F3F251123D800DB66DC /* KeyboardFolderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0025F3E251123D800DB66DC /* KeyboardFolderCell.swift */; };
+		E0071DE721CB154D00B75D4C /* KeyboardClipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0071DE621CB154D00B75D4C /* KeyboardClipCell.xib */; };
+		E0071DE921CB171100B75D4C /* KeyboardClipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0071DE821CB171100B75D4C /* KeyboardClipCell.swift */; };
 		E0079EDC25068C9100F3BC10 /* FolderPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0079EDB25068C9100F3BC10 /* FolderPickerTableViewCell.swift */; };
 		E017418324E49B0C0007E667 /* FolderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E017418224E49B0C0007E667 /* FolderTableViewCell.swift */; };
 		E01FFB2821B4451800C69DEF /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */; };
@@ -87,7 +89,6 @@
 		E0E373BE24EAFFD7006A2816 /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E373BC24EAFFD7006A2816 /* AppStrings.swift */; };
 		E0E373BF24EAFFD7006A2816 /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E373BC24EAFFD7006A2816 /* AppStrings.swift */; };
 		E0E373C024EAFFD7006A2816 /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E373BC24EAFFD7006A2816 /* AppStrings.swift */; };
-		E0EBB4D621C7482F0037E136 /* Keyboard.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0EBB4D521C7482F0037E136 /* Keyboard.xcassets */; };
 		E0F5BE0821A8BE9600422DC1 /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */; };
 /* End PBXBuildFile section */
 
@@ -132,8 +133,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E0071DE621CB154D00B75D4C /* ClipsKeyboardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClipsKeyboardCell.xib; sourceTree = "<group>"; };
-		E0071DE821CB171100B75D4C /* ClipsKeyboardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipsKeyboardCollectionViewCell.swift; sourceTree = "<group>"; };
+		E0025F3C2511239A00DB66DC /* KeyboardFolderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboardFolderCell.xib; sourceTree = "<group>"; };
+		E0025F3E251123D800DB66DC /* KeyboardFolderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardFolderCell.swift; sourceTree = "<group>"; };
+		E0071DE621CB154D00B75D4C /* KeyboardClipCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboardClipCell.xib; sourceTree = "<group>"; };
+		E0071DE821CB171100B75D4C /* KeyboardClipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardClipCell.swift; sourceTree = "<group>"; };
 		E0079EDB25068C9100F3BC10 /* FolderPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderPickerTableViewCell.swift; sourceTree = "<group>"; };
 		E017418224E49B0C0007E667 /* FolderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderTableViewCell.swift; sourceTree = "<group>"; };
 		E029B42A21B32C8F005EFEB6 /* ClipsPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipsPersistentContainer.swift; sourceTree = "<group>"; };
@@ -205,7 +208,6 @@
 		E0D67EE0219E8B6700559CA6 /* Clips.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Clips.entitlements; sourceTree = "<group>"; };
 		E0D67EE1219E8CB100559CA6 /* Clips Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Clips Widget.entitlements"; sourceTree = "<group>"; };
 		E0E373BC24EAFFD7006A2816 /* AppStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStrings.swift; sourceTree = "<group>"; };
-		E0EBB4D521C7482F0037E136 /* Keyboard.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Keyboard.xcassets; sourceTree = "<group>"; };
 		E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HTML.swift"; sourceTree = "<group>"; };
 		E0F80E4221E434D700458330 /* Clips Share.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Clips Share.entitlements"; sourceTree = "<group>"; };
 		E0FFAFB7223F1A1F004F0F64 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
@@ -347,9 +349,10 @@
 				E0619DFF21DE871B00A69332 /* ClipsKeyboardView.swift */,
 				E0619E0521DEA3BC00A69332 /* KeyboardButton.swift */,
 				E0AF325421DED6A500743158 /* KeyboardUpperButton.swift */,
-				E0071DE621CB154D00B75D4C /* ClipsKeyboardCell.xib */,
-				E0071DE821CB171100B75D4C /* ClipsKeyboardCollectionViewCell.swift */,
-				E0EBB4D521C7482F0037E136 /* Keyboard.xcassets */,
+				E0025F3C2511239A00DB66DC /* KeyboardFolderCell.xib */,
+				E0025F3E251123D800DB66DC /* KeyboardFolderCell.swift */,
+				E0071DE621CB154D00B75D4C /* KeyboardClipCell.xib */,
+				E0071DE821CB171100B75D4C /* KeyboardClipCell.swift */,
 				E0A51AD821C6CABA00FCCCA9 /* Info.plist */,
 				E0BB9D232245FD7A00BAC38F /* InfoPlist.strings */,
 			);
@@ -541,9 +544,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0EBB4D621C7482F0037E136 /* Keyboard.xcassets in Resources */,
 				E05CAEE421CB3BB2003C3BB4 /* Localizable.strings in Resources */,
-				E0071DE721CB154D00B75D4C /* ClipsKeyboardCell.xib in Resources */,
+				E0071DE721CB154D00B75D4C /* KeyboardClipCell.xib in Resources */,
+				E0025F3D2511239A00DB66DC /* KeyboardFolderCell.xib in Resources */,
 				E03B9EBB23E7DE25001206EF /* Colors.xcassets in Resources */,
 				E06CAC642241374B008347AA /* ClipsKeyboardView.xib in Resources */,
 				E0BB9D212245FD7A00BAC38F /* InfoPlist.strings in Resources */,
@@ -633,7 +636,8 @@
 				E0CD5AEF24E44E3C0035FDC8 /* Folder+CoreDataProperties.swift in Sources */,
 				E05CAEE121CB3BA9003C3BB4 /* Clip+CoreDataClass.swift in Sources */,
 				E0619E0021DE871B00A69332 /* ClipsKeyboardView.swift in Sources */,
-				E0071DE921CB171100B75D4C /* ClipsKeyboardCollectionViewCell.swift in Sources */,
+				E0071DE921CB171100B75D4C /* KeyboardClipCell.swift in Sources */,
+				E0025F3F251123D800DB66DC /* KeyboardFolderCell.swift in Sources */,
 				E05CAEE521CB3BB6003C3BB4 /* ClipboardManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

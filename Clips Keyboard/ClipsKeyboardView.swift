@@ -9,6 +9,13 @@
 import UIKit
 
 protocol ClipsKeyboardViewDelegate: class {
+    var currentFolder: Folder! { get }
+    var isRootFolder: Bool { get }
+    var subfolders: [Folder] { get }
+    var clips: [Clip] { get }
+    func selectFolder(_ folder: Folder)
+    func selectClip(_ clip: Clip)
+    
     func insertText(_ text: String)
     func deleteBackwards()
     func addLastCopied(_ text: String)
@@ -16,12 +23,13 @@ protocol ClipsKeyboardViewDelegate: class {
 
 class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    private var titles: [String?] = []
-    private var strings: [String] = []
-    private var indices: [Int] = []
+    //private var titles: [String?] = []
+    //private var strings: [String] = []
+    //private var indices: [Int] = []
+    private var filteredClips: [Clip] = []
     private var lastCopied: String?
     private var pasteboardChangeCount: Int = 0
-    private static let numClipsOnPage: Int = 5
+    private static let numItemsOnPage: Int = 5
     
     @IBOutlet weak var lastCopiedLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -38,7 +46,7 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     @IBOutlet weak var spaceKeyToNextKeyboardButtonConstraint: NSLayoutConstraint!
     @IBOutlet weak var spaceKeyToPreviousColumnButtonConstraint: NSLayoutConstraint!
     
-    weak var delegate: ClipsKeyboardViewDelegate?
+    weak var delegate: ClipsKeyboardViewDelegate!
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -51,10 +59,11 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.collectionView.register(UINib(nibName: "ClipsKeyboardCell", bundle: nil), forCellWithReuseIdentifier: "ClipsKeyboardCell")
+        self.collectionView.register(UINib(nibName: "KeyboardFolderCell", bundle: nil), forCellWithReuseIdentifier: "KeyboardFolderCell")
+        self.collectionView.register(UINib(nibName: "KeyboardClipCell", bundle: nil), forCellWithReuseIdentifier: "KeyboardClipCell")
         self.collectionViewLayout.itemSize = CGSize(width: UIScreen.main.bounds.size.width, height: 44)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(ClipsKeyboardView.updateLastCopied), name: Notification.Name("KeyboardUpdateLastCopied"), object: nil)
+        /*NotificationCenter.default.addObserver(self, selector: #selector(ClipsKeyboardView.updateLastCopied), name: Notification.Name("KeyboardUpdateLastCopied"), object: nil)*/
         NotificationCenter.default.addObserver(self, selector: #selector(ClipsKeyboardView.updateLastCopied), name: UIPasteboard.changedNotification, object: nil)
     }
     
@@ -70,23 +79,31 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
         }
     }
     
-    func loadData(clips: [Clip]) {
-        self.extractTitlesAndStrings(from: clips)
+    func loadData() {
+        // filter clips to include only those with (plain)text
+        self.filteredClips = []
+        for clip in self.delegate.clips {
+            if ClipboardManager.containsText(item: clip.contents) {
+                self.filteredClips.append(clip)
+            }
+        }
+        
         self.collectionView.reloadData()
-        if clips.count == 0 {
+        if self.filteredClips.count == 0 {
             self.showEmptyMessage()
         }
         else {
             self.setMessageLabelVisible(false)
         }
+        
         self.updateLastCopied()
     }
     
     @objc func updateLastCopied() {
         if self.pasteboardChangeCount != UIPasteboard.general.changeCount {
-            self.pasteboardChangeCount = UIPasteboard.general.changeCount
             self.lastCopied = ClipboardManager.stringFromItem(ClipboardManager.retrieveFromPasteboard())
             self.lastCopiedLabel.text = self.lastCopied
+            self.pasteboardChangeCount = UIPasteboard.general.changeCount
         }
     }
     
@@ -112,18 +129,18 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     
     @IBAction func insertLastCopied(_ sender: UIButton) {
         if let string = self.lastCopied {
-            self.delegate?.insertText(string)
+            self.delegate.insertText(string)
         }
     }
     
     @IBAction func addLastCopied(_ sender: UIButton) {
         if let string = self.lastCopied {
-            self.delegate?.addLastCopied(string)
+            self.delegate.addLastCopied(string)
         }
     }
     
     @IBAction func space(_ sender: UIButton) {
-        self.delegate?.insertText(" ")
+        self.delegate.insertText(" ")
     }
     
     @IBAction func backspaceDown(_ sender: UIButton) {
@@ -142,28 +159,28 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     }
     
     @objc func backspace() {
-        self.delegate?.deleteBackwards()
+        self.delegate.deleteBackwards()
     }
     
     @IBAction func scrollToPreviousColumn(_ sender: UIButton) {
         let col: Int = self.getCurrentColumn()
         if col > 0 {
-            let indexPath: IndexPath = IndexPath(row: (col - 1) * ClipsKeyboardView.numClipsOnPage, section: 0)
+            let indexPath: IndexPath = IndexPath(row: (col - 1) * ClipsKeyboardView.numItemsOnPage, section: 0)
             self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
     }
     
     @IBAction func scrollToNextColumn(_ sender: UIButton) {
         let col: Int = self.getCurrentColumn()
-        if col < (self.strings.count - 1) / 4 {
-            let indexPath: IndexPath = IndexPath(row: (col + 1) * ClipsKeyboardView.numClipsOnPage, section: 0)
+        if col < (self.filteredClips.count - 1) / 4 {
+            let indexPath: IndexPath = IndexPath(row: (col + 1) * ClipsKeyboardView.numItemsOnPage, section: 0)
             self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
     }
     
     // MARK: - Private instance methods
     
-    private func extractTitlesAndStrings(from clips: [Clip]) {
+    /*private func extractTitlesAndStrings(from clips: [Clip]) { // TODO: filter clips for plaintext, and include folders
         self.titles = []
         self.strings = []
         for i in 0..<clips.count {
@@ -173,12 +190,12 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
                 self.indices.append(Int(clips[i].index))
             }
         }
-    }
+    }*/
     
     private func getCurrentColumn() -> Int {
         let indexPaths: [IndexPath] = self.collectionView.indexPathsForVisibleItems
         if let indexPath = indexPaths.first {
-            return indexPath.row / ClipsKeyboardView.numClipsOnPage
+            return indexPath.row / ClipsKeyboardView.numItemsOnPage
         }
         return 0
     }
@@ -186,28 +203,61 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     // MARK: - Collection view data source
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.strings.count
+        return (self.delegate.isRootFolder ? 0 : 1) + self.delegate.subfolders.count + self.filteredClips.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: ClipsKeyboardCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ClipsKeyboardCell", for: indexPath) as! ClipsKeyboardCollectionViewCell
+        let offset = self.delegate.isRootFolder ? 0 : 1
+        if !self.delegate.isRootFolder && indexPath.row == 0 {
+            let cell: KeyboardFolderCell = collectionView.dequeueReusableCell(withReuseIdentifier: "KeyboardFolderCell", for: indexPath) as! KeyboardFolderCell
+            cell.setFormat(goesToSuperfolder: true)
+            cell.setName(self.delegate.currentFolder.superfolder!.name)
+            return cell
+        }
+        else if indexPath.row < self.delegate.subfolders.count + offset {
+            let folder: Folder = self.delegate.subfolders[indexPath.row - offset]
+            let cell: KeyboardFolderCell = collectionView.dequeueReusableCell(withReuseIdentifier: "KeyboardFolderCell", for: indexPath) as! KeyboardFolderCell
+            cell.setFormat(goesToSuperfolder: false)
+            cell.setName(folder.name)
+            return cell
+        }
+        else {
+            let index = indexPath.row - self.delegate.subfolders.count - offset
+            let clip: Clip = self.filteredClips[index]
+            let cell: KeyboardClipCell = collectionView.dequeueReusableCell(withReuseIdentifier: "KeyboardClipCell", for: indexPath) as! KeyboardClipCell
+            cell.setClip(clip)
+            return cell
+        }
+        /*let cell: KeyboardClipCell = collectionView.dequeueReusableCell(withReuseIdentifier: "KeyboardClipCell", for: indexPath) as! KeyboardClipCell
         cell.setup(title: self.titles[indexPath.row], contents: self.strings[indexPath.row], index: self.indices[indexPath.row])
-        return cell
+        return cell*/
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.delegate?.insertText(self.strings[indexPath.row])
+        let offset = self.delegate.isRootFolder ? 0 : 1
+        if !self.delegate.isRootFolder && indexPath.row == 0 {
+            self.delegate.selectFolder(self.delegate.currentFolder.superfolder!)
+        }
+        else if indexPath.row < self.delegate.subfolders.count + offset {
+            self.delegate.selectFolder(self.delegate.subfolders[indexPath.row - offset])
+        }
+        else {
+            let index = indexPath.row - self.delegate.subfolders.count - offset
+            self.delegate.selectClip(self.filteredClips[index])
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        let cell: ClipsKeyboardCollectionViewCell = collectionView.cellForItem(at: indexPath) as! ClipsKeyboardCollectionViewCell
-        cell.backgroundColor = UIColor.lightGray
+        if let cell: UICollectionViewCell = collectionView.cellForItem(at: indexPath) {
+            cell.backgroundColor = UIColor.lightGray
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-        let cell: ClipsKeyboardCollectionViewCell = collectionView.cellForItem(at: indexPath) as! ClipsKeyboardCollectionViewCell
-        UIView.animate(withDuration: 0.2) {
-            cell.backgroundColor = nil
+        if let cell: UICollectionViewCell = collectionView.cellForItem(at: indexPath){
+            UIView.animate(withDuration: 0.2) {
+                cell.backgroundColor = nil
+            }
         }
     }
     

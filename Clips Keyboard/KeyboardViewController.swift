@@ -12,7 +12,11 @@ import CoreData
 class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
     
     private var managedObjectContext: NSManagedObjectContext!
-    private var clips: [Clip] = []
+    internal var currentFolder: Folder!
+    internal var isRootFolder: Bool = false
+    internal var subfolders: [Folder] = []
+    internal var clips: [Clip] = []
+    
     private var keyboardView: ClipsKeyboardView!
     private var defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clips")!
     private var pasteboardCheckTimer: Timer?
@@ -47,19 +51,17 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
             container.migrateModelV1To2()
             defaults.set(true, forKey: "launched2.0")
         }
-        /*else {
-            let fetchRequest: NSFetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
-            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "index", ascending: true)]
-            do {
-                self.clips = try self.managedObjectContext.fetch(fetchRequest)
-                self.keyboardView.loadData(clips: self.clips)
-                self.defaults.set(false, forKey: "keyboardNeedsUpdate")
-            }
-            catch let error as NSError {
-                print("Couldn't fetch. \(error), \(error.userInfo)")
-                self.keyboardView.showErrorMessage()
-            }
-        }*/
+        
+        // fetch the root folder
+        let request: NSFetchRequest = NSFetchRequest<Folder>(entityName: "Folder")
+        request.predicate = NSPredicate(format: "superfolder == NIL")
+        do {
+            self.currentFolder = try self.managedObjectContext.fetch(request).first
+            self.isRootFolder = true
+        }
+        catch let error as NSError {
+            print("Couldn't fetch. \(error), \(error.userInfo)")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,7 +73,7 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.pasteboardCheckTimer = Timer.scheduledTimer(timeInterval: 1, target: self.keyboardView, selector: #selector(ClipsKeyboardView.updateLastCopied), userInfo: nil, repeats: true)
+        self.pasteboardCheckTimer = Timer.scheduledTimer(timeInterval: 4, target: self.keyboardView, selector: #selector(ClipsKeyboardView.updateLastCopied), userInfo: nil, repeats: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -87,14 +89,14 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
     override func textDidChange(_ textInput: UITextInput?) {
         // The app has just changed the document's contents, the document context has been updated.
         
-        var textColor: UIColor
+        /*var textColor: UIColor
         let proxy = self.textDocumentProxy
         if proxy.keyboardAppearance == UIKeyboardAppearance.dark {
             textColor = UIColor.white
         } else {
             textColor = UIColor.black
         }
-        self.keyboardView.nextKeyboardButton.setTitleColor(textColor, for: [])
+        self.keyboardView.nextKeyboardButton.setTitleColor(textColor, for: [])*/
     }
     
     // MARK: - Private instance methods
@@ -120,25 +122,12 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
         self.keyboardView.setMessageLabelVisible(false)
     }
     
-    /*private func addDefaultData() {
-        guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
-            print("Couldn't find entity description.")
-            return
-        }
-        
-        Clip.addDefaultClip1(entity: entity, context: self.managedObjectContext)
-        Clip.addDefaultClip2(entity: entity, context: self.managedObjectContext)
-        
-        do {
-            try self.managedObjectContext.save()
-        }
-        catch let error as NSError {
-            print("Couldn't save. \(error), \(error.userInfo)")
-        }
-    }*/
-    
     private func loadData() {
-        DispatchQueue.global(qos: .utility).async {
+        self.subfolders = self.currentFolder.subfoldersArray
+        self.clips = self.currentFolder.clipsArray
+        self.keyboardView.loadData()
+        
+        /*DispatchQueue.global(qos: .utility).async {
             if self.defaults.bool(forKey: "keyboardNeedsUpdate") {
                 let fetchRequest: NSFetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
                 fetchRequest.sortDescriptors = [NSSortDescriptor(key: "index", ascending: true)]
@@ -159,7 +148,7 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
                     NotificationCenter.default.post(name: Notification.Name("KeyboardUpdateLastCopied"), object: nil)
                 }
             }
-        }
+        }*/
     }
     
     private func saveContext() {
@@ -186,15 +175,27 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
         self.managedObjectContext.delete(clip)
         self.clips.remove(at: index)
         
-        for i in 0..<self.clips.count {
-            self.clips[i].index = Int16(i)
+        for i in index..<self.clips.count {
+            self.clips[i].index -= 1
         }
         
         self.saveContext()
-        self.keyboardView.loadData(clips: self.clips)
+        self.keyboardView.loadData()
     }
     
     // MARK: - Clips keyboard view delegate
+    
+    func selectFolder(_ folder: Folder) {
+        self.currentFolder = folder
+        self.isRootFolder = folder.superfolder == nil
+        self.loadData()
+    }
+    
+    func selectClip(_ clip: Clip) {
+        if let text = ClipboardManager.stringFromItem(clip.contents) {
+            self.insertText(text)
+        }
+    }
     
     func insertText(_ text: String) {
         self.textDocumentProxy.insertText(text)
@@ -215,6 +216,7 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
         clip.title = nil
         clip.contents = ClipboardManager.itemFromPlaintext(text)
         clip.index = 0
+        clip.folder = self.currentFolder
         self.clips.insert(clip, at: 0)
         
         // reassign indices
@@ -223,7 +225,7 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
         }
         
         self.saveContext()
-        self.keyboardView.loadData(clips: self.clips)
+        self.keyboardView.loadData()
     }
 
 }

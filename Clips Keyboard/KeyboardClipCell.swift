@@ -10,7 +10,7 @@ import UIKit
 
 class KeyboardClipCell: UICollectionViewCell {
     
-    private var index: Int = 0
+    private var index: Int!
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentsLabel: UILabel!
@@ -52,8 +52,8 @@ class KeyboardClipCell: UICollectionViewCell {
             self.contentsLabelLeadingToTitleLabel.priority = .defaultLow
             self.contentsLabelLeadingToEdge.priority = .defaultHigh
         }
-        self.contentsLabel.text = clip.contents
-        self.index = clip.index
+        self.contentsLabel.text = ClipboardManager.stringFromItem(clip.contents)?.trimmingCharacters(in: .whitespacesAndNewlines)
+        self.index = Int(clip.index)
     }
     
     // MARK: - Actions
@@ -62,8 +62,6 @@ class KeyboardClipCell: UICollectionViewCell {
         self.xButton.isHidden = true
         self.contentsLabelTrailingToXButton.priority = .defaultLow
         self.contentsLabelTrailingToDeleteButton.priority = .defaultHigh
-        //print("to x", self.contentsLabelTrailingToXButton.isActive)
-        //print("to delete", self.contentsLabelTrailingToDeleteButton.isActive)
         self.deleteButton.isHidden = false
         self.cancelButton.isHidden = false
     }

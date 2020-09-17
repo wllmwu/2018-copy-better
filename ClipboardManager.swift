@@ -343,6 +343,18 @@ class ClipboardManager: NSObject {
     }
     
     /**
+     Returns whether the given item dictionary contains any text.
+     */
+    static func containsText(item: [String : Any]) -> Bool {
+        return item[kUTTypePlainText as String] != nil ||
+            item[kUTTypeUTF8PlainText as String] != nil ||
+            item[kUTTypeUTF16PlainText as String] != nil ||
+            item[kUTTypeRTFD as String] != nil ||
+            item[kUTTypeRTF as String] != nil ||
+            item[kUTTypeHTML as String] != nil
+    }
+    
+    /**
      Looks for text contained in the given item dictionary, as plaintext, RTFD, RTF, or HTML.
      */
     static func stringFromItem(_ item: [String : Any]) -> String? {
