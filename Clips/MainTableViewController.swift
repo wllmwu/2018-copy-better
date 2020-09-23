@@ -128,7 +128,6 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     @discardableResult private func saveContext() -> Bool {
         do {
             try self.managedObjectContext.save()
-            self.orderUpdates()
             return true
         }
         catch let error as NSError {
@@ -169,11 +168,6 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             let clip = self.clips[i]
             clip.index = Int16(i)
         }
-    }
-    
-    private func orderUpdates() {
-        self.defaults.set(true, forKey: "widgetNeedsUpdate")
-        self.defaults.set(true, forKey: "keyboardNeedsUpdate")
     }
     
     @objc func showCopiedToast() {

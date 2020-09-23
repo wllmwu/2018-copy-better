@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uMq-s8-jXD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uMq-s8-jXD">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,7 +16,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="cgU-5O-pTN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <color key="tintColor" name="Accent"/>
                         <sections>
                             <tableViewSection headerTitle="In app" id="BjC-VA-k4B">
@@ -205,7 +206,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="Background"/>
                         <color key="tintColor" name="Accent"/>
-                        <color key="separatorColor" red="0.70588235294117641" green="0.70588235294117641" blue="0.70588235294117641" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="LastCopiedCell" id="HgL-Ev-V2n" customClass="ClipTableViewCell" customModule="Copy_Better" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
@@ -288,8 +288,8 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="folder.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="M24-hP-pBn">
-                                            <rect key="frame" x="16" y="11" width="36" height="38"/>
-                                            <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <rect key="frame" x="16" y="11" width="36" height="37.5"/>
+                                            <color key="tintColor" systemColor="systemGrayColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="36" id="Got-bb-fcu"/>
                                                 <constraint firstAttribute="height" constant="36" id="z3E-KY-5GT"/>
@@ -351,8 +351,8 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="iub-wh-jKI">
-                                            <rect key="frame" x="315" y="17.5" width="25" height="25"/>
-                                            <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <rect key="frame" x="315" y="17" width="25" height="25"/>
+                                            <color key="tintColor" systemColor="systemGrayColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="25" id="nmv-zA-6oQ"/>
                                                 <constraint firstAttribute="width" constant="25" id="rDo-dw-gZ6"/>
@@ -418,8 +418,8 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="61k-nb-DlC">
-                                            <rect key="frame" x="315" y="17.5" width="25" height="25"/>
-                                            <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <rect key="frame" x="315" y="17" width="25" height="25"/>
+                                            <color key="tintColor" systemColor="systemGrayColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="25" id="LQh-cg-Dby"/>
                                                 <constraint firstAttribute="height" constant="25" id="XyE-hT-BUu"/>
@@ -491,12 +491,13 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MmT-bY-Fx2">
                                 <rect key="frame" x="8" y="96" width="359" height="571"/>
                                 <color key="tintColor" name="Accent"/>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES" shipmentTrackingNumber="YES" flightNumber="YES"/>
                             </textView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="rWH-zQ-aTB"/>
                         <color key="backgroundColor" name="Background"/>
                         <color key="tintColor" name="Accent"/>
                         <constraints>
@@ -505,7 +506,6 @@
                             <constraint firstItem="MmT-bY-Fx2" firstAttribute="top" secondItem="rWH-zQ-aTB" secondAttribute="top" id="Vz9-kq-eiR"/>
                             <constraint firstItem="rWH-zQ-aTB" firstAttribute="bottom" secondItem="MmT-bY-Fx2" secondAttribute="bottom" id="u5h-cz-ZBe"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="rWH-zQ-aTB"/>
                     </view>
                     <navigationItem key="navigationItem" id="Rwf-4l-1B6">
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="hQK-3i-W2P">
@@ -537,7 +537,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Jgs-Zu-sYs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <color key="tintColor" name="Accent"/>
                         <sections>
                             <tableViewSection headerTitle="Title" id="Ymy-zL-M8M">
@@ -561,7 +561,7 @@
                                                 <constraint firstItem="BIk-3c-cFB" firstAttribute="centerY" secondItem="DeI-0U-w4p" secondAttribute="centerY" id="ftj-Lk-gf7"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="tableCellGroupedBackgroundColor"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -576,7 +576,7 @@
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kra-BP-Mbe">
                                                     <rect key="frame" x="8" y="11" width="359" height="278"/>
-                                                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" systemColor="labelColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -588,7 +588,7 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="kra-BP-Mbe" secondAttribute="trailing" constant="-8" id="pDa-Rm-efF"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="tableCellGroupedBackgroundColor"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -688,7 +688,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="Background"/>
                         <color key="tintColor" name="Accent"/>
-                        <color key="separatorColor" red="0.70588235290000001" green="0.70588235290000001" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="LastCopiedCell" id="f7u-WW-z3b" customClass="ClipTableViewCell" customModule="Copy_Better" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
@@ -771,8 +770,8 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="folder.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Lfy-Qe-8Us">
-                                            <rect key="frame" x="16" y="11" width="36" height="38"/>
-                                            <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <rect key="frame" x="16" y="11" width="36" height="37.5"/>
+                                            <color key="tintColor" systemColor="systemGrayColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="36" id="He1-hg-Mw8"/>
                                                 <constraint firstAttribute="height" constant="36" id="eCL-57-gdo"/>
@@ -834,8 +833,8 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="iEx-kC-92x">
-                                            <rect key="frame" x="315" y="17.5" width="25" height="25"/>
-                                            <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <rect key="frame" x="315" y="17" width="25" height="25"/>
+                                            <color key="tintColor" systemColor="systemGrayColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="25" id="DSM-He-yYm"/>
                                                 <constraint firstAttribute="width" constant="25" id="Qd2-r5-Wyv"/>
@@ -901,8 +900,8 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="EAr-vt-sOM">
-                                            <rect key="frame" x="315" y="17.5" width="25" height="25"/>
-                                            <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <rect key="frame" x="315" y="17" width="25" height="25"/>
+                                            <color key="tintColor" systemColor="systemGrayColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="25" id="5bZ-1u-NaR"/>
                                                 <constraint firstAttribute="height" constant="25" id="roK-h8-beu"/>
@@ -971,7 +970,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="b95-ml-k4X">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <color key="tintColor" name="Accent"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SuperfolderCell" id="wVz-Pg-9QZ" customClass="FolderPickerTableViewCell" customModule="Copy_Better" customModuleProvider="target">
@@ -983,7 +982,7 @@
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowshape.turn.up.left.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="WQh-ls-X3n">
                                             <rect key="frame" x="6" y="8" width="30" height="27.5"/>
-                                            <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" systemColor="systemGrayColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="mKr-Zz-9G4"/>
                                                 <constraint firstAttribute="height" constant="30" id="ndy-7b-hvG"/>
@@ -1023,7 +1022,7 @@
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="folder.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Kfw-Oh-7sQ">
                                             <rect key="frame" x="16" y="8" width="30" height="27.5"/>
-                                            <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" systemColor="systemGrayColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="iQD-B0-V0D"/>
                                                 <constraint firstAttribute="height" constant="30" id="ldC-ec-iIX"/>
@@ -1052,12 +1051,12 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lvZ-ER-xyx">
                                             <rect key="frame" x="54" y="11.5" width="305" height="21"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                            <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" systemColor="systemGrayColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doc" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Pbf-jR-ou0">
                                             <rect key="frame" x="16" y="7" width="30" height="30"/>
-                                            <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" systemColor="systemGrayColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="Zhx-i7-Uye"/>
                                                 <constraint firstAttribute="height" constant="30" id="ehP-gF-85V"/>
@@ -1086,12 +1085,12 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feP-5p-amh">
                                             <rect key="frame" x="54" y="11.5" width="305" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" systemColor="systemGrayColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doc" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="1jb-Dc-wV7">
                                             <rect key="frame" x="16" y="7" width="30" height="30"/>
-                                            <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" systemColor="systemGrayColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="qla-90-Emp"/>
                                                 <constraint firstAttribute="width" constant="30" id="yHd-0X-Uai"/>
@@ -1158,17 +1157,17 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="SI3-HK-EbX"/>
-        <segue reference="QqE-G5-atx"/>
-        <segue reference="1pd-qj-QPy"/>
+        <segue reference="p24-k2-B1G"/>
+        <segue reference="SyV-So-uVv"/>
+        <segue reference="AxJ-Uj-aOB"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.turn.up.left.fill" catalog="system" width="128" height="106"/>
         <image name="doc" catalog="system" width="115" height="128"/>
-        <image name="doc.on.clipboard" catalog="system" width="117" height="128"/>
-        <image name="folder.fill" catalog="system" width="128" height="95"/>
+        <image name="doc.on.clipboard" catalog="system" width="116" height="128"/>
+        <image name="folder.fill" catalog="system" width="128" height="97"/>
         <image name="gear" catalog="system" width="128" height="119"/>
-        <image name="plus.rectangle.fill.on.rectangle.fill" catalog="system" width="128" height="98"/>
+        <image name="plus.rectangle.fill.on.rectangle.fill" catalog="system" width="128" height="96"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <namedColor name="Accent">
             <color red="0.84705882352941175" green="0.6470588235294118" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1176,5 +1175,26 @@
         <namedColor name="Background">
             <color red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tableCellGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tableCellGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

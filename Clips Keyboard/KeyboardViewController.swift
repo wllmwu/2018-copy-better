@@ -126,44 +126,15 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
         self.subfolders = self.currentFolder.subfoldersArray
         self.clips = self.currentFolder.clipsArray
         self.keyboardView.loadData()
-        
-        /*DispatchQueue.global(qos: .utility).async {
-            if self.defaults.bool(forKey: "keyboardNeedsUpdate") {
-                let fetchRequest: NSFetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
-                fetchRequest.sortDescriptors = [NSSortDescriptor(key: "index", ascending: true)]
-                do {
-                    self.clips = try self.managedObjectContext.fetch(fetchRequest)
-                    DispatchQueue.main.async {
-                        self.keyboardView.loadData(clips: self.clips)
-                        self.defaults.set(false, forKey: "keyboardNeedsUpdate")
-                    }
-                }
-                catch let error as NSError {
-                    print("Couldn't fetch. \(error), \(error.userInfo)")
-                    self.keyboardView.showErrorMessage()
-                }
-            }
-            else {
-                DispatchQueue.main.async {
-                    NotificationCenter.default.post(name: Notification.Name("KeyboardUpdateLastCopied"), object: nil)
-                }
-            }
-        }*/
     }
     
     private func saveContext() {
         do {
             try self.managedObjectContext.save()
-            self.orderUpdates()
         }
         catch let error as NSError {
             print("Couldn't save. \(error), \(error.userInfo)")
         }
-    }
-    
-    private func orderUpdates() {
-        self.defaults.set(true, forKey: "mainNeedsUpdate")
-        self.defaults.set(true, forKey: "widgetNeedsUpdate")
     }
     
     @objc func deleteClip(_ notification: Notification) {

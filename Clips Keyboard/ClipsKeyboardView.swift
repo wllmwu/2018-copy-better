@@ -63,8 +63,19 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
         self.collectionView.register(UINib(nibName: "KeyboardClipCell", bundle: nil), forCellWithReuseIdentifier: "KeyboardClipCell")
         self.collectionViewLayout.itemSize = CGSize(width: UIScreen.main.bounds.size.width, height: 44)
         
-        /*NotificationCenter.default.addObserver(self, selector: #selector(ClipsKeyboardView.updateLastCopied), name: Notification.Name("KeyboardUpdateLastCopied"), object: nil)*/
         NotificationCenter.default.addObserver(self, selector: #selector(ClipsKeyboardView.updateLastCopied), name: UIPasteboard.changedNotification, object: nil)
+        
+        if self.traitCollection.userInterfaceStyle == .dark {
+            self.previousColumnButton.backgroundColor = UIColor(named: "Key Dark")
+            print("dark")
+        }
+        else if self.traitCollection.userInterfaceStyle == .unspecified {
+            print("unspecified")
+        }
+        else {
+            self.previousColumnButton.backgroundColor = UIColor(named: "Key")
+            print("light")
+        }
     }
     
     func setNextKeyboardButtonVisible(_ visible: Bool) {
@@ -179,18 +190,6 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     }
     
     // MARK: - Private instance methods
-    
-    /*private func extractTitlesAndStrings(from clips: [Clip]) { // TODO: filter clips for plaintext, and include folders
-        self.titles = []
-        self.strings = []
-        for i in 0..<clips.count {
-            if let string = ClipboardManager.stringFromItem(clips[i].contents) {
-                self.titles.append(clips[i].title)
-                self.strings.append(string)
-                self.indices.append(Int(clips[i].index))
-            }
-        }
-    }*/
     
     private func getCurrentColumn() -> Int {
         let indexPaths: [IndexPath] = self.collectionView.indexPathsForVisibleItems

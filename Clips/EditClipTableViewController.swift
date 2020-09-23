@@ -113,20 +113,12 @@ class EditClipTableViewController: UITableViewController {
     @discardableResult private func saveContext() -> Bool {
         do {
             try self.managedObjectContext.save()
-            self.orderUpdates()
             return true
         }
         catch let error as NSError {
             print("Couldn't save. \(error), \(error.userInfo)")
         }
         return false
-    }
-    
-    private func orderUpdates() {
-        let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clips")!
-        // the unwind segue should result in a refresh for the clip/folder view
-        defaults.set(true, forKey: "widgetNeedsUpdate")
-        defaults.set(true, forKey: "keyboardNeedsUpdate")
     }
     
     @IBAction func save(_ sender: UIBarButtonItem) {

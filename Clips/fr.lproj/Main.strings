@@ -59,6 +59,9 @@
 /* Class = "UILabel"; text = "Last copied"; ObjectID = "SOG-VC-fzC"; */
 "SOG-VC-fzC.text" = "Dernièrement copié";
 
+/* Class = "UILabel"; text = "Last copied"; ObjectID = "RBp-XP-WSD"; */
+"RBp-XP-WSD.text" = "Dernièrement copié";
+
 /* Class = "UITableViewSection"; headerTitle = "Today View"; ObjectID = "SQq-CT-Spn"; */
 "SQq-CT-Spn.headerTitle" = "Affichage du jour";
 

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -32,13 +34,13 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Copied:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jes-DN-0mn">
-                            <rect key="frame" x="14" y="11" width="59.5" height="26"/>
+                            <rect key="frame" x="14" y="11" width="59" height="26"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hg9-Pr-SgV">
-                            <rect key="frame" x="81.5" y="11" width="187.5" height="26"/>
+                            <rect key="frame" x="81" y="11" width="188" height="26"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -84,7 +86,7 @@
                     <constraints>
                         <constraint firstAttribute="width" secondItem="bas-aS-K5R" secondAttribute="height" multiplier="1:1" id="vl5-8T-suk"/>
                     </constraints>
-                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="tintColor" systemColor="labelColor"/>
                     <state key="normal" image="globe" catalog="system">
                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                     </state>
@@ -99,7 +101,7 @@
                         <constraint firstAttribute="height" constant="44" id="wv5-xq-RbZ"/>
                     </constraints>
                     <state key="normal" title="space">
-                        <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="titleColor" systemColor="labelColor"/>
                     </state>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isControlKey" value="NO"/>
@@ -114,7 +116,7 @@
                     <constraints>
                         <constraint firstAttribute="width" secondItem="aeo-Xp-SNY" secondAttribute="height" multiplier="1:1" id="EU1-c7-2F6"/>
                     </constraints>
-                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="tintColor" systemColor="labelColor"/>
                     <state key="normal" image="delete.left" catalog="system"/>
                     <state key="highlighted" image="delete.left.fill" catalog="system"/>
                     <userDefinedRuntimeAttributes>
@@ -133,9 +135,8 @@
                         <constraint firstAttribute="width" secondItem="pHs-tw-hN9" secondAttribute="height" multiplier="1:1" id="yBQ-ap-H4P"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="tintColor" systemColor="labelColor"/>
                     <state key="normal" image="arrow.left" catalog="system">
-                        <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                     </state>
                     <userDefinedRuntimeAttributes>
@@ -152,9 +153,8 @@
                         <constraint firstAttribute="width" secondItem="o3J-Q6-hpE" secondAttribute="height" multiplier="1:1" id="qdt-Pi-WVL"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="tintColor" systemColor="labelColor"/>
                     <state key="normal" image="arrow.right" catalog="system">
-                        <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                     </state>
                     <userDefinedRuntimeAttributes>
@@ -166,7 +166,7 @@
                 </button>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="8z4-Li-KCR">
                     <rect key="frame" x="0.0" y="48" width="375" height="174"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" priority="750" constant="220" id="Q3I-Np-XWd"/>
                     </constraints>
@@ -188,6 +188,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <constraints>
                 <constraint firstItem="Ec3-KT-jiv" firstAttribute="leading" secondItem="bas-aS-K5R" secondAttribute="trailing" priority="750" constant="6" id="33e-CL-XeS"/>
                 <constraint firstItem="8z4-Li-KCR" firstAttribute="top" secondItem="75w-yv-2I7" secondAttribute="bottom" id="352-aZ-stj"/>
@@ -218,7 +219,6 @@
                 <constraint firstItem="Exl-xm-tBI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="zhH-vK-Qg5"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="backspaceKey" destination="aeo-Xp-SNY" id="iUg-Ah-L60"/>
                 <outlet property="collectionView" destination="8z4-Li-KCR" id="JJE-E7-XFw"/>
@@ -242,10 +242,16 @@
         <image name="delete.left.fill" catalog="system" width="128" height="104"/>
         <image name="globe" catalog="system" width="128" height="121"/>
         <namedColor name="Key">
-            <color red="0.63529411764705879" green="0.6705882352941176" blue="0.72549019607843135" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.69803921568627447" green="0.71764705882352942" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Key White">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

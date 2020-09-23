@@ -17,7 +17,8 @@ class ShareViewController: SLComposeServiceViewController, ShareConfigureViewCon
     private var clipContentsText: NSAttributedString?
     private var clipContentsImageData: Data?
     
-    private var allClips: [Clip] = []
+    //private var allClips: [Clip] = []
+    private var rootFolder: Folder!
     private var managedObjectContext: NSManagedObjectContext!
     private var defaults: UserDefaults = UserDefaults(suiteName: "group.com.williamwu.clips")!
     
@@ -32,10 +33,10 @@ class ShareViewController: SLComposeServiceViewController, ShareConfigureViewCon
         })
         self.managedObjectContext = container.viewContext
         
-        let fetchRequest: NSFetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "index", ascending: true)]
+        let fetchRequest: NSFetchRequest = NSFetchRequest<Folder>(entityName: "Folder")
+        fetchRequest.predicate = NSPredicate(format: "superfolder == NIL")
         do {
-            self.allClips = try self.managedObjectContext.fetch(fetchRequest)
+            self.rootFolder = try self.managedObjectContext.fetch(fetchRequest).first
         }
         catch let error as NSError {
             print("Couldn't fetch. \(error), \(error.userInfo)")
@@ -122,12 +123,12 @@ class ShareViewController: SLComposeServiceViewController, ShareConfigureViewCon
         clip.title = self.clipTitle
         clip.contents = item
         clip.index = 0
-        self.allClips.insert(clip, at: 0)
         
         // reassign indices
-        for i in 1..<self.allClips.count {
-            self.allClips[i].index += 1
+        for c in self.rootFolder.clipsArray {
+            c.index += 1
         }
+        clip.folder = self.rootFolder
         
         self.saveContext()
     }
@@ -135,17 +136,10 @@ class ShareViewController: SLComposeServiceViewController, ShareConfigureViewCon
     private func saveContext() {
         do {
             try self.managedObjectContext.save()
-            self.orderUpdates()
         }
         catch let error as NSError {
             print("Couldn't save. \(error), \(error.userInfo)")
         }
-    }
-    
-    private func orderUpdates() {
-        self.defaults.set(true, forKey: "mainNeedsUpdate")
-        self.defaults.set(true, forKey: "widgetNeedsUpdate")
-        self.defaults.set(true, forKey: "keyboardNeedsUpdate")
     }
     
     // MARK: - Share configure view controller delegate

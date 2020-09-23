@@ -174,20 +174,12 @@ class ClipViewController: UIViewController {
     @discardableResult private func saveContext() -> Bool {
         do {
             try self.managedObjectContext.save()
-            self.orderUpdates()
             return true
         }
         catch let error as NSError {
             print("Couldn't save. \(error), \(error.userInfo)")
         }
         return false
-    }
-    
-    private func orderUpdates() {
-        let defaults: UserDefaults = UserDefaults(suiteName: "group.com.williamwu.clips")!
-        defaults.set(true, forKey: "mainNeedsUpdate")
-        defaults.set(true, forKey: "widgetNeedsUpdate")
-        defaults.set(true, forKey: "keyboardNeedsUpdate")
     }
     
     // MARK: - Navigation

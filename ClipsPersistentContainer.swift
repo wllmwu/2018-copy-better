@@ -27,7 +27,6 @@ class ClipsPersistentContainer: NSPersistentContainer {
         if let root = self.createRootFolder() {
             self.addDefaultData(rootFolder: root)
         }
-        defaults.set(true, forKey: "widgetNeedsUpdate")
         
         defaults.set(true, forKey: "launchedBefore")
         defaults.set(true, forKey: "launched2.0")

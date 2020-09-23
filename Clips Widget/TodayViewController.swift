@@ -151,16 +151,10 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     private func saveContext() {
         do {
             try self.managedObjectContext.save()
-            self.orderUpdates()
         }
         catch let error as NSError {
             print("Couldn't save. \(error), \(error.userInfo)")
         }
-    }
-    
-    private func orderUpdates() {
-        self.defaults.set(true, forKey: "mainNeedsUpdate")
-        self.defaults.set(true, forKey: "keyboardNeedsUpdate")
     }
     
     @IBAction func openAppButtonTapped(_ sender: UIButton) {
