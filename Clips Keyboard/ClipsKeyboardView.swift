@@ -21,6 +21,7 @@ protocol ClipsKeyboardViewDelegate: class {
     func insertText(_ text: String)
     func deleteBackwards()
     func addLastCopied(_ text: String)
+    func keyboardReturn()
 }
 
 class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -34,16 +35,17 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var previousColumnButton: KeyboardButton!
+    @IBOutlet weak var nextColumnButton: KeyboardButton!
     @IBOutlet weak var nextKeyboardButton: KeyboardButton!
     @IBOutlet weak var spaceKey: KeyboardButton!
     @IBOutlet weak var backspaceKey: KeyboardButton!
-    @IBOutlet weak var nextColumnButton: KeyboardButton!
+    @IBOutlet weak var returnKey: KeyboardButton!
     @IBOutlet weak var messageLabel: UILabel!
     private var backspaceKeyTimer: Timer?
     private var backspaceKeyIsDown: Bool = false
     
     @IBOutlet weak var spaceKeyToNextKeyboardButtonConstraint: NSLayoutConstraint!
-    @IBOutlet weak var spaceKeyToPreviousColumnButtonConstraint: NSLayoutConstraint!
+    @IBOutlet weak var spaceKeyToNextColumnButtonConstraint: NSLayoutConstraint!
     
     weak var delegate: ClipsKeyboardViewDelegate!
 
@@ -69,12 +71,16 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
         self.nextKeyboardButton.isHidden = !visible
         if visible {
             self.spaceKeyToNextKeyboardButtonConstraint.priority = .defaultHigh
-            self.spaceKeyToPreviousColumnButtonConstraint.priority = .defaultLow
+            self.spaceKeyToNextColumnButtonConstraint.priority = .defaultLow
         }
         else {
             self.spaceKeyToNextKeyboardButtonConstraint.priority = .defaultLow
-            self.spaceKeyToPreviousColumnButtonConstraint.priority = .defaultHigh
+            self.spaceKeyToNextColumnButtonConstraint.priority = .defaultHigh
         }
+    }
+    
+    func setReturnKeyTitle(_ title: String) {
+        self.returnKey.setTitle(title, for: .normal)
     }
     
     func loadData() {
@@ -174,6 +180,10 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
             let indexPath: IndexPath = IndexPath(row: (col + 1) * ClipsKeyboardView.numItemsOnPage, section: 0)
             self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
+    }
+    
+    @IBAction func returnPressed() {
+        self.delegate.keyboardReturn()
     }
     
     // MARK: - Private instance methods

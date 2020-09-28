@@ -115,6 +115,7 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
         self.keyboardView.setNextKeyboardButtonVisible(self.needsInputModeSwitchKey)
         self.keyboardView.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
         self.keyboardView.setMessageLabelVisible(false)
+        self.keyboardView.setReturnKeyTitle(self.returnKeyTitle())
     }
     
     private func loadData() {
@@ -140,6 +141,13 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
             print("Couldn't fetch. \(error), \(error.userInfo)")
         }
         return []
+    }
+    
+    private func returnKeyTitle() -> String {
+        if self.textDocumentProxy.returnKeyType == .go {
+            return AppStrings.KEYBOARD_RETURN_GO
+        }
+        return AppStrings.KEYBOARD_RETURN_RETURN
     }
     
     private func saveContext() {
@@ -223,6 +231,10 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
         
         self.saveContext()
         self.keyboardView.loadData()
+    }
+    
+    func keyboardReturn() {
+        self.insertText("\n")
     }
 
 }

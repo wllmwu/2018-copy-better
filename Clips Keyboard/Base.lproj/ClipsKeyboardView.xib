@@ -80,7 +80,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bas-aS-K5R" customClass="KeyboardButton" customModule="Copy_Better_Keyboard" customModuleProvider="target">
-                    <rect key="frame" x="56" y="228" width="44" height="44"/>
+                    <rect key="frame" x="84" y="228" width="44" height="44"/>
                     <color key="backgroundColor" name="Key"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="bas-aS-K5R" secondAttribute="height" multiplier="1:1" id="vl5-8T-suk"/>
@@ -91,26 +91,39 @@
                     </state>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isControlKey" value="YES"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                            <color key="value" name="Key"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
+                            <color key="value" name="Key White"/>
+                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ec3-KT-jiv" customClass="KeyboardButton" customModule="Copy_Better_Keyboard" customModuleProvider="target">
-                    <rect key="frame" x="106" y="228" width="163" height="44"/>
+                    <rect key="frame" x="134" y="228" width="113" height="44"/>
                     <color key="backgroundColor" name="Key White"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="wv5-xq-RbZ"/>
                     </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" title="space">
                         <color key="titleColor" systemColor="labelColor"/>
                     </state>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isControlKey" value="NO"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                            <color key="value" name="Key White"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
+                            <color key="value" name="Key"/>
+                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="space:" destination="iN0-l3-epB" eventType="touchUpInside" id="wAI-Fa-3iH"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aeo-Xp-SNY" customClass="KeyboardButton" customModule="Copy_Better_Keyboard" customModuleProvider="target">
-                    <rect key="frame" x="275" y="228" width="44" height="44"/>
+                    <rect key="frame" x="253" y="228" width="44" height="44"/>
                     <color key="backgroundColor" name="Key"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="aeo-Xp-SNY" secondAttribute="height" multiplier="1:1" id="EU1-c7-2F6"/>
@@ -120,6 +133,12 @@
                     <state key="highlighted" image="delete.left.fill" catalog="system"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isControlKey" value="YES"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                            <color key="value" name="Key"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
+                            <color key="value" name="Key White"/>
+                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="backspaceDown:" destination="iN0-l3-epB" eventType="touchDown" id="fH7-nb-uS4"/>
@@ -128,10 +147,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHs-tw-hN9" customClass="KeyboardButton" customModule="Copy_Better_Keyboard" customModuleProvider="target">
-                    <rect key="frame" x="6" y="228" width="44" height="44"/>
+                    <rect key="frame" x="6" y="228" width="33" height="44"/>
                     <color key="backgroundColor" name="Key"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="pHs-tw-hN9" secondAttribute="height" multiplier="1:1" id="yBQ-ap-H4P"/>
+                        <constraint firstAttribute="width" secondItem="pHs-tw-hN9" secondAttribute="height" multiplier="3:4" id="yBQ-ap-H4P"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                     <color key="tintColor" systemColor="labelColor"/>
@@ -140,27 +159,15 @@
                     </state>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isControlKey" value="YES"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                            <color key="value" name="Key"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
+                            <color key="value" name="Key White"/>
+                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="scrollToPreviousColumn:" destination="iN0-l3-epB" eventType="touchUpInside" id="Epr-dd-0M4"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3J-Q6-hpE" customClass="KeyboardButton" customModule="Copy_Better_Keyboard" customModuleProvider="target">
-                    <rect key="frame" x="325" y="228" width="44" height="44"/>
-                    <color key="backgroundColor" name="Key"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="o3J-Q6-hpE" secondAttribute="height" multiplier="1:1" id="qdt-Pi-WVL"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                    <color key="tintColor" systemColor="labelColor"/>
-                    <state key="normal" image="arrow.right" catalog="system">
-                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
-                    </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="isControlKey" value="YES"/>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="scrollToNextColumn:" destination="iN0-l3-epB" eventType="touchUpInside" id="e63-5N-NLT"/>
                     </connections>
                 </button>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="8z4-Li-KCR">
@@ -186,6 +193,50 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEM-Zt-yuJ" customClass="KeyboardButton" customModule="Copy_Better_Keyboard" customModuleProvider="target">
+                    <rect key="frame" x="303" y="228" width="66" height="44"/>
+                    <color key="backgroundColor" systemColor="systemBlueColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" secondItem="PEM-Zt-yuJ" secondAttribute="height" multiplier="3:2" id="AJe-xP-bQv"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="return"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                            <color key="value" systemColor="systemBlueColor"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
+                            <color key="value" name="Key White"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="returnPressed" destination="iN0-l3-epB" eventType="touchUpInside" id="98N-Xd-2wr"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3J-Q6-hpE" customClass="KeyboardButton" customModule="Copy_Better_Keyboard" customModuleProvider="target">
+                    <rect key="frame" x="45" y="228" width="33" height="44"/>
+                    <color key="backgroundColor" name="Key"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="o3J-Q6-hpE" secondAttribute="height" multiplier="3:4" id="qdt-Pi-WVL"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                    <color key="tintColor" systemColor="labelColor"/>
+                    <state key="normal" image="arrow.right" catalog="system">
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isControlKey" value="YES"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                            <color key="value" name="Key"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
+                            <color key="value" name="Key White"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="scrollToNextColumn:" destination="iN0-l3-epB" eventType="touchUpInside" id="e63-5N-NLT"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <constraints>
@@ -194,26 +245,29 @@
                 <constraint firstItem="75w-yv-2I7" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="75k-0P-jhO"/>
                 <constraint firstItem="aeo-Xp-SNY" firstAttribute="height" secondItem="Ec3-KT-jiv" secondAttribute="height" id="8u4-vN-FJM"/>
                 <constraint firstItem="Ec3-KT-jiv" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="-6" id="8xJ-3X-tqC"/>
+                <constraint firstItem="o3J-Q6-hpE" firstAttribute="leading" secondItem="pHs-tw-hN9" secondAttribute="trailing" constant="6" id="8zS-Uf-IZi"/>
                 <constraint firstItem="75w-yv-2I7" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="CUB-AC-AUc"/>
                 <constraint firstItem="Exl-xm-tBI" firstAttribute="top" secondItem="75w-yv-2I7" secondAttribute="bottom" constant="30" id="Ce1-4Q-o8q"/>
                 <constraint firstItem="bas-aS-K5R" firstAttribute="top" secondItem="Exl-xm-tBI" secondAttribute="bottom" constant="30" id="DB7-Ex-Wzb"/>
-                <constraint firstItem="bas-aS-K5R" firstAttribute="leading" secondItem="pHs-tw-hN9" secondAttribute="trailing" constant="6" id="Eyx-m6-6az"/>
+                <constraint firstItem="PEM-Zt-yuJ" firstAttribute="height" secondItem="Ec3-KT-jiv" secondAttribute="height" id="DEv-nE-F6x"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="8z4-Li-KCR" secondAttribute="trailing" id="HUe-sl-tfx"/>
-                <constraint firstItem="Ec3-KT-jiv" firstAttribute="leading" secondItem="pHs-tw-hN9" secondAttribute="trailing" priority="250" constant="6" id="IsK-NF-Xjb"/>
+                <constraint firstItem="Ec3-KT-jiv" firstAttribute="leading" secondItem="o3J-Q6-hpE" secondAttribute="trailing" priority="250" constant="6" id="IsK-NF-Xjb"/>
+                <constraint firstItem="PEM-Zt-yuJ" firstAttribute="leading" secondItem="aeo-Xp-SNY" secondAttribute="trailing" constant="6" id="Jqh-65-Ath"/>
                 <constraint firstItem="aeo-Xp-SNY" firstAttribute="leading" secondItem="Ec3-KT-jiv" secondAttribute="trailing" constant="6" id="KEt-or-1RE"/>
                 <constraint firstItem="Ec3-KT-jiv" firstAttribute="bottom" secondItem="bas-aS-K5R" secondAttribute="bottom" id="LCh-xI-f29"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="PEM-Zt-yuJ" secondAttribute="trailing" constant="6" id="LKg-vB-PcM"/>
                 <constraint firstItem="pHs-tw-hN9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="6" id="NAb-dR-8ut"/>
                 <constraint firstItem="75w-yv-2I7" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="PQF-Ak-6yc"/>
                 <constraint firstItem="o3J-Q6-hpE" firstAttribute="height" secondItem="Ec3-KT-jiv" secondAttribute="height" id="QFh-vD-kfL"/>
-                <constraint firstItem="o3J-Q6-hpE" firstAttribute="leading" secondItem="aeo-Xp-SNY" secondAttribute="trailing" constant="6" id="Qnz-Wg-hdG"/>
                 <constraint firstItem="o3J-Q6-hpE" firstAttribute="bottom" secondItem="Ec3-KT-jiv" secondAttribute="bottom" id="X3d-KS-pqy"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="o3J-Q6-hpE" secondAttribute="trailing" constant="6" id="ZmQ-9m-SIg"/>
                 <constraint firstItem="Ec3-KT-jiv" firstAttribute="bottom" secondItem="pHs-tw-hN9" secondAttribute="bottom" id="a50-Wj-2Kc"/>
                 <constraint firstItem="Ec3-KT-jiv" firstAttribute="height" secondItem="pHs-tw-hN9" secondAttribute="height" id="aJs-ti-VcT"/>
                 <constraint firstItem="8z4-Li-KCR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="aWi-Bb-mDE"/>
+                <constraint firstItem="PEM-Zt-yuJ" firstAttribute="bottom" secondItem="Ec3-KT-jiv" secondAttribute="bottom" id="cFH-FS-xbo"/>
                 <constraint firstItem="Ec3-KT-jiv" firstAttribute="height" secondItem="bas-aS-K5R" secondAttribute="height" id="peX-f6-rq2"/>
                 <constraint firstItem="aeo-Xp-SNY" firstAttribute="bottom" secondItem="Ec3-KT-jiv" secondAttribute="bottom" id="qeC-TC-Rm4"/>
                 <constraint firstItem="Ec3-KT-jiv" firstAttribute="top" secondItem="8z4-Li-KCR" secondAttribute="bottom" constant="6" id="tNu-xf-Toh"/>
+                <constraint firstItem="bas-aS-K5R" firstAttribute="leading" secondItem="o3J-Q6-hpE" secondAttribute="trailing" constant="6" id="wu2-EZ-AlF"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Exl-xm-tBI" secondAttribute="trailing" constant="30" id="yia-mj-0Kn"/>
                 <constraint firstItem="Exl-xm-tBI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="zhH-vK-Qg5"/>
             </constraints>
@@ -227,9 +281,10 @@
                 <outlet property="nextColumnButton" destination="o3J-Q6-hpE" id="YUM-6X-Rs4"/>
                 <outlet property="nextKeyboardButton" destination="bas-aS-K5R" id="0B3-Ze-oKo"/>
                 <outlet property="previousColumnButton" destination="pHs-tw-hN9" id="egP-d2-tvi"/>
+                <outlet property="returnKey" destination="PEM-Zt-yuJ" id="V34-f4-DiE"/>
                 <outlet property="spaceKey" destination="Ec3-KT-jiv" id="MLB-Li-vCz"/>
+                <outlet property="spaceKeyToNextColumnButtonConstraint" destination="IsK-NF-Xjb" id="O7c-6S-Qfd"/>
                 <outlet property="spaceKeyToNextKeyboardButtonConstraint" destination="33e-CL-XeS" id="3MS-6T-GZV"/>
-                <outlet property="spaceKeyToPreviousColumnButtonConstraint" destination="IsK-NF-Xjb" id="O7c-6S-Qfd"/>
             </connections>
             <point key="canvasLocation" x="40.799999999999997" y="46.776611694152926"/>
         </view>
@@ -251,6 +306,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

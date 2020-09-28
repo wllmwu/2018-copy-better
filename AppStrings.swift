@@ -69,6 +69,14 @@ struct AppStrings {
         return NSLocalizedString("(No items)", comment: "keyboard empty list message")
     }
     
+    static var KEYBOARD_RETURN_RETURN: String {
+        return NSLocalizedString("return", comment: "keyboard return key \"return\"")
+    }
+    
+    static var KEYBOARD_RETURN_GO: String {
+        return NSLocalizedString("go", comment: "keyboard return key \"go\"")
+    }
+    
     static var ADD_ITEM_TITLE: String {
         return NSLocalizedString("Add item", comment: "\"Add item\" title")
     }

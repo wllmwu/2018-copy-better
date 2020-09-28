@@ -51,6 +51,12 @@
 /* keyboard empty list message */
 "(No items)" = "(No se encontraron artículos)";
 
+/* keyboard return key "return" */
+"return" = "intro";
+
+/* keyboard return key "go" */
+"go" = "ir";
+
 /* "Add item" title */
 "Add item" = "Agregar un artículo";
 

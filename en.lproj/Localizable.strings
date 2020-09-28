@@ -51,6 +51,12 @@
 /* keyboard empty list message */
 "(No items)" = "(No items)";
 
+/* keyboard return key "return" */
+"return" = "return";
+
+/* keyboard return key "go" */
+"go" = "go";
+
 /* "Add item" title */
 "Add item" = "Add item";
 

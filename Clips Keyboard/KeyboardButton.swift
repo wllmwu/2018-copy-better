@@ -11,11 +11,8 @@ import UIKit
 class KeyboardButton: UIButton {
     
     @IBInspectable var isControlKey: Bool = true
-    /*static let whiteColor: UIColor = UIColor.white
-    static let grayColor: UIColor = UIColor.init(displayP3Red: 170.0 / 255, green: 175.0 / 255, blue: 186.0 / 255, alpha: 1)
-    //static let grayColor: UIColor = UIColor.lightGray*/
-    private var defaultBackgroundColor: UIColor!
-    private var highlightedBackgroundColor: UIColor!
+    @IBInspectable var defaultBackgroundColor: UIColor!
+    @IBInspectable var highlightedBackgroundColor: UIColor!
     
     /*override init(frame: CGRect) {
         super.init(frame: frame)
@@ -45,14 +42,14 @@ class KeyboardButton: UIButton {
         self.layer.shadowOffset = CGSize(width: 0, height: 2)
         self.layer.masksToBounds = false
         
-        if self.isControlKey {
+        /*if self.isControlKey {
             self.defaultBackgroundColor = UIColor(named: "Key")
             self.highlightedBackgroundColor = UIColor(named: "Key White")
         }
         else {
             self.defaultBackgroundColor = UIColor(named: "Key White")
             self.highlightedBackgroundColor = UIColor(named: "Key")
-        }
+        }*/
         self.backgroundColor = self.defaultBackgroundColor
     }
     
