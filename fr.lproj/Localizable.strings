@@ -95,3 +95,12 @@
 
 /* "Delete" action title */
 "Delete" = "Supprimer";
+
+/* "Favorites" title */
+"Favorites" = "Favoris";
+
+/* Widget display name */
+"Quick Paste" = "Coller Vite";
+
+/* Widget description */
+"Add the current[...]" = "Ajoutez le contenu actuel du presse-papiers dans l'application.";

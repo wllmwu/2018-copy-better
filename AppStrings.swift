@@ -128,4 +128,16 @@ struct AppStrings {
     static var DELETE_ACTION_TITLE: String {
         return NSLocalizedString("Delete", comment: "\"Delete\" action title")
     }
+    
+    static var FAVORITES_TITLE: String {
+        return NSLocalizedString("Favorites", comment: "\"Favorites\" title")
+    }
+    
+    static var WIDGET_DISPLAY_NAME: String {
+        return NSLocalizedString("Quick Paste", comment: "Widget display name")
+    }
+    
+    static var WIDGET_DESCRIPTION: String {
+        return NSLocalizedString("Add the current[...]", comment: "Widget description")
+    }
 }

@@ -95,3 +95,12 @@
 
 /* "Delete" action title */
 "Delete" = "Eliminar";
+
+/* "Favorites" title */
+"Favorites" = "Favoritos";
+
+/* Widget display name */
+"Quick Paste" = "Pegar Rápido";
+
+/* Widget description */
+"Add the current[...]" = "Agregue el contenido actuel del portapapeles a la app.";

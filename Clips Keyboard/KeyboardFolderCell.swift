@@ -8,6 +8,10 @@
 
 import UIKit
 
+enum Format {
+    case folder, superfolder, favorites
+}
+
 class KeyboardFolderCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
@@ -18,13 +22,17 @@ class KeyboardFolderCell: UICollectionViewCell {
         self.nameLabel.text = name
     }
     
-    func setFormat(goesToSuperfolder: Bool) {
-        if goesToSuperfolder {
+    func setFormat(_ format: Format) {
+        if format == .folder {
+            self.imageView.image = UIImage(systemName: "folder.fill")
+            self.imageViewLeading.constant = 16
+        }
+        else if format == .superfolder {
             self.imageView.image = UIImage(systemName: "arrowshape.turn.up.left.fill")
             self.imageViewLeading.constant = 8
         }
         else {
-            self.imageView.image = UIImage(systemName: "folder.fill")
+            self.imageView.image = UIImage(systemName: "star.square")
             self.imageViewLeading.constant = 16
         }
     }

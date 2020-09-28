@@ -12,8 +12,11 @@ import CoreData
 class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
     
     private var managedObjectContext: NSManagedObjectContext!
-    internal var currentFolder: Folder!
+    private var currentFolder: Folder!
+    internal var superfolder: Folder?
+    private var rootFolder: Folder!
     internal var isRootFolder: Bool = false
+    internal var isFavorites: Bool = false
     internal var subfolders: [Folder] = []
     internal var clips: [Clip] = []
     
@@ -56,7 +59,8 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
         let request: NSFetchRequest = NSFetchRequest<Folder>(entityName: "Folder")
         request.predicate = NSPredicate(format: "superfolder == NIL")
         do {
-            self.currentFolder = try self.managedObjectContext.fetch(request).first
+            self.rootFolder = try self.managedObjectContext.fetch(request).first
+            self.currentFolder = self.rootFolder
             self.isRootFolder = true
         }
         catch let error as NSError {
@@ -88,15 +92,6 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
     
     override func textDidChange(_ textInput: UITextInput?) {
         // The app has just changed the document's contents, the document context has been updated.
-        
-        /*var textColor: UIColor
-        let proxy = self.textDocumentProxy
-        if proxy.keyboardAppearance == UIKeyboardAppearance.dark {
-            textColor = UIColor.white
-        } else {
-            textColor = UIColor.black
-        }
-        self.keyboardView.nextKeyboardButton.setTitleColor(textColor, for: [])*/
     }
     
     // MARK: - Private instance methods
@@ -123,9 +118,28 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
     }
     
     private func loadData() {
-        self.subfolders = self.currentFolder.subfoldersArray
-        self.clips = self.currentFolder.clipsArray
+        if self.isFavorites {
+            self.subfolders = []
+            self.clips = self.fetchFavorites()
+        }
+        else {
+            self.subfolders = self.currentFolder.subfoldersArray
+            self.clips = self.currentFolder.clipsArray
+        }
         self.keyboardView.loadData()
+    }
+    
+    private func fetchFavorites() -> [Clip] {
+        let request: NSFetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
+        request.predicate = NSPredicate(format: "isFavorite == true")
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        do {
+            return try self.managedObjectContext.fetch(request)
+        }
+        catch let error as NSError {
+            print("Couldn't fetch. \(error), \(error.userInfo)")
+        }
+        return []
     }
     
     private func saveContext() {
@@ -142,13 +156,12 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
             return
         }
         
-        let clip: Clip = self.clips[index]
-        self.managedObjectContext.delete(clip)
-        self.clips.remove(at: index)
-        
-        for i in index..<self.clips.count {
-            self.clips[i].index -= 1
+        let clip: Clip = self.clips.remove(at: index)
+        let array: [Clip] = clip.folder!.clipsArray
+        for i in index + 1 ..< array.count {
+            array[i].index -= 1
         }
+        self.managedObjectContext.delete(clip)
         
         self.saveContext()
         self.keyboardView.loadData()
@@ -158,7 +171,9 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
     
     func selectFolder(_ folder: Folder) {
         self.currentFolder = folder
+        self.superfolder = folder.superfolder
         self.isRootFolder = folder.superfolder == nil
+        self.isFavorites = false
         self.loadData()
     }
     
@@ -166,6 +181,13 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
         if let text = ClipboardManager.stringFromItem(clip.contents) {
             self.insertText(text)
         }
+    }
+    
+    func goToFavorites() {
+        self.superfolder = self.rootFolder
+        self.isRootFolder = false
+        self.isFavorites = true
+        self.loadData()
     }
     
     func insertText(_ text: String) {
@@ -180,6 +202,10 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
         guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
             print("Couldn't find entity description.")
             return
+        }
+        
+        if self.isFavorites {
+            self.selectFolder(self.rootFolder)
         }
         
         // create new clip

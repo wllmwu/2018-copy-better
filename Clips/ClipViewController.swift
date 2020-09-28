@@ -62,7 +62,7 @@ class ClipViewController: UIViewController {
     
     // MARK: - Instance methods
     
-    private func setTitle(_ title: String) {
+    private func setTitle(_ title: String?) {
         self.navigationItem.title = title
     }
     
@@ -203,6 +203,11 @@ class ClipViewController: UIViewController {
         if let clip = self.clip {
             if let title = clip.title {
                 self.setTitle(title)
+                self.navigationItem.largeTitleDisplayMode = .automatic
+            }
+            else {
+                self.setTitle(nil)
+                self.navigationItem.largeTitleDisplayMode = .never
             }
             self.setContentsText(contents: clip.contents)
         }

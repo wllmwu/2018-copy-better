@@ -34,6 +34,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        let path: [String] = url.pathComponents
+        if path.contains("addcopied") {
+            //UserDefaults.init(suiteName: "group.com.williamwu.clips")?.set(true, forKey: "shouldAddLastCopied")
+            //print("defaults true")
+            NotificationCenter.default.post(Notification(name: Notification.Name("AddLastCopiedInMain")))
+        }
+        return true
+    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -26,6 +26,7 @@ class KeyboardClipCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         self.resetLabels()
+        self.resetButtons()
     }
     
     private func resetLabels() {
@@ -42,8 +43,8 @@ class KeyboardClipCell: UICollectionViewCell {
     }
     
     func setClip(_ clip: Clip) {
-        self.resetLabels()
-        self.resetButtons()
+        //self.resetLabels()
+        //self.resetButtons()
         if let title = clip.title {
             self.titleLabel.text = title
         }
@@ -54,6 +55,10 @@ class KeyboardClipCell: UICollectionViewCell {
         }
         self.contentsLabel.text = ClipboardManager.stringFromItem(clip.contents)?.trimmingCharacters(in: .whitespacesAndNewlines)
         self.index = Int(clip.index)
+    }
+    
+    func hideXButton() {
+        self.xButton.isHidden = true
     }
     
     // MARK: - Actions

@@ -8,6 +8,15 @@
 /* Class = "UINavigationItem"; title = "Copy Better"; ObjectID = "55l-T6-khl"; */
 "55l-T6-khl.title" = "Copiar Mejor";
 
+/* Class = "UINavigationItem"; title = "Favorites"; ObjectID = "uBN-p6-yUe"; */
+"uBN-p6-yUe.title" = "Favoritos";
+
+/* Class = "UILabel"; text = "Favorites"; ObjectID = "pdi-Iy-kTz"; */
+"pdi-Iy-kTz.text" = "Favoritos";
+
+/* Class = "UILabel"; text = "Swipe on a clip to mark it as a favorite. Your favorites will show up here!"; ObjectID = "khx-DO-7NR"; */
+"khx-DO-7NR.text" = "Desliza el dedo en un artículo para marcarlo como favorito. Sus favoritos aparecerán aquí!";
+
 /* Class = "UIViewController"; title = "Clip"; ObjectID = "9Ah-HQ-3Ku"; */
 "9Ah-HQ-3Ku.title" = "Recorte";
 
@@ -16,12 +25,6 @@
 
 /* Class = "UINavigationItem"; title = "Move to Folder"; ObjectID = "Xdn-yD-b5c"; */
 "Xdn-yD-b5c.title" = "Mover";
-
-/* Class = "UIButton"; normalTitle = "Copy"; ObjectID = "AXt-XT-I7X"; */
-//"AXt-XT-I7X.normalTitle" = "Copiar";
-
-/* Class = "UIButton"; normalTitle = "Copy"; ObjectID = "Vv3-ln-OwR"; */
-//"Vv3-ln-OwR.normalTitle" = "Copiar";
 
 /* Class = "UITextField"; placeholder = "Title… (optional)"; ObjectID = "BIk-3c-cFB"; */
 "BIk-3c-cFB.placeholder" = "Título… (opcional)";
@@ -65,9 +68,6 @@
 /* Class = "UITableViewSection"; headerTitle = "Today View"; ObjectID = "SQq-CT-Spn"; */
 "SQq-CT-Spn.headerTitle" = "Visualización Hoy";
 
-/* Class = "UIButton"; normalTitle = "Copy"; ObjectID = "TJ8-tS-zk3"; */
-//"TJ8-tS-zk3.normalTitle" = "Copiar";
-
 /* Class = "UITableViewSection"; headerTitle = "Title"; ObjectID = "Ymy-zL-M8M"; */
 "Ymy-zL-M8M.headerTitle" = "Título";
 
@@ -91,12 +91,6 @@
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "sBM-4M-D6k"; */
 "sBM-4M-D6k.text" = "Título";
-
-/* Class = "UIButton"; normalTitle = "Copy"; ObjectID = "yoX-S0-ffx"; */
-//"yoX-S0-ffx.normalTitle" = "Copiar";
-
-/* Class = "UIButton"; normalTitle = "Copy"; ObjectID = "DdU-ZW-ZGp"; */
-//"DdU-ZW-ZGp.normalTitle" = "Copier";
 
 /* Class = "UILabel"; text = "Number of items"; ObjectID = "ytH-gW-dY9"; */
 "ytH-gW-dY9.text" = "Número de recortes";

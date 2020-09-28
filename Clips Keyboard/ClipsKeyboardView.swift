@@ -9,12 +9,14 @@
 import UIKit
 
 protocol ClipsKeyboardViewDelegate: class {
-    var currentFolder: Folder! { get }
+    var superfolder: Folder? { get }
     var isRootFolder: Bool { get }
+    var isFavorites: Bool { get }
     var subfolders: [Folder] { get }
     var clips: [Clip] { get }
     func selectFolder(_ folder: Folder)
     func selectClip(_ clip: Clip)
+    func goToFavorites()
     
     func insertText(_ text: String)
     func deleteBackwards()
@@ -23,9 +25,6 @@ protocol ClipsKeyboardViewDelegate: class {
 
 class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    //private var titles: [String?] = []
-    //private var strings: [String] = []
-    //private var indices: [Int] = []
     private var filteredClips: [Clip] = []
     private var lastCopied: String?
     private var pasteboardChangeCount: Int = 0
@@ -64,18 +63,6 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
         self.collectionViewLayout.itemSize = CGSize(width: UIScreen.main.bounds.size.width, height: 44)
         
         NotificationCenter.default.addObserver(self, selector: #selector(ClipsKeyboardView.updateLastCopied), name: UIPasteboard.changedNotification, object: nil)
-        
-        if self.traitCollection.userInterfaceStyle == .dark {
-            self.previousColumnButton.backgroundColor = UIColor(named: "Key Dark")
-            print("dark")
-        }
-        else if self.traitCollection.userInterfaceStyle == .unspecified {
-            print("unspecified")
-        }
-        else {
-            self.previousColumnButton.backgroundColor = UIColor(named: "Key")
-            print("light")
-        }
     }
     
     func setNextKeyboardButtonVisible(_ visible: Bool) {
@@ -113,7 +100,7 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     @objc func updateLastCopied() {
         if self.pasteboardChangeCount != UIPasteboard.general.changeCount {
             self.lastCopied = ClipboardManager.stringFromItem(ClipboardManager.retrieveFromPasteboard())
-            self.lastCopiedLabel.text = self.lastCopied
+            self.lastCopiedLabel.text = self.lastCopied?.trimmingCharacters(in: .whitespacesAndNewlines)
             self.pasteboardChangeCount = UIPasteboard.general.changeCount
         }
     }
@@ -202,21 +189,30 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     // MARK: - Collection view data source
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (self.delegate.isRootFolder ? 0 : 1) + self.delegate.subfolders.count + self.filteredClips.count
+        // if in the root folder, there is an extra Favorites cell; if not, there is a superfolder cell
+        return self.delegate.subfolders.count + self.filteredClips.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let offset = self.delegate.isRootFolder ? 0 : 1
-        if !self.delegate.isRootFolder && indexPath.row == 0 {
+        let offset = 1
+        if indexPath.row == 0 {
             let cell: KeyboardFolderCell = collectionView.dequeueReusableCell(withReuseIdentifier: "KeyboardFolderCell", for: indexPath) as! KeyboardFolderCell
-            cell.setFormat(goesToSuperfolder: true)
-            cell.setName(self.delegate.currentFolder.superfolder!.name)
+            
+            if self.delegate.isRootFolder { // Favorites cell
+                cell.setFormat(.favorites)
+                cell.setName(AppStrings.FAVORITES_TITLE)
+            }
+            else { // superfolder cell
+                cell.setFormat(.superfolder)
+                cell.setName(self.delegate.superfolder!.name)
+            }
+            
             return cell
         }
         else if indexPath.row < self.delegate.subfolders.count + offset {
             let folder: Folder = self.delegate.subfolders[indexPath.row - offset]
             let cell: KeyboardFolderCell = collectionView.dequeueReusableCell(withReuseIdentifier: "KeyboardFolderCell", for: indexPath) as! KeyboardFolderCell
-            cell.setFormat(goesToSuperfolder: false)
+            cell.setFormat(.folder)
             cell.setName(folder.name)
             return cell
         }
@@ -225,17 +221,22 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
             let clip: Clip = self.filteredClips[index]
             let cell: KeyboardClipCell = collectionView.dequeueReusableCell(withReuseIdentifier: "KeyboardClipCell", for: indexPath) as! KeyboardClipCell
             cell.setClip(clip)
+            if self.delegate.isFavorites {
+                cell.hideXButton()
+            }
             return cell
         }
-        /*let cell: KeyboardClipCell = collectionView.dequeueReusableCell(withReuseIdentifier: "KeyboardClipCell", for: indexPath) as! KeyboardClipCell
-        cell.setup(title: self.titles[indexPath.row], contents: self.strings[indexPath.row], index: self.indices[indexPath.row])
-        return cell*/
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let offset = self.delegate.isRootFolder ? 0 : 1
-        if !self.delegate.isRootFolder && indexPath.row == 0 {
-            self.delegate.selectFolder(self.delegate.currentFolder.superfolder!)
+        let offset = 1
+        if indexPath.row == 0 {
+            if self.delegate.isRootFolder {
+                self.delegate.goToFavorites()
+            }
+            else {
+                self.delegate.selectFolder(self.delegate.superfolder!)
+            }
         }
         else if indexPath.row < self.delegate.subfolders.count + offset {
             self.delegate.selectFolder(self.delegate.subfolders[indexPath.row - offset])
@@ -243,20 +244,6 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
         else {
             let index = indexPath.row - self.delegate.subfolders.count - offset
             self.delegate.selectClip(self.filteredClips[index])
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        if let cell: UICollectionViewCell = collectionView.cellForItem(at: indexPath) {
-            cell.backgroundColor = UIColor.lightGray
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-        if let cell: UICollectionViewCell = collectionView.cellForItem(at: indexPath){
-            UIView.animate(withDuration: 0.2) {
-                cell.backgroundColor = nil
-            }
         }
     }
     

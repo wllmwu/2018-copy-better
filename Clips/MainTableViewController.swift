@@ -13,7 +13,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     
     private var managedObjectContext: NSManagedObjectContext!
     private var folder: Folder!
-    //private var isRootFolder: Bool = true
+    private var isRootFolder: Bool = false
     private var subfolders: [Folder] = []
     private var selectedFolder: Folder?
     private var clips: [Clip] = []
@@ -59,6 +59,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             request.predicate = NSPredicate(format: "superfolder == NIL")
             do {
                 self.folder = try self.managedObjectContext.fetch(request).first
+                self.isRootFolder = true
             }
             catch let error as NSError {
                 print("Couldn't fetch. \(error), \(error.userInfo)")
@@ -99,7 +100,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     
     // MARK: - Instance methods
     
-    @objc private func loadData() {
+    private func loadData() {
         self.showLastCopied = self.defaults.bool(forKey: "showLastCopiedInMain")
         if self.showLastCopied && self.pasteboardChangeCount != UIPasteboard.general.changeCount {
             // the pasteboard changeCount gets reset to 0 when the device is restarted
@@ -269,14 +270,26 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        if self.isFiltering() {
+            return 1
+        }
+        else {
+            return 2
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.isFiltering() {
             return self.filteredFolders.count + self.filteredClips.count
         }
-        return self.subfolders.count + self.clips.count + (self.showLastCopied ? 1 : 0)
+        else {
+            if section == 0 {
+                return (self.showLastCopied ? 1 : 0) + (self.isRootFolder ? 1 : 0)
+            }
+            else {
+                return self.subfolders.count + self.clips.count
+            }
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -303,31 +316,37 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             }
         }
         else {
-            let offset = self.showLastCopied ? 1 : 0
-            if self.showLastCopied && indexPath.row == 0 {
-                let cell: ClipTableViewCell = tableView.dequeueReusableCell(withIdentifier: "LastCopiedCell", for: indexPath) as! ClipTableViewCell
-                cell.setContents(self.lastCopied)
-                return cell
-            }
-            else if indexPath.row < self.subfolders.count + offset {
-                let folder: Folder = self.subfolders[indexPath.row - offset]
-                let cell: FolderTableViewCell = tableView.dequeueReusableCell(withIdentifier: "FolderCell", for: indexPath) as! FolderTableViewCell
-                cell.setName(folder.name!)
-                return cell
+            if indexPath.section == 0 {
+                if self.showLastCopied && indexPath.row == 0 { // Last Copied cell
+                    let cell: ClipTableViewCell = tableView.dequeueReusableCell(withIdentifier: "LastCopiedCell", for: indexPath) as! ClipTableViewCell
+                    cell.setContents(self.lastCopied)
+                    return cell
+                }
+                else { // Favorites cell
+                    return tableView.dequeueReusableCell(withIdentifier: "FavoritesCell", for: indexPath)
+                }
             }
             else {
-                let clip: Clip = self.clips[indexPath.row - self.subfolders.count - offset]
-                let cell: ClipTableViewCell
-                if let title = clip.title {
-                    cell = tableView.dequeueReusableCell(withIdentifier: "ClipWithTitleCell", for: indexPath) as! ClipTableViewCell
-                    cell.setTitle(title)
+                if indexPath.row < self.subfolders.count {
+                    let folder: Folder = self.subfolders[indexPath.row]
+                    let cell: FolderTableViewCell = tableView.dequeueReusableCell(withIdentifier: "FolderCell", for: indexPath) as! FolderTableViewCell
+                    cell.setName(folder.name!)
+                    return cell
                 }
                 else {
-                    cell = tableView.dequeueReusableCell(withIdentifier: "ClipNoTitleCell", for: indexPath) as! ClipTableViewCell
+                    let clip: Clip = self.clips[indexPath.row - self.subfolders.count]
+                    let cell: ClipTableViewCell
+                    if let title = clip.title {
+                        cell = tableView.dequeueReusableCell(withIdentifier: "ClipWithTitleCell", for: indexPath) as! ClipTableViewCell
+                        cell.setTitle(title)
+                    }
+                    else {
+                        cell = tableView.dequeueReusableCell(withIdentifier: "ClipNoTitleCell", for: indexPath) as! ClipTableViewCell
+                    }
+                    cell.setContents(clip.contents)
+                    cell.setFavorite(clip.isFavorite)
+                    return cell
                 }
-                cell.setContents(clip.contents)
-                cell.setFavorite(clip.isFavorite)
-                return cell
             }
         }
     }
@@ -335,8 +354,12 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        if self.isFiltering() { return false }
-        if indexPath.row == 0 && self.showLastCopied { return false }
+        if self.isFiltering() {
+            return false
+        }
+        else if indexPath.section == 0 {
+            return false
+        }
         return true
     }
     
@@ -348,9 +371,8 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            let offset = self.showLastCopied ? 1 : 0
-            if indexPath.row < self.subfolders.count + offset {
-                let index = indexPath.row - offset
+            if indexPath.row < self.subfolders.count {
+                let index = indexPath.row
                 let folder: Folder = self.subfolders[index]
                 
                 let title: String = AppStrings.DELETE_FOLDER_CONFIRM_MESSAGE_1 + folder.name! + AppStrings.DELETE_FOLDER_CONFIRM_MESSAGE_2
@@ -368,7 +390,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
                 self.present(confirmAlert, animated: true, completion: nil)
             }
             else {
-                let index = indexPath.row - self.subfolders.count - offset
+                let index = indexPath.row - self.subfolders.count
                 self.managedObjectContext.delete(self.clips[index])
                 self.clips.remove(at: index)
                 tableView.deleteRows(at: [indexPath], with: .fade)
@@ -381,29 +403,30 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
-        if indexPath.row == 0 && self.showLastCopied { return false }
+        if indexPath.section == 0 {
+            return false
+        }
         return true
     }
 
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-        let offset = self.showLastCopied ? 1 : 0
-        if fromIndexPath.row < self.subfolders.count + offset { // moving a folder
-            let index = fromIndexPath.row - offset
+        if fromIndexPath.row < self.subfolders.count { // moving a folder
+            let index = fromIndexPath.row
             let folder: Folder = self.subfolders[index]
             self.subfolders.remove(at: index)
-            self.subfolders.insert(folder, at: to.row - offset)
+            self.subfolders.insert(folder, at: to.row)
             
             if to.row < fromIndexPath.row {
-                self.updateFolderIndices(from: to.row - offset, to: index + 1)
+                self.updateFolderIndices(from: to.row, to: index + 1)
             }
             else {
-                self.updateFolderIndices(from: index, to: to.row - offset + 1)
+                self.updateFolderIndices(from: index, to: to.row + 1)
             }
         }
         else { // moving a clip
-            let fromIndex = fromIndexPath.row - self.subfolders.count - offset
-            let toIndex = to.row - self.subfolders.count - offset
+            let fromIndex = fromIndexPath.row - self.subfolders.count
+            let toIndex = to.row - self.subfolders.count
             let clip: Clip = self.clips[fromIndex]
             self.clips.remove(at: fromIndex)
             self.clips.insert(clip, at: toIndex)
@@ -419,26 +442,30 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
-        let offset = self.showLastCopied ? 1 : 0
-        if self.showLastCopied && sourceIndexPath.row == 0 { // can't move the Last Copied cell
+        if sourceIndexPath.section == 0 {
             return sourceIndexPath
         }
-        else if sourceIndexPath.row < self.subfolders.count + offset { // trying to move a folder
-            if self.showLastCopied && proposedDestinationIndexPath.row == 0 { // can't move Last Copied
-                return IndexPath(row: 1, section: 0)
+        else {
+            if sourceIndexPath.row < self.subfolders.count { // trying to move a folder
+                if proposedDestinationIndexPath.section == 0 {
+                    return IndexPath(row: 0, section: 1)
+                }
+                else if proposedDestinationIndexPath.row >= self.subfolders.count { // can't move a folder into the clips
+                    return IndexPath(row: self.subfolders.count - 1, section: 1)
+                }
             }
-            else if proposedDestinationIndexPath.row >= self.subfolders.count + offset { // can't move a folder into the clips
-                return IndexPath(row: self.subfolders.count + offset - 1, section: 0)
+            else if proposedDestinationIndexPath.section == 0 || proposedDestinationIndexPath.row < self.subfolders.count { // can't move a clip into the folders
+                return IndexPath(row: self.subfolders.count, section: 1)
             }
-        }
-        else if proposedDestinationIndexPath.row < self.subfolders.count + offset { // can't move a clip into the folders
-            return IndexPath(row: self.subfolders.count + offset, section: 0)
         }
         return proposedDestinationIndexPath
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        if self.isFiltering() || (self.showLastCopied && indexPath.row == 0) {
+        if self.isFiltering() {
+            return nil
+        }
+        else if indexPath.section == 0 {
             return nil
         }
         
@@ -451,13 +478,12 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             actions.append(deleteAction)
         }
         else {
-            let offset = self.showLastCopied ? 1 : 0
             let moveAction: UIContextualAction = UIContextualAction(style: .normal, title: AppStrings.MOVE_ACTION_TITLE) { (action, view, completionHandler) in
-                if indexPath.row < self.subfolders.count + offset {
-                    self.selectedFolder = self.subfolders[indexPath.row - offset]
+                if indexPath.row < self.subfolders.count {
+                    self.selectedFolder = self.subfolders[indexPath.row]
                 }
                 else {
-                    self.selectedClip = self.clips[indexPath.row - self.subfolders.count - offset]
+                    self.selectedClip = self.clips[indexPath.row - self.subfolders.count]
                 }
                 self.performSegue(withIdentifier: "MainToMoveItem", sender: self)
                 completionHandler(true)
@@ -465,8 +491,8 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             moveAction.backgroundColor = UIColor(named: "Accent")
             actions.append(moveAction)
             
-            if indexPath.row >= self.subfolders.count + offset {
-                let clip: Clip = self.clips[indexPath.row - self.subfolders.count - offset]
+            if indexPath.row >= self.subfolders.count {
+                let clip: Clip = self.clips[indexPath.row - self.subfolders.count]
                 let favoriteAction: UIContextualAction = UIContextualAction(style: .normal, title: nil) { (action, view, completionHandler) in
                     clip.isFavorite = !clip.isFavorite
                     self.saveContext()
@@ -497,16 +523,12 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
                 self.selectedClip = self.filteredClips[indexPath.row]
             }
         }
-        else {
-            let offset = self.showLastCopied ? 1 : 0
-            if self.showLastCopied && indexPath.row == 0 {
-                return indexPath
-            }
-            else if indexPath.row < self.subfolders.count + offset {
-                self.selectedFolder = self.subfolders[indexPath.row - offset]
+        else if indexPath.section == 1 {
+            if indexPath.row < self.subfolders.count {
+                self.selectedFolder = self.subfolders[indexPath.row]
             }
             else {
-                self.selectedClip = self.clips[indexPath.row - self.subfolders.count - offset]
+                self.selectedClip = self.clips[indexPath.row - self.subfolders.count]
             }
         }
         return indexPath
@@ -553,7 +575,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
                 print("Couldn't fetch. \(error), \(error.userInfo)")
             }
             
-            // search clips
+            // search clip titles
             let clipRequest: NSFetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
             clipRequest.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchText)
             do {
@@ -585,6 +607,10 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
                 let destination: ClipViewController = segue.destination as! ClipViewController
                 destination.setContext(self.managedObjectContext)
                 destination.setLastCopied(contents: self.lastCopied, folder: self.folder)
+            }
+            else if identifier == "MainToFavorites" {
+                let destination: FavoritesTableViewController = segue.destination as! FavoritesTableViewController
+                destination.setContext(self.managedObjectContext)
             }
             else if identifier == "MainToMain" {
                 if let folder = self.selectedFolder {
@@ -630,7 +656,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
                 selected.superfolder = chosenFolder
                 let index = Int(selected.index)
                 self.subfolders.remove(at: index)
-                tableView.deleteRows(at: [IndexPath(row: index + (self.showLastCopied ? 1 : 0), section: 0)], with: .fade)
+                tableView.deleteRows(at: [IndexPath(row: index, section: 1)], with: .fade)
                 self.updateFolderIndices(from: index, to: self.subfolders.count)
                 selected.index = Int16(chosenFolder.subfolders!.count - 1)
                 self.saveContext()
@@ -639,7 +665,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
                 selected.folder = chosenFolder
                 let index = Int(selected.index)
                 self.clips.remove(at: index)
-                tableView.deleteRows(at: [IndexPath(row: index + self.subfolders.count + (self.showLastCopied ? 1 : 0), section: 0)], with: .fade)
+                tableView.deleteRows(at: [IndexPath(row: index + self.subfolders.count, section: 1)], with: .fade)
                 self.updateClipIndices(from: index, to: self.clips.count)
                 selected.index = Int16(chosenFolder.clips!.count - 1)
                 self.saveContext()

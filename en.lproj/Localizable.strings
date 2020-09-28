@@ -95,3 +95,12 @@
 
 /* "Delete" action title */
 "Delete" = "Delete";
+
+/* "Favorites" title */
+"Favorites" = "Favorites";
+
+/* Widget display name */
+"Quick Paste" = "Quick Paste";
+
+/* Widget description */
+"Add the current[...]" = "Add the current pasteboard contents to the app.";
