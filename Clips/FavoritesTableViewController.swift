@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class FavoritesTableViewController: UITableViewController { // TODO: test this
+class FavoritesTableViewController: UITableViewController {
     
     private var managedObjectContext: NSManagedObjectContext!
     private var clips: [Clip] = []

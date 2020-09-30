@@ -22,7 +22,7 @@ class ClipboardManager: NSObject {
     // MARK: - Interface with system pasteboard
     
     /**
-     Retrieves the first item of the general pasteboard as an item dictionary.
+     Returns the first item of the general pasteboard as an item dictionary. Use other methods of this class to process it further.
      */
     static func retrieveFromPasteboard() -> [String : Any] {
         let pasteboard: UIPasteboard = UIPasteboard.general
@@ -259,7 +259,7 @@ class ClipboardManager: NSObject {
     }
     
     /**
-     Scales an image down to the given maximum width and/or maximum height, if their value is not 0 and not greater than the original width and/or height.
+     Scales an image down to the given maximum width and/or maximum height, if their values are not 0 and not greater than the original width and/or height.
      - Parameter maxWidth: The maximum point width of the returned image. If this value is 0, the image will not be scaled to fit a maximum width.
      - Parameter maxHeight: The maximum point height of the returned image. If this value is 0, the image will not be scaled to fit a maximum height.
      */
@@ -373,6 +373,9 @@ class ClipboardManager: NSObject {
         return nil
     }
     
+    /**
+     Returns an array containing the given item dictionary's contents in all possible formats. Use this for a share sheet.
+     */
     static func arrayFromItem(_ item: [String : Any]) -> [Any] {
         var array: [Any] = []
         if let rtfd = ClipboardManager.attributedStringFromRtfd(inItem: item) {

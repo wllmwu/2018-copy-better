@@ -29,22 +29,9 @@ class KeyboardClipCell: UICollectionViewCell {
         self.resetButtons()
     }
     
-    private func resetLabels() {
-        self.contentsLabelLeadingToTitleLabel.priority = .defaultHigh
-        self.contentsLabelLeadingToEdge.priority = .defaultLow
-    }
-    
-    private func resetButtons() {
-        self.deleteButton.isHidden = true
-        self.cancelButton.isHidden = true
-        self.contentsLabelTrailingToXButton.priority = .defaultHigh
-        self.contentsLabelTrailingToDeleteButton.priority = .defaultLow
-        self.xButton.isHidden = false
-    }
+    // MARK: - Public setters and methods
     
     func setClip(_ clip: Clip) {
-        //self.resetLabels()
-        //self.resetButtons()
         if let title = clip.title {
             self.titleLabel.text = title
         }
@@ -59,6 +46,21 @@ class KeyboardClipCell: UICollectionViewCell {
     
     func hideXButton() {
         self.xButton.isHidden = true
+    }
+    
+    // MARK: - Private methods
+    
+    private func resetLabels() {
+        self.contentsLabelLeadingToTitleLabel.priority = .defaultHigh
+        self.contentsLabelLeadingToEdge.priority = .defaultLow
+    }
+    
+    private func resetButtons() {
+        self.deleteButton.isHidden = true
+        self.cancelButton.isHidden = true
+        self.contentsLabelTrailingToXButton.priority = .defaultHigh
+        self.contentsLabelTrailingToDeleteButton.priority = .defaultLow
+        self.xButton.isHidden = false
     }
     
     // MARK: - Actions

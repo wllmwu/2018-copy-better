@@ -12,6 +12,7 @@ class FolderTableViewCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     
+    /*
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,6 +23,7 @@ class FolderTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    */
     
     func setName(_ name: String) {
         self.nameLabel.text = name

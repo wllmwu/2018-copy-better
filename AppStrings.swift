@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+ An interface with the localized strings in Localizable.strings. All of said strings are accessible as static properties of this struct.
+ */
 struct AppStrings {
     static var DEFAULT_CLIP_TITLE_1: String {
         return NSLocalizedString("Shrug", comment: "default clip title 1")

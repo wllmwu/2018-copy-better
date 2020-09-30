@@ -67,6 +67,8 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
         NotificationCenter.default.addObserver(self, selector: #selector(ClipsKeyboardView.updateLastCopied), name: UIPasteboard.changedNotification, object: nil)
     }
     
+    // MARK: - Public setters and methods
+    
     func setNextKeyboardButtonVisible(_ visible: Bool) {
         self.nextKeyboardButton.isHidden = !visible
         if visible {

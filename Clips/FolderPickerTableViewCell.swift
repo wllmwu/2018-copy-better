@@ -12,7 +12,8 @@ class FolderPickerTableViewCell: UITableViewCell {
     
     @IBOutlet weak var label: UILabel!
 
-    /*override func awakeFromNib() {
+    /*
+    override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
@@ -21,7 +22,10 @@ class FolderPickerTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }*/
+    }
+    */
+    
+    // MARK: - Public setters
     
     /**
      Sets this cell's label to display the given string.

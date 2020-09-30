@@ -22,6 +22,7 @@ class ClipTableViewCell: UITableViewCell {
     
     private var contents: [String : Any]!
     
+    /*
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -38,9 +39,39 @@ class ClipTableViewCell: UITableViewCell {
         
         self.reset()
     }
+    */
+    
+    // MARK: - Public setters
+    
+    func setTitle(_ title: String) {
+        if let label = self.titleLabel {
+            label.text = title
+        }
+    }
+    
+    func setContents(_ contents: [String : Any]) {
+        self.contents = contents
+        self.setContentsLabelText()
+    }
+    
+    func setFavorite(_ isFavorite: Bool) {
+        if isFavorite {
+            self.favoriteIcon?.isHidden = false
+            self.primaryLabelToEdge?.priority = .defaultLow
+            self.primaryLabelToFavoriteIcon?.priority = .defaultHigh
+        }
+        else {
+            self.primaryLabelToFavoriteIcon?.priority = .defaultLow
+            self.primaryLabelToEdge?.priority = .defaultHigh
+            self.favoriteIcon?.isHidden = true
+        }
+    }
     
     // MARK: - Instance methods
     
+    /**
+     Resets the contents label and image view, the favorite icon, and the constraints associated with the favorite icon.
+     */
     private func reset() {
         // reset contentsLabel's font, text size, and text color
         var defaultSize: CGFloat = 17
@@ -55,6 +86,9 @@ class ClipTableViewCell: UITableViewCell {
         self.favoriteIcon?.isHidden = true
     }
     
+    /**
+     Displays the contents of this cell's assigned clip in the best available format (including image types), or displays a placeholder if the contents are empty or have no usable format.
+     */
     private func setContentsLabelText() {
         if self.contents.count == 0 {
             self.contentsLabel.text = AppStrings.EMPTY_CLIP_PLACEHOLDER
@@ -95,6 +129,9 @@ class ClipTableViewCell: UITableViewCell {
         }
     }
     
+    /**
+     Sets the cell's contents label text as an attributed string, without special font or attachment attributes.
+     */
     private func setContentsLabelAttributedText(_ attributedString: NSAttributedString) {
         // remove font and attachments
         let string: NSMutableAttributedString = NSMutableAttributedString(attributedString: attributedString)
@@ -107,29 +144,7 @@ class ClipTableViewCell: UITableViewCell {
         self.contentsLabel.attributedText = string
     }
     
-    func setTitle(_ title: String) {
-        if let label = self.titleLabel {
-            label.text = title
-        }
-    }
-    
-    func setContents(_ contents: [String : Any]) {
-        self.contents = contents
-        self.setContentsLabelText()
-    }
-    
-    func setFavorite(_ isFavorite: Bool) {
-        if isFavorite {
-            self.favoriteIcon?.isHidden = false
-            self.primaryLabelToEdge?.priority = .defaultLow
-            self.primaryLabelToFavoriteIcon?.priority = .defaultHigh
-        }
-        else {
-            self.primaryLabelToFavoriteIcon?.priority = .defaultLow
-            self.primaryLabelToEdge?.priority = .defaultHigh
-            self.favoriteIcon?.isHidden = true
-        }
-    }
+    // MARK: - Interface actions
     
     @IBAction func copyButtonTapped(_ sender: UIButton) {
         ClipboardManager.copyToPasteboard(item: self.contents)

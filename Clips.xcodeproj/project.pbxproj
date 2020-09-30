@@ -83,7 +83,6 @@
 		E0BB9D212245FD7A00BAC38F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E0BB9D232245FD7A00BAC38F /* InfoPlist.strings */; };
 		E0BB9D282245FDAF00BAC38F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E0BB9D2A2245FDAF00BAC38F /* InfoPlist.strings */; };
 		E0C260AF21B8B889007D9BED /* UIViewController+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C260AE21B8B889007D9BED /* UIViewController+Toast.swift */; };
-		E0CC277621AD9A04000FEF5A /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CC277521AD9A04000FEF5A /* AboutTableViewController.swift */; };
 		E0CD5AE924E44E3C0035FDC8 /* Folder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD5AE724E44E3C0035FDC8 /* Folder+CoreDataClass.swift */; };
 		E0CD5AEA24E44E3C0035FDC8 /* Folder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD5AE724E44E3C0035FDC8 /* Folder+CoreDataClass.swift */; };
 		E0CD5AEB24E44E3C0035FDC8 /* Folder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD5AE724E44E3C0035FDC8 /* Folder+CoreDataClass.swift */; };
@@ -224,7 +223,6 @@
 		E0BB9D2B2245FDB100BAC38F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E0BB9D2C2245FDB300BAC38F /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E0C260AE21B8B889007D9BED /* UIViewController+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Toast.swift"; sourceTree = "<group>"; };
-		E0CC277521AD9A04000FEF5A /* AboutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
 		E0CD5AE724E44E3C0035FDC8 /* Folder+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Folder+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E0CD5AE824E44E3C0035FDC8 /* Folder+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Folder+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E0D348C621B2393000BF1F4E /* WidgetClipTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetClipTableViewCell.swift; sourceTree = "<group>"; };
@@ -376,7 +374,6 @@
 				E08A5A2E25029E0A009524DB /* FolderPickerTableViewController.swift */,
 				E0079EDB25068C9100F3BC10 /* FolderPickerTableViewCell.swift */,
 				E06AA133219D331E0015A30F /* SettingsTableViewController.swift */,
-				E0CC277521AD9A04000FEF5A /* AboutTableViewController.swift */,
 				E056F8FC20CEE46E0025E2FE /* LaunchScreen.storyboard */,
 				E0C260AE21B8B889007D9BED /* UIViewController+Toast.swift */,
 				E05EA02C21BD8BB300FC33C9 /* Toast.swift */,
@@ -683,7 +680,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0CC277621AD9A04000FEF5A /* AboutTableViewController.swift in Sources */,
 				E0CD5AED24E44E3C0035FDC8 /* Folder+CoreDataProperties.swift in Sources */,
 				E056F8F920CEE46C0025E2FE /* Clips.xcdatamodeld in Sources */,
 				E06AA130219D32DE0015A30F /* ClipViewController.swift in Sources */,

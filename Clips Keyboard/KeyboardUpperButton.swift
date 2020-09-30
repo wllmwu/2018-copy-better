@@ -9,8 +9,6 @@
 import UIKit
 
 class KeyboardUpperButton: UIButton {
-    
-    static let lightGrayColor: UIColor = UIColor.init(displayP3Red: 235.0 / 255, green: 237.0 / 255, blue: 240.0 / 255, alpha: 1)
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -27,7 +25,7 @@ class KeyboardUpperButton: UIButton {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.backgroundColor = self.isHighlighted ? KeyboardUpperButton.lightGrayColor : nil
+        self.backgroundColor = self.isHighlighted ? UIColor.systemGray4 : nil
     }
     
     private func setup() {

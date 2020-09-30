@@ -37,10 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         let path: [String] = url.pathComponents
-        if path.contains("addcopied") {
-            //UserDefaults.init(suiteName: "group.com.williamwu.clips")?.set(true, forKey: "shouldAddLastCopied")
-            //print("defaults true")
-            NotificationCenter.default.post(Notification(name: Notification.Name("AddLastCopiedInMain")))
+        if path.contains("addcopied") { // opened from the widget
+            NotificationCenter.default.post(Notification(name: Notification.Name("AddLastCopiedInMain"))) // the main table loads before this function gets called, so just use the notification that is already being observed
         }
         return true
     }

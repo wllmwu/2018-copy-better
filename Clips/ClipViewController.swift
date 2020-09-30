@@ -30,19 +30,15 @@ class ClipViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         if self.isLastCopied {
-            //let shareButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(ClipViewController.openShareSheet))
             let addButton: UIBarButtonItem = UIBarButtonItem(title: AppStrings.ADD_TO_LIST_BUTTON_TITLE, style: UIBarButtonItem.Style.plain, target: self, action: #selector(ClipViewController.addLastCopied))
             self.navigationItem.title = AppStrings.LAST_COPIED_TITLE
-            //self.navigationItem.rightBarButtonItems = [shareButton, addButton]
-            self.navigationItem.rightBarButtonItems?.append(addButton)
+            self.navigationItem.rightBarButtonItems?.append(addButton) // there is already a share button from the storyboard
             self.setContentsText(contents: self.contents)
         }
         else {
-            //let shareButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(ClipViewController.openShareSheet))
             let editButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(ClipViewController.segueToEdit))
             let copyButton: UIBarButtonItem = UIBarButtonItem(title: AppStrings.COPY_BUTTON_TITLE, style: UIBarButtonItem.Style.plain, target: self, action: #selector(ClipViewController.copyClip))
-            //self.navigationItem.rightBarButtonItems = [shareButton, editButton, copyButton]
-            self.navigationItem.rightBarButtonItems?.append(editButton)
+            self.navigationItem.rightBarButtonItems?.append(editButton) // there is already a share button from the storyboard
             self.navigationItem.rightBarButtonItems?.append(copyButton)
             
             if let title = self.clip.title {
@@ -60,12 +56,32 @@ class ClipViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Public setters
+    
+    func setContext(_ context: NSManagedObjectContext) {
+        self.managedObjectContext = context
+    }
+    
+    func setClip(_ clip: Clip) {
+        self.clip = clip
+        self.contents = clip.contents
+    }
+    
+    func setLastCopied(contents: [String : Any], folder: Folder) {
+        self.contents = contents
+        self.currentFolder = folder
+        self.isLastCopied = true
+    }
+    
     // MARK: - Instance methods
     
     private func setTitle(_ title: String?) {
         self.navigationItem.title = title
     }
     
+    /**
+     Displays the contents of this view's assigned clip in the best available format (including image types), or displays a placeholder if the contents are empty or have no usable format.
+     */
     private func setContentsText(contents: [String : Any]) {
         if contents.count == 0 {
             self.contentsTextView.text = AppStrings.EMPTY_CLIP_PLACEHOLDER
@@ -113,20 +129,18 @@ class ClipViewController: UIViewController {
         }
     }
     
-    func setContext(_ context: NSManagedObjectContext) {
-        self.managedObjectContext = context
+    @discardableResult private func saveContext() -> Bool {
+        do {
+            try self.managedObjectContext.save()
+            return true
+        }
+        catch let error as NSError {
+            print("Couldn't save. \(error), \(error.userInfo)")
+        }
+        return false
     }
     
-    func setClip(_ clip: Clip) {
-        self.clip = clip
-        self.contents = clip.contents
-    }
-    
-    func setLastCopied(contents: [String : Any], folder: Folder) {
-        self.contents = contents
-        self.currentFolder = folder
-        self.isLastCopied = true
-    }
+    // MARK: - Interface actions
     
     @objc func segueToEdit() {
         self.performSegue(withIdentifier: "ClipToEditClip", sender: self)
@@ -171,17 +185,6 @@ class ClipViewController: UIViewController {
         self.present(activityViewController, animated: true, completion: nil)
     }
     
-    @discardableResult private func saveContext() -> Bool {
-        do {
-            try self.managedObjectContext.save()
-            return true
-        }
-        catch let error as NSError {
-            print("Couldn't save. \(error), \(error.userInfo)")
-        }
-        return false
-    }
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -193,7 +196,7 @@ class ClipViewController: UIViewController {
                 let destinationNav: UINavigationController = segue.destination as! UINavigationController
                 let destination: EditClipTableViewController = destinationNav.viewControllers.first as! EditClipTableViewController
                 destination.setContext(self.managedObjectContext)
-                destination.setMode(.Edit)
+                destination.setMode(.edit)
                 destination.setClip(self.clip!)
             }
         }

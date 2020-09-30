@@ -12,11 +12,14 @@ import CoreData
 class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     
     private var managedObjectContext: NSManagedObjectContext!
+    /// The folder whose contents this view controller is displaying.
     private var folder: Folder!
     private var isRootFolder: Bool = false
     private var subfolders: [Folder] = []
+    /// The subfolder that was just selected (when applicable), used to configure the destination in a segue. Should be reset to `nil` when no longer needed.
     private var selectedFolder: Folder?
     private var clips: [Clip] = []
+    /// The clip that was just selected (when applicable), used to configure the destination in a segue. Should be reset to `nil` when no longer needed.
     private var selectedClip: Clip?
     private var searchController: UISearchController!
     private var filteredFolders: [Folder] = []
@@ -30,6 +33,10 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     @IBOutlet weak var addButton: UIBarButtonItem!
     
     // MARK: - Public setters
+    
+    func setContext(_ moc: NSManagedObjectContext) {
+        self.managedObjectContext = moc
+    }
     
     func setFolder(_ folder: Folder) {
         self.folder = folder
@@ -48,11 +55,14 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.navigationItem.rightBarButtonItems?.append(self.editButtonItem)
         
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            AppDelegate.alertFatalError(message: "Couldn't find AppDelegate.")
-            return
+        if self.managedObjectContext == nil {
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                AppDelegate.alertFatalError(message: "Couldn't find AppDelegate.")
+                return
+            }
+            self.managedObjectContext = appDelegate.persistentContainer.viewContext
         }
-        self.managedObjectContext = appDelegate.persistentContainer.viewContext
+        
         if self.folder == nil {
             // fetch the root folder
             let request: NSFetchRequest = NSFetchRequest<Folder>(entityName: "Folder")
@@ -80,8 +90,8 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.showCopiedToast), name: Notification.Name("ShowCopiedToast"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.addLastCopied), name: Notification.Name("AddLastCopiedInMain"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.showCopiedToast), name: Notification.Name("ShowCopiedToast"), object: nil) // triggered by individual cells
+        NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.addLastCopied), name: Notification.Name("AddLastCopiedInMain"), object: nil) // triggered by the Last Copied cell
         
         self.loadData()
     }
@@ -100,6 +110,9 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     
     // MARK: - Instance methods
     
+    /**
+     Loads the current pasteboard (Last Copied), and calls `retrieveData()`; resets `selectedFolder` and `selectedClip` to `nil`; and reloads the table view.
+     */
     private func loadData() {
         self.showLastCopied = self.defaults.bool(forKey: "showLastCopiedInMain")
         if self.showLastCopied && self.pasteboardChangeCount != UIPasteboard.general.changeCount {
@@ -115,7 +128,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     /**
-     Fetches folders and clips to display, storing them in `self.subfolders` and `self.clips`.
+     Fetches folders and clips from the current folder to display, storing them in `self.subfolders` and `self.clips`.
      */
     private func retrieveData() {
         self.subfolders = self.folder.subfoldersArray
@@ -126,6 +139,9 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         self.lastCopied = ClipboardManager.retrieveFromPasteboard()
     }
     
+    /**
+     Tries to save the managed object context, and returns whether the operation was successful.
+     */
     @discardableResult private func saveContext() -> Bool {
         do {
             try self.managedObjectContext.save()
@@ -138,7 +154,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     /**
-     Convenience method to update the indices of all folders in the list.
+     Convenience version of `updateFolderIndices(from:to:)` that updates the indices of all folders in the list.
      */
     private func updateFolderIndices() {
         self.updateFolderIndices(from: 0, to: self.subfolders.count)
@@ -155,7 +171,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     /**
-     Convenience method to update the indices of all clips in the list.
+     Convenience version of `updateClipIndices(from:to:)` that updates the indices of all clips in the list.
      */
     private func updateClipIndices() {
         self.updateClipIndices(from: 0, to: self.clips.count)
@@ -171,10 +187,16 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         }
     }
     
+    /**
+     Displays the custom toast view with (localized) message "Copied". Exposed to Objective-C so it can be called by the notification observer.
+     */
     @objc func showCopiedToast() {
         self.showToast(message: AppStrings.TOAST_MESSAGE_COPIED)
     }
     
+    /**
+     Creates a new clip with the contents of the pasteboard and inserts it into the current folder as the new first clip. Also updates indices and orders the context to save.
+     */
     @objc func addLastCopied() {
         if self.lastCopied.count > 0 {
             guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
@@ -199,10 +221,16 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         }
     }
     
+    /**
+     Triggers the segue to the view for creating a new clip.
+     */
     private func addClip() {
         self.performSegue(withIdentifier: "MainToAddClip", sender: self)
     }
     
+    /**
+     Displays the alert prompt for creating a new folder.
+     */
     private func addFolder(retrying: Bool) {
         var message: String? = nil
         if retrying {
@@ -231,6 +259,9 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         self.present(alert, animated: true, completion: nil)
     }
     
+    /**
+     Creates a new folder with the given name and inserts it into the current folder (appends to the list of existing folders). Also orders the context to save.
+     */
     private func createNewFolder(name: String) {
         guard let entity = NSEntityDescription.entity(forEntityName: "Folder", in: self.managedObjectContext) else {
             AppDelegate.alertFatalError(message: "Couldn't find entity description.")
@@ -249,6 +280,9 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         }
     }
     
+    /**
+     Displays the action sheet for selecting whether to create a new folder or a new clip.
+     */
     @IBAction func addItem() {
         let addFolderAction: UIAlertAction = UIAlertAction(title: AppStrings.NEW_FOLDER_ACTION, style: .default) { (action) in
             self.addFolder(retrying: false)
@@ -274,7 +308,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             return 1
         }
         else {
-            return 2
+            return 2 // separate the Last Copied and/or Favorites cells from the folders and clips to make indexing easier
         }
     }
 
@@ -283,10 +317,10 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             return self.filteredFolders.count + self.filteredClips.count
         }
         else {
-            if section == 0 {
+            if section == 0 { // Last Copied and/or Favorites cells
                 return (self.showLastCopied ? 1 : 0) + (self.isRootFolder ? 1 : 0)
             }
-            else {
+            else { // folders and clips
                 return self.subfolders.count + self.clips.count
             }
         }
@@ -294,13 +328,13 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if self.isFiltering() {
-            if indexPath.row < self.filteredFolders.count {
+            if indexPath.row < self.filteredFolders.count { // folder
                 let folder: Folder = self.filteredFolders[indexPath.row]
                 let cell: FolderTableViewCell = tableView.dequeueReusableCell(withIdentifier: "FolderCell", for: indexPath) as! FolderTableViewCell
                 cell.setName(folder.name!)
                 return cell
             }
-            else {
+            else { // clip
                 let clip: Clip = self.filteredClips[indexPath.row - self.filteredFolders.count]
                 let cell: ClipTableViewCell
                 if let title = clip.title {
@@ -327,13 +361,13 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
                 }
             }
             else {
-                if indexPath.row < self.subfolders.count {
+                if indexPath.row < self.subfolders.count { // folder
                     let folder: Folder = self.subfolders[indexPath.row]
                     let cell: FolderTableViewCell = tableView.dequeueReusableCell(withIdentifier: "FolderCell", for: indexPath) as! FolderTableViewCell
                     cell.setName(folder.name!)
                     return cell
                 }
-                else {
+                else { // clip
                     let clip: Clip = self.clips[indexPath.row - self.subfolders.count]
                     let cell: ClipTableViewCell
                     if let title = clip.title {
@@ -600,7 +634,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
                 let destinationNav: UINavigationController = segue.destination as! UINavigationController
                 let destination: EditClipTableViewController = destinationNav.viewControllers.first as! EditClipTableViewController
                 destination.setContext(self.managedObjectContext)
-                destination.setMode(.Add)
+                destination.setMode(.add)
                 destination.setLocationToAdd(folder: self.folder, index: self.clips.count)
             }
             else if identifier == "MainToLastCopied" {
@@ -615,6 +649,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             else if identifier == "MainToMain" {
                 if let folder = self.selectedFolder {
                     let destination: MainTableViewController = segue.destination as! MainTableViewController
+                    destination.setContext(self.managedObjectContext)
                     destination.setFolder(folder)
                 }
             }
@@ -639,14 +674,23 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         }
     }
     
+    /**
+     Reloads data. This handles unwinding from views that don't completely cover the screen (returning from those does not trigger `viewWillAppear(_:)`).
+     */
     @IBAction func unwindToMain(unwindSegue: UIStoryboardSegue) {
         self.loadData()
     }
     
+    /**
+     Dismisses this view.
+     */
     @IBAction func swipeBack() {
         self.dismiss(animated: true, completion: nil)
     }
     
+    /**
+     Moves the selected folder to the new folder chosen in the folder picker. This is triggered by unwinding from the folder picker if the user didn't cancel the operation.
+     */
     @IBAction func unwindFromFolderPicker(unwindSegue: UIStoryboardSegue) {
         let source: FolderPickerTableViewController = unwindSegue.source as! FolderPickerTableViewController
         let chosenFolder: Folder = source.getSelectedFolder()

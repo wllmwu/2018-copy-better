@@ -12,25 +12,25 @@ import CoreData
 class EditClipTableViewController: UITableViewController {
     
     public enum Mode {
-        case Add, Edit
+        case add, edit
     }
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentsTextView: UITextView!
     
-    private var mode: Mode = .Add
+    private var mode: Mode = .add
     private var contents: [String : Any] = [:]
     private var originalContentsText: NSAttributedString!
     /**
-     The clip being edited. Should be set when `mode` is `.Edit`; otherwise, may be left as `nil`.
+     The clip being edited. Should be set when `mode` is `.edit`; otherwise, may be left as `nil`.
      */
     private var clip: Clip!
     /**
-     The folder where the new clip should be inserted. Should be set when `mode` is `.Add`; otherwise, may be left as `nil`.
+     The folder where the new clip should be inserted. Should be set when `mode` is `.add`; otherwise, may be left as `nil`.
      */
     private var containingFolder: Folder!
     /**
-     The index in the containing folder where the new clip should be inserted. Should be set when `mode` is `.Add`; otherwise, may be left as `nil`.
+     The index in the containing folder where the new clip should be inserted. Should be set when `mode` is `.add`; otherwise, may be left as `nil`.
      */
     private var indexInFolder: Int?
     
@@ -47,7 +47,7 @@ class EditClipTableViewController: UITableViewController {
         
         self.tableView.rowHeight = UITableView.automaticDimension
         
-        if self.mode == .Add {
+        if self.mode == .add {
             self.navigationItem.title = AppStrings.ADD_CLIP_TITLE
             self.titleTextField.becomeFirstResponder()
         }
@@ -62,8 +62,30 @@ class EditClipTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Public setters
+    
+    func setContext(_ context: NSManagedObjectContext) {
+        self.managedObjectContext = context
+    }
+    
+    func setMode(_ mode: Mode) {
+        self.mode = mode
+    }
+    
+    func setClip(_ clip: Clip) {
+        self.clip = clip
+    }
+    
+    func setLocationToAdd(folder: Folder, index: Int) {
+        self.containingFolder = folder
+        self.indexInFolder = index
+    }
+    
     // MARK: - Instance methods
     
+    /**
+     Displays the contents of this view's assigned clip in the best available format (including image types), or displays a placeholder if the contents have no usable format.
+     */
     private func setContents(_ contents: [String : Any]) {
         self.contents = contents
         
@@ -93,23 +115,6 @@ class EditClipTableViewController: UITableViewController {
         self.originalContentsText = self.contentsTextView.attributedText
     }
     
-    func setContext(_ context: NSManagedObjectContext) {
-        self.managedObjectContext = context
-    }
-    
-    func setMode(_ mode: Mode) {
-        self.mode = mode
-    }
-    
-    func setClip(_ clip: Clip) {
-        self.clip = clip
-    }
-    
-    func setLocationToAdd(folder: Folder, index: Int) {
-        self.containingFolder = folder
-        self.indexInFolder = index
-    }
-    
     @discardableResult private func saveContext() -> Bool {
         do {
             try self.managedObjectContext.save()
@@ -121,8 +126,29 @@ class EditClipTableViewController: UITableViewController {
         return false
     }
     
+    private func saveClipTitleAndContents(clip: Clip) {
+        clip.title = self.titleTextField.text
+        if let title = self.titleTextField.text {
+            if title.isEmpty {
+                clip.title = nil // no empty strings
+            }
+        }
+        
+        if let text = self.contentsTextView.attributedText {
+            if self.mode == .add || !text.isEqual(to: self.originalContentsText) {
+                clip.contents = ClipboardManager.itemFromAttributedString(text)
+            }
+            // else the text hasn't changed when Save is pressed, so just leave the clip as it is
+        }
+        else {
+            clip.contents = [:]
+        }
+    }
+    
+    // MARK: - Interface actions
+    
     @IBAction func save(_ sender: UIBarButtonItem) {
-        if self.mode == .Add {
+        if self.mode == .add {
             guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
                 AppDelegate.alertFatalError(message: "Couldn't find entity description.")
                 return
@@ -149,25 +175,6 @@ class EditClipTableViewController: UITableViewController {
         }
     }
     
-    private func saveClipTitleAndContents(clip: Clip) {
-        clip.title = self.titleTextField.text
-        if let title = self.titleTextField.text {
-            if title.isEmpty {
-                clip.title = nil // no empty strings
-            }
-        }
-        
-        if let text = self.contentsTextView.attributedText {
-            if self.mode == .Add || !text.isEqual(to: self.originalContentsText) {
-                clip.contents = ClipboardManager.itemFromAttributedString(text)
-            }
-            // else the text hasn't changed when Save is pressed, so just leave the clip as it is
-        }
-        else {
-            clip.contents = [:]
-        }
-    }
-    
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -183,53 +190,6 @@ class EditClipTableViewController: UITableViewController {
     }
 
     /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.

@@ -33,7 +33,7 @@ class ClipsPersistentContainer: NSPersistentContainer {
     }
     
     /**
-     Creates the root folder that should contain all other folders and clips.
+     Creates the root folder that should contain all other folders and clips. Should only ever be called once.
      */
     private func createRootFolder() -> Folder? {
         guard let folderEntity = NSEntityDescription.entity(forEntityName: "Folder", in: self.viewContext) else {
@@ -47,7 +47,7 @@ class ClipsPersistentContainer: NSPersistentContainer {
     }
     
     /**
-     Inserts the two default clips into the managed object context of this container.
+     Inserts the two default clips into the managed object context of this container. Should only ever be called once.
      */
     private func addDefaultData(rootFolder: Folder) {
         guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.viewContext) else {

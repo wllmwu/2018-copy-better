@@ -14,7 +14,8 @@ class KeyboardButton: UIButton {
     @IBInspectable var defaultBackgroundColor: UIColor!
     @IBInspectable var highlightedBackgroundColor: UIColor!
     
-    /*override init(frame: CGRect) {
+    /*
+    override init(frame: CGRect) {
         super.init(frame: frame)
         self.setup()
     }
@@ -22,7 +23,8 @@ class KeyboardButton: UIButton {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.setup()
-    }*/
+    }
+    */
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,14 +44,6 @@ class KeyboardButton: UIButton {
         self.layer.shadowOffset = CGSize(width: 0, height: 2)
         self.layer.masksToBounds = false
         
-        /*if self.isControlKey {
-            self.defaultBackgroundColor = UIColor(named: "Key")
-            self.highlightedBackgroundColor = UIColor(named: "Key White")
-        }
-        else {
-            self.defaultBackgroundColor = UIColor(named: "Key White")
-            self.highlightedBackgroundColor = UIColor(named: "Key")
-        }*/
         self.backgroundColor = self.defaultBackgroundColor
     }
     
