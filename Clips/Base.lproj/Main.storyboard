@@ -506,9 +506,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="isRootFolder" value="YES"/>
-                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="addButton" destination="f4M-pE-6hk" id="y2P-qm-ArB"/>
                         <segue destination="j6B-tm-cbu" kind="presentation" identifier="MainToAddClip" id="QqE-G5-atx"/>
@@ -986,9 +983,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="isRootFolder" value="NO"/>
-                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="addButton" destination="age-v1-TsR" id="veQ-ac-bOC"/>
                         <segue destination="j6B-tm-cbu" kind="presentation" identifier="MainToAddClip" id="SyV-So-uVv"/>
@@ -1387,7 +1381,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="SI3-HK-EbX"/>
         <segue reference="QqE-G5-atx"/>
-        <segue reference="OQy-tm-RJB"/>
+        <segue reference="T1C-MY-kRL"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.turn.up.left.fill" catalog="system" width="128" height="106"/>

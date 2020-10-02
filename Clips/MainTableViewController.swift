@@ -26,6 +26,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     private var filteredClips: [Clip] = []
     
     private var showLastCopied: Bool = true
+    private var shouldAddLastCopied: Bool = false
     private var lastCopied: [String : Any] = [:]
     private var pasteboardChangeCount: Int = 0
     private let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clips")!
@@ -94,6 +95,10 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.addLastCopied), name: Notification.Name("AddLastCopiedInMain"), object: nil) // triggered by the Last Copied cell
         
         self.loadData()
+        
+        if self.shouldAddLastCopied {
+            self.addLastCopied()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -113,7 +118,8 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     /**
      Loads the current pasteboard (Last Copied), and calls `retrieveData()`; resets `selectedFolder` and `selectedClip` to `nil`; and reloads the table view.
      */
-    private func loadData() {
+    public func loadData() {
+        print("load data")
         self.showLastCopied = self.defaults.bool(forKey: "showLastCopiedInMain")
         if self.showLastCopied && self.pasteboardChangeCount != UIPasteboard.general.changeCount {
             // the pasteboard changeCount gets reset to 0 when the device is restarted
@@ -136,6 +142,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     private func retrieveLastCopied() {
+        print("retrieve pasteboard")
         self.lastCopied = ClipboardManager.retrieveFromPasteboard()
     }
     
@@ -198,6 +205,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
      Creates a new clip with the contents of the pasteboard and inserts it into the current folder as the new first clip. Also updates indices and orders the context to save.
      */
     @objc func addLastCopied() {
+        print("add copied")
         if self.lastCopied.count > 0 {
             guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
                 AppDelegate.alertFatalError(message: "Couldn't find entity description.")
@@ -217,7 +225,11 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             if self.saveContext() {
                 self.tableView.reloadData()
                 self.showToast(message: AppStrings.TOAST_MESSAGE_ADDED)
+                self.shouldAddLastCopied = false
             }
+        }
+        else {
+            self.shouldAddLastCopied = true
         }
     }
     

@@ -38,7 +38,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         let path: [String] = url.pathComponents
         if path.contains("addcopied") { // opened from the widget
-            NotificationCenter.default.post(Notification(name: Notification.Name("AddLastCopiedInMain"))) // the main table loads before this function gets called, so just use the notification that is already being observed
+            print("open")
+            self.window?.rootViewController?.dismiss(animated: false, completion: nil) // dismiss modally presented views
+            if let navigation = self.window?.rootViewController as? UINavigationController {
+                navigation.popToRootViewController(animated: true) // dismiss views in the navigation stack (return to the root folder view)
+                if let viewController = navigation.viewControllers.first as? MainTableViewController {
+                    viewController.addLastCopied()
+                }
+            }
+            //NotificationCenter.default.post(Notification(name: Notification.Name("AddLastCopiedInMain"))) // the main table loads before this function gets called, so just use the notification that is already being observed
         }
         return true
     }
@@ -55,6 +63,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        print("enter foreground")
+        if let navigation = self.window?.rootViewController as? UINavigationController {
+            if let viewController = navigation.visibleViewController as? MainTableViewController {
+                viewController.loadData() // when the app is reopened from a background state, if it was on a folder view, refresh that folder
+            }
+        }
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
