@@ -869,6 +869,7 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Widget 2/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -896,6 +897,7 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Widget 2/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -920,7 +922,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Clips Widget/Clips Widget.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Widget/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -944,7 +946,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Clips Widget/Clips Widget.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Widget/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -968,7 +970,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Clips Share/Clips Share.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Share/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -994,7 +996,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Clips Share/Clips Share.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Share/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1137,7 +1139,7 @@
 				CODE_SIGN_ENTITLEMENTS = Clips/Clips.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "$(SRCROOT)/Clips/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1161,7 +1163,7 @@
 				CODE_SIGN_ENTITLEMENTS = Clips/Clips.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "$(SRCROOT)/Clips/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1183,7 +1185,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Clips Keyboard/Clips Keyboard.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Keyboard/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1209,7 +1211,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Clips Keyboard/Clips Keyboard.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Keyboard/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
