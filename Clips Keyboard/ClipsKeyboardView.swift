@@ -14,6 +14,8 @@ protocol ClipsKeyboardViewDelegate: class {
     var isFavorites: Bool { get }
     var subfolders: [Folder] { get }
     var clips: [Clip] { get }
+    var shouldWrapClips: Bool { get }
+    
     func selectFolder(_ folder: Folder)
     func selectClip(_ clip: Clip)
     func goToFavorites()
@@ -30,6 +32,7 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     private var lastCopied: String?
     private var pasteboardChangeCount: Int = 0
     private static let numItemsOnPage: Int = 5
+    private var shouldWrapClips: Bool = false
     
     @IBOutlet weak var lastCopiedLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -235,6 +238,9 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
             cell.setClip(clip)
             if self.delegate.isFavorites {
                 cell.hideXButton()
+            }
+            if self.delegate.shouldWrapClips {
+                cell.wrapClipText()
             }
             return cell
         }

@@ -19,6 +19,7 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
     internal var isFavorites: Bool = false
     internal var subfolders: [Folder] = []
     internal var clips: [Clip] = []
+    internal var shouldWrapClips: Bool = false
     
     private var keyboardView: ClipsKeyboardView!
     private var defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clips")!
@@ -71,6 +72,7 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.shouldWrapClips = self.defaults.bool(forKey: "wrapClipsInKeyboard")
         self.loadData()
     }
     

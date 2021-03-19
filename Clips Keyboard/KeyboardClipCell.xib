@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -26,7 +27,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Contents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Myd-J4-QNF">
-                        <rect key="frame" x="61" y="11.5" width="262" height="21"/>
+                        <rect key="frame" x="61" y="2" width="262" height="40"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -44,13 +45,13 @@
                             <constraint firstAttribute="height" constant="44" id="uGK-kI-uBx"/>
                             <constraint firstAttribute="width" secondItem="gDK-kF-5pq" secondAttribute="height" multiplier="1:1" id="uQh-Fb-Plf"/>
                         </constraints>
-                        <color key="tintColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" systemColor="systemGray2Color"/>
                         <state key="normal" image="xmark.circle.fill" catalog="system"/>
                         <connections>
                             <action selector="xTapped:" destination="64e-CN-iRw" eventType="touchUpInside" id="yOB-j5-N7b"/>
                         </connections>
                     </button>
-                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="faH-6Y-ydd">
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="faH-6Y-ydd">
                         <rect key="frame" x="263" y="7" width="48" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="vDQ-9d-yPA"/>
@@ -63,7 +64,7 @@
                             <action selector="deleteTapped:" destination="64e-CN-iRw" eventType="touchUpInside" id="TmM-MX-Bkw"/>
                         </connections>
                     </button>
-                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Npq-xe-iFe">
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Npq-xe-iFe">
                         <rect key="frame" x="319" y="7" width="48" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="PW2-qU-sc7"/>
@@ -75,6 +76,7 @@
                     </button>
                 </subviews>
             </view>
+            <viewLayoutGuide key="safeArea" id="eNq-2S-AUX"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Npq-xe-iFe" secondAttribute="trailing" constant="8" id="25E-aD-CdD"/>
                 <constraint firstItem="Myd-J4-QNF" firstAttribute="leading" secondItem="vF2-fU-6dO" secondAttribute="trailing" priority="750" constant="8" id="4YU-cG-Yxg"/>
@@ -88,12 +90,12 @@
                 <constraint firstItem="Npq-xe-iFe" firstAttribute="centerY" secondItem="vF2-fU-6dO" secondAttribute="centerY" id="REP-vW-qLQ"/>
                 <constraint firstItem="vF2-fU-6dO" firstAttribute="centerY" secondItem="64e-CN-iRw" secondAttribute="centerY" id="ZJW-TH-AYu"/>
                 <constraint firstItem="Npq-xe-iFe" firstAttribute="leading" secondItem="faH-6Y-ydd" secondAttribute="trailing" constant="8" id="a3b-Cx-Bca"/>
+                <constraint firstItem="Myd-J4-QNF" firstAttribute="top" secondItem="64e-CN-iRw" secondAttribute="top" constant="2" id="hw3-n7-saX"/>
+                <constraint firstAttribute="bottom" secondItem="Myd-J4-QNF" secondAttribute="bottom" constant="2" id="o2L-xC-dFH"/>
                 <constraint firstItem="9ev-0G-gGS" firstAttribute="leading" secondItem="64e-CN-iRw" secondAttribute="leading" constant="16" id="wtA-ca-GWW"/>
                 <constraint firstItem="gDK-kF-5pq" firstAttribute="centerY" secondItem="vF2-fU-6dO" secondAttribute="centerY" id="xbW-bd-2Tp"/>
-                <constraint firstItem="Myd-J4-QNF" firstAttribute="centerY" secondItem="vF2-fU-6dO" secondAttribute="centerY" id="xtR-cV-HvU"/>
                 <constraint firstItem="Myd-J4-QNF" firstAttribute="leading" secondItem="64e-CN-iRw" secondAttribute="leading" priority="250" constant="16" id="ya6-Wd-Nf0"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="eNq-2S-AUX"/>
             <connections>
                 <outlet property="cancelButton" destination="Npq-xe-iFe" id="UKs-6W-3gj"/>
                 <outlet property="contentsLabel" destination="Myd-J4-QNF" id="uH5-Po-tEO"/>
@@ -110,5 +112,8 @@
     </objects>
     <resources>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

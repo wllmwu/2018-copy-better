@@ -11,6 +11,7 @@ import UIKit
 class SettingsTableViewController: UITableViewController {
     
     @IBOutlet weak var showCurrentInMainSwitch: UISwitch!
+    @IBOutlet weak var wrapClipsInKeyboardSwitch: UISwitch!
     @IBOutlet weak var showCurrentInWidgetSwitch: UISwitch!
     @IBOutlet weak var numClipsInWidgetStepper: UIStepper!
     @IBOutlet weak var numClipsInWidgetLabel: UILabel!
@@ -29,6 +30,7 @@ class SettingsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         self.showCurrentInMainSwitch.isOn = self.defaults.bool(forKey: "showLastCopiedInMain")
+        self.wrapClipsInKeyboardSwitch.isOn = self.defaults.bool(forKey: "wrapClipsInKeyboard")
         self.showCurrentInWidgetSwitch.isOn = self.defaults.bool(forKey: "showLastCopiedInWidget")
         
         let numClips: Int = self.defaults.integer(forKey: "numClipsInWidget")
@@ -54,6 +56,10 @@ class SettingsTableViewController: UITableViewController {
         self.defaults.set(self.showCurrentInMainSwitch.isOn, forKey: "showLastCopiedInMain")
     }
     
+    @IBAction func didToggleWrapClipsInKeyboardSwitch(_ sender: UISwitch) {
+        self.defaults.set(self.wrapClipsInKeyboardSwitch.isOn, forKey: "wrapClipsInKeyboard")
+    }
+    
     @IBAction func toggleShowCurrentInWidgetSwitch(_ sender: UISwitch) {
         self.defaults.set(self.showCurrentInWidgetSwitch.isOn, forKey: "showLastCopiedInWidget")
     }
@@ -66,11 +72,13 @@ class SettingsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 { return 1 }
+        if section == 0 || section == 1 {
+            return 1
+        }
         return 2
     }
     
