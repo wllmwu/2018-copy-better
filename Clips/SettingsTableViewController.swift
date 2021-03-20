@@ -83,7 +83,7 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 2 {
+        if indexPath.section == 3 {
             return (indexPath.row == 0) ? self.tipsLabel.bounds.height + 8 : self.aboutLabel.bounds.height + 16
         }
         return 45
