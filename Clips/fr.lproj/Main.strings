@@ -32,6 +32,18 @@
 /* Class = "UITableViewSection"; headerTitle = "In app"; ObjectID = "BjC-VA-k4B"; */
 "BjC-VA-k4B.headerTitle" = "Application";
 
+/* Class = "UITableViewSection"; headerTitle = "Keyboard"; ObjectID = "3rT-cN-McX"; */
+"3rT-cN-McX.headerTitle" = "Clavier";
+
+/* Class = "UITableViewSection"; footerTitle = "Enable the Copy Better keyboard in Settings > General > Keyboard > Keyboards > Add New Keyboard. Make sure to enable Allow Full Access too (so the keyboard can access the app's contents—no data is collected)."; ObjectID = "3rT-cN-McX"; */
+"3rT-cN-McX.footerTitle" = "Vous pouvez activer le clavier Copier Mieux à Réglages > Général > Clavier > Claviers > Ajouter un clavier. Il faut activer aussi \"Autoriser l'accès complet\" (pour que le clavier peut accéder aux contenus de l'application—il ne va pas recueillir vos données saisies).";
+
+/* Class = "UILabel"; text = "Allow long clips to wrap"; ObjectID = "ebq-E6-diW"; */
+"ebq-E6-diW.text" = "Retourner les éléments longs à la ligne";
+
+/* Class = "UITableViewSection"; headerTitle = "About"; ObjectID = "Qga-kv-hFl"; */
+"Qga-kv-hFl.headerTitle" = "Informations";
+
 /* Class = "UILabel"; text = "Show current pasteboard contents"; ObjectID = "C7j-pN-GgP"; */
 "C7j-pN-GgP.text" = "Afficher le presse-papier actuel";
 
