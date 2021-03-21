@@ -48,11 +48,19 @@ class KeyboardClipCell: UICollectionViewCell {
         self.xButton.isHidden = true
     }
     
+    func wrapClipText() {
+        self.contentsLabel.numberOfLines = 3
+        self.contentsLabel.adjustsFontSizeToFitWidth = true
+        self.contentsLabel.minimumScaleFactor = 0.6
+    }
+    
     // MARK: - Private methods
     
     private func resetLabels() {
         self.contentsLabelLeadingToTitleLabel.priority = .defaultHigh
         self.contentsLabelLeadingToEdge.priority = .defaultLow
+        self.contentsLabel.numberOfLines = 1
+        self.contentsLabel.adjustsFontSizeToFitWidth = false
     }
     
     private func resetButtons() {
