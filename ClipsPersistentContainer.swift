@@ -21,6 +21,7 @@ class ClipsPersistentContainer: NSPersistentContainer {
     func setUpFirstLaunch() {
         let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clips")!
         defaults.set(true, forKey: "showLastCopiedInMain")
+        defaults.set(true, forKey: "enableFavorites")
         defaults.set(false, forKey: "wrapClipsInKeyboard")
         defaults.set(true, forKey: "showLastCopiedInWidget")
         defaults.set(5, forKey: "numClipsInWidget")

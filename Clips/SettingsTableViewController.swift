@@ -11,6 +11,7 @@ import UIKit
 class SettingsTableViewController: UITableViewController {
     
     @IBOutlet weak var showCurrentInMainSwitch: UISwitch!
+    @IBOutlet weak var enableFavoritesSwitch: UISwitch!
     @IBOutlet weak var wrapClipsInKeyboardSwitch: UISwitch!
     @IBOutlet weak var showCurrentInWidgetSwitch: UISwitch!
     @IBOutlet weak var numClipsInWidgetStepper: UIStepper!
@@ -30,6 +31,7 @@ class SettingsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         self.showCurrentInMainSwitch.isOn = self.defaults.bool(forKey: "showLastCopiedInMain")
+        self.enableFavoritesSwitch.isOn = self.defaults.bool(forKey: "enableFavorites")
         self.wrapClipsInKeyboardSwitch.isOn = self.defaults.bool(forKey: "wrapClipsInKeyboard")
         self.showCurrentInWidgetSwitch.isOn = self.defaults.bool(forKey: "showLastCopiedInWidget")
         
@@ -56,6 +58,10 @@ class SettingsTableViewController: UITableViewController {
         self.defaults.set(self.showCurrentInMainSwitch.isOn, forKey: "showLastCopiedInMain")
     }
     
+    @IBAction func didToggleEnableFavoritesSwitch(_ sender: UISwitch) {
+        self.defaults.set(self.enableFavoritesSwitch.isOn, forKey: "enableFavorites")
+    }
+    
     @IBAction func didToggleWrapClipsInKeyboardSwitch(_ sender: UISwitch) {
         self.defaults.set(self.wrapClipsInKeyboardSwitch.isOn, forKey: "wrapClipsInKeyboard")
     }
@@ -76,7 +82,7 @@ class SettingsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 || section == 1 {
+        if section == 1 {
             return 1
         }
         return 2

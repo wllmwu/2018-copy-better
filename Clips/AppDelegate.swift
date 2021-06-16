@@ -38,7 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         let path: [String] = url.pathComponents
         if path.contains("addcopied") { // opened from the widget
-            print("open")
             self.window?.rootViewController?.dismiss(animated: false, completion: nil) // dismiss modally presented views
             if let navigation = self.window?.rootViewController as? UINavigationController {
                 navigation.popToRootViewController(animated: true) // dismiss views in the navigation stack (return to the root folder view)
