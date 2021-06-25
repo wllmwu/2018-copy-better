@@ -24,12 +24,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // first launch ever - set some default settings and data
             self.managedObjectContext = self.persistentContainer.viewContext
             self.persistentContainer.setUpFirstLaunch()
+            
+            defaults.set(true, forKey: "showLastCopiedInMain")
+            defaults.set(true, forKey: "enableFavorites")
+            defaults.set(false, forKey: "wrapClipsInKeyboard")
+            defaults.set(true, forKey: "showLastCopiedInWidget")
+            defaults.set(5, forKey: "numClipsInWidget")
+            
+            defaults.set(true, forKey: "launchedBefore")
+            defaults.set(true, forKey: "launched2.0")
+            defaults.set(true, forKey: "launched2.1")
         }
-        else if !defaults.bool(forKey: "launched2.0") {
+        if !defaults.bool(forKey: "launched2.0") {
             // has launched before updating to version 2.0 - migrate old clips to the new model
             self.managedObjectContext = self.persistentContainer.viewContext
             self.persistentContainer.migrateModelV1To2()
             defaults.set(true, forKey: "launched2.0")
+        }
+        if !defaults.bool(forKey: "launched2.1") {
+            // has launched before updating to version 2.1 - add new settings defaults
+            defaults.set(true, forKey: "enableFavorites")
+            defaults.set(true, forKey: "launched2.1")
         }
         
         return true
@@ -38,7 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         let path: [String] = url.pathComponents
         if path.contains("addcopied") { // opened from the widget
-            print("open")
             self.window?.rootViewController?.dismiss(animated: false, completion: nil) // dismiss modally presented views
             if let navigation = self.window?.rootViewController as? UINavigationController {
                 navigation.popToRootViewController(animated: true) // dismiss views in the navigation stack (return to the root folder view)

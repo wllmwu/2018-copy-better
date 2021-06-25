@@ -26,6 +26,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     private var filteredClips: [Clip] = []
     
     private var showLastCopied: Bool = true
+    private var favoritesEnabled: Bool = true
     private var shouldAddLastCopied: Bool = false
     private var lastCopied: [String : Any] = [:]
     private var pasteboardChangeCount: Int = 0
@@ -119,13 +120,13 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
      Loads the current pasteboard (Last Copied), and calls `retrieveData()`; resets `selectedFolder` and `selectedClip` to `nil`; and reloads the table view.
      */
     public func loadData() {
-        print("load data")
         self.showLastCopied = self.defaults.bool(forKey: "showLastCopiedInMain")
         if self.showLastCopied && self.pasteboardChangeCount != UIPasteboard.general.changeCount {
             // the pasteboard changeCount gets reset to 0 when the device is restarted
             self.retrieveLastCopied()
             self.pasteboardChangeCount = UIPasteboard.general.changeCount
         }
+        self.favoritesEnabled = self.defaults.bool(forKey: "enableFavorites")
         self.selectedFolder = nil
         self.selectedClip = nil
         
@@ -142,7 +143,6 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     private func retrieveLastCopied() {
-        print("retrieve pasteboard")
         self.lastCopied = ClipboardManager.retrieveFromPasteboard()
     }
     
@@ -205,7 +205,6 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
      Creates a new clip with the contents of the pasteboard and inserts it into the current folder as the new first clip. Also updates indices and orders the context to save.
      */
     @objc func addLastCopied() {
-        print("add copied")
         if self.lastCopied.count > 0 {
             guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
                 AppDelegate.alertFatalError(message: "Couldn't find entity description.")
@@ -330,7 +329,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         }
         else {
             if section == 0 { // Last Copied and/or Favorites cells
-                return (self.showLastCopied ? 1 : 0) + (self.isRootFolder ? 1 : 0)
+                return (self.showLastCopied ? 1 : 0) + (self.isRootFolder && self.favoritesEnabled ? 1 : 0)
             }
             else { // folders and clips
                 return self.subfolders.count + self.clips.count
@@ -390,7 +389,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
                         cell = tableView.dequeueReusableCell(withIdentifier: "ClipNoTitleCell", for: indexPath) as! ClipTableViewCell
                     }
                     cell.setContents(clip.contents)
-                    cell.setFavorite(clip.isFavorite)
+                    cell.setFavorite(clip.isFavorite && self.favoritesEnabled)
                     return cell
                 }
             }
@@ -537,7 +536,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             moveAction.backgroundColor = UIColor(named: "Accent")
             actions.append(moveAction)
             
-            if indexPath.row >= self.subfolders.count {
+            if indexPath.row >= self.subfolders.count && self.favoritesEnabled {
                 let clip: Clip = self.clips[indexPath.row - self.subfolders.count]
                 let favoriteAction: UIContextualAction = UIContextualAction(style: .normal, title: nil) { (action, view, completionHandler) in
                     clip.isFavorite = !clip.isFavorite

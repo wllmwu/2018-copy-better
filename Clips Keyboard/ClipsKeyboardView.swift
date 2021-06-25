@@ -15,6 +15,7 @@ protocol ClipsKeyboardViewDelegate: class {
     var subfolders: [Folder] { get }
     var clips: [Clip] { get }
     var shouldWrapClips: Bool { get }
+    var favoritesEnabled: Bool { get }
     
     func selectFolder(_ folder: Folder)
     func selectClip(_ clip: Clip)
@@ -29,10 +30,10 @@ protocol ClipsKeyboardViewDelegate: class {
 class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
     
     private var filteredClips: [Clip] = []
+    private var indexOffset: Int = 0
     private var lastCopied: String?
     private var pasteboardChangeCount: Int = 0
     private static let numItemsOnPage: Int = 5
-    private var shouldWrapClips: Bool = false
     
     @IBOutlet weak var lastCopiedLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -96,6 +97,7 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
                 self.filteredClips.append(clip)
             }
         }
+        self.indexOffset = (!self.delegate.isRootFolder || self.delegate.favoritesEnabled) ? 1 : 0
         
         self.collectionView.reloadData()
         if self.filteredClips.count == 0 {
@@ -204,13 +206,11 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     // MARK: - Collection view data source
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // if in the root folder, there is an extra Favorites cell; if not, there is a superfolder cell
-        return self.delegate.subfolders.count + self.filteredClips.count + 1
+        return self.delegate.subfolders.count + self.filteredClips.count + self.indexOffset
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let offset = 1
-        if indexPath.row == 0 {
+        if indexPath.row < self.indexOffset {
             let cell: KeyboardFolderCell = collectionView.dequeueReusableCell(withReuseIdentifier: "KeyboardFolderCell", for: indexPath) as! KeyboardFolderCell
             
             if self.delegate.isRootFolder { // Favorites cell
@@ -224,15 +224,15 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
             
             return cell
         }
-        else if indexPath.row < self.delegate.subfolders.count + offset {
-            let folder: Folder = self.delegate.subfolders[indexPath.row - offset]
+        else if indexPath.row < self.delegate.subfolders.count + self.indexOffset {
+            let folder: Folder = self.delegate.subfolders[indexPath.row - self.indexOffset]
             let cell: KeyboardFolderCell = collectionView.dequeueReusableCell(withReuseIdentifier: "KeyboardFolderCell", for: indexPath) as! KeyboardFolderCell
             cell.setFormat(.folder)
             cell.setName(folder.name)
             return cell
         }
         else {
-            let index = indexPath.row - self.delegate.subfolders.count - offset
+            let index = indexPath.row - self.delegate.subfolders.count - self.indexOffset
             let clip: Clip = self.filteredClips[index]
             let cell: KeyboardClipCell = collectionView.dequeueReusableCell(withReuseIdentifier: "KeyboardClipCell", for: indexPath) as! KeyboardClipCell
             cell.setClip(clip)
@@ -247,8 +247,7 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let offset = 1
-        if indexPath.row == 0 {
+        if indexPath.row < self.indexOffset {
             if self.delegate.isRootFolder {
                 self.delegate.goToFavorites()
             }
@@ -256,11 +255,11 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
                 self.delegate.selectFolder(self.delegate.superfolder!)
             }
         }
-        else if indexPath.row < self.delegate.subfolders.count + offset {
-            self.delegate.selectFolder(self.delegate.subfolders[indexPath.row - offset])
+        else if indexPath.row < self.delegate.subfolders.count + self.indexOffset {
+            self.delegate.selectFolder(self.delegate.subfolders[indexPath.row - self.indexOffset])
         }
         else {
-            let index = indexPath.row - self.delegate.subfolders.count - offset
+            let index = indexPath.row - self.delegate.subfolders.count - self.indexOffset
             self.delegate.selectClip(self.filteredClips[index])
         }
     }
