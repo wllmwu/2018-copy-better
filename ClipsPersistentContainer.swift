@@ -19,19 +19,9 @@ class ClipsPersistentContainer: NSPersistentContainer {
      Initializes default settings and data for the app group. Should be called only once ever, on the app's first launch.
      */
     func setUpFirstLaunch() {
-        let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clips")!
-        defaults.set(true, forKey: "showLastCopiedInMain")
-        defaults.set(true, forKey: "enableFavorites")
-        defaults.set(false, forKey: "wrapClipsInKeyboard")
-        defaults.set(true, forKey: "showLastCopiedInWidget")
-        defaults.set(5, forKey: "numClipsInWidget")
-        
         if let root = self.createRootFolder() {
             self.addDefaultData(rootFolder: root)
         }
-        
-        defaults.set(true, forKey: "launchedBefore")
-        defaults.set(true, forKey: "launched2.0")
     }
     
     /**
@@ -42,6 +32,19 @@ class ClipsPersistentContainer: NSPersistentContainer {
             print("Couldn't find folder entity description.")
             return nil
         }
+        
+        // check if root folder already exists
+        let request: NSFetchRequest = NSFetchRequest<Folder>(entityName: "Folder")
+        request.predicate = NSPredicate(format: "superfolder == NIL")
+        do {
+            if (try self.viewContext.fetch(request).first) != nil {
+                return nil
+            }
+        }
+        catch let error as NSError {
+            print("Couldn't fetch. \(error), \(error.userInfo)")
+        }
+        
         let folder: Folder = Folder(entity: folderEntity, insertInto: self.viewContext)
         folder.name = "root"
         folder.index = 0
