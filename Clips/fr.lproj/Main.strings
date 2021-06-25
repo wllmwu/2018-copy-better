@@ -47,6 +47,9 @@
 /* Class = "UILabel"; text = "Show current pasteboard contents"; ObjectID = "C7j-pN-GgP"; */
 "C7j-pN-GgP.text" = "Afficher le presse-papier actuel";
 
+/* Class = "UILabel"; text = "Enable Favorites"; ObjectID = "tDn-AY-1qm"; */
+"tDn-AY-1qm.text" = "Activer les Favoris";
+
 /* Class = "UIButton"; normalTitle = "Add to list"; ObjectID = "Gcs-nk-eEx"; */
 "Gcs-nk-eEx.normalTitle" = "Ajouter";
 
