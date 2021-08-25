@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import ClipsKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

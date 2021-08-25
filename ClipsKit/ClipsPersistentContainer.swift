@@ -9,16 +9,16 @@
 import UIKit
 import CoreData
 
-class ClipsPersistentContainer: NSPersistentContainer {
+public class ClipsPersistentContainer: NSPersistentContainer {
     
-    override class func defaultDirectoryURL() -> URL {
+    public override class func defaultDirectoryURL() -> URL {
         return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.williamwu.clips")!
     }
     
     /**
      Initializes default settings and data for the app group. Should be called only once ever, on the app's first launch.
      */
-    func setUpFirstLaunch() {
+    public func setUpFirstLaunch() {
         if let root = self.createRootFolder() {
             self.addDefaultData(rootFolder: root)
         }
@@ -74,7 +74,7 @@ class ClipsPersistentContainer: NSPersistentContainer {
     /**
      Migrates the existing clip records from version 1 to version 2 of the Core Data model (creates the root folder and moves existing clips inside it).
      */
-    func migrateModelV1To2() {
+    public func migrateModelV1To2() {
         if let root = self.createRootFolder() {
             // assign all existing clips to be contained in the root folder
             let fetchRequest: NSFetchRequest = NSFetchRequest<Clip>(entityName: "Clip")

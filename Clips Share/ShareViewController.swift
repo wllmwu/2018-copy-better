@@ -10,6 +10,7 @@ import UIKit
 import Social
 import CoreData
 import MobileCoreServices
+import ClipsKit
 
 class ShareViewController: SLComposeServiceViewController, ShareConfigureViewControllerDelegate {
     

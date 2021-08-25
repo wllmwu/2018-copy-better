@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ClipsKit
 
 class ClipTableViewCell: UITableViewCell {
     

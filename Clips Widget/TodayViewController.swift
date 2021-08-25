@@ -9,6 +9,7 @@
 import UIKit
 import NotificationCenter
 import CoreData
+import ClipsKit
 
 class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDelegate, UITableViewDataSource {
     

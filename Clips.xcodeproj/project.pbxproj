@@ -18,11 +18,6 @@
 		E0071DE921CB171100B75D4C /* KeyboardClipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0071DE821CB171100B75D4C /* KeyboardClipCell.swift */; };
 		E0079EDC25068C9100F3BC10 /* FolderPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0079EDB25068C9100F3BC10 /* FolderPickerTableViewCell.swift */; };
 		E017418324E49B0C0007E667 /* FolderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E017418224E49B0C0007E667 /* FolderTableViewCell.swift */; };
-		E01FFB2821B4451800C69DEF /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */; };
-		E01FFB2921B44BB500C69DEF /* Clips.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E056F8F720CEE46C0025E2FE /* Clips.xcdatamodeld */; };
-		E029B42B21B32C8F005EFEB6 /* ClipsPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E029B42A21B32C8F005EFEB6 /* ClipsPersistentContainer.swift */; };
-		E029B42C21B32C8F005EFEB6 /* ClipsPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E029B42A21B32C8F005EFEB6 /* ClipsPersistentContainer.swift */; };
-		E029B42D21B33A30005EFEB6 /* ClipboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA135219D37BE0015A30F /* ClipboardManager.swift */; };
 		E03B9EB923E7DE25001206EF /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E03B9EB823E7DE25001206EF /* Colors.xcassets */; };
 		E03B9EBA23E7DE25001206EF /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E03B9EB823E7DE25001206EF /* Colors.xcassets */; };
 		E03B9EBB23E7DE25001206EF /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E03B9EB823E7DE25001206EF /* Colors.xcassets */; };
@@ -35,27 +30,12 @@
 		E041A73121E3D65700B58DD5 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E041A72F21E3D65700B58DD5 /* MainInterface.storyboard */; };
 		E041A73521E3D65800B58DD5 /* Copy Better Share.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E041A72B21E3D65700B58DD5 /* Copy Better Share.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E041A73A21E3DA3E00B58DD5 /* ShareConfigureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E041A73921E3DA3E00B58DD5 /* ShareConfigureViewController.swift */; };
-		E041A73D21E3DBD000B58DD5 /* Clip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */; };
-		E041A73F21E3DBD600B58DD5 /* Clips.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E056F8F720CEE46C0025E2FE /* Clips.xcdatamodeld */; };
-		E041A74021E3DBD900B58DD5 /* ClipsPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E029B42A21B32C8F005EFEB6 /* ClipsPersistentContainer.swift */; };
 		E041A74121E3DBDC00B58DD5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E06EC94D21C5ACA100687F9E /* Localizable.strings */; };
-		E041A74221E3DBDF00B58DD5 /* ClipboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA135219D37BE0015A30F /* ClipboardManager.swift */; };
-		E041A74321E3DBE200B58DD5 /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */; };
-		E0489BAA2693D6F80062AAC9 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E0489BA92693D6F80062AAC9 /* Intents.intentdefinition */; };
-		E04BC4C824E48DCC009BEE48 /* Clip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04BC4C724E48DCC009BEE48 /* Clip+CoreDataProperties.swift */; };
-		E04BC4C924E48DCC009BEE48 /* Clip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04BC4C724E48DCC009BEE48 /* Clip+CoreDataProperties.swift */; };
-		E04BC4CA24E48DCC009BEE48 /* Clip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04BC4C724E48DCC009BEE48 /* Clip+CoreDataProperties.swift */; };
-		E04BC4CB24E48DCC009BEE48 /* Clip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04BC4C724E48DCC009BEE48 /* Clip+CoreDataProperties.swift */; };
 		E056F8F120CEE46C0025E2FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E056F8F020CEE46C0025E2FE /* AppDelegate.swift */; };
 		E056F8F620CEE46C0025E2FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E056F8F420CEE46C0025E2FE /* Main.storyboard */; };
-		E056F8F920CEE46C0025E2FE /* Clips.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E056F8F720CEE46C0025E2FE /* Clips.xcdatamodeld */; };
 		E056F8FB20CEE46E0025E2FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E056F8FA20CEE46E0025E2FE /* Assets.xcassets */; };
 		E056F8FE20CEE46E0025E2FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E056F8FC20CEE46E0025E2FE /* LaunchScreen.storyboard */; };
-		E05CAEE121CB3BA9003C3BB4 /* Clip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */; };
-		E05CAEE321CB3BAD003C3BB4 /* ClipsPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E029B42A21B32C8F005EFEB6 /* ClipsPersistentContainer.swift */; };
 		E05CAEE421CB3BB2003C3BB4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E06EC94D21C5ACA100687F9E /* Localizable.strings */; };
-		E05CAEE521CB3BB6003C3BB4 /* ClipboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA135219D37BE0015A30F /* ClipboardManager.swift */; };
-		E05CAEE621CB3BCD003C3BB4 /* Clips.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E056F8F720CEE46C0025E2FE /* Clips.xcdatamodeld */; };
 		E05EA02D21BD8BB300FC33C9 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05EA02C21BD8BB300FC33C9 /* Toast.swift */; };
 		E0619E0021DE871B00A69332 /* ClipsKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0619DFF21DE871B00A69332 /* ClipsKeyboardView.swift */; };
 		E0619E0621DEA3BC00A69332 /* KeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0619E0521DEA3BC00A69332 /* KeyboardButton.swift */; };
@@ -64,7 +44,6 @@
 		E06AA130219D32DE0015A30F /* ClipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA12F219D32DE0015A30F /* ClipViewController.swift */; };
 		E06AA132219D32F60015A30F /* EditClipTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA131219D32F60015A30F /* EditClipTableViewController.swift */; };
 		E06AA134219D331E0015A30F /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA133219D331E0015A30F /* SettingsTableViewController.swift */; };
-		E06AA136219D37BE0015A30F /* ClipboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA135219D37BE0015A30F /* ClipboardManager.swift */; };
 		E06CAC642241374B008347AA /* ClipsKeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E06CAC662241374B008347AA /* ClipsKeyboardView.xib */; };
 		E06D3D55251FBCB200441300 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E06EC94D21C5ACA100687F9E /* Localizable.strings */; };
 		E06D3D5B251FBCB700441300 /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E373BC24EAFFD7006A2816 /* AppStrings.swift */; };
@@ -72,9 +51,6 @@
 		E06EC94B21C5ACA100687F9E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E06EC94D21C5ACA100687F9E /* Localizable.strings */; };
 		E07AC77A251FF04F007DEF67 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07AC779251FF04F007DEF67 /* FavoritesTableViewController.swift */; };
 		E07DC2FD2243495B00736DBD /* ShareConfigureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E07DC2FF2243495B00736DBD /* ShareConfigureView.xib */; };
-		E07E7FF121CEB0C100F06B8C /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */; };
-		E0858C2F21A0F0240089AE53 /* Clip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */; };
-		E0858C3021A0F0240089AE53 /* Clip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */; };
 		E08A5A2F25029E0A009524DB /* FolderPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08A5A2E25029E0A009524DB /* FolderPickerTableViewController.swift */; };
 		E0A51AD721C6CABA00FCCCA9 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A51AD621C6CABA00FCCCA9 /* KeyboardViewController.swift */; };
 		E0A51ADB21C6CABA00FCCCA9 /* Copy Better Keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E0A51AD421C6CABA00FCCCA9 /* Copy Better Keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -84,20 +60,31 @@
 		E0BB9D212245FD7A00BAC38F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E0BB9D232245FD7A00BAC38F /* InfoPlist.strings */; };
 		E0BB9D282245FDAF00BAC38F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E0BB9D2A2245FDAF00BAC38F /* InfoPlist.strings */; };
 		E0C260AF21B8B889007D9BED /* UIViewController+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C260AE21B8B889007D9BED /* UIViewController+Toast.swift */; };
-		E0CD5AE924E44E3C0035FDC8 /* Folder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD5AE724E44E3C0035FDC8 /* Folder+CoreDataClass.swift */; };
-		E0CD5AEA24E44E3C0035FDC8 /* Folder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD5AE724E44E3C0035FDC8 /* Folder+CoreDataClass.swift */; };
-		E0CD5AEB24E44E3C0035FDC8 /* Folder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD5AE724E44E3C0035FDC8 /* Folder+CoreDataClass.swift */; };
-		E0CD5AEC24E44E3C0035FDC8 /* Folder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD5AE724E44E3C0035FDC8 /* Folder+CoreDataClass.swift */; };
-		E0CD5AED24E44E3C0035FDC8 /* Folder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD5AE824E44E3C0035FDC8 /* Folder+CoreDataProperties.swift */; };
-		E0CD5AEE24E44E3C0035FDC8 /* Folder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD5AE824E44E3C0035FDC8 /* Folder+CoreDataProperties.swift */; };
-		E0CD5AEF24E44E3C0035FDC8 /* Folder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD5AE824E44E3C0035FDC8 /* Folder+CoreDataProperties.swift */; };
-		E0CD5AF024E44E3C0035FDC8 /* Folder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD5AE824E44E3C0035FDC8 /* Folder+CoreDataProperties.swift */; };
+		E0CAD76A26D6E85E00B10E72 /* ClipsKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E0CAD76826D6E85E00B10E72 /* ClipsKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E0CAD76E26D6E91F00B10E72 /* Folder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD5AE724E44E3C0035FDC8 /* Folder+CoreDataClass.swift */; };
+		E0CAD76F26D6E93B00B10E72 /* Folder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD5AE824E44E3C0035FDC8 /* Folder+CoreDataProperties.swift */; };
+		E0CAD77026D6E95B00B10E72 /* Clip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */; };
+		E0CAD77126D6E96E00B10E72 /* Clip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04BC4C724E48DCC009BEE48 /* Clip+CoreDataProperties.swift */; };
+		E0CAD77226D6E98000B10E72 /* Clips.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E056F8F720CEE46C0025E2FE /* Clips.xcdatamodeld */; };
+		E0CAD77326D6E99600B10E72 /* ClipsPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E029B42A21B32C8F005EFEB6 /* ClipsPersistentContainer.swift */; };
+		E0CAD77426D6E9CC00B10E72 /* ClipboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA135219D37BE0015A30F /* ClipboardManager.swift */; };
+		E0CAD77526D6E9DC00B10E72 /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */; };
+		E0CAD77626D6EA1500B10E72 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E0489BA92693D6F80062AAC9 /* Intents.intentdefinition */; };
+		E0CAD77726D6EA4600B10E72 /* ClipsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */; };
+		E0CAD77826D6EA4600B10E72 /* ClipsKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E0CAD77C26D6EA6600B10E72 /* ClipsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */; };
+		E0CAD77D26D6EA6600B10E72 /* ClipsKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E0CAD78126D6EA7100B10E72 /* ClipsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */; };
+		E0CAD78226D6EA7100B10E72 /* ClipsKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E0CAD78626D6EA7D00B10E72 /* ClipsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */; };
+		E0CAD78726D6EA7D00B10E72 /* ClipsKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E0CAD78B26D6EBA500B10E72 /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E373BC24EAFFD7006A2816 /* AppStrings.swift */; };
+		E0CAD78C26D6EBAA00B10E72 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E06EC94D21C5ACA100687F9E /* Localizable.strings */; };
 		E0D348C721B2393000BF1F4E /* WidgetClipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D348C621B2393000BF1F4E /* WidgetClipTableViewCell.swift */; };
 		E0E373BD24EAFFD7006A2816 /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E373BC24EAFFD7006A2816 /* AppStrings.swift */; };
 		E0E373BE24EAFFD7006A2816 /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E373BC24EAFFD7006A2816 /* AppStrings.swift */; };
 		E0E373BF24EAFFD7006A2816 /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E373BC24EAFFD7006A2816 /* AppStrings.swift */; };
 		E0E373C024EAFFD7006A2816 /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E373BC24EAFFD7006A2816 /* AppStrings.swift */; };
-		E0F5BE0821A8BE9600422DC1 /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +116,34 @@
 			remoteGlobalIDString = E0A51AD321C6CABA00FCCCA9;
 			remoteInfo = "Clips Keyboard";
 		};
+		E0CAD77926D6EA4700B10E72 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E056F8E520CEE46C0025E2FE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E0CAD76526D6E85D00B10E72;
+			remoteInfo = ClipsKit;
+		};
+		E0CAD77E26D6EA6600B10E72 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E056F8E520CEE46C0025E2FE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E0CAD76526D6E85D00B10E72;
+			remoteInfo = ClipsKit;
+		};
+		E0CAD78326D6EA7100B10E72 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E056F8E520CEE46C0025E2FE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E0CAD76526D6E85D00B10E72;
+			remoteInfo = ClipsKit;
+		};
+		E0CAD78826D6EA7D00B10E72 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E056F8E520CEE46C0025E2FE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E0CAD76526D6E85D00B10E72;
+			remoteInfo = ClipsKit;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -144,6 +159,50 @@
 				E000A2F9251EECD6007EFFFF /* Clips Widget 2Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0CAD77B26D6EA4700B10E72 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E0CAD77826D6EA4600B10E72 /* ClipsKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0CAD78026D6EA6600B10E72 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E0CAD77D26D6EA6600B10E72 /* ClipsKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0CAD78526D6EA7100B10E72 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E0CAD78226D6EA7100B10E72 /* ClipsKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0CAD78A26D6EA7D00B10E72 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E0CAD78726D6EA7D00B10E72 /* ClipsKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -225,6 +284,9 @@
 		E0BB9D2B2245FDB100BAC38F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E0BB9D2C2245FDB300BAC38F /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E0C260AE21B8B889007D9BED /* UIViewController+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Toast.swift"; sourceTree = "<group>"; };
+		E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ClipsKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0CAD76826D6E85E00B10E72 /* ClipsKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClipsKit.h; sourceTree = "<group>"; };
+		E0CAD76926D6E85E00B10E72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0CD5AE724E44E3C0035FDC8 /* Folder+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Folder+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E0CD5AE824E44E3C0035FDC8 /* Folder+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Folder+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E0D348C621B2393000BF1F4E /* WidgetClipTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetClipTableViewCell.swift; sourceTree = "<group>"; };
@@ -251,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E04106BD219D04F100DD68AD /* NotificationCenter.framework in Frameworks */,
+				E0CAD77C26D6EA6600B10E72 /* ClipsKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +321,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0CAD78626D6EA7D00B10E72 /* ClipsKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,10 +329,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0CAD77726D6EA4600B10E72 /* ClipsKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E0A51AD121C6CABA00FCCCA9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0CAD78126D6EA7100B10E72 /* ClipsKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0CAD76326D6E85D00B10E72 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -329,16 +402,9 @@
 			isa = PBXGroup;
 			children = (
 				E03B9EB823E7DE25001206EF /* Colors.xcassets */,
-				E0CD5AE724E44E3C0035FDC8 /* Folder+CoreDataClass.swift */,
-				E0CD5AE824E44E3C0035FDC8 /* Folder+CoreDataProperties.swift */,
-				E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */,
-				E04BC4C724E48DCC009BEE48 /* Clip+CoreDataProperties.swift */,
-				E056F8F720CEE46C0025E2FE /* Clips.xcdatamodeld */,
-				E029B42A21B32C8F005EFEB6 /* ClipsPersistentContainer.swift */,
 				E06EC94D21C5ACA100687F9E /* Localizable.strings */,
 				E0E373BC24EAFFD7006A2816 /* AppStrings.swift */,
-				E06AA135219D37BE0015A30F /* ClipboardManager.swift */,
-				E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */,
+				E0CAD76726D6E85D00B10E72 /* ClipsKit */,
 				E056F8EF20CEE46C0025E2FE /* Clips */,
 				E04106BE219D04F100DD68AD /* Clips Widget */,
 				E000A2F1251EECD2007EFFFF /* Clips Widget 2 */,
@@ -357,6 +423,7 @@
 				E0A51AD421C6CABA00FCCCA9 /* Copy Better Keyboard.appex */,
 				E041A72B21E3D65700B58DD5 /* Copy Better Share.appex */,
 				E000A2EC251EECD2007EFFFF /* Clips Widget 2Extension.appex */,
+				E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -382,7 +449,6 @@
 				E056F8FA20CEE46E0025E2FE /* Assets.xcassets */,
 				E056F8FF20CEE46E0025E2FE /* Info.plist */,
 				E0BB9D132245FBA300BAC38F /* InfoPlist.strings */,
-				E0489BA92693D6F80062AAC9 /* Intents.intentdefinition */,
 			);
 			path = Clips;
 			sourceTree = "<group>";
@@ -406,7 +472,36 @@
 			path = "Clips Keyboard";
 			sourceTree = "<group>";
 		};
+		E0CAD76726D6E85D00B10E72 /* ClipsKit */ = {
+			isa = PBXGroup;
+			children = (
+				E0CAD76826D6E85E00B10E72 /* ClipsKit.h */,
+				E0CAD76926D6E85E00B10E72 /* Info.plist */,
+				E0CD5AE724E44E3C0035FDC8 /* Folder+CoreDataClass.swift */,
+				E0CD5AE824E44E3C0035FDC8 /* Folder+CoreDataProperties.swift */,
+				E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */,
+				E04BC4C724E48DCC009BEE48 /* Clip+CoreDataProperties.swift */,
+				E056F8F720CEE46C0025E2FE /* Clips.xcdatamodeld */,
+				E029B42A21B32C8F005EFEB6 /* ClipsPersistentContainer.swift */,
+				E06AA135219D37BE0015A30F /* ClipboardManager.swift */,
+				E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */,
+				E0489BA92693D6F80062AAC9 /* Intents.intentdefinition */,
+			);
+			path = ClipsKit;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		E0CAD76126D6E85D00B10E72 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0CAD76A26D6E85E00B10E72 /* ClipsKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		E000A2EB251EECD2007EFFFF /* Clips Widget 2Extension */ = {
@@ -433,10 +528,12 @@
 				E04106B6219D04F100DD68AD /* Sources */,
 				E04106B7219D04F100DD68AD /* Frameworks */,
 				E04106B8219D04F100DD68AD /* Resources */,
+				E0CAD78026D6EA6600B10E72 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E0CAD77F26D6EA6600B10E72 /* PBXTargetDependency */,
 			);
 			name = "Copy Better Widget";
 			productName = "Clipboard Widget";
@@ -450,10 +547,12 @@
 				E041A72721E3D65700B58DD5 /* Sources */,
 				E041A72821E3D65700B58DD5 /* Frameworks */,
 				E041A72921E3D65700B58DD5 /* Resources */,
+				E0CAD78A26D6EA7D00B10E72 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E0CAD78926D6EA7D00B10E72 /* PBXTargetDependency */,
 			);
 			name = "Copy Better Share";
 			productName = "Clips Share";
@@ -468,6 +567,7 @@
 				E056F8EA20CEE46C0025E2FE /* Frameworks */,
 				E056F8EB20CEE46C0025E2FE /* Resources */,
 				E04106CB219D04F100DD68AD /* Embed App Extensions */,
+				E0CAD77B26D6EA4700B10E72 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -476,6 +576,7 @@
 				E0A51ADA21C6CABA00FCCCA9 /* PBXTargetDependency */,
 				E041A73421E3D65800B58DD5 /* PBXTargetDependency */,
 				E000A2F8251EECD6007EFFFF /* PBXTargetDependency */,
+				E0CAD77A26D6EA4700B10E72 /* PBXTargetDependency */,
 			);
 			name = "Copy Better";
 			productName = "Clipboard Manager";
@@ -489,15 +590,35 @@
 				E0A51AD021C6CABA00FCCCA9 /* Sources */,
 				E0A51AD121C6CABA00FCCCA9 /* Frameworks */,
 				E0A51AD221C6CABA00FCCCA9 /* Resources */,
+				E0CAD78526D6EA7100B10E72 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E0CAD78426D6EA7100B10E72 /* PBXTargetDependency */,
 			);
 			name = "Copy Better Keyboard";
 			productName = "Clips Keyboard";
 			productReference = E0A51AD421C6CABA00FCCCA9 /* Copy Better Keyboard.appex */;
 			productType = "com.apple.product-type.app-extension";
+		};
+		E0CAD76526D6E85D00B10E72 /* ClipsKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E0CAD76D26D6E85E00B10E72 /* Build configuration list for PBXNativeTarget "ClipsKit" */;
+			buildPhases = (
+				E0CAD76126D6E85D00B10E72 /* Headers */,
+				E0CAD76226D6E85D00B10E72 /* Sources */,
+				E0CAD76326D6E85D00B10E72 /* Frameworks */,
+				E0CAD76426D6E85D00B10E72 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ClipsKit;
+			productName = ClipsKit;
+			productReference = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -546,6 +667,9 @@
 							};
 						};
 					};
+					E0CAD76526D6E85D00B10E72 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
 				};
 			};
 			buildConfigurationList = E056F8E820CEE46C0025E2FE /* Build configuration list for PBXProject "Clips" */;
@@ -568,6 +692,7 @@
 				E0A51AD321C6CABA00FCCCA9 /* Copy Better Keyboard */,
 				E041A72A21E3D65700B58DD5 /* Copy Better Share */,
 				E000A2EB251EECD2007EFFFF /* Clips Widget 2Extension */,
+				E0CAD76526D6E85D00B10E72 /* ClipsKit */,
 			);
 		};
 /* End PBXProject section */
@@ -631,6 +756,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E0CAD76426D6E85D00B10E72 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0CAD78C26D6EBAA00B10E72 /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -649,14 +782,6 @@
 			files = (
 				E04106C0219D04F100DD68AD /* TodayViewController.swift in Sources */,
 				E0E373BE24EAFFD7006A2816 /* AppStrings.swift in Sources */,
-				E029B42C21B32C8F005EFEB6 /* ClipsPersistentContainer.swift in Sources */,
-				E0CD5AEA24E44E3C0035FDC8 /* Folder+CoreDataClass.swift in Sources */,
-				E0CD5AEE24E44E3C0035FDC8 /* Folder+CoreDataProperties.swift in Sources */,
-				E0858C3021A0F0240089AE53 /* Clip+CoreDataClass.swift in Sources */,
-				E01FFB2821B4451800C69DEF /* String+HTML.swift in Sources */,
-				E029B42D21B33A30005EFEB6 /* ClipboardManager.swift in Sources */,
-				E04BC4C924E48DCC009BEE48 /* Clip+CoreDataProperties.swift in Sources */,
-				E01FFB2921B44BB500C69DEF /* Clips.xcdatamodeld in Sources */,
 				E0D348C721B2393000BF1F4E /* WidgetClipTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -667,15 +792,7 @@
 			files = (
 				E041A72E21E3D65700B58DD5 /* ShareViewController.swift in Sources */,
 				E0E373C024EAFFD7006A2816 /* AppStrings.swift in Sources */,
-				E041A73D21E3DBD000B58DD5 /* Clip+CoreDataClass.swift in Sources */,
-				E0CD5AEC24E44E3C0035FDC8 /* Folder+CoreDataClass.swift in Sources */,
-				E0CD5AF024E44E3C0035FDC8 /* Folder+CoreDataProperties.swift in Sources */,
-				E041A74021E3DBD900B58DD5 /* ClipsPersistentContainer.swift in Sources */,
-				E041A74321E3DBE200B58DD5 /* String+HTML.swift in Sources */,
 				E041A73A21E3DA3E00B58DD5 /* ShareConfigureViewController.swift in Sources */,
-				E04BC4CB24E48DCC009BEE48 /* Clip+CoreDataProperties.swift in Sources */,
-				E041A73F21E3DBD600B58DD5 /* Clips.xcdatamodeld in Sources */,
-				E041A74221E3DBDF00B58DD5 /* ClipboardManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -683,28 +800,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0CD5AED24E44E3C0035FDC8 /* Folder+CoreDataProperties.swift in Sources */,
-				E056F8F920CEE46C0025E2FE /* Clips.xcdatamodeld in Sources */,
 				E06AA130219D32DE0015A30F /* ClipViewController.swift in Sources */,
-				E0F5BE0821A8BE9600422DC1 /* String+HTML.swift in Sources */,
 				E07AC77A251FF04F007DEF67 /* FavoritesTableViewController.swift in Sources */,
 				E017418324E49B0C0007E667 /* FolderTableViewCell.swift in Sources */,
-				E06AA136219D37BE0015A30F /* ClipboardManager.swift in Sources */,
-				E0CD5AE924E44E3C0035FDC8 /* Folder+CoreDataClass.swift in Sources */,
 				E06AA132219D32F60015A30F /* EditClipTableViewController.swift in Sources */,
 				E08A5A2F25029E0A009524DB /* FolderPickerTableViewController.swift in Sources */,
 				E06AA128219D31CE0015A30F /* MainTableViewController.swift in Sources */,
 				E05EA02D21BD8BB300FC33C9 /* Toast.swift in Sources */,
 				E0E373BD24EAFFD7006A2816 /* AppStrings.swift in Sources */,
-				E0858C2F21A0F0240089AE53 /* Clip+CoreDataClass.swift in Sources */,
-				E0489BAA2693D6F80062AAC9 /* Intents.intentdefinition in Sources */,
 				E06AA134219D331E0015A30F /* SettingsTableViewController.swift in Sources */,
 				E0079EDC25068C9100F3BC10 /* FolderPickerTableViewCell.swift in Sources */,
 				E0C260AF21B8B889007D9BED /* UIViewController+Toast.swift in Sources */,
 				E06AA12A219D32500015A30F /* ClipTableViewCell.swift in Sources */,
-				E04BC4C824E48DCC009BEE48 /* Clip+CoreDataProperties.swift in Sources */,
 				E056F8F120CEE46C0025E2FE /* AppDelegate.swift in Sources */,
-				E029B42B21B32C8F005EFEB6 /* ClipsPersistentContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -715,18 +823,27 @@
 				E0AF325521DED6A500743158 /* KeyboardUpperButton.swift in Sources */,
 				E0619E0621DEA3BC00A69332 /* KeyboardButton.swift in Sources */,
 				E0A51AD721C6CABA00FCCCA9 /* KeyboardViewController.swift in Sources */,
-				E05CAEE621CB3BCD003C3BB4 /* Clips.xcdatamodeld in Sources */,
 				E0E373BF24EAFFD7006A2816 /* AppStrings.swift in Sources */,
-				E05CAEE321CB3BAD003C3BB4 /* ClipsPersistentContainer.swift in Sources */,
-				E0CD5AEB24E44E3C0035FDC8 /* Folder+CoreDataClass.swift in Sources */,
-				E07E7FF121CEB0C100F06B8C /* String+HTML.swift in Sources */,
-				E04BC4CA24E48DCC009BEE48 /* Clip+CoreDataProperties.swift in Sources */,
-				E0CD5AEF24E44E3C0035FDC8 /* Folder+CoreDataProperties.swift in Sources */,
-				E05CAEE121CB3BA9003C3BB4 /* Clip+CoreDataClass.swift in Sources */,
 				E0619E0021DE871B00A69332 /* ClipsKeyboardView.swift in Sources */,
 				E0071DE921CB171100B75D4C /* KeyboardClipCell.swift in Sources */,
 				E0025F3F251123D800DB66DC /* KeyboardFolderCell.swift in Sources */,
-				E05CAEE521CB3BB6003C3BB4 /* ClipboardManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0CAD76226D6E85D00B10E72 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0CAD76E26D6E91F00B10E72 /* Folder+CoreDataClass.swift in Sources */,
+				E0CAD77026D6E95B00B10E72 /* Clip+CoreDataClass.swift in Sources */,
+				E0CAD77326D6E99600B10E72 /* ClipsPersistentContainer.swift in Sources */,
+				E0CAD77626D6EA1500B10E72 /* Intents.intentdefinition in Sources */,
+				E0CAD77526D6E9DC00B10E72 /* String+HTML.swift in Sources */,
+				E0CAD76F26D6E93B00B10E72 /* Folder+CoreDataProperties.swift in Sources */,
+				E0CAD77126D6E96E00B10E72 /* Clip+CoreDataProperties.swift in Sources */,
+				E0CAD77226D6E98000B10E72 /* Clips.xcdatamodeld in Sources */,
+				E0CAD78B26D6EBA500B10E72 /* AppStrings.swift in Sources */,
+				E0CAD77426D6E9CC00B10E72 /* ClipboardManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -752,6 +869,26 @@
 			isa = PBXTargetDependency;
 			target = E0A51AD321C6CABA00FCCCA9 /* Copy Better Keyboard */;
 			targetProxy = E0A51AD921C6CABA00FCCCA9 /* PBXContainerItemProxy */;
+		};
+		E0CAD77A26D6EA4700B10E72 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E0CAD76526D6E85D00B10E72 /* ClipsKit */;
+			targetProxy = E0CAD77926D6EA4700B10E72 /* PBXContainerItemProxy */;
+		};
+		E0CAD77F26D6EA6600B10E72 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E0CAD76526D6E85D00B10E72 /* ClipsKit */;
+			targetProxy = E0CAD77E26D6EA6600B10E72 /* PBXContainerItemProxy */;
+		};
+		E0CAD78426D6EA7100B10E72 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E0CAD76526D6E85D00B10E72 /* ClipsKit */;
+			targetProxy = E0CAD78326D6EA7100B10E72 /* PBXContainerItemProxy */;
+		};
+		E0CAD78926D6EA7D00B10E72 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E0CAD76526D6E85D00B10E72 /* ClipsKit */;
+			targetProxy = E0CAD78826D6EA7D00B10E72 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -876,7 +1013,7 @@
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Widget 2/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -904,7 +1041,7 @@
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Widget 2/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -929,7 +1066,7 @@
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Widget/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -953,7 +1090,7 @@
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Widget/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -977,7 +1114,7 @@
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Share/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1003,7 +1140,7 @@
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Share/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1146,7 +1283,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "$(SRCROOT)/Clips/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1170,7 +1307,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "$(SRCROOT)/Clips/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1192,7 +1329,7 @@
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Keyboard/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1218,7 +1355,7 @@
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Keyboard/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1231,6 +1368,69 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E0CAD76B26D6E85E00B10E72 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = FFB5P5C3G7;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = ClipsKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.williamwu.ClipsKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E0CAD76C26D6E85E00B10E72 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = FFB5P5C3G7;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = ClipsKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.williamwu.ClipsKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -1287,6 +1487,15 @@
 			buildConfigurations = (
 				E0A51ADC21C6CABA00FCCCA9 /* Debug */,
 				E0A51ADD21C6CABA00FCCCA9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E0CAD76D26D6E85E00B10E72 /* Build configuration list for PBXNativeTarget "ClipsKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E0CAD76B26D6E85E00B10E72 /* Debug */,
+				E0CAD76C26D6E85E00B10E72 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ClipsKit
 
 class FolderPickerTableViewCell: UITableViewCell {
     

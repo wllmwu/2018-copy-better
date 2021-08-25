@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension String {
-    var htmlToAttributed: NSAttributedString? {
+    public var htmlToAttributed: NSAttributedString? {
         do {
             // default style: 17pt system font
             let stringWithDefaultCss = "<style>html * {font-size:17pt !important;font-family:-apple-system, Helvetica !important;}</style>\(self)"
