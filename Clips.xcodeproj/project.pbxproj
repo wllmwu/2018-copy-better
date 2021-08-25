@@ -41,6 +41,7 @@
 		E041A74121E3DBDC00B58DD5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E06EC94D21C5ACA100687F9E /* Localizable.strings */; };
 		E041A74221E3DBDF00B58DD5 /* ClipboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA135219D37BE0015A30F /* ClipboardManager.swift */; };
 		E041A74321E3DBE200B58DD5 /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */; };
+		E0489BAA2693D6F80062AAC9 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E0489BA92693D6F80062AAC9 /* Intents.intentdefinition */; };
 		E04BC4C824E48DCC009BEE48 /* Clip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04BC4C724E48DCC009BEE48 /* Clip+CoreDataProperties.swift */; };
 		E04BC4C924E48DCC009BEE48 /* Clip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04BC4C724E48DCC009BEE48 /* Clip+CoreDataProperties.swift */; };
 		E04BC4CA24E48DCC009BEE48 /* Clip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04BC4C724E48DCC009BEE48 /* Clip+CoreDataProperties.swift */; };
@@ -172,6 +173,7 @@
 		E041A73021E3D65700B58DD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		E041A73221E3D65800B58DD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E041A73921E3DA3E00B58DD5 /* ShareConfigureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareConfigureViewController.swift; sourceTree = "<group>"; };
+		E0489BA92693D6F80062AAC9 /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
 		E04BC4C724E48DCC009BEE48 /* Clip+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Clip+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E051A19E223E086D0059B7CA /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		E056F8ED20CEE46C0025E2FE /* Copy Better.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Copy Better.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -380,6 +382,7 @@
 				E056F8FA20CEE46E0025E2FE /* Assets.xcassets */,
 				E056F8FF20CEE46E0025E2FE /* Info.plist */,
 				E0BB9D132245FBA300BAC38F /* InfoPlist.strings */,
+				E0489BA92693D6F80062AAC9 /* Intents.intentdefinition */,
 			);
 			path = Clips;
 			sourceTree = "<group>";
@@ -694,6 +697,7 @@
 				E05EA02D21BD8BB300FC33C9 /* Toast.swift in Sources */,
 				E0E373BD24EAFFD7006A2816 /* AppStrings.swift in Sources */,
 				E0858C2F21A0F0240089AE53 /* Clip+CoreDataClass.swift in Sources */,
+				E0489BAA2693D6F80062AAC9 /* Intents.intentdefinition in Sources */,
 				E06AA134219D331E0015A30F /* SettingsTableViewController.swift in Sources */,
 				E0079EDC25068C9100F3BC10 /* FolderPickerTableViewCell.swift in Sources */,
 				E0C260AF21B8B889007D9BED /* UIViewController+Toast.swift in Sources */,
