@@ -92,6 +92,10 @@ struct AppStrings {
         return NSLocalizedString("New clip", comment: "\"New clip\" action")
     }
     
+    static var NEW_CLIP_FROM_PASTEBOARD_ACTION: String {
+        return NSLocalizedString("New clip from copied", comment: "\"New clip from copied\" action")
+    }
+    
     static var CANCEL_ACTION: String {
         return NSLocalizedString("Cancel", comment: "\"Cancel\" action")
     }
@@ -102,6 +106,10 @@ struct AppStrings {
     
     static var OK_ACTION: String {
         return NSLocalizedString("OK", comment: "\"OK\" action")
+    }
+    
+    static var CLIP_NAME_PLACEHOLDER: String {
+        return NSLocalizedString("Clip name (optional)", comment: "\"Clip name (optional)\" placeholder")
     }
     
     static var FOLDER_NAME_PLACEHOLDER: String {

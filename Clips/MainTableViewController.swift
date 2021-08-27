@@ -207,29 +207,50 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
      */
     @objc func addLastCopied() {
         if self.lastCopied.count > 0 {
-            guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
-                AppDelegate.alertFatalError(message: "Couldn't find entity description.")
-                return
+            let alert: UIAlertController = UIAlertController(title: AppStrings.NEW_CLIP_FROM_PASTEBOARD_ACTION, message: nil, preferredStyle: .alert)
+            
+            let cancelAction: UIAlertAction = UIAlertAction(title: AppStrings.CANCEL_ACTION, style: .cancel, handler: nil)
+            let saveAction: UIAlertAction = UIAlertAction(title: AppStrings.SAVE_ACTION, style: .default) { (action) in
+                var title = alert.textFields?.first?.text
+                if title == "" {
+                    title = nil
+                }
+                self.createNewClip(title: title, contents: self.lastCopied, index: 0)
             }
-            
-            // create new clip
-            let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
-            clip.title = nil
-            clip.contents = self.lastCopied
-            clip.index = 0
-            clip.folder = self.folder
-            
-            self.clips.insert(clip, at: 0)
-            self.updateClipIndices(from: 1, to: self.clips.count)
-            
-            if self.saveContext() {
-                self.tableView.reloadData()
-                self.showToast(message: AppStrings.TOAST_MESSAGE_ADDED)
-                self.shouldAddLastCopied = false
+            alert.addTextField { (textfield) in
+                textfield.placeholder = AppStrings.CLIP_NAME_PLACEHOLDER
+                textfield.autocapitalizationType = .sentences
             }
+            alert.addAction(cancelAction)
+            alert.addAction(saveAction)
+            
+            self.present(alert, animated: true, completion: nil)
         }
         else {
             self.shouldAddLastCopied = true
+        }
+    }
+    
+    private func createNewClip(title: String?, contents: [String : Any], index: Int16) {
+        guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
+            AppDelegate.alertFatalError(message: "Couldn't find entity description.")
+            return
+        }
+        
+        // create new clip
+        let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
+        clip.title = title
+        clip.contents = contents
+        clip.index = index
+        clip.folder = self.folder
+        
+        self.clips.insert(clip, at: Int(index))
+        self.updateClipIndices(from: Int(index) + 1, to: self.clips.count)
+        
+        if self.saveContext() {
+            self.tableView.reloadData()
+            self.showToast(message: AppStrings.TOAST_MESSAGE_ADDED)
+            self.shouldAddLastCopied = false
         }
     }
     
@@ -349,15 +370,17 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             else { // clip
                 let clip: Clip = self.filteredClips[indexPath.row - self.filteredFolders.count]
                 let cell: ClipTableViewCell
-                if let title = clip.title {
+                let title = clip.title
+                if title != nil && title != "" {
                     cell = tableView.dequeueReusableCell(withIdentifier: "ClipWithTitleCell", for: indexPath) as! ClipTableViewCell
-                    cell.setTitle(title)
+                    cell.setTitle(title!)
                 }
                 else {
                     cell = tableView.dequeueReusableCell(withIdentifier: "ClipNoTitleCell", for: indexPath) as! ClipTableViewCell
                 }
                 cell.setContents(clip.contents)
-                cell.setFavorite(clip.isFavorite)
+                cell.setFavorite(clip.isFavorite && self.favoritesEnabled)
+                cell.setClip(clip)
                 return cell
             }
         }
@@ -382,15 +405,17 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
                 else { // clip
                     let clip: Clip = self.clips[indexPath.row - self.subfolders.count]
                     let cell: ClipTableViewCell
-                    if let title = clip.title {
+                    let title = clip.title
+                    if title != nil && title != "" {
                         cell = tableView.dequeueReusableCell(withIdentifier: "ClipWithTitleCell", for: indexPath) as! ClipTableViewCell
-                        cell.setTitle(title)
+                        cell.setTitle(title!)
                     }
                     else {
                         cell = tableView.dequeueReusableCell(withIdentifier: "ClipNoTitleCell", for: indexPath) as! ClipTableViewCell
                     }
                     cell.setContents(clip.contents)
                     cell.setFavorite(clip.isFavorite && self.favoritesEnabled)
+                    cell.setClip(clip)
                     return cell
                 }
             }

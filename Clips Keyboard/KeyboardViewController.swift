@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Intents
 import ClipsKit
 
 class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
@@ -193,6 +194,15 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
     func selectClip(_ clip: Clip) {
         if let text = ClipboardManager.stringFromItem(clip.contents) {
             self.insertText(text)
+            
+            if let intent = Clip.createCopyIntent(with: clip) {
+                let interaction = INInteraction(intent: intent, response: nil)
+                interaction.donate { (error) in
+                    if let e = error {
+                        print("Interaction donation failed: \(e.localizedDescription)")
+                    }
+                }
+            }
         }
     }
     

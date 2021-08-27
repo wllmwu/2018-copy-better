@@ -66,6 +66,9 @@
 /* "New clip" action */
 "New clip" = "Nuevo clip";
 
+/* "New clip from copied" action */
+"New clip from copied" = "Nuevo clip";
+
 /* "Cancel" action */
 "Cancel" = "Cancelar";
 
@@ -74,6 +77,9 @@
 
 /* "OK" action */
 "OK" = "Aceptar";
+
+/* "Clip name (optional)" placeholder */
+"Clip name (optional)" = "Nombre del clip (opcional)";
 
 /* "Folder name" placeholder */
 "Folder name" = "Nombre de la carpeta";
