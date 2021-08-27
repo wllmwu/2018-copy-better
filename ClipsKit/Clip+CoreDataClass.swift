@@ -34,3 +34,36 @@ public class Clip: NSManagedObject {
     }
     
 }
+
+extension Clip {
+    
+    public static func getIntentReference(for clip: Clip) -> ClipReference? {
+        guard let clipTitle = clip.title else {
+            return nil
+        }
+        return ClipReference(identifier: clip.objectID.uriRepresentation().absoluteString, display: clipTitle)
+    }
+    
+    public static func createCopyIntent(with clip: Clip) -> CopyClipIntent? {
+        guard let clipReference = Clip.getIntentReference(for: clip) else {
+            return nil
+        }
+        let intent = CopyClipIntent()
+        intent.clip = clipReference
+        return intent
+    }
+    
+    public static func getReferencedClip(from intentReference: ClipReference, context: NSManagedObjectContext) -> Clip? {
+        guard let uriString = intentReference.identifier, let uri = URL(string: uriString), let objectID = context.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: uri) else {
+            return nil
+        }
+        
+        do {
+            return try context.existingObject(with: objectID) as? Clip
+        } catch let error as NSError {
+            print("Couldn't fetch.  \(error), \(error.userInfo)")
+            return nil
+        }
+    }
+    
+}
