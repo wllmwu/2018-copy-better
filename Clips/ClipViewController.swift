@@ -142,6 +142,31 @@ class ClipViewController: UIViewController {
         return false
     }
     
+    private func insertLastCopied(title: String?) {
+        guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
+            AppDelegate.alertFatalError(message: "Couldn't find entity description.")
+            return
+        }
+        
+        // create new clip
+        let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
+        clip.title = title
+        clip.contents = self.contents
+        clip.index = 0
+        
+        // reassign indices
+        for c in self.currentFolder.clipsArray {
+            c.index += 1
+        }
+        
+        // insert the clip
+        clip.folder = self.currentFolder
+        
+        if self.saveContext() {
+            self.showToast(message: AppStrings.TOAST_MESSAGE_ADDED)
+        }
+    }
+    
     // MARK: - Interface actions
     
     @objc func segueToEdit() {
@@ -165,28 +190,24 @@ class ClipViewController: UIViewController {
     
     @objc func addLastCopied() {
         if self.contents.count > 0 {
-            guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
-                AppDelegate.alertFatalError(message: "Couldn't find entity description.")
-                return
+            let alert: UIAlertController = UIAlertController(title: AppStrings.NEW_CLIP_FROM_PASTEBOARD_ACTION, message: nil, preferredStyle: .alert)
+            
+            let cancelAction: UIAlertAction = UIAlertAction(title: AppStrings.CANCEL_ACTION, style: .cancel, handler: nil)
+            let saveAction: UIAlertAction = UIAlertAction(title: AppStrings.SAVE_ACTION, style: .default) { (action) in
+                var title = alert.textFields?.first?.text
+                if title == "" {
+                    title = nil
+                }
+                self.insertLastCopied(title: title)
             }
-            
-            // create new clip
-            let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
-            clip.title = nil
-            clip.contents = self.contents
-            clip.index = 0
-            
-            // reassign indices
-            for c in self.currentFolder.clipsArray {
-                c.index += 1
+            alert.addTextField { (textfield) in
+                textfield.placeholder = AppStrings.CLIP_NAME_PLACEHOLDER
+                textfield.autocapitalizationType = .sentences
             }
+            alert.addAction(cancelAction)
+            alert.addAction(saveAction)
             
-            // insert the clip
-            clip.folder = self.currentFolder
-            
-            if self.saveContext() {
-                self.showToast(message: AppStrings.TOAST_MESSAGE_ADDED)
-            }
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
