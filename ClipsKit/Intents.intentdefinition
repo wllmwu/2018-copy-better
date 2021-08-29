@@ -34,7 +34,7 @@
 					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
 					<true/>
 					<key>INIntentParameterCombinationTitle</key>
-					<string>Copy the clip "${clip}" to the system pasteboard</string>
+					<string>Copy clip "${clip}" to the clipboard</string>
 					<key>INIntentParameterCombinationTitleID</key>
 					<string>7BeXK3</string>
 					<key>INIntentParameterCombinationUpdatesLinked</key>
@@ -50,7 +50,7 @@
 					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
 					<true/>
 					<key>INIntentParameterCombinationTitle</key>
-					<string>Copy the clip "${clip}" to the system pasteboard</string>
+					<string>Copy clip "${clip}" to the clipboard</string>
 					<key>INIntentParameterCombinationTitleID</key>
 					<string>OpXQc6</string>
 				</dict>
@@ -127,6 +127,29 @@
 					<integer>3</integer>
 					<key>INIntentParameterType</key>
 					<string>Object</string>
+					<key>INIntentParameterUnsupportedReasons</key>
+					<array>
+						<dict>
+							<key>INIntentParameterUnsupportedReasonCode</key>
+							<string>noMatches</string>
+							<key>INIntentParameterUnsupportedReasonCustom</key>
+							<true/>
+							<key>INIntentParameterUnsupportedReasonFormatString</key>
+							<string>No clips matching '${clip}' were found.</string>
+							<key>INIntentParameterUnsupportedReasonFormatStringID</key>
+							<string>NH5R4t</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterUnsupportedReasonCode</key>
+							<string>unknownError</string>
+							<key>INIntentParameterUnsupportedReasonCustom</key>
+							<true/>
+							<key>INIntentParameterUnsupportedReasonFormatString</key>
+							<string>Something went wrong while looking for '${clip}'.</string>
+							<key>INIntentParameterUnsupportedReasonFormatStringID</key>
+							<string>mvBWLJ</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 			<key>INIntentResponse</key>
@@ -135,7 +158,7 @@
 				<array>
 					<dict>
 						<key>INIntentResponseCodeConciseFormatString</key>
-						<string>Copied to clipboard.</string>
+						<string>Copied to clipboard: ${clipContents}</string>
 						<key>INIntentResponseCodeConciseFormatStringID</key>
 						<string>cxjvkX</string>
 						<key>INIntentResponseCodeFormatString</key>
@@ -161,11 +184,11 @@
 					</dict>
 					<dict>
 						<key>INIntentResponseCodeConciseFormatString</key>
-						<string>Sorry, this clip was deleted.</string>
+						<string>The clip couldn't be found.</string>
 						<key>INIntentResponseCodeConciseFormatStringID</key>
 						<string>iVj1bR</string>
 						<key>INIntentResponseCodeFormatString</key>
-						<string>Sorry, this clip was deleted.</string>
+						<string>The clip couldn't be found.</string>
 						<key>INIntentResponseCodeFormatStringID</key>
 						<string>seOuk5</string>
 						<key>INIntentResponseCodeName</key>

@@ -65,6 +65,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return true
     }
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        if userActivity.activityType == "CopyClipIntent" {
+            guard let intent = userActivity.interaction?.intent as? CopyClipIntent, let clipReference = intent.clip, let clip = Clip.getReferencedClip(from: clipReference, context: self.managedObjectContext) else {
+                return false
+            }
+            ClipboardManager.copyToPasteboard(item: clip.contents)
+            NotificationCenter.default.post(name: Notification.Name("ShowCopiedToast"), object: nil)
+            return true
+        }
+        return false
+    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -78,7 +90,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-        print("enter foreground")
         if let navigation = self.window?.rootViewController as? UINavigationController {
             if let viewController = navigation.visibleViewController as? MainTableViewController {
                 viewController.loadData() // when the app is reopened from a background state, if it was on a folder view, refresh that folder
