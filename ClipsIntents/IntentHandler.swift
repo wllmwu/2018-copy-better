@@ -87,16 +87,18 @@ class IntentHandler: INExtension, CopyClipIntentHandling {
     }
     
     func provideClipOptionsCollection(for intent: CopyClipIntent, searchTerm: String?, with completion: @escaping (INObjectCollection<ClipReference>?, Error?) -> Void) {
-        guard let searchString = searchTerm else {
-            return completion(INObjectCollection(items: []), nil)
-        }
         guard let context = self.getContext() else {
             return completion(nil, nil)
         }
         
         let request = NSFetchRequest<Clip>(entityName: "Clip")
-        request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchString)
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        if let searchString = searchTerm {
+            request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchString)
+        }
+        else {
+            request.predicate = NSPredicate(format: "title != NIL")
+        }
         
         let matchingClips: [Clip]
         do {

@@ -22,6 +22,9 @@
 		E0071DE721CB154D00B75D4C /* KeyboardClipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0071DE621CB154D00B75D4C /* KeyboardClipCell.xib */; };
 		E0071DE921CB171100B75D4C /* KeyboardClipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0071DE821CB171100B75D4C /* KeyboardClipCell.swift */; };
 		E0079EDC25068C9100F3BC10 /* FolderPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0079EDB25068C9100F3BC10 /* FolderPickerTableViewCell.swift */; };
+		E0121A6B26DD8E2100E44C41 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E0489BA92693D6F80062AAC9 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (no_codegen, ); }; };
+		E0121A6C26DD8E2800E44C41 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E0489BA92693D6F80062AAC9 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (no_codegen, ); }; };
+		E0121A6D26DD8E2D00E44C41 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E0489BA92693D6F80062AAC9 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (no_codegen, ); }; };
 		E017418324E49B0C0007E667 /* FolderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E017418224E49B0C0007E667 /* FolderTableViewCell.swift */; };
 		E03B9EB923E7DE25001206EF /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E03B9EB823E7DE25001206EF /* Colors.xcassets */; };
 		E03B9EBA23E7DE25001206EF /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E03B9EB823E7DE25001206EF /* Colors.xcassets */; };
@@ -877,6 +880,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0121A6D26DD8E2D00E44C41 /* Intents.intentdefinition in Sources */,
 				E00453E626D98F2B00F38D51 /* IntentHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -905,6 +909,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0121A6B26DD8E2100E44C41 /* Intents.intentdefinition in Sources */,
 				E06AA130219D32DE0015A30F /* ClipViewController.swift in Sources */,
 				E07AC77A251FF04F007DEF67 /* FavoritesTableViewController.swift in Sources */,
 				E017418324E49B0C0007E667 /* FolderTableViewCell.swift in Sources */,
@@ -931,6 +936,7 @@
 				E0E373BF24EAFFD7006A2816 /* AppStrings.swift in Sources */,
 				E0619E0021DE871B00A69332 /* ClipsKeyboardView.swift in Sources */,
 				E0071DE921CB171100B75D4C /* KeyboardClipCell.swift in Sources */,
+				E0121A6C26DD8E2800E44C41 /* Intents.intentdefinition in Sources */,
 				E0025F3F251123D800DB66DC /* KeyboardFolderCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

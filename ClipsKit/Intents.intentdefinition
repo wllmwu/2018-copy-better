@@ -9,7 +9,7 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>M2oRIV</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>20F71</string>
+	<string>20G95</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
 	<string>12E507</string>
 	<key>INIntentDefinitionToolsVersion</key>
@@ -25,6 +25,8 @@
 			<string>Copy a clip to the system pasteboard.</string>
 			<key>INIntentDescriptionID</key>
 			<string>T3GdvL</string>
+			<key>INIntentKeyParameter</key>
+			<string>clip</string>
 			<key>INIntentLastParameterTag</key>
 			<integer>3</integer>
 			<key>INIntentManagedParameterCombinations</key>
