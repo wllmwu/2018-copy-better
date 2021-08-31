@@ -120,6 +120,7 @@ class FavoritesTableViewController: UITableViewController {
                 }
             }
             self.managedObjectContext.delete(clip)
+            Clip.deleteCopyInteractions(for: clip)
             tableView.deleteRows(at: [indexPath], with: .fade)
             self.saveContext()
         }

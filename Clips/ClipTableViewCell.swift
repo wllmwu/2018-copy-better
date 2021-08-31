@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Intents
 import ClipsKit
 
 class ClipTableViewCell: UITableViewCell {
@@ -155,16 +154,11 @@ class ClipTableViewCell: UITableViewCell {
     
     @IBAction func copyButtonTapped(_ sender: UIButton) {
         ClipboardManager.copyToPasteboard(item: self.contents)
-        
-        if let intent = Clip.createCopyIntent(with: self.clip) {
-            let interaction = INInteraction(intent: intent, response: nil)
-            interaction.donate { (error) in
-                if let e = error {
-                    print("Interaction donation failed: \(e.localizedDescription)")
-                }
+        Clip.donateCopyInteraction(with: self.clip) { (error) in
+            if let e = error {
+                print("Interaction donation failed: \(e.localizedDescription)")
             }
         }
-        
         NotificationCenter.default.post(name: Notification.Name("ShowCopiedToast"), object: nil)
     }
     

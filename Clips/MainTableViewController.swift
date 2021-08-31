@@ -463,6 +463,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             else {
                 let index = indexPath.row - self.subfolders.count
                 self.managedObjectContext.delete(self.clips[index])
+                Clip.deleteCopyInteractions(for: self.clips[index])
                 self.clips.remove(at: index)
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 self.updateClipIndices(from: index, to: self.clips.count)

@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import Intents
 import ClipsKit
 
 class ClipViewController: UIViewController {
@@ -175,16 +174,11 @@ class ClipViewController: UIViewController {
     
     @objc func copyClip() {
         ClipboardManager.copyToPasteboard(item: self.contents)
-        
-        if let intent = Clip.createCopyIntent(with: self.clip) {
-            let interaction = INInteraction(intent: intent, response: nil)
-            interaction.donate { (error) in
-                if let e = error {
-                    print("Interaction donation failed: \(e.localizedDescription)")
-                }
+        Clip.donateCopyInteraction(with: self.clip) { (error) in
+            if let e = error {
+                print("Interaction donation failed: \(e.localizedDescription)")
             }
         }
-        
         self.showToast(message: AppStrings.TOAST_MESSAGE_COPIED)
     }
     

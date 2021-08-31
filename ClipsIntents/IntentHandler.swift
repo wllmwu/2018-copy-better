@@ -45,7 +45,6 @@ class IntentHandler: INExtension, CopyClipIntentHandling {
         
         ClipboardManager.copyToPasteboard(item: clip.contents)
         let response = CopyClipIntentResponse.success(clipContents: ClipboardManager.stringFromItem(clip.contents) ?? "")
-        //let response = CopyClipIntentResponse.success(clipContents: "title: \(clip.title ?? "nil"), contents: \(clip.contents)")
         return completion(response)
     }
     

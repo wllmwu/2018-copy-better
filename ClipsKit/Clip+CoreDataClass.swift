@@ -9,6 +9,7 @@
 
 import Foundation
 import CoreData
+import Intents
 import UIKit
 
 @objc(Clip)
@@ -37,20 +38,15 @@ public class Clip: NSManagedObject {
 
 extension Clip {
     
+    private var uriRepresentation: String {
+        return self.objectID.uriRepresentation().absoluteString
+    }
+    
     public static func getIntentReference(for clip: Clip) -> ClipReference? {
         guard let clipTitle = clip.title else {
             return nil
         }
-        return ClipReference(identifier: clip.objectID.uriRepresentation().absoluteString, display: clipTitle)
-    }
-    
-    public static func createCopyIntent(with clip: Clip) -> CopyClipIntent? {
-        guard let clipReference = Clip.getIntentReference(for: clip) else {
-            return nil
-        }
-        let intent = CopyClipIntent()
-        intent.clip = clipReference
-        return intent
+        return ClipReference(identifier: clip.uriRepresentation, display: clipTitle)
     }
     
     public static func getReferencedClip(from intentReference: ClipReference, context: NSManagedObjectContext) -> Clip? {
@@ -64,6 +60,23 @@ extension Clip {
             print("Couldn't fetch.  \(error), \(error.userInfo)")
             return nil
         }
+    }
+    
+    public static func donateCopyInteraction(with clip: Clip, completion: ((Error?) -> Void)? = nil) {
+        guard let clipReference = Clip.getIntentReference(for: clip) else {
+            return
+        }
+        
+        let intent = CopyClipIntent()
+        intent.clip = clipReference
+        let interaction = INInteraction(intent: intent, response: nil)
+        interaction.groupIdentifier = clipReference.identifier
+        
+        interaction.donate(completion: completion)
+    }
+    
+    public static func deleteCopyInteractions(for clip: Clip, completion: ((Error?) -> Void)? = nil) {
+        INInteraction.delete(with: clip.uriRepresentation, completion: completion)
     }
     
 }
