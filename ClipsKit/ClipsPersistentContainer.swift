@@ -34,15 +34,8 @@ public class ClipsPersistentContainer: NSPersistentContainer {
         }
         
         // check if root folder already exists
-        let request: NSFetchRequest = NSFetchRequest<Folder>(entityName: "Folder")
-        request.predicate = NSPredicate(format: "superfolder == NIL")
-        do {
-            if (try self.viewContext.fetch(request).first) != nil {
-                return nil
-            }
-        }
-        catch let error as NSError {
-            print("Couldn't fetch. \(error), \(error.userInfo)")
+        if let _ = Folder.getRootFolder(context: self.viewContext) {
+            return nil
         }
         
         let folder: Folder = Folder(entity: folderEntity, insertInto: self.viewContext)

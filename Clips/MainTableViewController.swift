@@ -67,15 +67,9 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         }
         
         if self.folder == nil {
-            // fetch the root folder
-            let request: NSFetchRequest = NSFetchRequest<Folder>(entityName: "Folder")
-            request.predicate = NSPredicate(format: "superfolder == NIL")
-            do {
-                self.folder = try self.managedObjectContext.fetch(request).first
+            if let rootFolder = Folder.getRootFolder(context: self.managedObjectContext) {
+                self.folder = rootFolder
                 self.isRootFolder = true
-            }
-            catch let error as NSError {
-                print("Couldn't fetch. \(error), \(error.userInfo)")
             }
             
             // set up search controller
@@ -116,6 +110,13 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     // MARK: - Instance methods
+    
+    public func refreshRootFolder() {
+        if let rootFolder = Folder.getRootFolder(context: self.managedObjectContext) {
+            self.folder = rootFolder
+        }
+        self.loadData()
+    }
     
     /**
      Loads the current pasteboard (Last Copied), and calls `retrieveData()`; resets `selectedFolder` and `selectedClip` to `nil`; and reloads the table view.

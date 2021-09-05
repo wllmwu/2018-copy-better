@@ -46,6 +46,9 @@ extension Clip {
         guard let clipTitle = clip.title else {
             return nil
         }
+        if clipTitle.count == 0 {
+            return nil
+        }
         return ClipReference(identifier: clip.uriRepresentation, display: clipTitle)
     }
     

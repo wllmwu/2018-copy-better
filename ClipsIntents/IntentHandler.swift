@@ -10,20 +10,20 @@ import Intents
 import CoreData
 import ClipsKit
 
-class IntentHandler: INExtension, CopyClipIntentHandling {
+class IntentHandler: INExtension, CopyClipIntentHandling, AddClipIntentHandling {
     
-    private var managedObjectContext: NSManagedObjectContext?
+    private var _managedObjectContext: NSManagedObjectContext?
     
     private func getContext() -> NSManagedObjectContext? {
-        if self.managedObjectContext == nil {
+        if self._managedObjectContext == nil {
             let container = ClipsPersistentContainer(name: "Clips")
             container.loadPersistentStores(completionHandler: { (storeDescription, error) in
                 if error == nil {
-                    self.managedObjectContext = container.viewContext
+                    self._managedObjectContext = container.viewContext
                 }
             })
         }
-        return self.managedObjectContext
+        return self._managedObjectContext
     }
     
     override func handler(for intent: INIntent) -> Any {
@@ -33,6 +33,8 @@ class IntentHandler: INExtension, CopyClipIntentHandling {
         return self
     }
     
+    // MARK: - CopyClipIntentHandling protocol
+    
     func handle(intent: CopyClipIntent, completion: @escaping (CopyClipIntentResponse) -> Void) {
         guard let context = self.getContext() else {
             return completion(CopyClipIntentResponse(code: .failure, userActivity: nil))
@@ -40,8 +42,6 @@ class IntentHandler: INExtension, CopyClipIntentHandling {
         guard let clipReference = intent.clip, let clip = Clip.getReferencedClip(from: clipReference, context: context) else {
             return completion(CopyClipIntentResponse(code: .failureNonexistent, userActivity: nil))
         }
-        print("title: \(clip.title ?? "nil")")
-        print("contents: \(clip.contents)")
         
         ClipboardManager.copyToPasteboard(item: clip.contents)
         let response = CopyClipIntentResponse.success(clipContents: ClipboardManager.stringFromItem(clip.contents) ?? "")
@@ -114,6 +114,49 @@ class IntentHandler: INExtension, CopyClipIntentHandling {
             }
         }
         return completion(INObjectCollection(items: choices), nil)
+    }
+    
+    // MARK: - AddClipIntentHandling protocol
+    
+    func handle(intent: AddClipIntent, completion: @escaping (AddClipIntentResponse) -> Void) {
+        guard let context = self.getContext(), let entity = NSEntityDescription.entity(forEntityName: "Clip", in: context) else {
+            return completion(AddClipIntentResponse(code: .failure, userActivity: nil))
+        }
+        guard let rootFolder = Folder.getRootFolder(context: context) else {
+            return completion(AddClipIntentResponse(code: .failureRequiringAppLaunch, userActivity: nil))
+        }
+        
+        for clip in rootFolder.clipsArray {
+            clip.index += 1
+        }
+        
+        let contents = ClipboardManager.itemFromPlaintext(intent.contents ?? "")
+        let title = intent.title ?? ""
+        
+        let newClip = Clip(entity: entity, insertInto: context)
+        if title.count > 0 {
+            newClip.title = title
+        }
+        newClip.contents = contents
+        newClip.index = 0
+        newClip.folder = rootFolder
+        
+        do {
+            try context.save()
+            let defaults = UserDefaults.init(suiteName: "group.com.williamwu.clips")!
+            defaults.set(true, forKey: "shouldRefreshAppContext")
+        }
+        catch let error as NSError {
+            print("Couldn't save. \(error), \(error.userInfo)")
+            return completion(AddClipIntentResponse(code: .failure, userActivity: nil))
+        }
+        
+        let response = AddClipIntentResponse.success(inputText: intent.contents ?? "")
+        return completion(response)
+    }
+    
+    func resolveTitle(for intent: AddClipIntent, with completion: @escaping (INStringResolutionResult) -> Void) {
+        completion(.success(with: intent.title ?? ""))
     }
     
 }
