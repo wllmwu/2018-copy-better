@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import IntentsUI
 import ClipsKit
 
 class ClipViewController: UIViewController {
@@ -44,6 +45,16 @@ class ClipViewController: UIViewController {
             
             if let title = self.clip.title {
                 self.setTitle(title)
+                
+                if let intent = Clip.getCopyIntent(for: self.clip) {
+                    let siriButton = INUIAddVoiceShortcutButton(style: .automatic)
+                    siriButton.shortcut = INShortcut(intent: intent)
+                    siriButton.delegate = self
+                    siriButton.translatesAutoresizingMaskIntoConstraints = false
+                    self.view.addSubview(siriButton)
+                    self.view.rightAnchor.constraint(equalTo: siriButton.rightAnchor, constant: 16).isActive = true
+                    self.view.bottomAnchor.constraint(equalTo: siriButton.bottomAnchor, constant: 32).isActive = true
+                }
             }
             else {
                 self.navigationItem.largeTitleDisplayMode = .never
@@ -247,4 +258,46 @@ class ClipViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
+}
+
+extension ClipViewController: INUIAddVoiceShortcutButtonDelegate, INUIAddVoiceShortcutViewControllerDelegate, INUIEditVoiceShortcutViewControllerDelegate {
+    
+    // MARK: - INUIAddVoiceShortcutButtonDelegate protocol
+    
+    func present(_ addVoiceShortcutViewController: INUIAddVoiceShortcutViewController, for addVoiceShortcutButton: INUIAddVoiceShortcutButton) {
+        addVoiceShortcutViewController.delegate = self
+        addVoiceShortcutViewController.modalPresentationStyle = .formSheet
+        self.present(addVoiceShortcutViewController, animated: true, completion: nil)
+    }
+    
+    func present(_ editVoiceShortcutViewController: INUIEditVoiceShortcutViewController, for addVoiceShortcutButton: INUIAddVoiceShortcutButton) {
+        editVoiceShortcutViewController.delegate = self
+        editVoiceShortcutViewController.modalPresentationStyle = .formSheet
+        self.present(editVoiceShortcutViewController, animated: true, completion: nil)
+    }
+    
+    // MARK: - INUIAddVoiceShortcutViewControllerDelegate protocol
+    
+    func addVoiceShortcutViewController(_ controller: INUIAddVoiceShortcutViewController, didFinishWith voiceShortcut: INVoiceShortcut?, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func addVoiceShortcutViewControllerDidCancel(_ controller: INUIAddVoiceShortcutViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - INUIEditVoiceShortcutViewControllerDelegate protocol
+    
+    func editVoiceShortcutViewController(_ controller: INUIEditVoiceShortcutViewController, didUpdate voiceShortcut: INVoiceShortcut?, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func editVoiceShortcutViewController(_ controller: INUIEditVoiceShortcutViewController, didDeleteVoiceShortcutWithIdentifier deletedVoiceShortcutIdentifier: UUID) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func editVoiceShortcutViewControllerDidCancel(_ controller: INUIEditVoiceShortcutViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
 }

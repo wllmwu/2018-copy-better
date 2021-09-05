@@ -90,14 +90,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        guard let navigation = self.window?.rootViewController as? UINavigationController else {
+            return
+        }
         if self.defaults.bool(forKey: "shouldRefreshAppContext") {
-            guard let navigation = self.window?.rootViewController as? UINavigationController, let root = navigation.viewControllers.first as? MainTableViewController else {
+            guard let root = navigation.viewControllers.first as? MainTableViewController else {
                 return
             }
             navigation.popToRootViewController(animated: false)
             self.persistentContainer.viewContext.reset()
             root.refreshRootFolder()
             self.defaults.set(false, forKey: "shouldRefreshAppcontext")
+        }
+        else {
+            guard let viewController = navigation.visibleViewController as? MainTableViewController else {
+                return
+            }
+            viewController.loadData()
         }
     }
 

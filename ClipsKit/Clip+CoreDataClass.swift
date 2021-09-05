@@ -65,16 +65,21 @@ extension Clip {
         }
     }
     
-    public static func donateCopyInteraction(with clip: Clip, completion: ((Error?) -> Void)? = nil) {
+    public static func getCopyIntent(for clip: Clip) -> CopyClipIntent? {
         guard let clipReference = Clip.getIntentReference(for: clip) else {
-            return
+            return nil
         }
-        
         let intent = CopyClipIntent()
         intent.clip = clipReference
+        return intent
+    }
+    
+    public static func donateCopyInteraction(with clip: Clip, completion: ((Error?) -> Void)? = nil) {
+        guard let intent = Clip.getCopyIntent(for: clip) else {
+            return
+        }
         let interaction = INInteraction(intent: intent, response: nil)
-        interaction.groupIdentifier = clipReference.identifier
-        
+        interaction.groupIdentifier = intent.clip!.identifier
         interaction.donate(completion: completion)
     }
     
