@@ -116,3 +116,9 @@
 
 /* Widget description */
 "Add the current[...]" = "Agregue el contenido actuel del portapapeles a la app.";
+
+/* Favorites widget display name */
+"Favorite Clips" = "Favorite Clips";
+
+/* Favorites widget description */
+"View and copy[...]" = "View and copy clips in your Favorites folder.";

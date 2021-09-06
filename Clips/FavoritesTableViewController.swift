@@ -40,20 +40,10 @@ class FavoritesTableViewController: UITableViewController {
     
     // MARK: - Instance methods
     
-    private func fetchFavorites() {
-        let request: NSFetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
-        request.predicate = NSPredicate(format: "isFavorite == true")
-        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-        do {
-            self.clips = try self.managedObjectContext.fetch(request)
-        }
-        catch let error as NSError {
-            print("Couldn't fetch. \(error), \(error.userInfo)")
-        }
-    }
-    
     private func loadData() {
-        self.fetchFavorites()
+        if let favorites = Clip.getFavorites(context: self.managedObjectContext, limit: nil) {
+            self.clips = favorites
+        }
         self.selectedClip = nil
         self.tableView.reloadData()
     }

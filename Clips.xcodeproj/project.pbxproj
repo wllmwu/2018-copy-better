@@ -23,6 +23,13 @@
 		E0071DE921CB171100B75D4C /* KeyboardClipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0071DE821CB171100B75D4C /* KeyboardClipCell.swift */; };
 		E0079EDC25068C9100F3BC10 /* FolderPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0079EDB25068C9100F3BC10 /* FolderPickerTableViewCell.swift */; };
 		E017418324E49B0C0007E667 /* FolderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E017418224E49B0C0007E667 /* FolderTableViewCell.swift */; };
+		E027B34226E6C0EB0071BD45 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E000A2ED251EECD2007EFFFF /* WidgetKit.framework */; };
+		E027B34326E6C0EB0071BD45 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E000A2EF251EECD2007EFFFF /* SwiftUI.framework */; };
+		E027B34626E6C0EB0071BD45 /* ClipsFavoritesWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E027B34526E6C0EB0071BD45 /* ClipsFavoritesWidget.swift */; };
+		E027B34826E6C0EB0071BD45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E027B34726E6C0EB0071BD45 /* Assets.xcassets */; };
+		E027B34C26E6C0EB0071BD45 /* ClipsFavoritesWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E027B34126E6C0EB0071BD45 /* ClipsFavoritesWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E027B35126E6C20D0071BD45 /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E373BC24EAFFD7006A2816 /* AppStrings.swift */; };
+		E027B35226E6C21A0071BD45 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E06EC94D21C5ACA100687F9E /* Localizable.strings */; };
 		E03B9EB923E7DE25001206EF /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E03B9EB823E7DE25001206EF /* Colors.xcassets */; };
 		E03B9EBA23E7DE25001206EF /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E03B9EB823E7DE25001206EF /* Colors.xcassets */; };
 		E03B9EBB23E7DE25001206EF /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E03B9EB823E7DE25001206EF /* Colors.xcassets */; };
@@ -117,6 +124,13 @@
 			remoteGlobalIDString = E0CAD76526D6E85D00B10E72;
 			remoteInfo = ClipsKit;
 		};
+		E027B34A26E6C0EB0071BD45 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E056F8E520CEE46C0025E2FE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E027B34026E6C0EB0071BD45;
+			remoteInfo = ClipsFavoritesWidgetExtension;
+		};
 		E04106C5219D04F100DD68AD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E056F8E520CEE46C0025E2FE /* Project object */;
@@ -195,6 +209,7 @@
 			files = (
 				E0A51ADB21C6CABA00FCCCA9 /* Copy Better Keyboard.appex in Embed App Extensions */,
 				E00453EA26D98F2B00F38D51 /* ClipsIntents.appex in Embed App Extensions */,
+				E027B34C26E6C0EB0071BD45 /* ClipsFavoritesWidgetExtension.appex in Embed App Extensions */,
 				E04106C7219D04F100DD68AD /* Copy Better Widget.appex in Embed App Extensions */,
 				E041A73521E3D65800B58DD5 /* Copy Better Share.appex in Embed App Extensions */,
 				E000A2F9251EECD6007EFFFF /* Clips Widget 2Extension.appex in Embed App Extensions */,
@@ -266,6 +281,11 @@
 		E0071DE821CB171100B75D4C /* KeyboardClipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardClipCell.swift; sourceTree = "<group>"; };
 		E0079EDB25068C9100F3BC10 /* FolderPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderPickerTableViewCell.swift; sourceTree = "<group>"; };
 		E017418224E49B0C0007E667 /* FolderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderTableViewCell.swift; sourceTree = "<group>"; };
+		E027B34126E6C0EB0071BD45 /* ClipsFavoritesWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ClipsFavoritesWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E027B34526E6C0EB0071BD45 /* ClipsFavoritesWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipsFavoritesWidget.swift; sourceTree = "<group>"; };
+		E027B34726E6C0EB0071BD45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E027B34926E6C0EB0071BD45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E027B35026E6C1BB0071BD45 /* ClipsFavoritesWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ClipsFavoritesWidgetExtension.entitlements; sourceTree = "<group>"; };
 		E029B42A21B32C8F005EFEB6 /* ClipsPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipsPersistentContainer.swift; sourceTree = "<group>"; };
 		E03B9EB823E7DE25001206EF /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		E04106BA219D04F100DD68AD /* Copy Better Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Copy Better Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -365,6 +385,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E027B33E26E6C0EB0071BD45 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E027B34326E6C0EB0071BD45 /* SwiftUI.framework in Frameworks */,
+				E027B34226E6C0EB0071BD45 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E04106B7219D04F100DD68AD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -428,6 +457,17 @@
 			path = ClipsIntents;
 			sourceTree = "<group>";
 		};
+		E027B34426E6C0EB0071BD45 /* ClipsFavoritesWidget */ = {
+			isa = PBXGroup;
+			children = (
+				E027B35026E6C1BB0071BD45 /* ClipsFavoritesWidgetExtension.entitlements */,
+				E027B34526E6C0EB0071BD45 /* ClipsFavoritesWidget.swift */,
+				E027B34726E6C0EB0071BD45 /* Assets.xcassets */,
+				E027B34926E6C0EB0071BD45 /* Info.plist */,
+			);
+			path = ClipsFavoritesWidget;
+			sourceTree = "<group>";
+		};
 		E04106BB219D04F100DD68AD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -479,6 +519,7 @@
 				E0A51AD521C6CABA00FCCCA9 /* Clips Keyboard */,
 				E041A72C21E3D65700B58DD5 /* Clips Share */,
 				E00453E426D98F2B00F38D51 /* ClipsIntents */,
+				E027B34426E6C0EB0071BD45 /* ClipsFavoritesWidget */,
 				E04106BB219D04F100DD68AD /* Frameworks */,
 				E056F8EE20CEE46C0025E2FE /* Products */,
 			);
@@ -494,6 +535,7 @@
 				E000A2EC251EECD2007EFFFF /* Clips Widget 2Extension.appex */,
 				E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */,
 				E00453E126D98F2B00F38D51 /* ClipsIntents.appex */,
+				E027B34126E6C0EB0071BD45 /* ClipsFavoritesWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -610,6 +652,23 @@
 			productReference = E00453E126D98F2B00F38D51 /* ClipsIntents.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		E027B34026E6C0EB0071BD45 /* ClipsFavoritesWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E027B34F26E6C0EB0071BD45 /* Build configuration list for PBXNativeTarget "ClipsFavoritesWidgetExtension" */;
+			buildPhases = (
+				E027B33D26E6C0EB0071BD45 /* Sources */,
+				E027B33E26E6C0EB0071BD45 /* Frameworks */,
+				E027B33F26E6C0EB0071BD45 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ClipsFavoritesWidgetExtension;
+			productName = ClipsFavoritesWidgetExtension;
+			productReference = E027B34126E6C0EB0071BD45 /* ClipsFavoritesWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		E04106B9219D04F100DD68AD /* Copy Better Widget */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E04106C8219D04F100DD68AD /* Build configuration list for PBXNativeTarget "Copy Better Widget" */;
@@ -668,6 +727,7 @@
 				E0CAD77A26D6EA4700B10E72 /* PBXTargetDependency */,
 				E00453E926D98F2B00F38D51 /* PBXTargetDependency */,
 				E0D1735126DAD78A0053A4D2 /* PBXTargetDependency */,
+				E027B34B26E6C0EB0071BD45 /* PBXTargetDependency */,
 			);
 			name = "Copy Better";
 			productName = "Clipboard Manager";
@@ -725,6 +785,9 @@
 						CreatedOnToolsVersion = 12.0;
 					};
 					E00453E026D98F2B00F38D51 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					E027B34026E6C0EB0071BD45 = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
 					E04106B9219D04F100DD68AD = {
@@ -788,6 +851,7 @@
 				E000A2EB251EECD2007EFFFF /* Clips Widget 2Extension */,
 				E0CAD76526D6E85D00B10E72 /* ClipsKit */,
 				E00453E026D98F2B00F38D51 /* ClipsIntents */,
+				E027B34026E6C0EB0071BD45 /* ClipsFavoritesWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -806,6 +870,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E027B33F26E6C0EB0071BD45 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E027B34826E6C0EB0071BD45 /* Assets.xcassets in Resources */,
+				E027B35226E6C21A0071BD45 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -884,6 +957,15 @@
 			files = (
 				E05D409C26E565DE002A1865 /* Intents.intentdefinition in Sources */,
 				E00453E626D98F2B00F38D51 /* IntentHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E027B33D26E6C0EB0071BD45 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E027B35126E6C20D0071BD45 /* AppStrings.swift in Sources */,
+				E027B34626E6C0EB0071BD45 /* ClipsFavoritesWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -977,6 +1059,11 @@
 			isa = PBXTargetDependency;
 			target = E0CAD76526D6E85D00B10E72 /* ClipsKit */;
 			targetProxy = E00453F026D9909C00F38D51 /* PBXContainerItemProxy */;
+		};
+		E027B34B26E6C0EB0071BD45 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E027B34026E6C0EB0071BD45 /* ClipsFavoritesWidgetExtension */;
+			targetProxy = E027B34A26E6C0EB0071BD45 /* PBXContainerItemProxy */;
 		};
 		E04106C6219D04F100DD68AD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1146,6 +1233,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = "Clips Widget 2Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1174,6 +1262,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = "Clips Widget 2Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1239,6 +1328,61 @@
 				MARKETING_VERSION = 2.1;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.williamwu.Clips.ClipsIntents;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E027B34D26E6C0EB0071BD45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = ClipsFavoritesWidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FFB5P5C3G7;
+				INFOPLIST_FILE = ClipsFavoritesWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 2.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.williamwu.Clips.ClipsFavoritesWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E027B34E26E6C0EB0071BD45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = ClipsFavoritesWidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FFB5P5C3G7;
+				INFOPLIST_FILE = ClipsFavoritesWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 2.1;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.williamwu.Clips.ClipsFavoritesWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1642,6 +1786,15 @@
 			buildConfigurations = (
 				E00453EB26D98F2B00F38D51 /* Debug */,
 				E00453EC26D98F2B00F38D51 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E027B34F26E6C0EB0071BD45 /* Build configuration list for PBXNativeTarget "ClipsFavoritesWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E027B34D26E6C0EB0071BD45 /* Debug */,
+				E027B34E26E6C0EB0071BD45 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
