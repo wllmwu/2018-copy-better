@@ -1,0 +1,89 @@
+// "Select a clip"
+"2B01AI" = "Seleccionar un clip";
+
+// "Add clip titled \"${title}\" with contents: ${contents}"
+"2n3rI5" = "Agregar un clip titulado \"${title}\" con contenido: ${contents}";
+
+// "Clip Contents"
+"3kfB2o" = "Contenido del Clip";
+
+// "Something went wrong. The clip couldn't be copied."
+"5szpwi" = "Hubo un problema.";
+
+// "Add Clip"
+"6gfyIG" = "Agregar un Clip";
+
+// "Copy clip \"${clip}\" to the clipboard"
+"7BeXK3" = "Copiar el clip \"${clip}\" al portapapeles";
+
+// "Added the clip: ${inputText}"
+"7TMWAV" = "El clip fue agregado: ${inputText}";
+
+// "Copied to clipboard."
+"DM4921" = "Copiado al portapapeles.";
+
+// "What's the title of the clip you would like to copy?"
+"FgdroQ" = "¿Cuál es el título del clip que le gustaría copiar?";
+
+// "There are ${count} options matching ‘${clip}’."
+"HXOkSN" = "Hay ${count} resultados para ‘${clip}’.";
+
+// "Clip Contents"
+"L9irGQ" = "Contenido del Clip";
+
+// "Something went wrong. The clip couldn't be copied."
+"LgRWVc" = "Hubo un problema.";
+
+// "No clips matching '${clip}' were found."
+"NH5R4t" = "No hay resultados para '${clip}'.";
+
+// "Copy clip \"${clip}\" to the clipboard"
+"OpXQc6" = "Copiar el clip \"${clip}\" al portapapeles";
+
+// "Copies a clip to the system clipboard. Also outputs the clip's contents as text."
+"T3GdvL" = "Copia un clip al portapapeles y pasa el contenido del clip a la acción siguiente.";
+
+// "What would you like to title this clip?"
+"VPrJRS" = "¿Cómo le gustaría titular este clip?";
+
+// "Creates a new clip with the input text as its contents, and outputs the input text."
+"YWE1Jl" = "Crea un nuevo clip desde el texto pasada a la acción.";
+
+// "Contents"
+"ZPokU6" = "Contenido";
+
+// "Copied to clipboard: ${clipContents}"
+"cxjvkX" = "Copiado al portapapeles: ${clipContents}";
+
+// "Copy Clip"
+"dbZ2UR" = "Copiar un Clip";
+
+// "Added the clip."
+"hgsjlA" = "El clip fue agregado.";
+
+// "The clip couldn't be found."
+"iVj1bR" = "No se pudo encontrar el clip.";
+
+// "Something went wrong. The clip couldn't be added."
+"j5ms9N" = "Hubo un problema.";
+
+// "Something went wrong while looking for '${clip}'."
+"mvBWLJ" = "Hubo un problema al buscar '${clip}'.";
+
+// "Something went wrong. The clip couldn't be added."
+"qPNcGD" = "Hubo un problema.";
+
+// "Title"
+"rjfnGy" = "Título";
+
+// "Clip Reference"
+"sMlahX" = "Clip";
+
+// "The clip couldn't be found."
+"seOuk5" = "No se pudo encontrar el clip.";
+
+// "Just to confirm, you wanted ‘${clip}’?"
+"w1mbGI" = "Para confirmar, querías ‘${clip}’?";
+
+// "Clip"
+"ymLEhq" = "Clip";

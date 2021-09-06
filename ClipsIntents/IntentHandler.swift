@@ -151,7 +151,7 @@ class IntentHandler: INExtension, CopyClipIntentHandling, AddClipIntentHandling 
             return completion(AddClipIntentResponse(code: .failure, userActivity: nil))
         }
         
-        let response = AddClipIntentResponse.success(inputText: intent.contents ?? "")
+        let response = AddClipIntentResponse.success(clipContents: intent.contents ?? "")
         return completion(response)
     }
     

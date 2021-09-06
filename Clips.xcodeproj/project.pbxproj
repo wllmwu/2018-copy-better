@@ -22,9 +22,6 @@
 		E0071DE721CB154D00B75D4C /* KeyboardClipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0071DE621CB154D00B75D4C /* KeyboardClipCell.xib */; };
 		E0071DE921CB171100B75D4C /* KeyboardClipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0071DE821CB171100B75D4C /* KeyboardClipCell.swift */; };
 		E0079EDC25068C9100F3BC10 /* FolderPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0079EDB25068C9100F3BC10 /* FolderPickerTableViewCell.swift */; };
-		E0121A6B26DD8E2100E44C41 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E0489BA92693D6F80062AAC9 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (no_codegen, ); }; };
-		E0121A6C26DD8E2800E44C41 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E0489BA92693D6F80062AAC9 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (no_codegen, ); }; };
-		E0121A6D26DD8E2D00E44C41 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E0489BA92693D6F80062AAC9 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (no_codegen, ); }; };
 		E017418324E49B0C0007E667 /* FolderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E017418224E49B0C0007E667 /* FolderTableViewCell.swift */; };
 		E03B9EB923E7DE25001206EF /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E03B9EB823E7DE25001206EF /* Colors.xcassets */; };
 		E03B9EBA23E7DE25001206EF /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E03B9EB823E7DE25001206EF /* Colors.xcassets */; };
@@ -44,6 +41,10 @@
 		E056F8FB20CEE46E0025E2FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E056F8FA20CEE46E0025E2FE /* Assets.xcassets */; };
 		E056F8FE20CEE46E0025E2FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E056F8FC20CEE46E0025E2FE /* LaunchScreen.storyboard */; };
 		E05CAEE421CB3BB2003C3BB4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E06EC94D21C5ACA100687F9E /* Localizable.strings */; };
+		E05D409926E565DE002A1865 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E05D409E26E565DE002A1865 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (no_codegen, ); }; };
+		E05D409A26E565DE002A1865 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E05D409E26E565DE002A1865 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (no_codegen, ); }; };
+		E05D409B26E565DE002A1865 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E05D409E26E565DE002A1865 /* Intents.intentdefinition */; };
+		E05D409C26E565DE002A1865 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E05D409E26E565DE002A1865 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (no_codegen, ); }; };
 		E05EA02D21BD8BB300FC33C9 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05EA02C21BD8BB300FC33C9 /* Toast.swift */; };
 		E0619E0021DE871B00A69332 /* ClipsKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0619DFF21DE871B00A69332 /* ClipsKeyboardView.swift */; };
 		E0619E0621DEA3BC00A69332 /* KeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0619E0521DEA3BC00A69332 /* KeyboardButton.swift */; };
@@ -77,7 +78,6 @@
 		E0CAD77326D6E99600B10E72 /* ClipsPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E029B42A21B32C8F005EFEB6 /* ClipsPersistentContainer.swift */; };
 		E0CAD77426D6E9CC00B10E72 /* ClipboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA135219D37BE0015A30F /* ClipboardManager.swift */; };
 		E0CAD77526D6E9DC00B10E72 /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */; };
-		E0CAD77626D6EA1500B10E72 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E0489BA92693D6F80062AAC9 /* Intents.intentdefinition */; };
 		E0CAD77726D6EA4600B10E72 /* ClipsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */; };
 		E0CAD77826D6EA4600B10E72 /* ClipsKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E0CAD77C26D6EA6600B10E72 /* ClipsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */; };
@@ -278,7 +278,6 @@
 		E041A73021E3D65700B58DD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		E041A73221E3D65800B58DD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E041A73921E3DA3E00B58DD5 /* ShareConfigureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareConfigureViewController.swift; sourceTree = "<group>"; };
-		E0489BA92693D6F80062AAC9 /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
 		E04BC4C724E48DCC009BEE48 /* Clip+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Clip+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E051A19E223E086D0059B7CA /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		E056F8ED20CEE46C0025E2FE /* Copy Better.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Copy Better.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -288,6 +287,9 @@
 		E056F8FA20CEE46E0025E2FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E056F8FD20CEE46E0025E2FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E056F8FF20CEE46E0025E2FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E05D409D26E565DE002A1865 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = Base.lproj/Intents.intentdefinition; sourceTree = "<group>"; };
+		E05D40A226E565F8002A1865 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Intents.strings; sourceTree = "<group>"; };
+		E05D40A426E565F9002A1865 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Intents.strings; sourceTree = "<group>"; };
 		E05EA02C21BD8BB300FC33C9 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		E05EA02F21BD949600FC33C9 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		E05EA03121BD94B200FC33C9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/MainInterface.strings; sourceTree = "<group>"; };
@@ -553,7 +555,7 @@
 				E029B42A21B32C8F005EFEB6 /* ClipsPersistentContainer.swift */,
 				E06AA135219D37BE0015A30F /* ClipboardManager.swift */,
 				E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */,
-				E0489BA92693D6F80062AAC9 /* Intents.intentdefinition */,
+				E05D409E26E565DE002A1865 /* Intents.intentdefinition */,
 			);
 			path = ClipsKit;
 			sourceTree = "<group>";
@@ -880,7 +882,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0121A6D26DD8E2D00E44C41 /* Intents.intentdefinition in Sources */,
+				E05D409C26E565DE002A1865 /* Intents.intentdefinition in Sources */,
 				E00453E626D98F2B00F38D51 /* IntentHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -909,7 +911,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0121A6B26DD8E2100E44C41 /* Intents.intentdefinition in Sources */,
+				E05D409926E565DE002A1865 /* Intents.intentdefinition in Sources */,
 				E06AA130219D32DE0015A30F /* ClipViewController.swift in Sources */,
 				E07AC77A251FF04F007DEF67 /* FavoritesTableViewController.swift in Sources */,
 				E017418324E49B0C0007E667 /* FolderTableViewCell.swift in Sources */,
@@ -936,7 +938,7 @@
 				E0E373BF24EAFFD7006A2816 /* AppStrings.swift in Sources */,
 				E0619E0021DE871B00A69332 /* ClipsKeyboardView.swift in Sources */,
 				E0071DE921CB171100B75D4C /* KeyboardClipCell.swift in Sources */,
-				E0121A6C26DD8E2800E44C41 /* Intents.intentdefinition in Sources */,
+				E05D409A26E565DE002A1865 /* Intents.intentdefinition in Sources */,
 				E0025F3F251123D800DB66DC /* KeyboardFolderCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -948,7 +950,7 @@
 				E0CAD76E26D6E91F00B10E72 /* Folder+CoreDataClass.swift in Sources */,
 				E0CAD77026D6E95B00B10E72 /* Clip+CoreDataClass.swift in Sources */,
 				E0CAD77326D6E99600B10E72 /* ClipsPersistentContainer.swift in Sources */,
-				E0CAD77626D6EA1500B10E72 /* Intents.intentdefinition in Sources */,
+				E05D409B26E565DE002A1865 /* Intents.intentdefinition in Sources */,
 				E0CAD77526D6E9DC00B10E72 /* String+HTML.swift in Sources */,
 				E0CAD76F26D6E93B00B10E72 /* Folder+CoreDataProperties.swift in Sources */,
 				E0CAD77126D6E96E00B10E72 /* Clip+CoreDataProperties.swift in Sources */,
@@ -1053,6 +1055,16 @@
 				E056F8FD20CEE46E0025E2FE /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		E05D409E26E565DE002A1865 /* Intents.intentdefinition */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E05D409D26E565DE002A1865 /* Base */,
+				E05D40A226E565F8002A1865 /* fr */,
+				E05D40A426E565F9002A1865 /* es */,
+			);
+			name = Intents.intentdefinition;
 			sourceTree = "<group>";
 		};
 		E06CAC662241374B008347AA /* ClipsKeyboardView.xib */ = {

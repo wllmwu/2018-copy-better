@@ -352,7 +352,7 @@
 				<array>
 					<dict>
 						<key>INIntentResponseCodeConciseFormatString</key>
-						<string>Added the clip: ${inputText}</string>
+						<string>Added the clip: ${clipContents}</string>
 						<key>INIntentResponseCodeConciseFormatStringID</key>
 						<string>7TMWAV</string>
 						<key>INIntentResponseCodeFormatString</key>
@@ -380,18 +380,18 @@
 				<key>INIntentResponseLastParameterTag</key>
 				<integer>1</integer>
 				<key>INIntentResponseOutput</key>
-				<string>inputText</string>
+				<string>clipContents</string>
 				<key>INIntentResponseParameters</key>
 				<array>
 					<dict>
 						<key>INIntentResponseParameterDisplayName</key>
-						<string>Input Text</string>
+						<string>Clip Contents</string>
 						<key>INIntentResponseParameterDisplayNameID</key>
 						<string>L9irGQ</string>
 						<key>INIntentResponseParameterDisplayPriority</key>
 						<integer>1</integer>
 						<key>INIntentResponseParameterName</key>
-						<string>inputText</string>
+						<string>clipContents</string>
 						<key>INIntentResponseParameterTag</key>
 						<integer>1</integer>
 						<key>INIntentResponseParameterType</key>

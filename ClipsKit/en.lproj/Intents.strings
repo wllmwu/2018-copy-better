@@ -1,0 +1,60 @@
+"2B01AI" = "Select a clip";
+
+"2n3rI5" = "Add clip titled \"${title}\" with contents: ${contents}";
+
+"3kfB2o" = "Clip Contents";
+
+"5szpwi" = "Something went wrong. The clip couldn't be copied.";
+
+"6gfyIG" = "Add Clip";
+
+"7BeXK3" = "Copy clip \"${clip}\" to the clipboard";
+
+"7TMWAV" = "Added the clip: ${inputText}";
+
+"DM4921" = "Copied to clipboard.";
+
+"FgdroQ" = "What's the title of the clip you would like to copy?";
+
+"HXOkSN" = "There are ${count} options matching ‘${clip}’.";
+
+"L9irGQ" = "Input Text";
+
+"LgRWVc" = "Something went wrong. The clip couldn't be copied.";
+
+"NH5R4t" = "No clips matching '${clip}' were found.";
+
+"OpXQc6" = "Copy clip \"${clip}\" to the clipboard";
+
+"T3GdvL" = "Copies a clip to the system clipboard. Also outputs the clip's contents as text.";
+
+"VPrJRS" = "What would you like to title this clip?";
+
+"YWE1Jl" = "Creates a new clip with the input text as its contents, and outputs the input text.";
+
+"ZPokU6" = "Contents";
+
+"cxjvkX" = "Copied to clipboard: ${clipContents}";
+
+"dbZ2UR" = "Copy Clip";
+
+"hgsjlA" = "Added the clip.";
+
+"iVj1bR" = "The clip couldn't be found.";
+
+"j5ms9N" = "Something went wrong. The clip couldn't be added.";
+
+"mvBWLJ" = "Something went wrong while looking for '${clip}'.";
+
+"qPNcGD" = "Something went wrong. The clip couldn't be added.";
+
+"rjfnGy" = "Title";
+
+"sMlahX" = "Clip Reference";
+
+"seOuk5" = "The clip couldn't be found.";
+
+"w1mbGI" = "Just to confirm, you wanted ‘${clip}’?";
+
+"ymLEhq" = "Clip";
+
