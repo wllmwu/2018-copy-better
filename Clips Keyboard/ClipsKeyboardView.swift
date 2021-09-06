@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ClipsKit
 
 protocol ClipsKeyboardViewDelegate: class {
     var superfolder: Folder? { get }

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import ClipsKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,36 +16,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     private var managedObjectContext: NSManagedObjectContext!
+    private var defaults = UserDefaults.init(suiteName: "group.com.williamwu.clips")!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clips")!
-        if !defaults.bool(forKey: "launchedBefore") {
+        if !self.defaults.bool(forKey: "launchedBefore") {
             // first launch ever - set some default settings and data
             self.managedObjectContext = self.persistentContainer.viewContext
             self.persistentContainer.setUpFirstLaunch()
             
-            defaults.set(true, forKey: "showLastCopiedInMain")
-            defaults.set(true, forKey: "enableFavorites")
-            defaults.set(false, forKey: "wrapClipsInKeyboard")
-            defaults.set(true, forKey: "showLastCopiedInWidget")
-            defaults.set(5, forKey: "numClipsInWidget")
+            self.defaults.set(true, forKey: "showLastCopiedInMain")
+            self.defaults.set(true, forKey: "enableFavorites")
+            self.defaults.set(false, forKey: "wrapClipsInKeyboard")
+            self.defaults.set(true, forKey: "showLastCopiedInWidget")
+            self.defaults.set(5, forKey: "numClipsInWidget")
             
-            defaults.set(true, forKey: "launchedBefore")
-            defaults.set(true, forKey: "launched2.0")
-            defaults.set(true, forKey: "launched2.1")
+            self.defaults.set(true, forKey: "launchedBefore")
+            self.defaults.set(true, forKey: "launched2.0")
+            self.defaults.set(true, forKey: "launched2.1")
         }
-        if !defaults.bool(forKey: "launched2.0") {
+        if !self.defaults.bool(forKey: "launched2.0") {
             // has launched before updating to version 2.0 - migrate old clips to the new model
             self.managedObjectContext = self.persistentContainer.viewContext
             self.persistentContainer.migrateModelV1To2()
-            defaults.set(true, forKey: "launched2.0")
+            self.defaults.set(true, forKey: "launched2.0")
         }
-        if !defaults.bool(forKey: "launched2.1") {
+        if !self.defaults.bool(forKey: "launched2.1") {
             // has launched before updating to version 2.1 - add new settings defaults
-            defaults.set(true, forKey: "enableFavorites")
-            defaults.set(true, forKey: "launched2.1")
+            self.defaults.set(true, forKey: "enableFavorites")
+            self.defaults.set(true, forKey: "launched2.1")
         }
         
         return true
@@ -64,6 +65,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return true
     }
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        if userActivity.activityType == "CopyClipIntent" {
+            guard let intent = userActivity.interaction?.intent as? CopyClipIntent, let clipReference = intent.clip, let clip = Clip.getReferencedClip(from: clipReference, context: self.managedObjectContext) else {
+                return false
+            }
+            ClipboardManager.copyToPasteboard(item: clip.contents)
+            NotificationCenter.default.post(name: Notification.Name("ShowCopiedToast"), object: nil)
+            return true
+        }
+        return false
+    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -77,11 +90,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-        print("enter foreground")
-        if let navigation = self.window?.rootViewController as? UINavigationController {
-            if let viewController = navigation.visibleViewController as? MainTableViewController {
-                viewController.loadData() // when the app is reopened from a background state, if it was on a folder view, refresh that folder
+        guard let navigation = self.window?.rootViewController as? UINavigationController else {
+            return
+        }
+        if self.defaults.bool(forKey: "shouldRefreshAppContext") {
+            guard let root = navigation.viewControllers.first as? MainTableViewController else {
+                return
             }
+            navigation.popToRootViewController(animated: false)
+            self.persistentContainer.viewContext.reset()
+            root.refreshRootFolder()
+            self.defaults.set(false, forKey: "shouldRefreshAppcontext")
+        }
+        else {
+            guard let viewController = navigation.visibleViewController as? MainTableViewController else {
+                return
+            }
+            viewController.loadData()
         }
     }
 
@@ -92,6 +117,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
+        self.defaults.set(false, forKey: "shouldRefreshAppContext")
         self.saveContext()
     }
 

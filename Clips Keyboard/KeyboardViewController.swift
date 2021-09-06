@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import ClipsKit
 
 class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
     
@@ -57,16 +58,10 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
             defaults.set(true, forKey: "launched2.0")
         }
         
-        // fetch the root folder
-        let request: NSFetchRequest = NSFetchRequest<Folder>(entityName: "Folder")
-        request.predicate = NSPredicate(format: "superfolder == NIL")
-        do {
-            self.rootFolder = try self.managedObjectContext.fetch(request).first
+        if let rootFolder = Folder.getRootFolder(context: self.managedObjectContext) {
+            self.rootFolder = rootFolder
             self.currentFolder = self.rootFolder
             self.isRootFolder = true
-        }
-        catch let error as NSError {
-            print("Couldn't fetch. \(error), \(error.userInfo)")
         }
     }
     
@@ -157,6 +152,7 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
     private func saveContext() {
         do {
             try self.managedObjectContext.save()
+            self.defaults.set(true, forKey: "shouldRefreshAppContext")
         }
         catch let error as NSError {
             print("Couldn't save. \(error), \(error.userInfo)")
@@ -174,6 +170,7 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
             array[i].index -= 1
         }
         self.managedObjectContext.delete(clip)
+        Clip.deleteCopyInteractions(for: clip)
         
         self.saveContext()
         self.keyboardView.loadData()
@@ -192,6 +189,11 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
     func selectClip(_ clip: Clip) {
         if let text = ClipboardManager.stringFromItem(clip.contents) {
             self.insertText(text)
+            Clip.donateCopyInteraction(with: clip) { (error) in
+                if let e = error {
+                    print("Interaction donation failed: \(e.localizedDescription)")
+                }
+            }
         }
     }
     

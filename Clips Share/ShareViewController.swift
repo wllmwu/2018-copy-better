@@ -10,6 +10,7 @@ import UIKit
 import Social
 import CoreData
 import MobileCoreServices
+import ClipsKit
 
 class ShareViewController: SLComposeServiceViewController, ShareConfigureViewControllerDelegate {
     
@@ -33,13 +34,8 @@ class ShareViewController: SLComposeServiceViewController, ShareConfigureViewCon
         })
         self.managedObjectContext = container.viewContext
         
-        let fetchRequest: NSFetchRequest = NSFetchRequest<Folder>(entityName: "Folder")
-        fetchRequest.predicate = NSPredicate(format: "superfolder == NIL")
-        do {
-            self.rootFolder = try self.managedObjectContext.fetch(fetchRequest).first
-        }
-        catch let error as NSError {
-            print("Couldn't fetch. \(error), \(error.userInfo)")
+        if let rootFolder = Folder.getRootFolder(context: self.managedObjectContext) {
+            self.rootFolder = rootFolder
         }
         
         if let content = self.extensionContext!.inputItems.first as? NSExtensionItem {
@@ -136,6 +132,7 @@ class ShareViewController: SLComposeServiceViewController, ShareConfigureViewCon
     private func saveContext() {
         do {
             try self.managedObjectContext.save()
+            self.defaults.set(true, forKey: "shouldRefreshAppContext")
         }
         catch let error as NSError {
             print("Couldn't save. \(error), \(error.userInfo)")

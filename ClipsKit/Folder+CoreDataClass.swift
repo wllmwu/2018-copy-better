@@ -33,4 +33,16 @@ public class Folder: NSManagedObject {
         })
     }
     
+    public static func getRootFolder(context: NSManagedObjectContext) -> Folder? {
+        let request = NSFetchRequest<Folder>(entityName: "Folder")
+        request.predicate = NSPredicate(format: "superfolder == NIL")
+        do {
+            return try context.fetch(request).first
+        }
+        catch let error as NSError {
+            print("Couldn't fetch. \(error), \(error.userInfo)")
+            return nil
+        }
+    }
+    
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ClipsKit
 
 class ClipTableViewCell: UITableViewCell {
     
@@ -21,6 +22,7 @@ class ClipTableViewCell: UITableViewCell {
     @IBOutlet weak var primaryLabelToFavoriteIcon: NSLayoutConstraint?
     
     private var contents: [String : Any]!
+    private var clip: Clip!
     
     /*
     override func awakeFromNib() {
@@ -42,6 +44,10 @@ class ClipTableViewCell: UITableViewCell {
     */
     
     // MARK: - Public setters
+    
+    func setClip(_ clip: Clip) {
+        self.clip = clip
+    }
     
     func setTitle(_ title: String) {
         if let label = self.titleLabel {
@@ -148,6 +154,11 @@ class ClipTableViewCell: UITableViewCell {
     
     @IBAction func copyButtonTapped(_ sender: UIButton) {
         ClipboardManager.copyToPasteboard(item: self.contents)
+        Clip.donateCopyInteraction(with: self.clip) { (error) in
+            if let e = error {
+                print("Interaction donation failed: \(e.localizedDescription)")
+            }
+        }
         NotificationCenter.default.post(name: Notification.Name("ShowCopiedToast"), object: nil)
     }
     

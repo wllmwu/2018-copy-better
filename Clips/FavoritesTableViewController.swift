@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import ClipsKit
 
 class FavoritesTableViewController: UITableViewController {
     
@@ -83,15 +84,17 @@ class FavoritesTableViewController: UITableViewController {
         else {
             let clip: Clip = self.clips[indexPath.row]
             let cell: ClipTableViewCell
-            if let title = clip.title {
+            let title = clip.title
+            if title != nil && title != "" {
                 cell = tableView.dequeueReusableCell(withIdentifier: "ClipWithTitleCell", for: indexPath) as! ClipTableViewCell
-                cell.setTitle(title)
+                cell.setTitle(title!)
             }
             else {
                 cell = tableView.dequeueReusableCell(withIdentifier: "ClipNoTitleCell", for: indexPath) as! ClipTableViewCell
             }
             cell.setContents(clip.contents)
             cell.setFavorite(clip.isFavorite)
+            cell.setClip(clip)
             return cell
         }
     }
@@ -117,6 +120,7 @@ class FavoritesTableViewController: UITableViewController {
                 }
             }
             self.managedObjectContext.delete(clip)
+            Clip.deleteCopyInteractions(for: clip)
             tableView.deleteRows(at: [indexPath], with: .fade)
             self.saveContext()
         }

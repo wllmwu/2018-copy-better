@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import ClipsKit
 
 class EditClipTableViewController: UITableViewController {
     

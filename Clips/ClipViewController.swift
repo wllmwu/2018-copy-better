@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import IntentsUI
+import ClipsKit
 
 class ClipViewController: UIViewController {
     
@@ -43,6 +45,16 @@ class ClipViewController: UIViewController {
             
             if let title = self.clip.title {
                 self.setTitle(title)
+                
+                if let intent = Clip.getCopyIntent(for: self.clip) {
+                    let siriButton = INUIAddVoiceShortcutButton(style: .automatic)
+                    siriButton.shortcut = INShortcut(intent: intent)
+                    siriButton.delegate = self
+                    siriButton.translatesAutoresizingMaskIntoConstraints = false
+                    self.view.addSubview(siriButton)
+                    self.view.rightAnchor.constraint(equalTo: siriButton.rightAnchor, constant: 16).isActive = true
+                    self.view.bottomAnchor.constraint(equalTo: siriButton.bottomAnchor, constant: 32).isActive = true
+                }
             }
             else {
                 self.navigationItem.largeTitleDisplayMode = .never
@@ -140,6 +152,31 @@ class ClipViewController: UIViewController {
         return false
     }
     
+    private func insertLastCopied(title: String?) {
+        guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
+            AppDelegate.alertFatalError(message: "Couldn't find entity description.")
+            return
+        }
+        
+        // create new clip
+        let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
+        clip.title = title
+        clip.contents = self.contents
+        clip.index = 0
+        
+        // reassign indices
+        for c in self.currentFolder.clipsArray {
+            c.index += 1
+        }
+        
+        // insert the clip
+        clip.folder = self.currentFolder
+        
+        if self.saveContext() {
+            self.showToast(message: AppStrings.TOAST_MESSAGE_ADDED)
+        }
+    }
+    
     // MARK: - Interface actions
     
     @objc func segueToEdit() {
@@ -148,33 +185,34 @@ class ClipViewController: UIViewController {
     
     @objc func copyClip() {
         ClipboardManager.copyToPasteboard(item: self.contents)
+        Clip.donateCopyInteraction(with: self.clip) { (error) in
+            if let e = error {
+                print("Interaction donation failed: \(e.localizedDescription)")
+            }
+        }
         self.showToast(message: AppStrings.TOAST_MESSAGE_COPIED)
     }
     
     @objc func addLastCopied() {
         if self.contents.count > 0 {
-            guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
-                AppDelegate.alertFatalError(message: "Couldn't find entity description.")
-                return
+            let alert: UIAlertController = UIAlertController(title: AppStrings.NEW_CLIP_FROM_PASTEBOARD_ACTION, message: nil, preferredStyle: .alert)
+            
+            let cancelAction: UIAlertAction = UIAlertAction(title: AppStrings.CANCEL_ACTION, style: .cancel, handler: nil)
+            let saveAction: UIAlertAction = UIAlertAction(title: AppStrings.SAVE_ACTION, style: .default) { (action) in
+                var title = alert.textFields?.first?.text
+                if title == "" {
+                    title = nil
+                }
+                self.insertLastCopied(title: title)
             }
-            
-            // create new clip
-            let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
-            clip.title = nil
-            clip.contents = self.contents
-            clip.index = 0
-            
-            // reassign indices
-            for c in self.currentFolder.clipsArray {
-                c.index += 1
+            alert.addTextField { (textfield) in
+                textfield.placeholder = AppStrings.CLIP_NAME_PLACEHOLDER
+                textfield.autocapitalizationType = .sentences
             }
+            alert.addAction(cancelAction)
+            alert.addAction(saveAction)
             
-            // insert the clip
-            clip.folder = self.currentFolder
-            
-            if self.saveContext() {
-                self.showToast(message: AppStrings.TOAST_MESSAGE_ADDED)
-            }
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
@@ -220,4 +258,46 @@ class ClipViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
+}
+
+extension ClipViewController: INUIAddVoiceShortcutButtonDelegate, INUIAddVoiceShortcutViewControllerDelegate, INUIEditVoiceShortcutViewControllerDelegate {
+    
+    // MARK: - INUIAddVoiceShortcutButtonDelegate protocol
+    
+    func present(_ addVoiceShortcutViewController: INUIAddVoiceShortcutViewController, for addVoiceShortcutButton: INUIAddVoiceShortcutButton) {
+        addVoiceShortcutViewController.delegate = self
+        addVoiceShortcutViewController.modalPresentationStyle = .formSheet
+        self.present(addVoiceShortcutViewController, animated: true, completion: nil)
+    }
+    
+    func present(_ editVoiceShortcutViewController: INUIEditVoiceShortcutViewController, for addVoiceShortcutButton: INUIAddVoiceShortcutButton) {
+        editVoiceShortcutViewController.delegate = self
+        editVoiceShortcutViewController.modalPresentationStyle = .formSheet
+        self.present(editVoiceShortcutViewController, animated: true, completion: nil)
+    }
+    
+    // MARK: - INUIAddVoiceShortcutViewControllerDelegate protocol
+    
+    func addVoiceShortcutViewController(_ controller: INUIAddVoiceShortcutViewController, didFinishWith voiceShortcut: INVoiceShortcut?, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func addVoiceShortcutViewControllerDidCancel(_ controller: INUIAddVoiceShortcutViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - INUIEditVoiceShortcutViewControllerDelegate protocol
+    
+    func editVoiceShortcutViewController(_ controller: INUIEditVoiceShortcutViewController, didUpdate voiceShortcut: INVoiceShortcut?, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func editVoiceShortcutViewController(_ controller: INUIEditVoiceShortcutViewController, didDeleteVoiceShortcutWithIdentifier deletedVoiceShortcutIdentifier: UUID) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func editVoiceShortcutViewControllerDidCancel(_ controller: INUIEditVoiceShortcutViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
 }
