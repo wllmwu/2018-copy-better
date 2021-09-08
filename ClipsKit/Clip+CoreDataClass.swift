@@ -15,6 +15,23 @@ import UIKit
 @objc(Clip)
 public class Clip: NSManagedObject {
     
+    public var uriRepresentation: String {
+        return self.objectID.uriRepresentation().absoluteString
+    }
+    
+    public static func getClip(with uriString: String, context: NSManagedObjectContext) -> Clip? {
+        guard let uri = URL(string: uriString), let objectID = context.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: uri) else {
+            return nil
+        }
+        
+        do {
+            return try context.existingObject(with: objectID) as? Clip
+        } catch let error as NSError {
+            print("Couldn't fetch.  \(error), \(error.userInfo)")
+            return nil
+        }
+    }
+    
     public static func addDefaultClip1(entity: NSEntityDescription, context: NSManagedObjectContext, rootFolder: Folder) {
         let clip = Clip(entity: entity, insertInto: context)
         clip.title = AppStrings.DEFAULT_CLIP_TITLE_1
@@ -55,10 +72,6 @@ public class Clip: NSManagedObject {
 
 extension Clip {
     
-    public var uriRepresentation: String {
-        return self.objectID.uriRepresentation().absoluteString
-    }
-    
     public static func getIntentReference(for clip: Clip) -> ClipReference? {
         guard let clipTitle = clip.title else {
             return nil
@@ -70,16 +83,10 @@ extension Clip {
     }
     
     public static func getReferencedClip(from intentReference: ClipReference, context: NSManagedObjectContext) -> Clip? {
-        guard let uriString = intentReference.identifier, let uri = URL(string: uriString), let objectID = context.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: uri) else {
+        guard let uriString = intentReference.identifier else {
             return nil
         }
-        
-        do {
-            return try context.existingObject(with: objectID) as? Clip
-        } catch let error as NSError {
-            print("Couldn't fetch.  \(error), \(error.userInfo)")
-            return nil
-        }
+        return Clip.getClip(with: uriString, context: context)
     }
     
     public static func getCopyIntent(for clip: Clip) -> CopyClipIntent? {

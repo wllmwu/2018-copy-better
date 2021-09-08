@@ -29,7 +29,15 @@ class FavoritesTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.showCopiedToast), name: Notification.Name("ShowCopiedToast"), object: nil) // triggered by individual cells
+        
         self.loadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("ShowCopiedToast"), object: nil)
     }
     
     // MARK: - Public setters
@@ -46,6 +54,13 @@ class FavoritesTableViewController: UITableViewController {
         }
         self.selectedClip = nil
         self.tableView.reloadData()
+    }
+    
+    /**
+     Displays the custom toast view with (localized) message "Copied". Exposed to Objective-C so it can be called by the notification observer.
+     */
+    @objc func showCopiedToast() {
+        self.showToast(message: AppStrings.TOAST_MESSAGE_COPIED)
     }
     
     private func saveContext() {
