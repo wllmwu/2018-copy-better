@@ -116,3 +116,12 @@
 
 /* Widget description */
 "Add the current[...]" = "Ajoutez le contenu actuel du presse-papiers dans l'application.";
+
+/* Favorites widget display name */
+"Favorite Clips" = "Clips favoris";
+
+/* Favorites widget description */
+"View and copy[...]" = "Afficher et copier des clips du dossier des favoris.";
+
+/* Favorites widget empty message */
+"(No favorites yet)" = "(Pas encore de favoris)";

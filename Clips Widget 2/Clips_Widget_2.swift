@@ -47,13 +47,12 @@ struct Clips_Widget_2EntryView : View {
                     .padding(EdgeInsets(top: 0, leading: -5, bottom: 70, trailing: 0))
             }
         }
-        .widgetURL(URL(string: "copybetter://main/addcopied"))
+        .widgetURL(URL(string: "copybetter:///main?action=addcopied"))
     }
 }
 
-@main
 struct Clips_Widget_2: Widget {
-    let kind: String = "Clips_Widget_2"
+    let kind: String = "com.williamwu.clips.add-copied-widget"
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in

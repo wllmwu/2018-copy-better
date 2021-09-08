@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import ClipsKit
+import WidgetKit
 
 class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     
@@ -95,6 +96,10 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         if self.shouldAddLastCopied {
             self.addLastCopied()
         }
+        if let url = self.defaults.url(forKey: "urlToHandleInMain") {
+            self.handleOpenMain(with: url)
+            self.defaults.set(nil, forKey: "urlToHandleInMain")
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -116,6 +121,41 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             self.folder = rootFolder
         }
         self.loadData()
+    }
+    
+    @discardableResult public func handleOpenMain(with url: URL) -> Bool {
+        let pathComponents = url.path.split(separator: "/")
+        var queries: [String : String] = [:]
+        if let queryString = url.query {
+            for query in queryString.split(separator: "&") {
+                let pair = query.split(separator: "=")
+                let key = String(pair[0])
+                let value = String(pair[1])
+                queries[key] = value
+            }
+        }
+        
+        let action = queries["action"]
+        if pathComponents.count >= 1 && pathComponents[0] == "main" {
+            if pathComponents.count >= 2 && pathComponents[1] == "favorites" {
+                self.performSegue(withIdentifier: "MainToFavorites", sender: nil)
+                
+                if action != nil && action == "copy" {
+                    guard let uriPercentEncoded = queries["uri"], let uri = uriPercentEncoded.removingPercentEncoding, let clip = Clip.getClip(with: uri, context: self.managedObjectContext) else {
+                        return false
+                    }
+                    ClipboardManager.copyToPasteboard(item: clip.contents)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        NotificationCenter.default.post(name: Notification.Name("ShowCopiedToast"), object: nil)
+                    }
+                }
+            }
+            else if action != nil && action == "addcopied" {
+                self.addLastCopied()
+            }
+        }
+        
+        return true
     }
     
     /**
@@ -463,12 +503,17 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             }
             else {
                 let index = indexPath.row - self.subfolders.count
-                self.managedObjectContext.delete(self.clips[index])
-                Clip.deleteCopyInteractions(for: self.clips[index])
+                let clip = self.clips[index]
+                let wasFavorite = clip.isFavorite
+                self.managedObjectContext.delete(clip)
+                Clip.deleteCopyInteractions(for: clip)
                 self.clips.remove(at: index)
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 self.updateClipIndices(from: index, to: self.clips.count)
                 self.saveContext()
+                if wasFavorite {
+                    WidgetCenter.shared.reloadTimelines(ofKind: "com.williamwu.clips.favorites-widget")
+                }
             }
         }
     }
@@ -569,6 +614,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
                 let favoriteAction: UIContextualAction = UIContextualAction(style: .normal, title: nil) { (action, view, completionHandler) in
                     clip.isFavorite = !clip.isFavorite
                     self.saveContext()
+                    WidgetCenter.shared.reloadTimelines(ofKind: "com.williamwu.clips.favorites-widget")
                     self.tableView.reloadRows(at: [indexPath], with: .automatic)
                     completionHandler(true)
                 }

@@ -116,3 +116,12 @@
 
 /* Widget description */
 "Add the current[...]" = "Add the current pasteboard contents to the app.";
+
+/* Favorites widget display name */
+"Favorite Clips" = "Favorite Clips";
+
+/* Favorites widget description */
+"View and copy[...]" = "View and copy clips in your Favorites folder.";
+
+/* Favorites widget empty message */
+"(No favorites yet)" = "(No favorites yet)";

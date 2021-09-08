@@ -52,23 +52,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        let path: [String] = url.pathComponents
-        if path.contains("addcopied") { // opened from the widget
-            self.window?.rootViewController?.dismiss(animated: false, completion: nil) // dismiss modally presented views
-            if let navigation = self.window?.rootViewController as? UINavigationController {
-                navigation.popToRootViewController(animated: true) // dismiss views in the navigation stack (return to the root folder view)
-                if let viewController = navigation.viewControllers.first as? MainTableViewController {
-                    viewController.addLastCopied()
-                }
-            }
-            //NotificationCenter.default.post(Notification(name: Notification.Name("AddLastCopiedInMain"))) // the main table loads before this function gets called, so just use the notification that is already being observed
+        guard let navigation = self.window?.rootViewController as? UINavigationController else {
+            return false
+        }
+        if url.path.starts(with: "/main") {
+            self.defaults.set(url, forKey: "urlToHandleInMain")
+            navigation.dismiss(animated: false, completion: nil)
+            navigation.popToRootViewController(animated: false)
         }
         return true
     }
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         if userActivity.activityType == "CopyClipIntent" {
-            guard let intent = userActivity.interaction?.intent as? CopyClipIntent, let clipReference = intent.clip, let clip = Clip.getReferencedClip(from: clipReference, context: self.managedObjectContext) else {
+            guard let intent = userActivity.interaction?.intent as? CopyClipIntent, let clipReference = intent.clip, let clip = Clip.getReferencedClip(from: clipReference, context: self.persistentContainer.viewContext) else {
                 return false
             }
             ClipboardManager.copyToPasteboard(item: clip.contents)
@@ -97,10 +94,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             guard let root = navigation.viewControllers.first as? MainTableViewController else {
                 return
             }
+            navigation.dismiss(animated: false, completion: nil)
             navigation.popToRootViewController(animated: false)
             self.persistentContainer.viewContext.reset()
             root.refreshRootFolder()
-            self.defaults.set(false, forKey: "shouldRefreshAppcontext")
+            self.defaults.set(false, forKey: "shouldRefreshAppContext")
         }
         else {
             guard let viewController = navigation.visibleViewController as? MainTableViewController else {

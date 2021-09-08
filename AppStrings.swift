@@ -12,12 +12,21 @@ import Foundation
  An interface with the localized strings in Localizable.strings. All of said strings are accessible as static properties of this struct.
  */
 struct AppStrings {
+    
     static var DEFAULT_CLIP_TITLE_1: String {
         return NSLocalizedString("Shrug", comment: "default clip title 1")
     }
     
+    static var DEFAULT_CLIP_CONTENTS_1: String {
+        return "\u{00af}\\_(\u{30c4})_/\u{00af}"
+    }
+    
     static var DEFAULT_CLIP_TITLE_2: String {
         return NSLocalizedString("Example", comment: "default clip title 2")
+    }
+    
+    static var DEFAULT_CLIP_CONTENTS_2: String {
+        return "Clipboard"
     }
     
     static var SEARCH_BAR_PLACEHOLDER: String {
@@ -159,4 +168,17 @@ struct AppStrings {
     static var WIDGET_DESCRIPTION: String {
         return NSLocalizedString("Add the current[...]", comment: "Widget description")
     }
+    
+    static var FAVORITES_WIDGET_DISPLAY_NAME: String {
+        return NSLocalizedString("Favorite Clips", comment: "Favorites widget display name")
+    }
+    
+    static var FAVORITES_WIDGET_DESCRIPTION: String {
+        return NSLocalizedString("View and copy[...]", comment: "Favorites widget description")
+    }
+    
+    static var FAVORITES_WIDGET_EMPTY_MESSAGE: String {
+        return NSLocalizedString("(No favorites yet)", comment: "Favorites widget empty message")
+    }
+    
 }

@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import ClipsKit
+import WidgetKit
 
 class FavoritesTableViewController: UITableViewController {
     
@@ -29,7 +30,15 @@ class FavoritesTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.showCopiedToast), name: Notification.Name("ShowCopiedToast"), object: nil) // triggered by individual cells
+        
         self.loadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("ShowCopiedToast"), object: nil)
     }
     
     // MARK: - Public setters
@@ -40,22 +49,19 @@ class FavoritesTableViewController: UITableViewController {
     
     // MARK: - Instance methods
     
-    private func fetchFavorites() {
-        let request: NSFetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
-        request.predicate = NSPredicate(format: "isFavorite == true")
-        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-        do {
-            self.clips = try self.managedObjectContext.fetch(request)
-        }
-        catch let error as NSError {
-            print("Couldn't fetch. \(error), \(error.userInfo)")
-        }
-    }
-    
     private func loadData() {
-        self.fetchFavorites()
+        if let favorites = Clip.getFavorites(context: self.managedObjectContext, limit: nil) {
+            self.clips = favorites
+        }
         self.selectedClip = nil
         self.tableView.reloadData()
+    }
+    
+    /**
+     Displays the custom toast view with (localized) message "Copied". Exposed to Objective-C so it can be called by the notification observer.
+     */
+    @objc func showCopiedToast() {
+        self.showToast(message: AppStrings.TOAST_MESSAGE_COPIED)
     }
     
     private func saveContext() {
@@ -123,6 +129,7 @@ class FavoritesTableViewController: UITableViewController {
             Clip.deleteCopyInteractions(for: clip)
             tableView.deleteRows(at: [indexPath], with: .fade)
             self.saveContext()
+            WidgetCenter.shared.reloadTimelines(ofKind: "com.williamwu.clips.favorites-widget")
         }
     }
     
@@ -148,6 +155,7 @@ class FavoritesTableViewController: UITableViewController {
             let favoriteAction: UIContextualAction = UIContextualAction(style: .normal, title: nil) { (action, view, completionHandler) in
                 clip.isFavorite = !clip.isFavorite
                 self.saveContext()
+                WidgetCenter.shared.reloadTimelines(ofKind: "com.williamwu.clips.favorites-widget")
                 self.tableView.reloadRows(at: [indexPath], with: .automatic)
                 completionHandler(true)
             }
