@@ -52,7 +52,7 @@ struct Clips_Widget_2EntryView : View {
 }
 
 struct Clips_Widget_2: Widget {
-    let kind: String = "Clips_Widget_2"
+    let kind: String = "com.williamwu.clips.add-copied-widget"
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in

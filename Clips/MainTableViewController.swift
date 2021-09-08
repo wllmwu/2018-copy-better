@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import ClipsKit
+import WidgetKit
 
 class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     
@@ -502,12 +503,17 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             }
             else {
                 let index = indexPath.row - self.subfolders.count
-                self.managedObjectContext.delete(self.clips[index])
-                Clip.deleteCopyInteractions(for: self.clips[index])
+                let clip = self.clips[index]
+                let wasFavorite = clip.isFavorite
+                self.managedObjectContext.delete(clip)
+                Clip.deleteCopyInteractions(for: clip)
                 self.clips.remove(at: index)
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 self.updateClipIndices(from: index, to: self.clips.count)
                 self.saveContext()
+                if wasFavorite {
+                    WidgetCenter.shared.reloadTimelines(ofKind: "com.williamwu.clips.favorites-widget")
+                }
             }
         }
     }
@@ -608,6 +614,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
                 let favoriteAction: UIContextualAction = UIContextualAction(style: .normal, title: nil) { (action, view, completionHandler) in
                     clip.isFavorite = !clip.isFavorite
                     self.saveContext()
+                    WidgetCenter.shared.reloadTimelines(ofKind: "com.williamwu.clips.favorites-widget")
                     self.tableView.reloadRows(at: [indexPath], with: .automatic)
                     completionHandler(true)
                 }

@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import ClipsKit
+import WidgetKit
 
 class FavoritesTableViewController: UITableViewController {
     
@@ -128,6 +129,7 @@ class FavoritesTableViewController: UITableViewController {
             Clip.deleteCopyInteractions(for: clip)
             tableView.deleteRows(at: [indexPath], with: .fade)
             self.saveContext()
+            WidgetCenter.shared.reloadTimelines(ofKind: "com.williamwu.clips.favorites-widget")
         }
     }
     
@@ -153,6 +155,7 @@ class FavoritesTableViewController: UITableViewController {
             let favoriteAction: UIContextualAction = UIContextualAction(style: .normal, title: nil) { (action, view, completionHandler) in
                 clip.isFavorite = !clip.isFavorite
                 self.saveContext()
+                WidgetCenter.shared.reloadTimelines(ofKind: "com.williamwu.clips.favorites-widget")
                 self.tableView.reloadRows(at: [indexPath], with: .automatic)
                 completionHandler(true)
             }

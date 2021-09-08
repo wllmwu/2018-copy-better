@@ -113,7 +113,7 @@ struct FavoritesWidgetEntryView: View {
 }
 
 struct FavoritesWidget: Widget {
-    let kind: String = "FavoritesWidget"
+    let kind: String = "com.williamwu.clips.favorites-widget"
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: FavoritesProvider()) { entry in

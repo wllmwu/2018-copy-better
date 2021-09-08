@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import ClipsKit
+import WidgetKit
 
 class EditClipTableViewController: UITableViewController {
     
@@ -167,9 +168,12 @@ class EditClipTableViewController: UITableViewController {
             self.performSegue(withIdentifier: "UnwindFromAdd", sender: self)
         }
         else {
-            self.saveClipTitleAndContents(clip: clip)
+            self.saveClipTitleAndContents(clip: self.clip)
             if self.saveContext() {
                 self.showToast(message: AppStrings.TOAST_MESSAGE_SAVED)
+                if self.clip.isFavorite {
+                    WidgetCenter.shared.reloadTimelines(ofKind: "com.williamwu.clips.favorites-widget")
+                }
             }
             
             self.performSegue(withIdentifier: "UnwindFromEdit", sender: self)
