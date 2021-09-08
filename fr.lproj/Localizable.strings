@@ -122,3 +122,6 @@
 
 /* Favorites widget description */
 "View and copy[...]" = "Afficher et copier des clips du dossier des favoris.";
+
+/* Favorites widget empty message */
+"(No favorites yet)" = "(Pas encore de favoris)";
