@@ -88,10 +88,10 @@
 "Name cannot be empty!" = "Se requiere el nombre!";
 
 /* delete folder confirm 1 */
-"Delete folder" = "Eliminar la carpeta \"";
+"Delete folder" = "Eliminar la carpeta “";
 
 /* delete folder confirm 2 */
-"and its contents" = "\" y su contenido?";
+"and its contents" = "” y su contenido?";
 
 /* no undo message */
 "You cannot undo[...]" = "No puede deshacer esta acción.";
@@ -118,10 +118,10 @@
 "Add the current[...]" = "Agregue el contenido actuel del portapapeles a la app.";
 
 /* Favorites widget display name */
-"Favorite Clips" = "Favorite Clips";
+"Favorite Clips" = "Clips Favoritos";
 
 /* Favorites widget description */
-"View and copy[...]" = "View and copy clips in your Favorites folder.";
+"View and copy[...]" = "Ve y copia clips en tu carpeta Favoritos.";
 
 /* Favorites widget empty message */
 "(No favorites yet)" = "(No hay favoritos todavía)";

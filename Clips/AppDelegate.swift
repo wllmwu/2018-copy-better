@@ -29,8 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.defaults.set(true, forKey: "showLastCopiedInMain")
             self.defaults.set(true, forKey: "enableFavorites")
             self.defaults.set(false, forKey: "wrapClipsInKeyboard")
-            self.defaults.set(true, forKey: "showLastCopiedInWidget")
-            self.defaults.set(5, forKey: "numClipsInWidget")
             
             self.defaults.set(true, forKey: "launchedBefore")
             self.defaults.set(true, forKey: "launched2.0")
@@ -45,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if !self.defaults.bool(forKey: "launched2.1") {
             // has launched before updating to version 2.1 - add new settings defaults
             self.defaults.set(true, forKey: "enableFavorites")
+            self.defaults.set(false, forKey: "wrapClipsInKeyboard")
             self.defaults.set(true, forKey: "launched2.1")
         }
         
