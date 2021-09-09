@@ -2,8 +2,12 @@
 /* Class = "UINavigationItem"; title = "Edit Clip"; ObjectID = "05A-KI-hkJ"; */
 "05A-KI-hkJ.title" = "Modifier";
 
-/* Class = "UILabel"; text = "© 2020 William Wu  This app is version 2.0.  Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "4Nl-cj-gKr"; */
-"4Nl-cj-gKr.text" = "© 2020 William Wu  Version 2.0  Posez des questions ou signalez un bug à dev.wwu@gmail.com.";
+/* Class = "UILabel"; text = "© 2021 William Wu
+
+This app is version 2.1.
+
+Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "4Nl-cj-gKr"; */
+"4Nl-cj-gKr.text" = "© 2021 William Wu\n\nVersion 2.1\n\nPosez des questions ou signalez un bug à dev.wwu@gmail.com.";
 
 /* Class = "UINavigationItem"; title = "Copy Better"; ObjectID = "55l-T6-khl"; */
 "55l-T6-khl.title" = "Copier Mieux";
@@ -36,7 +40,7 @@
 "3rT-cN-McX.headerTitle" = "Clavier";
 
 /* Class = "UITableViewSection"; footerTitle = "Enable the Copy Better keyboard in Settings > General > Keyboard > Keyboards > Add New Keyboard. Make sure to enable Allow Full Access too (so the keyboard can access the app's contents—no data is collected)."; ObjectID = "3rT-cN-McX"; */
-"3rT-cN-McX.footerTitle" = "Vous pouvez activer le clavier Copier Mieux à Réglages > Général > Clavier > Claviers > Ajouter un clavier. Il faut activer aussi \"Autoriser l'accès complet\" (pour que le clavier peut accéder aux contenus de l'application—il ne va pas recueillir vos données saisies).";
+"3rT-cN-McX.footerTitle" = "Vous pouvez activer le clavier Copier Mieux à Réglages > Général > Clavier > Claviers > Ajouter un clavier. Il faut activer aussi « Autoriser l'accès complet » (pour que le clavier peut accéder aux contenus de l'application—il ne va pas recueillir vos données saisies).";
 
 /* Class = "UILabel"; text = "Allow long clips to wrap"; ObjectID = "ebq-E6-diW"; */
 "ebq-E6-diW.text" = "Retourner les éléments longs à la ligne";
@@ -80,20 +84,20 @@
 /* Class = "UILabel"; text = "Last copied"; ObjectID = "RBp-XP-WSD"; */
 "RBp-XP-WSD.text" = "Dernièrement copié";
 
-/* Class = "UITableViewSection"; headerTitle = "Today View"; ObjectID = "SQq-CT-Spn"; */
-"SQq-CT-Spn.headerTitle" = "Affichage du jour";
-
 /* Class = "UITableViewSection"; headerTitle = "Title"; ObjectID = "Ymy-zL-M8M"; */
 "Ymy-zL-M8M.headerTitle" = "Titre";
 
-/* Class = "UILabel"; text = "You can access your clips more easily from inside other apps by adding the Copy Better widget to the Today view.  When you need to paste a clip, just swipe down from the top of the screen, then swipe right. Next, tap Copy next to the clip you need, and you can now paste it normally anywhere.  Another simple way to paste clips is to use the Copy Better keyboard, which you can enable in Settings > Copy Better > Keyboards. Make sure to turn on both Copy Better and Allow Full Access (the keyboard needs this in order to read the main app's list of clips – it will not record keystrokes or send any data).  NOTE: the Copy Better keyboard can only handle plain text – no formatting or images. However, you can paste with formatting and images from the widget or the app itself."; ObjectID = "ZBR-yv-hNc"; */
-"ZBR-yv-hNc.text" = "Vous pouvez plus facilement accéder à votre liste d'éléments avec le widget de Copier Mieux dans l'affichage du jour.  Si vous avez besoin de coller quelque chose de la liste quand vous êtes dans une autre application, effectuez un balayage depuis la partie supérieure de l'écran vers le bas, puis un balayage vers la droite. Ensuite, touchez Copier à côté de l'élément, et vous pourrez le coller normalement.  Autrement, vous pouvez utiliser le clavier Copier Mieux, que vous pouvez activer à Réglages > Copier Mieux > Claviers. Activez 'Copier Mieux' et 'Autoriser l'accès complet' (le clavier doit accéder à la liste dans l'application; il ne va pas recueillir ou transmettre vos données saisies).  NOTEZ que le clavier Copier Mieux peut copier et coller seulement du texte brut – pas de mise en forme ou d'images. Cependant, vous pouvez coller du texte avec mise en forme ou des images avec le widget ou l'application.";
+/* Class = "UILabel"; text = "There are several ways to use this app!
+• Add clips from the system clipboard, edit them, and create new ones directly in the app. Your clips can be plain text, formatted text, and/or images.
+• Create folders to organize your clips, and mark important ones as favorites.
+• Add the Favorite Clips widget to your home screen for easy access.
+• Enable the Copy Better keyboard (Settings > General > Keyboard > Keyboards > Add New Keyboard) to paste your clips quickly in other apps. Make sure to enable Allow Full Access too, so the keyboard can access the app’s contents—no data is collected.
+• Configure Siri shortcuts to create and paste clips anywhere.
+• Use the Share extension to save new clips from websites, Photos, or anywhere else with shareable content."; ObjectID = "ZBR-yv-hNc"; */
+"ZBR-yv-hNc.text" = "Il y a plusieurs façons d'utiliser cette application!\n• Ajouter des clips du presse-papiers, les modifier, et créer des nouveaux clips dans l'application.\n• Créer des dossiers pour organiser vos clips, et marquer les plus importants comme favoris.\n• Ajouter le widget Clips Favoris à votre écran d'accueil pour un accès facile.\n• Utiliser le clavier Copier Mieux (Réglages > Général > Clavier > Claviers > Ajouter un clavier) pour insérer vite vos clips dans d'autres applications. Il faut activer aussi « Autoriser l'accès complet », pour que le clavier peut accéder aux contenus de l'application—il ne va pas recueillir vos données saisies.\n• Configurer des raccourcis pour créer et coller des clips n'importe où.\n• Utiliser l'extension de partage pour sauvegarder des nouveaux clips du texte ou des images.";
 
 /* Class = "UITableViewController"; title = "Edit Clip"; ObjectID = "c12-NJ-Wss"; */
 "c12-NJ-Wss.title" = "Modifier";
-
-/* Class = "UILabel"; text = "Show current pasteboard contents"; ObjectID = "cOF-UE-d6A"; */
-"cOF-UE-d6A.text" = "Afficher le presse-papier actuel";
 
 /* Class = "UILabel"; text = "Contents"; ObjectID = "d6d-Bl-fOw"; */
 "d6d-Bl-fOw.text" = "Élément";
@@ -106,6 +110,3 @@
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "sBM-4M-D6k"; */
 "sBM-4M-D6k.text" = "Titre";
-
-/* Class = "UILabel"; text = "Number of items"; ObjectID = "ytH-gW-dY9"; */
-"ytH-gW-dY9.text" = "Nombre d'éléments";

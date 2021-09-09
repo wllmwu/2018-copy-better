@@ -13,9 +13,6 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var showCurrentInMainSwitch: UISwitch!
     @IBOutlet weak var enableFavoritesSwitch: UISwitch!
     @IBOutlet weak var wrapClipsInKeyboardSwitch: UISwitch!
-    @IBOutlet weak var showCurrentInWidgetSwitch: UISwitch!
-    @IBOutlet weak var numClipsInWidgetStepper: UIStepper!
-    @IBOutlet weak var numClipsInWidgetLabel: UILabel!
     @IBOutlet weak var tipsLabel: UILabel!
     @IBOutlet weak var aboutLabel: UILabel!
     
@@ -33,11 +30,6 @@ class SettingsTableViewController: UITableViewController {
         self.showCurrentInMainSwitch.isOn = self.defaults.bool(forKey: "showLastCopiedInMain")
         self.enableFavoritesSwitch.isOn = self.defaults.bool(forKey: "enableFavorites")
         self.wrapClipsInKeyboardSwitch.isOn = self.defaults.bool(forKey: "wrapClipsInKeyboard")
-        self.showCurrentInWidgetSwitch.isOn = self.defaults.bool(forKey: "showLastCopiedInWidget")
-        
-        let numClips: Int = self.defaults.integer(forKey: "numClipsInWidget")
-        self.numClipsInWidgetStepper.value = Double(numClips)
-        self.numClipsInWidgetLabel.text = String(numClips)
         
         self.tipsLabel.sizeToFit()
         self.aboutLabel.sizeToFit()
@@ -66,19 +58,10 @@ class SettingsTableViewController: UITableViewController {
         self.defaults.set(self.wrapClipsInKeyboardSwitch.isOn, forKey: "wrapClipsInKeyboard")
     }
     
-    @IBAction func toggleShowCurrentInWidgetSwitch(_ sender: UISwitch) {
-        self.defaults.set(self.showCurrentInWidgetSwitch.isOn, forKey: "showLastCopiedInWidget")
-    }
-    
-    @IBAction func changeNumClips(_ sender: UIStepper) {
-        self.numClipsInWidgetLabel.text = String(Int(self.numClipsInWidgetStepper.value))
-        self.defaults.set(Int(self.numClipsInWidgetStepper.value), forKey: "numClipsInWidget")
-    }
-    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -89,8 +72,8 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 3 {
-            return (indexPath.row == 0) ? self.tipsLabel.bounds.height + 8 : self.aboutLabel.bounds.height + 16
+        if indexPath.section == 2 {
+            return (indexPath.row == 0) ? self.tipsLabel.bounds.height + 16 : self.aboutLabel.bounds.height + 16
         }
         return 45
     }
