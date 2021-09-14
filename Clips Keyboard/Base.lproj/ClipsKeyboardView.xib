@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -80,7 +80,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bas-aS-K5R" customClass="KeyboardButton" customModule="Copy_Better_Keyboard" customModuleProvider="target">
-                    <rect key="frame" x="84" y="228" width="44" height="44"/>
+                    <rect key="frame" x="8" y="228" width="44" height="44"/>
                     <color key="backgroundColor" name="Key"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="bas-aS-K5R" secondAttribute="height" multiplier="1:1" id="vl5-8T-suk"/>
@@ -100,7 +100,7 @@
                     </userDefinedRuntimeAttributes>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ec3-KT-jiv" customClass="KeyboardButton" customModule="Copy_Better_Keyboard" customModuleProvider="target">
-                    <rect key="frame" x="134" y="228" width="113" height="44"/>
+                    <rect key="frame" x="58" y="228" width="189" height="44"/>
                     <color key="backgroundColor" name="Key White"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="wv5-xq-RbZ"/>
@@ -146,42 +146,13 @@
                         <action selector="backspaceUp:" destination="iN0-l3-epB" eventType="touchUpOutside" id="lMw-hQ-8iQ"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHs-tw-hN9" customClass="KeyboardButton" customModule="Copy_Better_Keyboard" customModuleProvider="target">
-                    <rect key="frame" x="6" y="228" width="33" height="44"/>
-                    <color key="backgroundColor" name="Key"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="pHs-tw-hN9" secondAttribute="height" multiplier="3:4" id="yBQ-ap-H4P"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                    <color key="tintColor" systemColor="labelColor"/>
-                    <state key="normal" image="arrow.left" catalog="system">
-                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
-                    </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="isControlKey" value="YES"/>
-                        <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
-                            <color key="value" name="Key"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
-                            <color key="value" name="Key White"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="scrollToPreviousColumn:" destination="iN0-l3-epB" eventType="touchUpInside" id="Epr-dd-0M4"/>
-                    </connections>
-                </button>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="8z4-Li-KCR">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="8z4-Li-KCR">
                     <rect key="frame" x="0.0" y="48" width="375" height="174"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" priority="750" constant="220" id="Q3I-Np-XWd"/>
                     </constraints>
-                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="K6Q-aB-L1E">
-                        <size key="itemSize" width="375" height="44"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
+                    <collectionViewLayout key="collectionViewLayout" id="Tfb-6K-vjG"/>
                     <connections>
                         <outlet property="dataSource" destination="iN0-l3-epB" id="neV-MQ-xXy"/>
                         <outlet property="delegate" destination="iN0-l3-epB" id="H2D-cN-b17"/>
@@ -213,30 +184,6 @@
                         <action selector="returnPressed" destination="iN0-l3-epB" eventType="touchUpInside" id="98N-Xd-2wr"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3J-Q6-hpE" customClass="KeyboardButton" customModule="Copy_Better_Keyboard" customModuleProvider="target">
-                    <rect key="frame" x="45" y="228" width="33" height="44"/>
-                    <color key="backgroundColor" name="Key"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="o3J-Q6-hpE" secondAttribute="height" multiplier="3:4" id="qdt-Pi-WVL"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                    <color key="tintColor" systemColor="labelColor"/>
-                    <state key="normal" image="arrow.right" catalog="system">
-                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
-                    </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="isControlKey" value="YES"/>
-                        <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
-                            <color key="value" name="Key"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
-                            <color key="value" name="Key White"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="scrollToNextColumn:" destination="iN0-l3-epB" eventType="touchUpInside" id="e63-5N-NLT"/>
-                    </connections>
-                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <constraints>
@@ -245,29 +192,23 @@
                 <constraint firstItem="75w-yv-2I7" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="75k-0P-jhO"/>
                 <constraint firstItem="aeo-Xp-SNY" firstAttribute="height" secondItem="Ec3-KT-jiv" secondAttribute="height" id="8u4-vN-FJM"/>
                 <constraint firstItem="Ec3-KT-jiv" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="-6" id="8xJ-3X-tqC"/>
-                <constraint firstItem="o3J-Q6-hpE" firstAttribute="leading" secondItem="pHs-tw-hN9" secondAttribute="trailing" constant="6" id="8zS-Uf-IZi"/>
                 <constraint firstItem="75w-yv-2I7" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="CUB-AC-AUc"/>
                 <constraint firstItem="Exl-xm-tBI" firstAttribute="top" secondItem="75w-yv-2I7" secondAttribute="bottom" constant="30" id="Ce1-4Q-o8q"/>
                 <constraint firstItem="bas-aS-K5R" firstAttribute="top" secondItem="Exl-xm-tBI" secondAttribute="bottom" constant="30" id="DB7-Ex-Wzb"/>
                 <constraint firstItem="PEM-Zt-yuJ" firstAttribute="height" secondItem="Ec3-KT-jiv" secondAttribute="height" id="DEv-nE-F6x"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="8z4-Li-KCR" secondAttribute="trailing" id="HUe-sl-tfx"/>
-                <constraint firstItem="Ec3-KT-jiv" firstAttribute="leading" secondItem="o3J-Q6-hpE" secondAttribute="trailing" priority="250" constant="6" id="IsK-NF-Xjb"/>
                 <constraint firstItem="PEM-Zt-yuJ" firstAttribute="leading" secondItem="aeo-Xp-SNY" secondAttribute="trailing" constant="6" id="Jqh-65-Ath"/>
                 <constraint firstItem="aeo-Xp-SNY" firstAttribute="leading" secondItem="Ec3-KT-jiv" secondAttribute="trailing" constant="6" id="KEt-or-1RE"/>
                 <constraint firstItem="Ec3-KT-jiv" firstAttribute="bottom" secondItem="bas-aS-K5R" secondAttribute="bottom" id="LCh-xI-f29"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="PEM-Zt-yuJ" secondAttribute="trailing" constant="6" id="LKg-vB-PcM"/>
-                <constraint firstItem="pHs-tw-hN9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="6" id="NAb-dR-8ut"/>
                 <constraint firstItem="75w-yv-2I7" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="PQF-Ak-6yc"/>
-                <constraint firstItem="o3J-Q6-hpE" firstAttribute="height" secondItem="Ec3-KT-jiv" secondAttribute="height" id="QFh-vD-kfL"/>
-                <constraint firstItem="o3J-Q6-hpE" firstAttribute="bottom" secondItem="Ec3-KT-jiv" secondAttribute="bottom" id="X3d-KS-pqy"/>
-                <constraint firstItem="Ec3-KT-jiv" firstAttribute="bottom" secondItem="pHs-tw-hN9" secondAttribute="bottom" id="a50-Wj-2Kc"/>
-                <constraint firstItem="Ec3-KT-jiv" firstAttribute="height" secondItem="pHs-tw-hN9" secondAttribute="height" id="aJs-ti-VcT"/>
+                <constraint firstItem="bas-aS-K5R" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="WbZ-oC-vyM"/>
                 <constraint firstItem="8z4-Li-KCR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="aWi-Bb-mDE"/>
                 <constraint firstItem="PEM-Zt-yuJ" firstAttribute="bottom" secondItem="Ec3-KT-jiv" secondAttribute="bottom" id="cFH-FS-xbo"/>
                 <constraint firstItem="Ec3-KT-jiv" firstAttribute="height" secondItem="bas-aS-K5R" secondAttribute="height" id="peX-f6-rq2"/>
                 <constraint firstItem="aeo-Xp-SNY" firstAttribute="bottom" secondItem="Ec3-KT-jiv" secondAttribute="bottom" id="qeC-TC-Rm4"/>
+                <constraint firstItem="Ec3-KT-jiv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" priority="250" constant="6" id="tN6-Fq-DTV"/>
                 <constraint firstItem="Ec3-KT-jiv" firstAttribute="top" secondItem="8z4-Li-KCR" secondAttribute="bottom" constant="6" id="tNu-xf-Toh"/>
-                <constraint firstItem="bas-aS-K5R" firstAttribute="leading" secondItem="o3J-Q6-hpE" secondAttribute="trailing" constant="6" id="wu2-EZ-AlF"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Exl-xm-tBI" secondAttribute="trailing" constant="30" id="yia-mj-0Kn"/>
                 <constraint firstItem="Exl-xm-tBI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="zhH-vK-Qg5"/>
             </constraints>
@@ -275,23 +216,18 @@
             <connections>
                 <outlet property="backspaceKey" destination="aeo-Xp-SNY" id="iUg-Ah-L60"/>
                 <outlet property="collectionView" destination="8z4-Li-KCR" id="JJE-E7-XFw"/>
-                <outlet property="collectionViewLayout" destination="K6Q-aB-L1E" id="oSO-H2-MyR"/>
                 <outlet property="lastCopiedLabel" destination="hg9-Pr-SgV" id="DWx-nA-bPb"/>
                 <outlet property="messageLabel" destination="Exl-xm-tBI" id="7Qe-Hu-FyQ"/>
-                <outlet property="nextColumnButton" destination="o3J-Q6-hpE" id="YUM-6X-Rs4"/>
                 <outlet property="nextKeyboardButton" destination="bas-aS-K5R" id="0B3-Ze-oKo"/>
-                <outlet property="previousColumnButton" destination="pHs-tw-hN9" id="egP-d2-tvi"/>
                 <outlet property="returnKey" destination="PEM-Zt-yuJ" id="V34-f4-DiE"/>
                 <outlet property="spaceKey" destination="Ec3-KT-jiv" id="MLB-Li-vCz"/>
-                <outlet property="spaceKeyToNextColumnButtonConstraint" destination="IsK-NF-Xjb" id="O7c-6S-Qfd"/>
+                <outlet property="spaceKeyToLeadingEdgeConstraint" destination="tN6-Fq-DTV" id="zTd-N9-lXq"/>
                 <outlet property="spaceKeyToNextKeyboardButtonConstraint" destination="33e-CL-XeS" id="3MS-6T-GZV"/>
             </connections>
             <point key="canvasLocation" x="40.799999999999997" y="46.776611694152926"/>
         </view>
     </objects>
     <resources>
-        <image name="arrow.left" catalog="system" width="128" height="98"/>
-        <image name="arrow.right" catalog="system" width="128" height="98"/>
         <image name="delete.left" catalog="system" width="128" height="104"/>
         <image name="delete.left.fill" catalog="system" width="128" height="104"/>
         <image name="globe" catalog="system" width="128" height="121"/>

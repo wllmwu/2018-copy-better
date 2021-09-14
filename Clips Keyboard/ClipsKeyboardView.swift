@@ -38,9 +38,6 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     
     @IBOutlet weak var lastCopiedLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var collectionViewLayout: UICollectionViewFlowLayout!
-    @IBOutlet weak var previousColumnButton: KeyboardButton!
-    @IBOutlet weak var nextColumnButton: KeyboardButton!
     @IBOutlet weak var nextKeyboardButton: KeyboardButton!
     @IBOutlet weak var spaceKey: KeyboardButton!
     @IBOutlet weak var backspaceKey: KeyboardButton!
@@ -50,7 +47,7 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     private var backspaceKeyIsDown: Bool = false
     
     @IBOutlet weak var spaceKeyToNextKeyboardButtonConstraint: NSLayoutConstraint!
-    @IBOutlet weak var spaceKeyToNextColumnButtonConstraint: NSLayoutConstraint!
+    @IBOutlet weak var spaceKeyToLeadingEdgeConstraint: NSLayoutConstraint!
     
     weak var delegate: ClipsKeyboardViewDelegate!
 
@@ -67,7 +64,7 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
         
         self.collectionView.register(UINib(nibName: "KeyboardFolderCell", bundle: nil), forCellWithReuseIdentifier: "KeyboardFolderCell")
         self.collectionView.register(UINib(nibName: "KeyboardClipCell", bundle: nil), forCellWithReuseIdentifier: "KeyboardClipCell")
-        self.collectionViewLayout.itemSize = CGSize(width: UIScreen.main.bounds.size.width, height: 44)
+        self.collectionView.collectionViewLayout = self.createLayout()
         
         NotificationCenter.default.addObserver(self, selector: #selector(ClipsKeyboardView.updateLastCopied), name: UIPasteboard.changedNotification, object: nil)
     }
@@ -78,11 +75,11 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
         self.nextKeyboardButton.isHidden = !visible
         if visible {
             self.spaceKeyToNextKeyboardButtonConstraint.priority = .defaultHigh
-            self.spaceKeyToNextColumnButtonConstraint.priority = .defaultLow
+            self.spaceKeyToLeadingEdgeConstraint.priority = .defaultLow
         }
         else {
             self.spaceKeyToNextKeyboardButtonConstraint.priority = .defaultLow
-            self.spaceKeyToNextColumnButtonConstraint.priority = .defaultHigh
+            self.spaceKeyToLeadingEdgeConstraint.priority = .defaultHigh
         }
     }
     
@@ -204,37 +201,79 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
         return 0
     }
     
+    private func createLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewCompositionalLayout { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
+            if sectionIndex == 0 {
+                // folder section
+                let folderItemSize = NSCollectionLayoutSize(widthDimension: .absolute(88), heightDimension: .absolute(88))
+                let folderItem = NSCollectionLayoutItem(layoutSize: folderItemSize)
+                let folderGroupSize = NSCollectionLayoutSize(widthDimension: .estimated(132), heightDimension: .absolute(88))
+                let folderGroup = NSCollectionLayoutGroup.horizontal(layoutSize: folderGroupSize, subitems: [folderItem])
+                let folderSection = NSCollectionLayoutSection(group: folderGroup)
+                folderSection.orthogonalScrollingBehavior = .continuous
+                return folderSection
+            }
+            else {
+                // clip section
+                let clipItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(44))
+                let clipItem = NSCollectionLayoutItem(layoutSize: clipItemSize)
+                let clipGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(132))
+                let clipGroup = NSCollectionLayoutGroup.vertical(layoutSize: clipGroupSize, subitems: [clipItem])
+                let clipSection = NSCollectionLayoutSection(group: clipGroup)
+                return clipSection
+            }
+        }
+        return layout
+    }
+    
     // MARK: - Collection view data source
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.delegate.subfolders.count + self.filteredClips.count + self.indexOffset
+        if section == 0 {
+            // folder section
+            return self.delegate.subfolders.count + self.indexOffset
+        }
+        else {
+            // clip section
+            return self.filteredClips.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.row < self.indexOffset {
-            let cell: KeyboardFolderCell = collectionView.dequeueReusableCell(withReuseIdentifier: "KeyboardFolderCell", for: indexPath) as! KeyboardFolderCell
-            
-            if self.delegate.isRootFolder { // Favorites cell
-                cell.setFormat(.favorites)
-                cell.setName(AppStrings.FAVORITES_TITLE)
+        if indexPath.section == 0 {
+            // folder section
+            if indexPath.row < self.indexOffset {
+                let cell: KeyboardFolderCell = collectionView.dequeueReusableCell(withReuseIdentifier: "KeyboardFolderCell", for: indexPath) as! KeyboardFolderCell
+                
+                if self.delegate.isRootFolder {
+                    // Favorites cell
+                    cell.setFormat(.favorites)
+                    cell.setName(AppStrings.FAVORITES_TITLE)
+                }
+                else {
+                    // superfolder cell
+                    cell.setFormat(.superfolder)
+                    cell.setName(self.delegate.superfolder!.name)
+                }
+                
+                return cell
             }
-            else { // superfolder cell
-                cell.setFormat(.superfolder)
-                cell.setName(self.delegate.superfolder!.name)
+            else {
+                // regular folder cell
+                let folder: Folder = self.delegate.subfolders[indexPath.row - self.indexOffset]
+                let cell: KeyboardFolderCell = collectionView.dequeueReusableCell(withReuseIdentifier: "KeyboardFolderCell", for: indexPath) as! KeyboardFolderCell
+                cell.setFormat(.folder)
+                cell.setName(folder.name)
+                return cell
             }
-            
-            return cell
-        }
-        else if indexPath.row < self.delegate.subfolders.count + self.indexOffset {
-            let folder: Folder = self.delegate.subfolders[indexPath.row - self.indexOffset]
-            let cell: KeyboardFolderCell = collectionView.dequeueReusableCell(withReuseIdentifier: "KeyboardFolderCell", for: indexPath) as! KeyboardFolderCell
-            cell.setFormat(.folder)
-            cell.setName(folder.name)
-            return cell
         }
         else {
-            let index = indexPath.row - self.delegate.subfolders.count - self.indexOffset
-            let clip: Clip = self.filteredClips[index]
+            // clip cell
+            let clip: Clip = self.filteredClips[indexPath.row]
             let cell: KeyboardClipCell = collectionView.dequeueReusableCell(withReuseIdentifier: "KeyboardClipCell", for: indexPath) as! KeyboardClipCell
             cell.setClip(clip)
             if self.delegate.isFavorites {
@@ -248,20 +287,26 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.row < self.indexOffset {
-            if self.delegate.isRootFolder {
-                self.delegate.goToFavorites()
+        if indexPath.section == 0 {
+            // folder section
+            if indexPath.row < self.indexOffset {
+                if self.delegate.isRootFolder {
+                    // Favorites cell
+                    self.delegate.goToFavorites()
+                }
+                else {
+                    // superfolder cell
+                    self.delegate.selectFolder(self.delegate.superfolder!)
+                }
             }
             else {
-                self.delegate.selectFolder(self.delegate.superfolder!)
+                // regular folder cell
+                self.delegate.selectFolder(self.delegate.subfolders[indexPath.row - self.indexOffset])
             }
         }
-        else if indexPath.row < self.delegate.subfolders.count + self.indexOffset {
-            self.delegate.selectFolder(self.delegate.subfolders[indexPath.row - self.indexOffset])
-        }
         else {
-            let index = indexPath.row - self.delegate.subfolders.count - self.indexOffset
-            self.delegate.selectClip(self.filteredClips[index])
+            // clip cell
+            self.delegate.selectClip(self.filteredClips[indexPath.row])
         }
     }
     
