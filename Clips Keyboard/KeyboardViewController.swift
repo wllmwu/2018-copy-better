@@ -130,14 +130,8 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
     }
     
     private func fetchFavorites() -> [Clip] {
-        let request: NSFetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
-        request.predicate = NSPredicate(format: "isFavorite == true")
-        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-        do {
-            return try self.managedObjectContext.fetch(request)
-        }
-        catch let error as NSError {
-            print("Couldn't fetch. \(error), \(error.userInfo)")
+        if let favorites = Clip.getFavorites(context: self.managedObjectContext, limit: nil) {
+            return favorites
         }
         return []
     }
