@@ -162,10 +162,10 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
      */
     public func loadData() {
         self.showLastCopied = DefaultsManager.showLastCopiedInApp
-        if self.showLastCopied && self.pasteboardChangeCount != UIPasteboard.general.changeCount {
+        if self.showLastCopied && self.pasteboardChangeCount != ClipboardManager.pasteboardChangeCount {
             // the pasteboard changeCount gets reset to 0 when the device is restarted
             self.retrieveLastCopied()
-            self.pasteboardChangeCount = UIPasteboard.general.changeCount
+            self.pasteboardChangeCount = ClipboardManager.pasteboardChangeCount
         }
         self.favoritesEnabled = DefaultsManager.favoritesEnabled
         self.selectedFolder = nil

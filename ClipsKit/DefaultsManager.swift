@@ -82,6 +82,16 @@ public class DefaultsManager: NSObject {
         }
     }
     
+    private static var PASTEBOARD_COUNT_FOR_AUTO_ADD_KEY = "pasteboardCountForAutoAdd"
+    public static var pasteboardCountForAutoAdd: Int {
+        get {
+            return defaults.integer(forKey: PASTEBOARD_COUNT_FOR_AUTO_ADD_KEY)
+        }
+        set {
+            defaults.set(newValue, forKey: PASTEBOARD_COUNT_FOR_AUTO_ADD_KEY)
+        }
+    }
+    
     private static var WRAP_CLIPS_KEY = "wrapClipsInKeyboard"
     public static var wrapClipsInKeyboard: Bool {
         get {

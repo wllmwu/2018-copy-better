@@ -89,6 +89,10 @@ public class ClipboardManager: NSObject {
         UIPasteboard.general.items = [itemVar]
     }
     
+    public static var pasteboardChangeCount: Int {
+        return UIPasteboard.general.changeCount
+    }
+    
     // MARK: - Interpreters for data representations in pasteboard items
     
     /**
