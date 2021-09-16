@@ -33,6 +33,9 @@ Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "4Nl-cj-gK
 /* Class = "UITextField"; placeholder = "Title… (optional)"; ObjectID = "BIk-3c-cFB"; */
 "BIk-3c-cFB.placeholder" = "Título… (opcional)";
 
+/* Class = "UITableViewSection"; headerTitle = "General"; ObjectID = "acx-5S-Ode"; */
+"acx-5S-Ode.headerTitle" = "General";
+
 /* Class = "UITableViewSection"; headerTitle = "In app"; ObjectID = "BjC-VA-k4B"; */
 "BjC-VA-k4B.headerTitle" = "Aplicación";
 
