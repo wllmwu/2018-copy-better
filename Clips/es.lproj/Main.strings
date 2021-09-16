@@ -48,11 +48,17 @@ Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "4Nl-cj-gK
 /* Class = "UILabel"; text = "Allow long clips to wrap"; ObjectID = "ebq-E6-diW"; */
 "ebq-E6-diW.text" = "Ajuste de línea para recortes largos";
 
-/* Class = "UILabel"; text = "Show current pasteboard contents"; ObjectID = "C7j-pN-GgP"; */
+/* Class = "UILabel"; text = "Show current clipboard contents"; ObjectID = "C7j-pN-GgP"; */
 "C7j-pN-GgP.text" = "Mostrar el portapapeles actual";
 
 /* Class = "UILabel"; text = "Enable Favorites"; ObjectID = "tDn-AY-1qm"; */
 "tDn-AY-1qm.text" = "Habilitar los Favoritos";
+
+/* Class = "UILabel"; text = "Ask for title when adding last copied"; ObjectID = "aNF-SZ-eW8"; */
+"aNF-SZ-eW8.text" = "Preguntar el título al agregar el previamente copiado";
+
+/* Class = "UILabel"; text = "Add last copied when app opens"; ObjectID = "pFr-YG-R5Z"; */
+"pFr-YG-R5Z.text" = "Agregar el previamente copiado cuando se abre la aplicación";
 
 /* Class = "UIButton"; normalTitle = "Add to list"; ObjectID = "Gcs-nk-eEx"; */
 "Gcs-nk-eEx.normalTitle" = "Agregar";

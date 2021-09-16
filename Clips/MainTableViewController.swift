@@ -32,7 +32,6 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     private var shouldAddLastCopied: Bool = false
     private var lastCopied: [String : Any] = [:]
     private var pasteboardChangeCount: Int = 0
-    private let defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clips")!
     
     @IBOutlet weak var addButton: UIBarButtonItem!
     
@@ -96,9 +95,9 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         if self.shouldAddLastCopied {
             self.addLastCopied()
         }
-        if let url = self.defaults.url(forKey: "urlToHandleInMain") {
+        if let url = DefaultsManager.urlToHandleInMain {
             self.handleOpenMain(with: url)
-            self.defaults.set(nil, forKey: "urlToHandleInMain")
+            DefaultsManager.urlToHandleInMain = nil
         }
     }
     
@@ -162,13 +161,13 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
      Loads the current pasteboard (Last Copied), and calls `retrieveData()`; resets `selectedFolder` and `selectedClip` to `nil`; and reloads the table view.
      */
     public func loadData() {
-        self.showLastCopied = self.defaults.bool(forKey: "showLastCopiedInMain")
+        self.showLastCopied = DefaultsManager.showLastCopiedInApp
         if self.showLastCopied && self.pasteboardChangeCount != UIPasteboard.general.changeCount {
             // the pasteboard changeCount gets reset to 0 when the device is restarted
             self.retrieveLastCopied()
             self.pasteboardChangeCount = UIPasteboard.general.changeCount
         }
-        self.favoritesEnabled = self.defaults.bool(forKey: "enableFavorites")
+        self.favoritesEnabled = DefaultsManager.favoritesEnabled
         self.selectedFolder = nil
         self.selectedClip = nil
         

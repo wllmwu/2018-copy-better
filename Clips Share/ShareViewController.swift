@@ -18,10 +18,8 @@ class ShareViewController: SLComposeServiceViewController, ShareConfigureViewCon
     private var clipContentsText: NSAttributedString?
     private var clipContentsImageData: Data?
     
-    //private var allClips: [Clip] = []
     private var rootFolder: Folder!
     private var managedObjectContext: NSManagedObjectContext!
-    private var defaults: UserDefaults = UserDefaults(suiteName: "group.com.williamwu.clips")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,7 +130,7 @@ class ShareViewController: SLComposeServiceViewController, ShareConfigureViewCon
     private func saveContext() {
         do {
             try self.managedObjectContext.save()
-            self.defaults.set(true, forKey: "shouldRefreshAppContext")
+            DefaultsManager.shouldRefreshAppContext = true
         }
         catch let error as NSError {
             print("Couldn't save. \(error), \(error.userInfo)")

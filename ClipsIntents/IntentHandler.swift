@@ -143,8 +143,7 @@ class IntentHandler: INExtension, CopyClipIntentHandling, AddClipIntentHandling 
         
         do {
             try context.save()
-            let defaults = UserDefaults.init(suiteName: "group.com.williamwu.clips")!
-            defaults.set(true, forKey: "shouldRefreshAppContext")
+            DefaultsManager.shouldRefreshAppContext = true
         }
         catch let error as NSError {
             print("Couldn't save. \(error), \(error.userInfo)")

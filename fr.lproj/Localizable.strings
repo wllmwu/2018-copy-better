@@ -31,7 +31,7 @@
 "Add to list" = "Ajouter";
 
 /* "Last copied" title */
-"Last copied" = "Dern. copié";
+"Last copied" = "Dernier élément copié";
 
 /* "Saved" toast message */
 "Saved" = "Enregistré";
@@ -67,7 +67,7 @@
 "New clip" = "Nouveau clip";
 
 /* "New clip from copied" action */
-"New clip from copied" = "Nouveau clip du copié";
+"New clip from copied" = "Nouveau clip de l'élément copié";
 
 /* "Cancel" action */
 "Cancel" = "Annuler";
