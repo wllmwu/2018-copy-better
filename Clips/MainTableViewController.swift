@@ -247,24 +247,29 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
      */
     @objc func addLastCopied() {
         if self.lastCopied.count > 0 {
-            let alert: UIAlertController = UIAlertController(title: AppStrings.NEW_CLIP_FROM_PASTEBOARD_ACTION, message: nil, preferredStyle: .alert)
-            
-            let cancelAction: UIAlertAction = UIAlertAction(title: AppStrings.CANCEL_ACTION, style: .cancel, handler: nil)
-            let saveAction: UIAlertAction = UIAlertAction(title: AppStrings.SAVE_ACTION, style: .default) { (action) in
-                var title = alert.textFields?.first?.text
-                if title == "" {
-                    title = nil
+            if DefaultsManager.askForTitleForLastCopiedInApp {
+                let prompt: UIAlertController = UIAlertController(title: AppStrings.NEW_CLIP_FROM_PASTEBOARD_ACTION, message: nil, preferredStyle: .alert)
+                
+                let cancelAction: UIAlertAction = UIAlertAction(title: AppStrings.CANCEL_ACTION, style: .cancel, handler: nil)
+                let saveAction: UIAlertAction = UIAlertAction(title: AppStrings.SAVE_ACTION, style: .default) { (action) in
+                    var title = prompt.textFields?.first?.text
+                    if title == "" {
+                        title = nil
+                    }
+                    self.createNewClip(title: title, contents: self.lastCopied, index: 0)
                 }
-                self.createNewClip(title: title, contents: self.lastCopied, index: 0)
+                prompt.addTextField { (textfield) in
+                    textfield.placeholder = AppStrings.CLIP_NAME_PLACEHOLDER
+                    textfield.autocapitalizationType = .sentences
+                }
+                prompt.addAction(cancelAction)
+                prompt.addAction(saveAction)
+                
+                self.present(prompt, animated: true, completion: nil)
             }
-            alert.addTextField { (textfield) in
-                textfield.placeholder = AppStrings.CLIP_NAME_PLACEHOLDER
-                textfield.autocapitalizationType = .sentences
+            else {
+                self.createNewClip(title: nil, contents: self.lastCopied, index: 0)
             }
-            alert.addAction(cancelAction)
-            alert.addAction(saveAction)
-            
-            self.present(alert, animated: true, completion: nil)
         }
         else {
             self.shouldAddLastCopied = true
