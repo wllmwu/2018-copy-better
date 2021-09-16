@@ -33,6 +33,9 @@ Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "4Nl-cj-gK
 /* Class = "UITextField"; placeholder = "Title… (optional)"; ObjectID = "BIk-3c-cFB"; */
 "BIk-3c-cFB.placeholder" = "Titre… (optionnel)";
 
+/* Class = "UITableViewSection"; headerTitle = "General"; ObjectID = "acx-5S-Ode"; */
+"acx-5S-Ode.headerTitle" = "Général";
+
 /* Class = "UITableViewSection"; headerTitle = "In app"; ObjectID = "BjC-VA-k4B"; */
 "BjC-VA-k4B.headerTitle" = "Application";
 
@@ -48,11 +51,17 @@ Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "4Nl-cj-gK
 /* Class = "UITableViewSection"; headerTitle = "About"; ObjectID = "Qga-kv-hFl"; */
 "Qga-kv-hFl.headerTitle" = "Informations";
 
-/* Class = "UILabel"; text = "Show current pasteboard contents"; ObjectID = "C7j-pN-GgP"; */
-"C7j-pN-GgP.text" = "Afficher le presse-papier actuel";
+/* Class = "UILabel"; text = "Show current clipboard contents"; ObjectID = "C7j-pN-GgP"; */
+"C7j-pN-GgP.text" = "Afficher le presse-papiers actuel";
 
 /* Class = "UILabel"; text = "Enable Favorites"; ObjectID = "tDn-AY-1qm"; */
 "tDn-AY-1qm.text" = "Activer les Favoris";
+
+/* Class = "UILabel"; text = "Ask for title when adding last copied"; ObjectID = "aNF-SZ-eW8"; */
+"aNF-SZ-eW8.text" = "Demander le titre lors de l'ajout du dernier élément copié";
+
+/* Class = "UILabel"; text = "Add last copied when app opens"; ObjectID = "pFr-YG-R5Z"; */
+"pFr-YG-R5Z.text" = "Ajouter le dernier élément copié lorsque l'application s'ouvre";
 
 /* Class = "UIButton"; normalTitle = "Add to list"; ObjectID = "Gcs-nk-eEx"; */
 "Gcs-nk-eEx.normalTitle" = "Ajouter";
@@ -79,10 +88,10 @@ Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "4Nl-cj-gK
 "Qnu-ko-62Q.title" = "Paramètres";
 
 /* Class = "UILabel"; text = "Last copied"; ObjectID = "SOG-VC-fzC"; */
-"SOG-VC-fzC.text" = "Dernièrement copié";
+"SOG-VC-fzC.text" = "Dernier élément copié";
 
 /* Class = "UILabel"; text = "Last copied"; ObjectID = "RBp-XP-WSD"; */
-"RBp-XP-WSD.text" = "Dernièrement copié";
+"RBp-XP-WSD.text" = "Dernier élément copié";
 
 /* Class = "UITableViewSection"; headerTitle = "Title"; ObjectID = "Ymy-zL-M8M"; */
 "Ymy-zL-M8M.headerTitle" = "Titre";

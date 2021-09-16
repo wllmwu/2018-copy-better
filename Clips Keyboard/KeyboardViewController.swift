@@ -24,7 +24,6 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
     internal var favoritesEnabled: Bool = true
     
     private var keyboardView: ClipsKeyboardView!
-    private var defaults: UserDefaults = UserDefaults.init(suiteName: "group.com.williamwu.clips")!
     private var pasteboardCheckTimer: Timer?
     
     override func updateViewConstraints() {
@@ -48,14 +47,14 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
         })
         self.managedObjectContext = container.viewContext
         
-        if !self.defaults.bool(forKey: "launchedBefore") {
+        if !DefaultsManager.hasLaunched {
             // main app has never been launched - tell the user to check the app first
             self.keyboardView.showErrorMessage()
         }
-        else if !self.defaults.bool(forKey: "launched2.0") {
+        else if !DefaultsManager.hasLaunched2_0 {
             // has launched before updating to version 2.0 - migrate old clips to the new model
             container.migrateModelV1To2()
-            defaults.set(true, forKey: "launched2.0")
+            DefaultsManager.hasLaunched2_0 = true
         }
         
         if let rootFolder = Folder.getRootFolder(context: self.managedObjectContext) {
@@ -68,8 +67,8 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.shouldWrapClips = self.defaults.bool(forKey: "wrapClipsInKeyboard")
-        self.favoritesEnabled = self.defaults.bool(forKey: "enableFavorites")
+        self.shouldWrapClips = DefaultsManager.wrapClipsInKeyboard
+        self.favoritesEnabled = DefaultsManager.favoritesEnabled
         self.loadData()
     }
     
@@ -146,7 +145,7 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
     private func saveContext() {
         do {
             try self.managedObjectContext.save()
-            self.defaults.set(true, forKey: "shouldRefreshAppContext")
+            DefaultsManager.shouldRefreshAppContext = true
         }
         catch let error as NSError {
             print("Couldn't save. \(error), \(error.userInfo)")

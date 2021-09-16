@@ -109,10 +109,10 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     }
     
     @objc func updateLastCopied() {
-        if self.pasteboardChangeCount != UIPasteboard.general.changeCount {
+        if self.pasteboardChangeCount != ClipboardManager.pasteboardChangeCount {
             self.lastCopied = ClipboardManager.stringFromItem(ClipboardManager.retrieveFromPasteboard())
             self.lastCopiedLabel.text = self.lastCopied?.trimmingCharacters(in: .whitespacesAndNewlines)
-            self.pasteboardChangeCount = UIPasteboard.general.changeCount
+            self.pasteboardChangeCount = ClipboardManager.pasteboardChangeCount
         }
     }
     

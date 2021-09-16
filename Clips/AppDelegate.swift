@@ -16,35 +16,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     private var managedObjectContext: NSManagedObjectContext!
-    private var defaults = UserDefaults.init(suiteName: "group.com.williamwu.clips")!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        if !self.defaults.bool(forKey: "launchedBefore") {
+        if !DefaultsManager.hasLaunched {
             // first launch ever - set some default settings and data
             self.managedObjectContext = self.persistentContainer.viewContext
             self.persistentContainer.setUpFirstLaunch()
             
-            self.defaults.set(true, forKey: "showLastCopiedInMain")
-            self.defaults.set(true, forKey: "enableFavorites")
-            self.defaults.set(false, forKey: "wrapClipsInKeyboard")
+            DefaultsManager.favoritesEnabled = true
+            DefaultsManager.showLastCopiedInApp = true
+            DefaultsManager.askForTitleForLastCopiedInApp = true
+            DefaultsManager.autoAddLastCopiedInApp = false
+            DefaultsManager.wrapClipsInKeyboard = false
             
-            self.defaults.set(true, forKey: "launchedBefore")
-            self.defaults.set(true, forKey: "launched2.0")
-            self.defaults.set(true, forKey: "launched2.1")
+            DefaultsManager.hasLaunched = true
+            DefaultsManager.hasLaunched2_0 = true
+            DefaultsManager.hasLaunched2_1 = true
         }
-        if !self.defaults.bool(forKey: "launched2.0") {
+        if !DefaultsManager.hasLaunched2_0 {
             // has launched before updating to version 2.0 - migrate old clips to the new model
             self.managedObjectContext = self.persistentContainer.viewContext
             self.persistentContainer.migrateModelV1To2()
-            self.defaults.set(true, forKey: "launched2.0")
+            DefaultsManager.hasLaunched2_0 = true
         }
-        if !self.defaults.bool(forKey: "launched2.1") {
+        if !DefaultsManager.hasLaunched2_1 {
             // has launched before updating to version 2.1 - add new settings defaults
-            self.defaults.set(true, forKey: "enableFavorites")
-            self.defaults.set(false, forKey: "wrapClipsInKeyboard")
-            self.defaults.set(true, forKey: "launched2.1")
+            DefaultsManager.favoritesEnabled = true
+            DefaultsManager.askForTitleForLastCopiedInApp = true
+            DefaultsManager.autoAddLastCopiedInApp = false
+            DefaultsManager.wrapClipsInKeyboard = false
+            DefaultsManager.hasLaunched2_1 = true
         }
         
         return true
@@ -55,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return false
         }
         if url.path.starts(with: "/main") {
-            self.defaults.set(url, forKey: "urlToHandleInMain")
+            DefaultsManager.urlToHandleInMain = url
             navigation.dismiss(animated: false, completion: nil)
             navigation.popToRootViewController(animated: false)
         }
@@ -89,7 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let navigation = self.window?.rootViewController as? UINavigationController else {
             return
         }
-        if self.defaults.bool(forKey: "shouldRefreshAppContext") {
+        if DefaultsManager.shouldRefreshAppContext {
             guard let root = navigation.viewControllers.first as? MainTableViewController else {
                 return
             }
@@ -97,7 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             navigation.popToRootViewController(animated: false)
             self.persistentContainer.viewContext.reset()
             root.refreshRootFolder()
-            self.defaults.set(false, forKey: "shouldRefreshAppContext")
+            DefaultsManager.shouldRefreshAppContext = false
         }
         else {
             guard let viewController = navigation.visibleViewController as? MainTableViewController else {
@@ -109,12 +112,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        if DefaultsManager.autoAddLastCopiedInApp && DefaultsManager.pasteboardCountForAutoAdd != ClipboardManager.pasteboardChangeCount {
+            NotificationCenter.default.post(name: Notification.Name("AddLastCopiedInMain"), object: nil)
+            DefaultsManager.pasteboardCountForAutoAdd = ClipboardManager.pasteboardChangeCount
+        }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
-        self.defaults.set(false, forKey: "shouldRefreshAppContext")
+        DefaultsManager.shouldRefreshAppContext = false
         self.saveContext()
     }
 
