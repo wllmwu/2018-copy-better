@@ -11,7 +11,7 @@ import CoreData
 import ClipsKit
 import WidgetKit
 
-class EditClipTableViewController: UITableViewController {
+class EditClipTableViewController: UITableViewController, UITextViewDelegate {
     
     public enum Mode {
         case add, edit
@@ -22,7 +22,7 @@ class EditClipTableViewController: UITableViewController {
     
     private var mode: Mode = .add
     private var contents: [String : Any] = [:]
-    private var originalContentsText: NSAttributedString!
+    private var textDidChange: Bool = false
     /**
      The clip being edited. Should be set when `mode` is `.edit`; otherwise, may be left as `nil`.
      */
@@ -49,6 +49,7 @@ class EditClipTableViewController: UITableViewController {
         
         self.tableView.rowHeight = UITableView.automaticDimension
         
+        self.contentsTextView.delegate = self
         if self.mode == .add {
             self.navigationItem.title = AppStrings.ADD_CLIP_TITLE
             self.titleTextField.becomeFirstResponder()
@@ -92,7 +93,6 @@ class EditClipTableViewController: UITableViewController {
         self.contents = contents
         
         if contents.count == 0 {
-            self.originalContentsText = NSAttributedString()
             return
         }
         
@@ -114,7 +114,6 @@ class EditClipTableViewController: UITableViewController {
         else {
             print("EditClipTableViewController: couldn't find usable data representations.")
         }
-        self.originalContentsText = self.contentsTextView.attributedText
     }
     
     @discardableResult private func saveContext() -> Bool {
@@ -137,7 +136,7 @@ class EditClipTableViewController: UITableViewController {
         }
         
         if let text = self.contentsTextView.attributedText {
-            if self.mode == .add || !text.isEqual(to: self.originalContentsText) {
+            if self.mode == .add || self.textDidChange {
                 clip.contents = ClipboardManager.itemFromAttributedString(text)
             }
             // else the text hasn't changed when Save is pressed, so just leave the clip as it is
@@ -192,6 +191,12 @@ class EditClipTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
+    }
+    
+    // MARK: - UITextViewDelegate protocol
+    
+    func textViewDidChange(_ textView: UITextView) {
+        self.textDidChange = true
     }
 
     /*
