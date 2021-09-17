@@ -48,7 +48,6 @@ public class ClipboardManager: NSObject {
             }
             if let url = item[kUTTypeURL as String] {
                 newItem[kUTTypeURL as String] = url
-                print(url)
             }
             if let png = item[kUTTypePNG as String] {
                 newItem[kUTTypePNG as String] = png
