@@ -20,7 +20,10 @@ Or direct link: https://apps.apple.com/us/app/copy-better/id1456564050
 ## Screenshots
 
 <img src="./screenshots/main.png" width="250">
+<img src="./screenshots/main_dark.png" width="250">
 <img src="./screenshots/folder.png" width="250">
-<img src="./screenshots/clip.png" width="250">
+<img src="./screenshots/clip1.png" width="250">
+<img src="./screenshots/clip2.png" width="250">
 <img src="./screenshots/keyboard.png" width="250">
+<img src="./screenshots/widgets.png" width="250">
 <img src="./screenshots/today_widget.png" width="250">
