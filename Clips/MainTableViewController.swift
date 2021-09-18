@@ -248,10 +248,10 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     @objc func addLastCopied() {
         if self.lastCopied.count > 0 {
             if DefaultsManager.askForTitleForLastCopiedInApp {
-                let prompt: UIAlertController = UIAlertController(title: AppStrings.NEW_CLIP_FROM_PASTEBOARD_ACTION, message: nil, preferredStyle: .alert)
+                let prompt = UIAlertController(title: AppStrings.NEW_CLIP_FROM_PASTEBOARD_ACTION, message: nil, preferredStyle: .alert)
                 
-                let cancelAction: UIAlertAction = UIAlertAction(title: AppStrings.CANCEL_ACTION, style: .cancel, handler: nil)
-                let saveAction: UIAlertAction = UIAlertAction(title: AppStrings.SAVE_ACTION, style: .default) { (action) in
+                let cancelAction = UIAlertAction(title: AppStrings.CANCEL_ACTION, style: .cancel, handler: nil)
+                let saveAction = UIAlertAction(title: AppStrings.SAVE_ACTION, style: .default) { (action) in
                     var title = prompt.textFields?.first?.text
                     if title == "" {
                         title = nil
@@ -314,10 +314,10 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         if retrying {
             message = AppStrings.EMPTY_FOLDER_NAME_MESSAGE
         }
-        let alert: UIAlertController = UIAlertController(title: AppStrings.NEW_FOLDER_ACTION, message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: AppStrings.NEW_FOLDER_ACTION, message: message, preferredStyle: .alert)
         
-        let cancelAction: UIAlertAction = UIAlertAction(title: AppStrings.CANCEL_ACTION, style: .cancel, handler: nil)
-        let saveAction: UIAlertAction = UIAlertAction(title: AppStrings.SAVE_ACTION, style: .default) { (action) in
+        let cancelAction = UIAlertAction(title: AppStrings.CANCEL_ACTION, style: .cancel, handler: nil)
+        let saveAction = UIAlertAction(title: AppStrings.SAVE_ACTION, style: .default) { (action) in
             if let textField = alert.textFields?.first {
                 if let text = textField.text, !text.isEmpty {
                     self.createNewFolder(name: text)
@@ -362,15 +362,15 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
      Displays the action sheet for selecting whether to create a new folder or a new clip.
      */
     @IBAction func addItem() {
-        let addFolderAction: UIAlertAction = UIAlertAction(title: AppStrings.NEW_FOLDER_ACTION, style: .default) { (action) in
+        let addFolderAction = UIAlertAction(title: AppStrings.NEW_FOLDER_ACTION, style: .default) { (action) in
             self.addFolder(retrying: false)
         }
-        let addClipAction: UIAlertAction = UIAlertAction(title: AppStrings.NEW_CLIP_ACTION, style: .default) { (action) in
+        let addClipAction = UIAlertAction(title: AppStrings.NEW_CLIP_ACTION, style: .default) { (action) in
             self.addClip()
         }
-        let cancelAction: UIAlertAction = UIAlertAction(title: AppStrings.CANCEL_ACTION, style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: AppStrings.CANCEL_ACTION, style: .cancel, handler: nil)
         
-        let alert: UIAlertController = UIAlertController(title: AppStrings.ADD_ITEM_TITLE, message: nil, preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: AppStrings.ADD_ITEM_TITLE, message: nil, preferredStyle: .actionSheet)
         alert.addAction(addFolderAction)
         alert.addAction(addClipAction)
         alert.addAction(cancelAction)
@@ -380,40 +380,56 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     // MARK: - Table view data source
+    
+    private static let EXTRAS_SECTION = 0
+    private static let FOLDER_SECTION = 1
+    private static let CLIP_SECTION = 2
+    private static let FILTER_FOLDER_SECTION = 0
+    private static let FILTER_CLIP_SECTION = 1
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         if self.isFiltering() {
-            return 1
+            return 2
         }
         else {
-            return 2 // separate the Last Copied and/or Favorites cells from the folders and clips to make indexing easier
+            return 3
         }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.isFiltering() {
-            return self.filteredFolders.count + self.filteredClips.count
+            if section == MainTableViewController.FILTER_FOLDER_SECTION {
+                return self.filteredFolders.count
+            }
+            else {
+                return self.filteredClips.count
+            }
         }
         else {
-            if section == 0 { // Last Copied and/or Favorites cells
+            if section == MainTableViewController.EXTRAS_SECTION {
                 return (self.showLastCopied ? 1 : 0) + (self.isRootFolder && self.favoritesEnabled ? 1 : 0)
             }
-            else { // folders and clips
-                return self.subfolders.count + self.clips.count
+            else if section == MainTableViewController.FOLDER_SECTION {
+                return self.subfolders.count
+            }
+            else {
+                return self.clips.count
             }
         }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if self.isFiltering() {
-            if indexPath.row < self.filteredFolders.count { // folder
-                let folder: Folder = self.filteredFolders[indexPath.row]
+            if indexPath.section == MainTableViewController.FILTER_FOLDER_SECTION {
+                // filtered folder
+                let folder = self.filteredFolders[indexPath.row]
                 let cell: FolderTableViewCell = tableView.dequeueReusableCell(withIdentifier: "FolderCell", for: indexPath) as! FolderTableViewCell
                 cell.setName(folder.name!)
                 return cell
             }
-            else { // clip
-                let clip: Clip = self.filteredClips[indexPath.row - self.filteredFolders.count]
+            else {
+                // filtered clip
+                let clip = self.filteredClips[indexPath.row]
                 let cell: ClipTableViewCell
                 let title = clip.title
                 if title != nil && title != "" {
@@ -430,39 +446,41 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             }
         }
         else {
-            if indexPath.section == 0 {
-                if self.showLastCopied && indexPath.row == 0 { // Last Copied cell
+            if indexPath.section == MainTableViewController.EXTRAS_SECTION {
+                if self.showLastCopied && indexPath.row == 0 {
+                    // Last Copied cell
                     let cell: ClipTableViewCell = tableView.dequeueReusableCell(withIdentifier: "LastCopiedCell", for: indexPath) as! ClipTableViewCell
                     cell.setContents(self.lastCopied)
                     return cell
                 }
-                else { // Favorites cell
+                else {
+                    // Favorites cell
                     return tableView.dequeueReusableCell(withIdentifier: "FavoritesCell", for: indexPath)
                 }
             }
+            else if indexPath.section == MainTableViewController.FOLDER_SECTION {
+                // folder
+                let folder = self.subfolders[indexPath.row]
+                let cell: FolderTableViewCell = tableView.dequeueReusableCell(withIdentifier: "FolderCell", for: indexPath) as! FolderTableViewCell
+                cell.setName(folder.name!)
+                return cell
+            }
             else {
-                if indexPath.row < self.subfolders.count { // folder
-                    let folder: Folder = self.subfolders[indexPath.row]
-                    let cell: FolderTableViewCell = tableView.dequeueReusableCell(withIdentifier: "FolderCell", for: indexPath) as! FolderTableViewCell
-                    cell.setName(folder.name!)
-                    return cell
+                // clip
+                let clip = self.clips[indexPath.row]
+                let cell: ClipTableViewCell
+                let title = clip.title
+                if title != nil && title != "" {
+                    cell = tableView.dequeueReusableCell(withIdentifier: "ClipWithTitleCell", for: indexPath) as! ClipTableViewCell
+                    cell.setTitle(title!)
                 }
-                else { // clip
-                    let clip: Clip = self.clips[indexPath.row - self.subfolders.count]
-                    let cell: ClipTableViewCell
-                    let title = clip.title
-                    if title != nil && title != "" {
-                        cell = tableView.dequeueReusableCell(withIdentifier: "ClipWithTitleCell", for: indexPath) as! ClipTableViewCell
-                        cell.setTitle(title!)
-                    }
-                    else {
-                        cell = tableView.dequeueReusableCell(withIdentifier: "ClipNoTitleCell", for: indexPath) as! ClipTableViewCell
-                    }
-                    cell.setContents(clip.contents)
-                    cell.setFavorite(clip.isFavorite && self.favoritesEnabled)
-                    cell.setClip(clip)
-                    return cell
+                else {
+                    cell = tableView.dequeueReusableCell(withIdentifier: "ClipNoTitleCell", for: indexPath) as! ClipTableViewCell
                 }
+                cell.setContents(clip.contents)
+                cell.setFavorite(clip.isFavorite && self.favoritesEnabled)
+                cell.setClip(clip)
+                return cell
             }
         }
     }
@@ -470,10 +488,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        if self.isFiltering() {
-            return false
-        }
-        else if indexPath.section == 0 {
+        if self.isFiltering() || indexPath.section == MainTableViewController.EXTRAS_SECTION {
             return false
         }
         return true
@@ -487,14 +502,14 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            if indexPath.row < self.subfolders.count {
-                let index = indexPath.row
-                let folder: Folder = self.subfolders[index]
-                
-                let title: String = AppStrings.DELETE_FOLDER_CONFIRM_MESSAGE_1 + folder.name! + AppStrings.DELETE_FOLDER_CONFIRM_MESSAGE_2
-                let confirmAlert: UIAlertController = UIAlertController(title: title, message: AppStrings.NO_UNDO_MESSAGE, preferredStyle: .alert) // confirm deletion
-                let cancelAction: UIAlertAction = UIAlertAction(title: AppStrings.CANCEL_ACTION, style: .cancel, handler: nil)
-                let okAction: UIAlertAction = UIAlertAction(title: AppStrings.OK_ACTION, style: .destructive) { (action) in
+            let index = indexPath.row
+            if indexPath.section == MainTableViewController.FOLDER_SECTION {
+                // deleting a folder
+                let folder = self.subfolders[index]
+                let title = AppStrings.DELETE_FOLDER_CONFIRM_MESSAGE_1 + folder.name! + AppStrings.DELETE_FOLDER_CONFIRM_MESSAGE_2
+                let confirmAlert = UIAlertController(title: title, message: AppStrings.NO_UNDO_MESSAGE, preferredStyle: .alert) // confirm deletion
+                let cancelAction = UIAlertAction(title: AppStrings.CANCEL_ACTION, style: .cancel, handler: nil)
+                let okAction = UIAlertAction(title: AppStrings.OK_ACTION, style: .destructive) { (action) in
                     self.managedObjectContext.delete(self.subfolders[index])
                     self.subfolders.remove(at: index)
                     tableView.deleteRows(at: [indexPath], with: .fade)
@@ -506,7 +521,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
                 self.present(confirmAlert, animated: true, completion: nil)
             }
             else {
-                let index = indexPath.row - self.subfolders.count
+                // deleting a clip
                 let clip = self.clips[index]
                 let wasFavorite = clip.isFavorite
                 self.managedObjectContext.delete(clip)
@@ -525,7 +540,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
-        if indexPath.section == 0 {
+        if indexPath.section == MainTableViewController.EXTRAS_SECTION {
             return false
         }
         return true
@@ -533,27 +548,28 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
 
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-        if fromIndexPath.row < self.subfolders.count { // moving a folder
-            let index = fromIndexPath.row
-            let folder: Folder = self.subfolders[index]
-            self.subfolders.remove(at: index)
-            self.subfolders.insert(folder, at: to.row)
+        let fromIndex = fromIndexPath.row
+        let toIndex = to.row
+        if fromIndexPath.section == MainTableViewController.FOLDER_SECTION {
+            // moving a folder
+            let folder = self.subfolders[fromIndex]
+            self.subfolders.remove(at: fromIndex)
+            self.subfolders.insert(folder, at: toIndex)
             
-            if to.row < fromIndexPath.row {
-                self.updateFolderIndices(from: to.row, to: index + 1)
+            if toIndex < fromIndex {
+                self.updateFolderIndices(from: toIndex, to: fromIndex + 1)
             }
             else {
-                self.updateFolderIndices(from: index, to: to.row + 1)
+                self.updateFolderIndices(from: fromIndex, to: toIndex + 1)
             }
         }
-        else { // moving a clip
-            let fromIndex = fromIndexPath.row - self.subfolders.count
-            let toIndex = to.row - self.subfolders.count
+        else {
+            // moving a clip
             let clip: Clip = self.clips[fromIndex]
             self.clips.remove(at: fromIndex)
             self.clips.insert(clip, at: toIndex)
             
-            if to.row < fromIndexPath.row {
+            if toIndex < fromIndex {
                 self.updateClipIndices(from: toIndex, to: fromIndex + 1)
             }
             else {
@@ -564,48 +580,49 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
-        if sourceIndexPath.section == 0 {
+        let sourceSection = sourceIndexPath.section
+        let destinationSection = proposedDestinationIndexPath.section
+        if sourceSection == MainTableViewController.EXTRAS_SECTION {
             return sourceIndexPath
         }
-        else {
-            if sourceIndexPath.row < self.subfolders.count { // trying to move a folder
-                if proposedDestinationIndexPath.section == 0 {
-                    return IndexPath(row: 0, section: 1)
-                }
-                else if proposedDestinationIndexPath.row >= self.subfolders.count { // can't move a folder into the clips
-                    return IndexPath(row: self.subfolders.count - 1, section: 1)
-                }
+        else if sourceSection == MainTableViewController.FOLDER_SECTION {
+            // trying to move a folder
+            if destinationSection < MainTableViewController.FOLDER_SECTION {
+                return IndexPath(row: 0, section: MainTableViewController.FOLDER_SECTION)
             }
-            else if proposedDestinationIndexPath.section == 0 || proposedDestinationIndexPath.row < self.subfolders.count { // can't move a clip into the folders
-                return IndexPath(row: self.subfolders.count, section: 1)
+            else if destinationSection > MainTableViewController.FOLDER_SECTION {
+                return IndexPath(row: self.subfolders.count - 1, section: MainTableViewController.FOLDER_SECTION)
+            }
+        }
+        else {
+            // trying to move a clip
+            if destinationSection < MainTableViewController.CLIP_SECTION {
+                return IndexPath(row: 0, section: MainTableViewController.CLIP_SECTION)
             }
         }
         return proposedDestinationIndexPath
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        if self.isFiltering() {
-            return nil
-        }
-        else if indexPath.section == 0 {
+        if self.isFiltering() || indexPath.section == MainTableViewController.EXTRAS_SECTION {
             return nil
         }
         
         var actions: [UIContextualAction] = []
         if self.isEditing {
-            let deleteAction: UIContextualAction = UIContextualAction(style: .destructive, title: AppStrings.DELETE_ACTION_TITLE) { (action, view, completionHandler) in
+            let deleteAction = UIContextualAction(style: .destructive, title: AppStrings.DELETE_ACTION_TITLE) { (action, view, completionHandler) in
                 self.tableView(self.tableView, commit: .delete, forRowAt: indexPath)
                 completionHandler(true)
             }
             actions.append(deleteAction)
         }
         else {
-            let moveAction: UIContextualAction = UIContextualAction(style: .normal, title: AppStrings.MOVE_ACTION_TITLE) { (action, view, completionHandler) in
-                if indexPath.row < self.subfolders.count {
+            let moveAction = UIContextualAction(style: .normal, title: AppStrings.MOVE_ACTION_TITLE) { (action, view, completionHandler) in
+                if indexPath.section == MainTableViewController.FOLDER_SECTION {
                     self.selectedFolder = self.subfolders[indexPath.row]
                 }
                 else {
-                    self.selectedClip = self.clips[indexPath.row - self.subfolders.count]
+                    self.selectedClip = self.clips[indexPath.row]
                 }
                 self.performSegue(withIdentifier: "MainToMoveItem", sender: self)
                 completionHandler(true)
@@ -613,9 +630,41 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             moveAction.backgroundColor = UIColor(named: "Accent")
             actions.append(moveAction)
             
-            if indexPath.row >= self.subfolders.count && self.favoritesEnabled {
-                let clip: Clip = self.clips[indexPath.row - self.subfolders.count]
-                let favoriteAction: UIContextualAction = UIContextualAction(style: .normal, title: nil) { (action, view, completionHandler) in
+            if indexPath.section == MainTableViewController.FOLDER_SECTION {
+                let renameAction = UIContextualAction(style: .normal, title: AppStrings.RENAME_ACTION_TITLE) { action, view, completionHandler in
+                    let folder = self.subfolders[indexPath.row]
+                    let prompt = UIAlertController(title: AppStrings.RENAME_FOLDER_ALERT_TITLE, message: nil, preferredStyle: .alert)
+                    
+                    let cancelAction = UIAlertAction(title: AppStrings.CANCEL_ACTION, style: .cancel) { (action) in
+                        completionHandler(false)
+                    }
+                    let saveAction = UIAlertAction(title: AppStrings.SAVE_ACTION, style: .default) { (action) in
+                        let name = prompt.textFields?.first?.text
+                        if name == nil || name == "" {
+                            completionHandler(false)
+                            return
+                        }
+                        folder.name = name
+                        self.saveContext()
+                        self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                        completionHandler(true)
+                    }
+                    prompt.addTextField { (textfield) in
+                        textfield.placeholder = AppStrings.FOLDER_NAME_PLACEHOLDER
+                        textfield.autocapitalizationType = .sentences
+                        textfield.text = folder.name
+                    }
+                    prompt.addAction(cancelAction)
+                    prompt.addAction(saveAction)
+                    
+                    self.present(prompt, animated: true, completion: nil)
+                }
+                renameAction.backgroundColor = UIColor.gray
+                actions.append(renameAction)
+            }
+            else if indexPath.section == MainTableViewController.CLIP_SECTION && self.favoritesEnabled {
+                let clip = self.clips[indexPath.row]
+                let favoriteAction = UIContextualAction(style: .normal, title: nil) { (action, view, completionHandler) in
                     clip.isFavorite = !clip.isFavorite
                     self.saveContext()
                     WidgetCenter.shared.reloadTimelines(ofKind: "com.williamwu.clips.favorites-widget")
@@ -639,20 +688,18 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if self.isFiltering() {
-            if indexPath.row < self.filteredFolders.count {
+            if indexPath.section == MainTableViewController.FILTER_FOLDER_SECTION {
                 self.selectedFolder = self.filteredFolders[indexPath.row]
             }
             else {
                 self.selectedClip = self.filteredClips[indexPath.row]
             }
         }
-        else if indexPath.section == 1 {
-            if indexPath.row < self.subfolders.count {
-                self.selectedFolder = self.subfolders[indexPath.row]
-            }
-            else {
-                self.selectedClip = self.clips[indexPath.row - self.subfolders.count]
-            }
+        else if indexPath.section == MainTableViewController.FOLDER_SECTION {
+            self.selectedFolder = self.subfolders[indexPath.row]
+        }
+        else {
+            self.selectedClip = self.clips[indexPath.row]
         }
         return indexPath
     }
@@ -689,7 +736,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         }
         else {
             // search folders
-            let folderRequest: NSFetchRequest = NSFetchRequest<Folder>(entityName: "Folder")
+            let folderRequest = NSFetchRequest<Folder>(entityName: "Folder")
             folderRequest.predicate = NSPredicate(format: "name CONTAINS[cd] %@", searchText)
             do {
                 self.filteredFolders = try self.managedObjectContext.fetch(folderRequest)
@@ -699,7 +746,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             }
             
             // search clip titles
-            let clipRequest: NSFetchRequest = NSFetchRequest<Clip>(entityName: "Clip")
+            let clipRequest = NSFetchRequest<Clip>(entityName: "Clip")
             clipRequest.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchText)
             do {
                 self.filteredClips = try self.managedObjectContext.fetch(clipRequest)
@@ -782,14 +829,14 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
      */
     @IBAction func unwindFromFolderPicker(unwindSegue: UIStoryboardSegue) {
         let source: FolderPickerTableViewController = unwindSegue.source as! FolderPickerTableViewController
-        let chosenFolder: Folder = source.getSelectedFolder()
+        let chosenFolder = source.getSelectedFolder()
         
         if chosenFolder.objectID != self.folder.objectID {
             if let selected = self.selectedFolder {
                 selected.superfolder = chosenFolder
                 let index = Int(selected.index)
                 self.subfolders.remove(at: index)
-                tableView.deleteRows(at: [IndexPath(row: index, section: 1)], with: .fade)
+                tableView.deleteRows(at: [IndexPath(row: index, section: MainTableViewController.FOLDER_SECTION)], with: .fade)
                 self.updateFolderIndices(from: index, to: self.subfolders.count)
                 selected.index = Int16(chosenFolder.subfolders!.count - 1)
                 self.saveContext()
@@ -798,7 +845,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
                 selected.folder = chosenFolder
                 let index = Int(selected.index)
                 self.clips.remove(at: index)
-                tableView.deleteRows(at: [IndexPath(row: index + self.subfolders.count, section: 1)], with: .fade)
+                tableView.deleteRows(at: [IndexPath(row: index, section: MainTableViewController.CLIP_SECTION)], with: .fade)
                 self.updateClipIndices(from: index, to: self.clips.count)
                 selected.index = Int16(chosenFolder.clips!.count - 1)
                 self.saveContext()

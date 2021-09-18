@@ -153,6 +153,14 @@ struct AppStrings {
         return NSLocalizedString("Moved", comment: "\"Moved\" toast message")
     }
     
+    static var RENAME_ACTION_TITLE: String {
+        return NSLocalizedString("Rename", comment: "\"Rename\" action title")
+    }
+    
+    static var RENAME_FOLDER_ALERT_TITLE: String {
+        return NSLocalizedString("Rename folder", comment: "\"Rename folder\" alert title")
+    }
+    
     static var DELETE_ACTION_TITLE: String {
         return NSLocalizedString("Delete", comment: "\"Delete\" action title")
     }

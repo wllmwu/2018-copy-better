@@ -196,7 +196,6 @@
 • Configure Siri shortcuts to create and paste clips anywhere.
 • Use the Share extension to save new clips from websites, Photos, or anywhere else with shareable content.</string>
                                                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
-                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -728,6 +727,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="tHc-xx-KBo">
                         <rect key="frame" x="0.0" y="44" width="390" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" name="Background"/>
                         <color key="tintColor" name="Accent"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1442,7 +1442,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="SI3-HK-EbX"/>
-        <segue reference="atL-tM-tp5"/>
+        <segue reference="QqE-G5-atx"/>
         <segue reference="T1C-MY-kRL"/>
     </inferredMetricsTieBreakers>
     <resources>

@@ -105,6 +105,12 @@
 /* "Moved" toast message */
 "Moved" = "Moved";
 
+/* "Rename" action title */
+"Rename" = "Rename";
+
+/* "Rename folder" alert title */
+"Rename folder" = "Rename folder";
+
 /* "Delete" action title */
 "Delete" = "Delete";
 
