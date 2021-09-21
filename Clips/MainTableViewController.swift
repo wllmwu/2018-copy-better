@@ -29,7 +29,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     
     private var showLastCopied: Bool = true
     private var favoritesEnabled: Bool = true
-    private var shouldAddLastCopied: Bool = false
+    //private var shouldAddLastCopied: Bool = false
     private var lastCopied: [String : Any] = [:]
     private var pasteboardChangeCount: Int = 0
     
@@ -50,6 +50,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("view did load")
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -86,19 +87,17 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("view will appear")
         
         NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.showCopiedToast), name: Notification.Name("ShowCopiedToast"), object: nil) // triggered by individual cells
         NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.addLastCopied), name: Notification.Name("AddLastCopiedInMain"), object: nil) // triggered by the Last Copied cell
         
         self.loadData()
         
-        if self.shouldAddLastCopied {
+        /*else if self.shouldAddLastCopied {
             self.addLastCopied()
-        }
-        if let url = DefaultsManager.urlToHandleInMain {
-            self.handleOpenMain(with: url)
-            DefaultsManager.urlToHandleInMain = nil
-        }
+            self.shouldAddLastCopied = false
+        }*/
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -123,6 +122,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     @discardableResult public func handleOpenMain(with url: URL) -> Bool {
+        print("handle open main")
         let pathComponents = url.path.split(separator: "/")
         var queries: [String : String] = [:]
         if let queryString = url.query {
@@ -246,11 +246,18 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
      Creates a new clip with the contents of the pasteboard and inserts it into the current folder as the new first clip. Also updates indices and orders the context to save.
      */
     @objc func addLastCopied() {
+        print("add last copied")
+        if DefaultsManager.urlToHandleInMain != nil {
+            return
+        }
+        
         if self.lastCopied.count > 0 {
             if DefaultsManager.askForTitleForLastCopiedInApp {
                 let prompt = UIAlertController(title: AppStrings.NEW_CLIP_FROM_PASTEBOARD_ACTION, message: nil, preferredStyle: .alert)
                 
-                let cancelAction = UIAlertAction(title: AppStrings.CANCEL_ACTION, style: .cancel, handler: nil)
+                let cancelAction = UIAlertAction(title: AppStrings.CANCEL_ACTION, style: .cancel) { (action) in
+                    //self.shouldAddLastCopied = false
+                }
                 let saveAction = UIAlertAction(title: AppStrings.SAVE_ACTION, style: .default) { (action) in
                     var title = prompt.textFields?.first?.text
                     if title == "" {
@@ -271,9 +278,9 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
                 self.createNewClip(title: nil, contents: self.lastCopied, index: 0)
             }
         }
-        else {
+        /*else {
             self.shouldAddLastCopied = true
-        }
+        }*/
     }
     
     private func createNewClip(title: String?, contents: [String : Any], index: Int16) {
@@ -295,7 +302,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         if self.saveContext() {
             self.tableView.reloadData()
             self.showToast(message: AppStrings.TOAST_MESSAGE_ADDED)
-            self.shouldAddLastCopied = false
+            //self.shouldAddLastCopied = false
         }
     }
     

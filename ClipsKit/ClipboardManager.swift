@@ -86,6 +86,7 @@ public class ClipboardManager: NSObject {
             }
         }
         UIPasteboard.general.items = [itemVar]
+        DefaultsManager.pasteboardCountForAutoAdd = pasteboardChangeCount
     }
     
     public static var pasteboardChangeCount: Int {

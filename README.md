@@ -1,15 +1,17 @@
 # Copy Better
 
-Juggling between pasting links, images, notes, and text faces? Copy Better makes life a whole lot easier.
+Copy Better keeps all the things you need to copy and paste in one place, available at a simple tap.
+
+Current version: 2.1 (September 2021)
 
 ## Description
 
-Copy Better keeps all the things you need to copy/paste in one place and available at a simple tap.
-- In the app, add clips from the system clipboard, edit them, and create new ones. Your clips can be plain text, formatted text, and/or images.
-- From the Today widget, paste a clip without needing to open the app, and add new ones from the system clipboard.
-- Through the custom keyboard, insert any of your clips into a text field quickly, without opening up new screens at all, and add clips from the system clipboard.
-- With the Share extension, save text or images as new clips from websites, Photos, or anywhere else with shareable content.
-- Other features include folders, a Home Screen widget, and the favorites system.
+- Add clips from the system clipboard, edit them, and create new ones directly in the app. Your clips can be plain text, formatted text, and/or images.
+- Create folders to organize your clips, and mark important ones as favorites.
+- Add the Favorite Clips widget to your home screen for easy access.
+- Use the Copy Better keyboard to paste your clips quickly in other apps.
+- Configure Siri shortcuts to create and paste clips anywhere.
+- Use the Share extension to save new clips from websites, Photos, or anywhere else with shareable content.
 
 ## App Store link
 
@@ -20,7 +22,13 @@ Or direct link: https://apps.apple.com/us/app/copy-better/id1456564050
 ## Screenshots
 
 <img src="./screenshots/main.png" width="250">
+<img src="./screenshots/main_dark.png" width="250">
 <img src="./screenshots/folder.png" width="250">
-<img src="./screenshots/clip.png" width="250">
+<img src="./screenshots/clip_1.png" width="250">
+<img src="./screenshots/clip_2.png" width="250">
 <img src="./screenshots/keyboard.png" width="250">
-<img src="./screenshots/today_widget.png" width="250">
+<img src="./screenshots/widgets.png" width="250">
+
+## Copyright
+
+Copyright © 2021 William Wu. All rights reserved.
