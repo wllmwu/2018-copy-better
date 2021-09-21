@@ -17,8 +17,6 @@
 		E00453E326D98F2B00F38D51 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E00453E226D98F2B00F38D51 /* Intents.framework */; };
 		E00453E626D98F2B00F38D51 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00453E526D98F2B00F38D51 /* IntentHandler.swift */; };
 		E00453EA26D98F2B00F38D51 /* ClipsIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E00453E126D98F2B00F38D51 /* ClipsIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		E00453EE26D9909C00F38D51 /* ClipsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */; };
-		E00453EF26D9909C00F38D51 /* ClipsKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E0071DE721CB154D00B75D4C /* KeyboardClipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0071DE621CB154D00B75D4C /* KeyboardClipCell.xib */; };
 		E0071DE921CB171100B75D4C /* KeyboardClipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0071DE821CB171100B75D4C /* KeyboardClipCell.swift */; };
 		E0079EDC25068C9100F3BC10 /* FolderPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0079EDB25068C9100F3BC10 /* FolderPickerTableViewCell.swift */; };
@@ -53,6 +51,13 @@
 		E06AA130219D32DE0015A30F /* ClipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA12F219D32DE0015A30F /* ClipViewController.swift */; };
 		E06AA132219D32F60015A30F /* EditClipTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA131219D32F60015A30F /* EditClipTableViewController.swift */; };
 		E06AA134219D331E0015A30F /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA133219D331E0015A30F /* SettingsTableViewController.swift */; };
+		E06C550926F6F424006F67C2 /* ClipsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */; };
+		E06C550A26F6F424006F67C2 /* ClipsKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E06C550C26F6F428006F67C2 /* ClipsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */; };
+		E06C550F26F6F42C006F67C2 /* ClipsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */; };
+		E06C551226F6F430006F67C2 /* ClipsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */; };
+		E06C551526F6F434006F67C2 /* ClipsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */; };
+		E06C551826F6F439006F67C2 /* ClipsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */; };
 		E06CAC642241374B008347AA /* ClipsKeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E06CAC662241374B008347AA /* ClipsKeyboardView.xib */; };
 		E06D3D55251FBCB200441300 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E06EC94D21C5ACA100687F9E /* Localizable.strings */; };
 		E06D3D5B251FBCB700441300 /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E373BC24EAFFD7006A2816 /* AppStrings.swift */; };
@@ -72,8 +77,6 @@
 		E0C260AF21B8B889007D9BED /* UIViewController+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C260AE21B8B889007D9BED /* UIViewController+Toast.swift */; };
 		E0C9757426E7D14E00E7ACA8 /* ClipsWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C9757326E7D14E00E7ACA8 /* ClipsWidgets.swift */; };
 		E0C9757626E7D1FB00E7ACA8 /* FavoritesWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C9757526E7D1FB00E7ACA8 /* FavoritesWidget.swift */; };
-		E0C9757726E7D2D900E7ACA8 /* ClipsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */; };
-		E0C9757826E7D2D900E7ACA8 /* ClipsKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E0CAD76A26D6E85E00B10E72 /* ClipsKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E0CAD76826D6E85E00B10E72 /* ClipsKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E0CAD76E26D6E91F00B10E72 /* Folder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD5AE724E44E3C0035FDC8 /* Folder+CoreDataClass.swift */; };
 		E0CAD76F26D6E93B00B10E72 /* Folder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD5AE824E44E3C0035FDC8 /* Folder+CoreDataProperties.swift */; };
@@ -83,14 +86,6 @@
 		E0CAD77326D6E99600B10E72 /* ClipsPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E029B42A21B32C8F005EFEB6 /* ClipsPersistentContainer.swift */; };
 		E0CAD77426D6E9CC00B10E72 /* ClipboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA135219D37BE0015A30F /* ClipboardManager.swift */; };
 		E0CAD77526D6E9DC00B10E72 /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */; };
-		E0CAD77726D6EA4600B10E72 /* ClipsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */; };
-		E0CAD77826D6EA4600B10E72 /* ClipsKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E0CAD77C26D6EA6600B10E72 /* ClipsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */; };
-		E0CAD77D26D6EA6600B10E72 /* ClipsKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E0CAD78126D6EA7100B10E72 /* ClipsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */; };
-		E0CAD78226D6EA7100B10E72 /* ClipsKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E0CAD78626D6EA7D00B10E72 /* ClipsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */; };
-		E0CAD78726D6EA7D00B10E72 /* ClipsKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E0CAD76626D6E85D00B10E72 /* ClipsKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E0CAD78B26D6EBA500B10E72 /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E373BC24EAFFD7006A2816 /* AppStrings.swift */; };
 		E0CAD78C26D6EBAA00B10E72 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E06EC94D21C5ACA100687F9E /* Localizable.strings */; };
 		E0D348C721B2393000BF1F4E /* WidgetClipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D348C621B2393000BF1F4E /* WidgetClipTableViewCell.swift */; };
@@ -188,17 +183,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		E00453F226D9909C00F38D51 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				E00453EF26D9909C00F38D51 /* ClipsKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E04106CB219D04F100DD68AD /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -214,57 +198,13 @@
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E0C9757B26E7D2D900E7ACA8 /* Embed Frameworks */ = {
+		E06C550B26F6F424006F67C2 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E0C9757826E7D2D900E7ACA8 /* ClipsKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E0CAD77B26D6EA4700B10E72 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				E0CAD77826D6EA4600B10E72 /* ClipsKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E0CAD78026D6EA6600B10E72 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				E0CAD77D26D6EA6600B10E72 /* ClipsKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E0CAD78526D6EA7100B10E72 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				E0CAD78226D6EA7100B10E72 /* ClipsKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E0CAD78A26D6EA7D00B10E72 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				E0CAD78726D6EA7D00B10E72 /* ClipsKit.framework in Embed Frameworks */,
+				E06C550A26F6F424006F67C2 /* ClipsKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,7 +319,7 @@
 			files = (
 				E000A2F0251EECD2007EFFFF /* SwiftUI.framework in Frameworks */,
 				E000A2EE251EECD2007EFFFF /* WidgetKit.framework in Frameworks */,
-				E0C9757726E7D2D900E7ACA8 /* ClipsKit.framework in Frameworks */,
+				E06C551526F6F434006F67C2 /* ClipsKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,7 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E00453E326D98F2B00F38D51 /* Intents.framework in Frameworks */,
-				E00453EE26D9909C00F38D51 /* ClipsKit.framework in Frameworks */,
+				E06C551826F6F439006F67C2 /* ClipsKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,7 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E04106BD219D04F100DD68AD /* NotificationCenter.framework in Frameworks */,
-				E0CAD77C26D6EA6600B10E72 /* ClipsKit.framework in Frameworks */,
+				E06C550C26F6F428006F67C2 /* ClipsKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,7 +345,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0CAD78626D6EA7D00B10E72 /* ClipsKit.framework in Frameworks */,
+				E06C551226F6F430006F67C2 /* ClipsKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,7 +353,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0CAD77726D6EA4600B10E72 /* ClipsKit.framework in Frameworks */,
+				E06C550926F6F424006F67C2 /* ClipsKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,7 +361,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0CAD78126D6EA7100B10E72 /* ClipsKit.framework in Frameworks */,
+				E06C550F26F6F42C006F67C2 /* ClipsKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -611,7 +551,6 @@
 				E000A2E8251EECD2007EFFFF /* Sources */,
 				E000A2E9251EECD2007EFFFF /* Frameworks */,
 				E000A2EA251EECD2007EFFFF /* Resources */,
-				E0C9757B26E7D2D900E7ACA8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -630,7 +569,6 @@
 				E00453DD26D98F2B00F38D51 /* Sources */,
 				E00453DE26D98F2B00F38D51 /* Frameworks */,
 				E00453DF26D98F2B00F38D51 /* Resources */,
-				E00453F226D9909C00F38D51 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -649,7 +587,6 @@
 				E04106B6219D04F100DD68AD /* Sources */,
 				E04106B7219D04F100DD68AD /* Frameworks */,
 				E04106B8219D04F100DD68AD /* Resources */,
-				E0CAD78026D6EA6600B10E72 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -668,7 +605,6 @@
 				E041A72721E3D65700B58DD5 /* Sources */,
 				E041A72821E3D65700B58DD5 /* Frameworks */,
 				E041A72921E3D65700B58DD5 /* Resources */,
-				E0CAD78A26D6EA7D00B10E72 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -688,7 +624,7 @@
 				E056F8EA20CEE46C0025E2FE /* Frameworks */,
 				E056F8EB20CEE46C0025E2FE /* Resources */,
 				E04106CB219D04F100DD68AD /* Embed App Extensions */,
-				E0CAD77B26D6EA4700B10E72 /* Embed Frameworks */,
+				E06C550B26F6F424006F67C2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -713,7 +649,6 @@
 				E0A51AD021C6CABA00FCCCA9 /* Sources */,
 				E0A51AD121C6CABA00FCCCA9 /* Frameworks */,
 				E0A51AD221C6CABA00FCCCA9 /* Resources */,
-				E0CAD78526D6EA7100B10E72 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1189,7 +1124,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Clips Widget 2/Clips Widget 2Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Widget 2/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -1218,7 +1153,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Clips Widget 2/Clips Widget 2Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Widget 2/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -1244,6 +1179,7 @@
 				CODE_SIGN_ENTITLEMENTS = ClipsIntents/ClipsIntents.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = ClipsIntents/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -1270,6 +1206,7 @@
 				CODE_SIGN_ENTITLEMENTS = ClipsIntents/ClipsIntents.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = ClipsIntents/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -1294,7 +1231,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Clips Widget/Clips Widget.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Widget/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -1318,7 +1255,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Clips Widget/Clips Widget.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Widget/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -1342,7 +1279,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Clips Share/Clips Share.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Share/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -1368,7 +1305,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Clips Share/Clips Share.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Share/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -1511,7 +1448,7 @@
 				CODE_SIGN_ENTITLEMENTS = Clips/Clips.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "$(SRCROOT)/Clips/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -1535,7 +1472,7 @@
 				CODE_SIGN_ENTITLEMENTS = Clips/Clips.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "$(SRCROOT)/Clips/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -1557,7 +1494,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Clips Keyboard/Clips Keyboard.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Keyboard/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -1583,7 +1520,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Clips Keyboard/Clips Keyboard.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Keyboard/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -1608,7 +1545,7 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1622,6 +1559,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACH_O_TYPE = mh_dylib;
 				MARKETING_VERSION = 2.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1641,7 +1579,7 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1655,6 +1593,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACH_O_TYPE = mh_dylib;
 				MARKETING_VERSION = 2.1;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.williamwu.ClipsKit;

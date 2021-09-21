@@ -54,13 +54,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        guard let navigation = self.window?.rootViewController as? UINavigationController else {
-            return false
-        }
+        print("open url")
         if url.path.starts(with: "/main") {
             DefaultsManager.urlToHandleInMain = url
-            navigation.dismiss(animated: false, completion: nil)
-            navigation.popToRootViewController(animated: false)
         }
         return true
     }
@@ -89,6 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        print("will enter foreground")
         guard let navigation = self.window?.rootViewController as? UINavigationController else {
             return
         }
@@ -112,7 +109,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        if DefaultsManager.autoAddLastCopiedInApp && DefaultsManager.pasteboardCountForAutoAdd != ClipboardManager.pasteboardChangeCount {
+        print("did become active")
+        if let url = DefaultsManager.urlToHandleInMain {
+            guard let navigation = self.window?.rootViewController as? UINavigationController, let rootView = navigation.viewControllers.first as? MainTableViewController else {
+                return
+            }
+            navigation.dismiss(animated: false, completion: nil)
+            navigation.popToRootViewController(animated: false)
+            rootView.handleOpenMain(with: url)
+            DefaultsManager.urlToHandleInMain = nil
+        }
+        else if DefaultsManager.autoAddLastCopiedInApp && DefaultsManager.pasteboardCountForAutoAdd != ClipboardManager.pasteboardChangeCount {
             NotificationCenter.default.post(name: Notification.Name("AddLastCopiedInMain"), object: nil)
             DefaultsManager.pasteboardCountForAutoAdd = ClipboardManager.pasteboardChangeCount
         }
