@@ -54,7 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        print("open url")
         if url.path.starts(with: "/main") {
             DefaultsManager.urlToHandleInMain = url
         }
@@ -85,7 +84,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-        print("will enter foreground")
         guard let navigation = self.window?.rootViewController as? UINavigationController else {
             return
         }
@@ -109,7 +107,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        print("did become active")
         if let url = DefaultsManager.urlToHandleInMain {
             guard let navigation = self.window?.rootViewController as? UINavigationController, let rootView = navigation.viewControllers.first as? MainTableViewController else {
                 return
@@ -179,7 +176,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     static func alertFatalError(message: String) {
-        print(message)
         let alert = UIAlertController(title: "An error occurred", message: "Failed to access the container or Core Data in some way, most likely because the phone is out of storage space. The app may not work properly.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         let root: UINavigationController? = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController

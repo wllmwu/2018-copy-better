@@ -50,7 +50,6 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("view did load")
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -87,7 +86,6 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("view will appear")
         
         NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.showCopiedToast), name: Notification.Name("ShowCopiedToast"), object: nil) // triggered by individual cells
         NotificationCenter.default.addObserver(self, selector: #selector(MainTableViewController.addLastCopied), name: Notification.Name("AddLastCopiedInMain"), object: nil) // triggered by the Last Copied cell
@@ -122,7 +120,6 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     @discardableResult public func handleOpenMain(with url: URL) -> Bool {
-        print("handle open main")
         let pathComponents = url.path.split(separator: "/")
         var queries: [String : String] = [:]
         if let queryString = url.query {
