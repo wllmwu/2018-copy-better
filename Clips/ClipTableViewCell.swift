@@ -154,9 +154,11 @@ class ClipTableViewCell: UITableViewCell {
     
     @IBAction func copyButtonTapped(_ sender: UIButton) {
         ClipboardManager.copyToPasteboard(item: self.contents)
-        Clip.donateCopyInteraction(with: self.clip) { (error) in
-            if let e = error {
-                print("Interaction donation failed: \(e.localizedDescription)")
+        if let clip = self.clip {
+            Clip.donateCopyInteraction(with: clip) { (error) in
+                if let e = error {
+                    print("Interaction donation failed: \(e.localizedDescription)")
+                }
             }
         }
         NotificationCenter.default.post(name: Notification.Name("ShowCopiedToast"), object: nil)

@@ -24,7 +24,7 @@ protocol ClipsKeyboardViewDelegate: class {
     
     func insertText(_ text: String)
     func deleteBackwards()
-    func addLastCopied(_ text: String)
+    func addLastCopied(_ contents: [String : Any])
     func keyboardReturn()
 }
 
@@ -32,8 +32,7 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     
     private var filteredClips: [Clip] = []
     private var indexOffset: Int = 0
-    private var lastCopied: String?
-    private var pasteboardChangeCount: Int = 0
+    private var lastCopied: [String : Any]?
     private static let numItemsOnPage: Int = 5
     
     @IBOutlet weak var lastCopiedLabel: UILabel!
@@ -109,11 +108,9 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     }
     
     @objc func updateLastCopied() {
-        if self.pasteboardChangeCount != ClipboardManager.pasteboardChangeCount {
-            self.lastCopied = ClipboardManager.stringFromItem(ClipboardManager.retrieveFromPasteboard())
-            self.lastCopiedLabel.text = self.lastCopied?.trimmingCharacters(in: .whitespacesAndNewlines)
-            self.pasteboardChangeCount = ClipboardManager.pasteboardChangeCount
-        }
+        let item = ClipboardManager.retrieveFromPasteboard()
+        self.lastCopied = item
+        self.lastCopiedLabel.text = ClipboardManager.stringFromItem(item)?.trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
     func setMessageLabelVisible(_ visible: Bool) {
@@ -137,14 +134,15 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     // MARK: - Actions
     
     @IBAction func insertLastCopied(_ sender: UIButton) {
-        if let string = self.lastCopied {
-            self.delegate.insertText(string)
+        guard let item = self.lastCopied, let string = ClipboardManager.stringFromItem(item) else {
+            return
         }
+        self.delegate.insertText(string)
     }
     
     @IBAction func addLastCopied(_ sender: UIButton) {
-        if let string = self.lastCopied {
-            self.delegate.addLastCopied(string)
+        if let item = self.lastCopied {
+            self.delegate.addLastCopied(item)
         }
     }
     
@@ -171,35 +169,11 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
         self.delegate.deleteBackwards()
     }
     
-    @IBAction func scrollToPreviousColumn(_ sender: UIButton) {
-        let col: Int = self.getCurrentColumn()
-        if col > 0 {
-            let indexPath: IndexPath = IndexPath(row: (col - 1) * ClipsKeyboardView.numItemsOnPage, section: 0)
-            self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        }
-    }
-    
-    @IBAction func scrollToNextColumn(_ sender: UIButton) {
-        let col: Int = self.getCurrentColumn()
-        if col < (self.filteredClips.count - 1) / 4 {
-            let indexPath: IndexPath = IndexPath(row: (col + 1) * ClipsKeyboardView.numItemsOnPage, section: 0)
-            self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        }
-    }
-    
     @IBAction func returnPressed() {
         self.delegate.keyboardReturn()
     }
     
     // MARK: - Private instance methods
-    
-    private func getCurrentColumn() -> Int {
-        let indexPaths: [IndexPath] = self.collectionView.indexPathsForVisibleItems
-        if let indexPath = indexPaths.first {
-            return indexPath.row / ClipsKeyboardView.numItemsOnPage
-        }
-        return 0
-    }
     
     private func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
