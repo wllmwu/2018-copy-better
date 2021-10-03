@@ -205,7 +205,7 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
         self.textDocumentProxy.deleteBackward()
     }
     
-    func addLastCopied(_ text: String) {
+    func addLastCopied(_ contents: [String : Any]) {
         guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
             print("Couldn't find entity description.")
             return
@@ -218,7 +218,7 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
         // create new clip
         let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
         clip.title = nil
-        clip.contents = ClipboardManager.itemFromPlaintext(text)
+        clip.contents = contents
         clip.index = 0
         clip.folder = self.currentFolder
         self.clips.insert(clip, at: 0)
