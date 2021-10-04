@@ -53,14 +53,12 @@ class ShareViewController: SLComposeServiceViewController, ShareConfigureViewCon
             }
             else if provider.hasItemConformingToTypeIdentifier(kUTTypeImage as String) {
                 provider.loadItem(forTypeIdentifier: kUTTypeImage as String, options: nil) { (image, error) in
-                    //OperationQueue.main.addOperation {
-                        if let url = image as? URL {
-                            self.clipContents[kUTTypeImage as String] = try! Data(contentsOf: url)
-                        }
-                        else if let data = image as? Data {
-                            self.clipContents[kUTTypeImage as String] = data
-                        }
-                    //}
+                    if let url = image as? URL {
+                        self.clipContents[kUTTypeImage as String] = try! Data(contentsOf: url)
+                    }
+                    else if let data = image as? Data {
+                        self.clipContents[kUTTypeImage as String] = data
+                    }
                 }
             }
         }
