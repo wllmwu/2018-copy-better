@@ -67,6 +67,7 @@
 		E07DC2FD2243495B00736DBD /* ShareConfigureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E07DC2FF2243495B00736DBD /* ShareConfigureView.xib */; };
 		E08A5A2F25029E0A009524DB /* FolderPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08A5A2E25029E0A009524DB /* FolderPickerTableViewController.swift */; };
 		E098F7AF26F3B4EA0076111A /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E098F7AE26F3B4EA0076111A /* DefaultsManager.swift */; };
+		E0A188AE270A606000BA70A7 /* NSAttributedString+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A188AD270A606000BA70A7 /* NSAttributedString+HTML.swift */; };
 		E0A51AD721C6CABA00FCCCA9 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A51AD621C6CABA00FCCCA9 /* KeyboardViewController.swift */; };
 		E0A51ADB21C6CABA00FCCCA9 /* Copy Better Keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E0A51AD421C6CABA00FCCCA9 /* Copy Better Keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E0AF325521DED6A500743158 /* KeyboardUpperButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AF325421DED6A500743158 /* KeyboardUpperButton.swift */; };
@@ -278,6 +279,7 @@
 		E08A5A2E25029E0A009524DB /* FolderPickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderPickerTableViewController.swift; sourceTree = "<group>"; };
 		E098F7AE26F3B4EA0076111A /* DefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsManager.swift; sourceTree = "<group>"; };
 		E09B79A224DE03F7005E1736 /* Clipboard_Manager v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Clipboard_Manager v2.xcdatamodel"; sourceTree = "<group>"; };
+		E0A188AD270A606000BA70A7 /* NSAttributedString+HTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+HTML.swift"; sourceTree = "<group>"; };
 		E0A51AD421C6CABA00FCCCA9 /* Copy Better Keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Copy Better Keyboard.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0A51AD621C6CABA00FCCCA9 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		E0A51AD821C6CABA00FCCCA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -525,6 +527,7 @@
 				E06AA135219D37BE0015A30F /* ClipboardManager.swift */,
 				E098F7AE26F3B4EA0076111A /* DefaultsManager.swift */,
 				E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */,
+				E0A188AD270A606000BA70A7 /* NSAttributedString+HTML.swift */,
 				E05D409E26E565DE002A1865 /* Intents.intentdefinition */,
 			);
 			path = ClipsKit;
@@ -924,6 +927,7 @@
 				E0CAD76F26D6E93B00B10E72 /* Folder+CoreDataProperties.swift in Sources */,
 				E0CAD77126D6E96E00B10E72 /* Clip+CoreDataProperties.swift in Sources */,
 				E0CAD77226D6E98000B10E72 /* Clips.xcdatamodeld in Sources */,
+				E0A188AE270A606000BA70A7 /* NSAttributedString+HTML.swift in Sources */,
 				E098F7AF26F3B4EA0076111A /* DefaultsManager.swift in Sources */,
 				E0CAD78B26D6EBA500B10E72 /* AppStrings.swift in Sources */,
 				E0CAD77426D6E9CC00B10E72 /* ClipboardManager.swift in Sources */,
@@ -1124,7 +1128,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Clips Widget 2/Clips Widget 2Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Widget 2/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -1133,7 +1137,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.1.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.williamwu.Clips.Clips-Widget-2";
@@ -1153,7 +1157,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Clips Widget 2/Clips Widget 2Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Widget 2/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -1162,7 +1166,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.1.1;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.williamwu.Clips.Clips-Widget-2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1179,7 +1183,7 @@
 				CODE_SIGN_ENTITLEMENTS = ClipsIntents/ClipsIntents.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = ClipsIntents/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -1188,7 +1192,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.1.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.williamwu.Clips.ClipsIntents;
@@ -1206,7 +1210,7 @@
 				CODE_SIGN_ENTITLEMENTS = ClipsIntents/ClipsIntents.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = ClipsIntents/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -1215,7 +1219,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.1.1;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.williamwu.Clips.ClipsIntents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1231,7 +1235,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Clips Widget/Clips Widget.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Widget/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -1240,7 +1244,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.williamwu.Clips.Clips-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1255,7 +1259,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Clips Widget/Clips Widget.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Widget/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -1264,7 +1268,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.williamwu.Clips.Clips-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1279,7 +1283,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Clips Share/Clips Share.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Share/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -1288,7 +1292,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.1.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.williamwu.Clips.Clips-Share";
@@ -1305,7 +1309,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Clips Share/Clips Share.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Share/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -1314,7 +1318,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.1.1;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.williamwu.Clips.Clips-Share";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1448,7 +1452,7 @@
 				CODE_SIGN_ENTITLEMENTS = Clips/Clips.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "$(SRCROOT)/Clips/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -1456,7 +1460,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.williamwu.Clips;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -1472,7 +1476,7 @@
 				CODE_SIGN_ENTITLEMENTS = Clips/Clips.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "$(SRCROOT)/Clips/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -1480,7 +1484,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.williamwu.Clips;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -1494,7 +1498,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Clips Keyboard/Clips Keyboard.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Keyboard/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -1503,7 +1507,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.1.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.williamwu.Clips.Clips-Keyboard";
@@ -1520,7 +1524,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Clips Keyboard/Clips Keyboard.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "Clips Keyboard/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -1529,7 +1533,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.1.1;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.williamwu.Clips.Clips-Keyboard";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1545,7 +1549,7 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1560,7 +1564,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = mh_dylib;
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.1.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.williamwu.ClipsKit;
@@ -1579,7 +1583,7 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1594,7 +1598,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = mh_dylib;
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.1.1;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.williamwu.ClipsKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
