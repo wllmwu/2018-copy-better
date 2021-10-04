@@ -15,8 +15,7 @@ import ClipsKit
 class ShareViewController: SLComposeServiceViewController, ShareConfigureViewControllerDelegate {
     
     private var clipTitle: String?
-    private var clipContentsText: NSAttributedString?
-    private var clipContentsImageData: Data?
+    private var clipContents: [String : Any] = [:]
     
     private var rootFolder: Folder!
     private var managedObjectContext: NSManagedObjectContext!
@@ -39,50 +38,45 @@ class ShareViewController: SLComposeServiceViewController, ShareConfigureViewCon
         if let content = self.extensionContext!.inputItems.first as? NSExtensionItem {
             let provider: NSItemProvider = content.attachments!.first!
             if provider.hasItemConformingToTypeIdentifier(kUTTypeText as String) {
-                if let text = content.attributedContentText {
-                    self.clipContentsText = text
+                if let attributedString = content.attributedContentText {
+                    self.clipContents[kUTTypeHTML as String] = attributedString.attributedToHTML
+                    self.clipContents[kUTTypePlainText as String] = attributedString.string
                 }
             }
-            if provider.hasItemConformingToTypeIdentifier(kUTTypeImage as String) {
-                provider.loadItem(forTypeIdentifier: kUTTypeImage as String, options: nil) { (image, error) in
-                    OperationQueue.main.addOperation {
-                        if let url = image as? URL {
-                            self.clipContentsImageData = try! Data(contentsOf: url)
-                        }
-                        else if let data = image as? Data {
-                            self.clipContentsImageData = data
-                        }
+            else if provider.hasItemConformingToTypeIdentifier(kUTTypeURL as String) {
+                provider.loadItem(forTypeIdentifier: kUTTypeURL as String, options: nil) { url, error in
+                    if let sharedURL = url as? URL {
+                        self.clipContents[kUTTypeURL as String] = sharedURL
+                        self.clipContents[kUTTypePlainText as String] = sharedURL.absoluteString
                     }
                 }
             }
+            else if provider.hasItemConformingToTypeIdentifier(kUTTypeImage as String) {
+                provider.loadItem(forTypeIdentifier: kUTTypeImage as String, options: nil) { (image, error) in
+                    //OperationQueue.main.addOperation {
+                        if let url = image as? URL {
+                            self.clipContents[kUTTypeImage as String] = try! Data(contentsOf: url)
+                        }
+                        else if let data = image as? Data {
+                            self.clipContents[kUTTypeImage as String] = data
+                        }
+                    //}
+                }
+            }
         }
+        
+        self.textView.isEditable = false
     }
 
     override func isContentValid() -> Bool {
         // Do validation of contentText and/or NSExtensionContext attachments here
-        if self.contentText.count > 0 {
-            self.clipContentsText = NSAttributedString(string: self.contentText)
-        }
-        else {
-            self.clipContentsText = nil
-        }
         return true
     }
 
     override func didSelectPost() {
         // This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
         
-        var item: [String : Any] = [:]
-        if let imageData = self.clipContentsImageData {
-            item = [kUTTypeImage as String : imageData]
-        }
-        else if let text = self.clipContentsText {
-            item = ClipboardManager.itemFromAttributedString(text)
-        }
-        
-        if item.count > 0 {
-            self.saveClip(withItem: item)
-        }
+        self.saveClip(with: self.clipContents, title: self.clipTitle)
     
         // Inform the host that we're done, so it un-blocks its UI. Note: Alternatively you could call super's -didSelectPost, which will similarly complete the extension context.
         self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
@@ -106,7 +100,7 @@ class ShareViewController: SLComposeServiceViewController, ShareConfigureViewCon
     
     // MARK: - Private instance methods
     
-    private func saveClip(withItem item: [String : Any]) {
+    private func saveClip(with contents: [String : Any], title: String?) {
         guard let entity = NSEntityDescription.entity(forEntityName: "Clip", in: self.managedObjectContext) else {
             print("Couldn't find entity description.")
             return
@@ -114,8 +108,8 @@ class ShareViewController: SLComposeServiceViewController, ShareConfigureViewCon
         
         // create new clip
         let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
-        clip.title = self.clipTitle
-        clip.contents = item
+        clip.title = title
+        clip.contents = contents
         clip.index = 0
         
         // reassign indices
