@@ -4,10 +4,10 @@
 
 /* Class = "UILabel"; text = "© 2021 William Wu
 
-This app is version 2.1.
+This app is version 2.1.2.
 
 Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "4Nl-cj-gKr"; */
-"4Nl-cj-gKr.text" = "© 2021 William Wu (correo electrónico: dev.wwu@gmail.com)\n\nVersión 2.1";
+"4Nl-cj-gKr.text" = "© 2021 William Wu (correo electrónico: dev.wwu@gmail.com)\n\nVersión 2.1.2";
 
 /* Class = "UINavigationItem"; title = "Copy Better"; ObjectID = "55l-T6-khl"; */
 "55l-T6-khl.title" = "Copiar Mejor";
