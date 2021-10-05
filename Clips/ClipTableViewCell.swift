@@ -147,6 +147,14 @@ class ClipTableViewCell: UITableViewCell {
                 string.replaceCharacters(in: range, with: "")
             }
         }
+        
+        // trim leading whitespace
+        var range = (string.string as NSString).rangeOfCharacter(from: .whitespacesAndNewlines)
+        while range.length > 0 && range.location == 0 {
+            string.replaceCharacters(in: range, with: "")
+            range = (string.string as NSString).rangeOfCharacter(from: .whitespacesAndNewlines)
+        }
+        
         self.contentsLabel.attributedText = string
     }
     

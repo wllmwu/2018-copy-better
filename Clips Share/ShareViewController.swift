@@ -62,8 +62,6 @@ class ShareViewController: SLComposeServiceViewController, ShareConfigureViewCon
                 }
             }
         }
-        
-        self.textView.isEditable = false
     }
 
     override func isContentValid() -> Bool {
