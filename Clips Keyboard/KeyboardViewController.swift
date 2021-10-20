@@ -75,7 +75,7 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.pasteboardCheckTimer = Timer.scheduledTimer(timeInterval: 4, target: self.keyboardView, selector: #selector(ClipsKeyboardView.updateLastCopied), userInfo: nil, repeats: true)
+        self.pasteboardCheckTimer = Timer.scheduledTimer(timeInterval: 3, target: self.keyboardView, selector: #selector(ClipsKeyboardView.updateLastCopied), userInfo: nil, repeats: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
