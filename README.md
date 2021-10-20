@@ -2,7 +2,7 @@
 
 Copy Better keeps all the things you need to copy and paste in one place, available at a simple tap.
 
-Current version: 2.1 (September 2021)
+Current version: 2.1.3 (October 2021)
 
 ## Description
 
