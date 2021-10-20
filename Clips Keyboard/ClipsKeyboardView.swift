@@ -64,8 +64,6 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
         self.collectionView.register(UINib(nibName: "KeyboardFolderCell", bundle: nil), forCellWithReuseIdentifier: "KeyboardFolderCell")
         self.collectionView.register(UINib(nibName: "KeyboardClipCell", bundle: nil), forCellWithReuseIdentifier: "KeyboardClipCell")
         self.collectionView.collectionViewLayout = self.createLayout()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(ClipsKeyboardView.updateLastCopied), name: UIPasteboard.changedNotification, object: nil)
     }
     
     // MARK: - Public setters and methods
@@ -108,9 +106,11 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     }
     
     @objc func updateLastCopied() {
-        let item = ClipboardManager.retrieveFromPasteboard()
-        self.lastCopied = item
-        self.lastCopiedLabel.text = ClipboardManager.stringFromItem(item)?.trimmingCharacters(in: .whitespacesAndNewlines)
+        if self.lastCopied == nil || ClipboardManager.pasteboardHasChangedSinceLastRetrieval {
+            let item = ClipboardManager.retrieveFromPasteboard()
+            self.lastCopied = item
+            self.lastCopiedLabel.text = ClipboardManager.stringFromItem(item)?.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
     }
     
     func setMessageLabelVisible(_ visible: Bool) {

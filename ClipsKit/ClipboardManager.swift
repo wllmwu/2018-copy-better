@@ -19,6 +19,9 @@ public class ClipboardManager: NSObject {
      * image (png, jpg, gif, tif, bmp)
      */
     
+    private static var cachedItem: [String : Any]?
+    private static var pasteboardCountOfLastRetrieval = 0
+    
     // MARK: - Interface with system pasteboard
     
     /**
@@ -26,6 +29,13 @@ public class ClipboardManager: NSObject {
      */
     public static func retrieveFromPasteboard() -> [String : Any] {
         let pasteboard: UIPasteboard = UIPasteboard.general
+        
+        if pasteboard.changeCount == ClipboardManager.pasteboardCountOfLastRetrieval {
+            if let item = ClipboardManager.cachedItem {
+                return item
+            }
+        }
+        
         if let item = pasteboard.items.first {
             var newItem: [String : Any] = [:]
             if let rtfd = item[kUTTypeRTFD as String] {
@@ -64,9 +74,14 @@ public class ClipboardManager: NSObject {
             if let bmp = item[kUTTypeBMP as String] {
                 newItem[kUTTypeBMP as String] = bmp
             }
+            ClipboardManager.cachedItem = newItem
+            ClipboardManager.pasteboardCountOfLastRetrieval = pasteboard.changeCount
             return newItem
         }
-        return [:]
+        else {
+            ClipboardManager.cachedItem = nil
+            return [:]
+        }
     }
     
     /**
@@ -86,11 +101,19 @@ public class ClipboardManager: NSObject {
             }
         }
         UIPasteboard.general.items = [itemVar]
-        DefaultsManager.pasteboardCountForAutoAdd = pasteboardChangeCount
+        
+        ClipboardManager.cachedItem = item
+        let changeCount = ClipboardManager.pasteboardChangeCount
+        ClipboardManager.pasteboardCountOfLastRetrieval = changeCount
+        DefaultsManager.pasteboardCountForAutoAdd = changeCount
     }
     
     public static var pasteboardChangeCount: Int {
         return UIPasteboard.general.changeCount
+    }
+    
+    public static var pasteboardHasChangedSinceLastRetrieval: Bool {
+        return UIPasteboard.general.changeCount != ClipboardManager.pasteboardCountOfLastRetrieval
     }
     
     // MARK: - Interpreters for data representations in pasteboard items
