@@ -65,6 +65,7 @@
 		E06EC94B21C5ACA100687F9E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E06EC94D21C5ACA100687F9E /* Localizable.strings */; };
 		E07AC77A251FF04F007DEF67 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07AC779251FF04F007DEF67 /* FavoritesTableViewController.swift */; };
 		E07DC2FD2243495B00736DBD /* ShareConfigureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E07DC2FF2243495B00736DBD /* ShareConfigureView.xib */; };
+		E086AAF828D004C1002179E2 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E086AAF728D004C1002179E2 /* CloudKit.framework */; };
 		E08A5A2F25029E0A009524DB /* FolderPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08A5A2E25029E0A009524DB /* FolderPickerTableViewController.swift */; };
 		E098F7AF26F3B4EA0076111A /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E098F7AE26F3B4EA0076111A /* DefaultsManager.swift */; };
 		E0A188AE270A606000BA70A7 /* NSAttributedString+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A188AD270A606000BA70A7 /* NSAttributedString+HTML.swift */; };
@@ -276,6 +277,7 @@
 		E07DC3012243496100736DBD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ShareConfigureView.strings; sourceTree = "<group>"; };
 		E07DC3032243496C00736DBD /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/ShareConfigureView.strings; sourceTree = "<group>"; };
 		E0858C2D21A0F0240089AE53 /* Clip+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clip+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E086AAF728D004C1002179E2 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		E08A5A2E25029E0A009524DB /* FolderPickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderPickerTableViewController.swift; sourceTree = "<group>"; };
 		E098F7AE26F3B4EA0076111A /* DefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsManager.swift; sourceTree = "<group>"; };
 		E09B79A224DE03F7005E1736 /* Clipboard_Manager v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Clipboard_Manager v2.xcdatamodel"; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E06C550926F6F424006F67C2 /* ClipsKit.framework in Frameworks */,
+				E086AAF828D004C1002179E2 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +405,7 @@
 		E04106BB219D04F100DD68AD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E086AAF728D004C1002179E2 /* CloudKit.framework */,
 				E04106BC219D04F100DD68AD /* NotificationCenter.framework */,
 				E000A2ED251EECD2007EFFFF /* WidgetKit.framework */,
 				E000A2EF251EECD2007EFFFF /* SwiftUI.framework */,
@@ -1460,7 +1464,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.3;
+				MARKETING_VERSION = 2.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.williamwu.Clips;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -1484,7 +1488,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.3;
+				MARKETING_VERSION = 2.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.williamwu.Clips;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
