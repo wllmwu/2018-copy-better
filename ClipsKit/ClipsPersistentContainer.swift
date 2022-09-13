@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-public class ClipsPersistentContainer: NSPersistentContainer {
+public class ClipsPersistentContainer: NSPersistentCloudKitContainer {
     
     public override class func defaultDirectoryURL() -> URL {
         return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.williamwu.clips")!
