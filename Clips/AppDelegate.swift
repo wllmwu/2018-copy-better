@@ -139,6 +139,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          error conditions that could cause the creation of the store to fail.
         */
         let container = ClipsPersistentContainer(name: "Clips")
+        container.viewContext.automaticallyMergesChangesFromParent = true
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 /*
@@ -152,6 +153,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 AppDelegate.alertFatalError(error: error)
             }
         })
+        #if DEBUG
+        do {
+            try container.initializeCloudKitSchema()
+        } catch {
+            let nserror = error as NSError
+            AppDelegate.alertFatalError(error: nserror)
+        }
+        #endif
         return container
     }()
 
@@ -176,7 +185,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     static func alertFatalError(message: String) {
-        let alert = UIAlertController(title: "An error occurred", message: "Failed to access the container or Core Data in some way, most likely because the phone is out of storage space. The app may not work properly.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "An error occurred", message: "The app may not work properly - your device may be out of storage space. (\(message))", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         let root: UINavigationController? = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
         root?.present(alert, animated: true, completion: nil)
