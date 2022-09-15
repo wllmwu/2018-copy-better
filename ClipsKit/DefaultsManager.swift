@@ -42,6 +42,16 @@ public class DefaultsManager: NSObject {
         }
     }
     
+    private static var HAS_LAUNCHED_2_2_KEY = "launched2.2"
+    public static var hasLaunched2_2: Bool {
+        get {
+            return defaults.bool(forKey: HAS_LAUNCHED_2_2_KEY)
+        }
+        set {
+            defaults.set(newValue, forKey: HAS_LAUNCHED_2_2_KEY)
+        }
+    }
+    
     private static var FAVORITES_ENABLED_KEY = "enableFavorites"
     public static var favoritesEnabled: Bool {
         get {

@@ -178,6 +178,13 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     private func retrieveData() {
         self.subfolders = self.folder.subfoldersArray
         self.clips = self.folder.clipsArray
+//        let request2 = NSFetchRequest<Clip>(entityName: "Clip")
+//        do {
+//            self.clips = try self.managedObjectContext.fetch(request2)
+//        }
+//        catch let error as NSError {
+//            print("couldn't fetch: \(error)")
+//        }
     }
     
     private func retrieveLastCopied() {

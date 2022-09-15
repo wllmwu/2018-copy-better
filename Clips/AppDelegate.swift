@@ -49,6 +49,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             DefaultsManager.wrapClipsInKeyboard = false
             DefaultsManager.hasLaunched2_1 = true
         }
+        if !DefaultsManager.hasLaunched2_2 {
+            DefaultsManager.hasLaunched2_2 = true
+        }
         
         return true
     }
@@ -140,6 +143,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         */
         let container = ClipsPersistentContainer(name: "Clips")
         container.viewContext.automaticallyMergesChangesFromParent = true
+        container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 /*
@@ -153,6 +157,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 AppDelegate.alertFatalError(error: error)
             }
         })
+//        try? container.viewContext.setQueryGenerationFrom(.current)
         #if DEBUG
         do {
             try container.initializeCloudKitSchema()

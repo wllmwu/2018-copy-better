@@ -37,11 +37,43 @@ public class Folder: NSManagedObject {
         let request = NSFetchRequest<Folder>(entityName: "Folder")
         request.predicate = NSPredicate(format: "superfolder == NIL")
         do {
-            return try context.fetch(request).first
+            let result = try context.fetch(request)
+            if result.count > 1 {
+                Folder.mergeRootFolders(result, context: context)
+            }
+            return result.first
         }
         catch let error as NSError {
             print("Couldn't fetch. \(error), \(error.userInfo)")
             return nil
+        }
+    }
+    
+    private static func mergeRootFolders(_ folders: [Folder], context: NSManagedObjectContext) {
+        let rootFolder = folders.first!
+        var fIndex = rootFolder.subfolders?.count ?? 0
+        var cIndex = rootFolder.clips?.count ?? 0
+        for i in 1..<folders.count {
+            let folder = folders[i]
+            let subfolders = folder.subfoldersArray
+            for subfolder in subfolders {
+                subfolder.superfolder = rootFolder
+                subfolder.index = Int16(fIndex)
+                fIndex += 1
+            }
+            let clips = folder.clipsArray
+            for clip in clips {
+                clip.folder = rootFolder
+                clip.index = Int16(cIndex)
+                cIndex += 1
+            }
+            context.delete(folder)
+        }
+        do {
+            try context.save()
+        }
+        catch let error as NSError {
+            print("Couldn't save. \(error), \(error.userInfo)")
         }
     }
     
