@@ -613,14 +613,12 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         }
         
         var actions: [UIContextualAction] = []
-        if self.isEditing {
-            let deleteAction = UIContextualAction(style: .destructive, title: AppStrings.DELETE_ACTION_TITLE) { (action, view, completionHandler) in
-                self.tableView(self.tableView, commit: .delete, forRowAt: indexPath)
-                completionHandler(true)
-            }
-            actions.append(deleteAction)
+        let deleteAction = UIContextualAction(style: .destructive, title: AppStrings.DELETE_ACTION_TITLE) { (action, view, completionHandler) in
+            self.tableView(self.tableView, commit: .delete, forRowAt: indexPath)
+            completionHandler(true)
         }
-        else {
+        actions.append(deleteAction)
+        if !self.isEditing {
             let moveAction = UIContextualAction(style: .normal, title: AppStrings.MOVE_ACTION_TITLE) { (action, view, completionHandler) in
                 if indexPath.section == MainTableViewController.FOLDER_SECTION {
                     self.selectedFolder = self.subfolders[indexPath.row]
