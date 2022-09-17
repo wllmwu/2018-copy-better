@@ -68,6 +68,32 @@ public class Clip: NSManagedObject {
         }
     }
     
+    public static func getRecentlyDeleted(context: NSManagedObjectContext) -> [Clip] {
+        if let folder = Folder.getRecentlyDeletedFolder(context: context) {
+            return folder.clipsArray
+        }
+        return []
+    }
+    
+    public static func deleteClip(_ clip: Clip, context: NSManagedObjectContext) {
+        guard let deletedFolder = Folder.getRecentlyDeletedFolder(context: context) else {
+            print("No recently deleted folder")
+            return
+        }
+        Clip.deleteClipHelper(clip, deletedFolder, context)
+    }
+    
+    static func deleteClipHelper(_ clip: Clip, _ deletedFolder: Folder, _ context: NSManagedObjectContext) {
+        clip.folder = deletedFolder
+        clip.isFavorite = false
+        Clip.deleteCopyInteractions(for: clip)
+    }
+    
+    public static func restoreClip(_ clip: Clip, folder: Folder, context: NSManagedObjectContext) {
+        clip.folder = folder
+        clip.index = Int16(folder.clips?.count ?? 0)
+    }
+    
 }
 
 extension Clip {

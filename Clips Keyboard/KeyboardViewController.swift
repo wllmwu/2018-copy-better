@@ -162,8 +162,7 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
         for i in index + 1 ..< array.count {
             array[i].index -= 1
         }
-        self.managedObjectContext.delete(clip)
-        Clip.deleteCopyInteractions(for: clip)
+        Clip.deleteClip(clip, context: self.managedObjectContext)
         
         self.saveContext()
         self.keyboardView.loadData()

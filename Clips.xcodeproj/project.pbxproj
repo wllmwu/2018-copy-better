@@ -90,6 +90,7 @@
 		E0CAD78B26D6EBA500B10E72 /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E373BC24EAFFD7006A2816 /* AppStrings.swift */; };
 		E0CAD78C26D6EBAA00B10E72 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E06EC94D21C5ACA100687F9E /* Localizable.strings */; };
 		E0D348C721B2393000BF1F4E /* WidgetClipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D348C621B2393000BF1F4E /* WidgetClipTableViewCell.swift */; };
+		E0DF67DC28D5424900879A82 /* RecentlyDeletedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DF67DB28D5424900879A82 /* RecentlyDeletedTableViewController.swift */; };
 		E0E373BD24EAFFD7006A2816 /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E373BC24EAFFD7006A2816 /* AppStrings.swift */; };
 		E0E373BE24EAFFD7006A2816 /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E373BC24EAFFD7006A2816 /* AppStrings.swift */; };
 		E0E373BF24EAFFD7006A2816 /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E373BC24EAFFD7006A2816 /* AppStrings.swift */; };
@@ -308,6 +309,7 @@
 		E0D348C621B2393000BF1F4E /* WidgetClipTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetClipTableViewCell.swift; sourceTree = "<group>"; };
 		E0D67EE0219E8B6700559CA6 /* Clips.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Clips.entitlements; sourceTree = "<group>"; };
 		E0D67EE1219E8CB100559CA6 /* Clips Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Clips Widget.entitlements"; sourceTree = "<group>"; };
+		E0DF67DB28D5424900879A82 /* RecentlyDeletedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyDeletedTableViewController.swift; sourceTree = "<group>"; };
 		E0E373BC24EAFFD7006A2816 /* AppStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStrings.swift; sourceTree = "<group>"; };
 		E0F5BE0721A8BE9600422DC1 /* String+HTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HTML.swift"; sourceTree = "<group>"; };
 		E0F80E4221E434D700458330 /* Clips Share.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Clips Share.entitlements"; sourceTree = "<group>"; };
@@ -480,6 +482,7 @@
 				E06AA129219D32500015A30F /* ClipTableViewCell.swift */,
 				E06AA12F219D32DE0015A30F /* ClipViewController.swift */,
 				E07AC779251FF04F007DEF67 /* FavoritesTableViewController.swift */,
+				E0DF67DB28D5424900879A82 /* RecentlyDeletedTableViewController.swift */,
 				E06AA131219D32F60015A30F /* EditClipTableViewController.swift */,
 				E08A5A2E25029E0A009524DB /* FolderPickerTableViewController.swift */,
 				E0079EDB25068C9100F3BC10 /* FolderPickerTableViewCell.swift */,
@@ -892,6 +895,7 @@
 				E06AA128219D31CE0015A30F /* MainTableViewController.swift in Sources */,
 				E05EA02D21BD8BB300FC33C9 /* Toast.swift in Sources */,
 				E0E373BD24EAFFD7006A2816 /* AppStrings.swift in Sources */,
+				E0DF67DC28D5424900879A82 /* RecentlyDeletedTableViewController.swift in Sources */,
 				E06AA134219D331E0015A30F /* SettingsTableViewController.swift in Sources */,
 				E0079EDC25068C9100F3BC10 /* FolderPickerTableViewCell.swift in Sources */,
 				E0C260AF21B8B889007D9BED /* UIViewController+Toast.swift in Sources */,
