@@ -54,6 +54,7 @@ class RecentlyDeletedTableViewController: UITableViewController {
     
     private func loadData() {
         self.clips = Clip.getRecentlyDeleted(context: self.managedObjectContext)
+        self.deleteOverdueClips()
         self.tableView.reloadData()
     }
     
@@ -64,7 +65,7 @@ class RecentlyDeletedTableViewController: UITableViewController {
         self.showToast(message: AppStrings.TOAST_MESSAGE_COPIED)
     }
     
-    private func saveContext() -> Bool {
+    @discardableResult private func saveContext() -> Bool {
         do {
             try self.managedObjectContext.save()
             return true
@@ -73,6 +74,27 @@ class RecentlyDeletedTableViewController: UITableViewController {
             print("Couldn't save. \(error), \(error.userInfo)")
         }
         return false
+    }
+    
+    private func deleteOverdueClips() {
+        let now = Date()
+        var i = 0
+        var deletedCount = 0
+        while i < self.clips.count {
+            let clip = self.clips[i]
+            if let deleteDate = clip.deleteDate {
+                if deleteDate < now {
+                    self.clips.remove(at: i)
+                    self.managedObjectContext.delete(clip)
+                    deletedCount += 1
+                    i -= 1
+                }
+            }
+            i += 1
+        }
+        if deletedCount > 0 {
+            self.saveContext()
+        }
     }
 
     // MARK: - Table view data source

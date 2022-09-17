@@ -233,6 +233,7 @@
 		E017418224E49B0C0007E667 /* FolderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderTableViewCell.swift; sourceTree = "<group>"; };
 		E029B42A21B32C8F005EFEB6 /* ClipsPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipsPersistentContainer.swift; sourceTree = "<group>"; };
 		E03B9EB823E7DE25001206EF /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		E03BF75028D63D9B00B7BE36 /* Clipboard_Manager v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Clipboard_Manager v3.xcdatamodel"; sourceTree = "<group>"; };
 		E04106BA219D04F100DD68AD /* Copy Better Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Copy Better Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E04106BC219D04F100DD68AD /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		E04106BF219D04F100DD68AD /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -1695,10 +1696,11 @@
 		E056F8F720CEE46C0025E2FE /* Clips.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				E03BF75028D63D9B00B7BE36 /* Clipboard_Manager v3.xcdatamodel */,
 				E09B79A224DE03F7005E1736 /* Clipboard_Manager v2.xcdatamodel */,
 				E056F8F820CEE46C0025E2FE /* Clipboard_Manager.xcdatamodel */,
 			);
-			currentVersion = E09B79A224DE03F7005E1736 /* Clipboard_Manager v2.xcdatamodel */;
+			currentVersion = E03BF75028D63D9B00B7BE36 /* Clipboard_Manager v3.xcdatamodel */;
 			path = Clips.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -86,12 +86,14 @@ public class Clip: NSManagedObject {
     static func deleteClipHelper(_ clip: Clip, _ deletedFolder: Folder, _ context: NSManagedObjectContext) {
         clip.folder = deletedFolder
         clip.isFavorite = false
+        clip.deleteDate = Date(timeIntervalSinceNow: 30 * 86400)
         Clip.deleteCopyInteractions(for: clip)
     }
     
     public static func restoreClip(_ clip: Clip, folder: Folder, context: NSManagedObjectContext) {
         clip.folder = folder
         clip.index = Int16(folder.clips?.count ?? 0)
+        clip.deleteDate = nil
     }
     
 }
