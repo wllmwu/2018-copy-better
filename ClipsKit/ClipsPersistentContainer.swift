@@ -84,4 +84,30 @@ public class ClipsPersistentContainer: NSPersistentContainer {
         }
     }
     
+    /**
+     Migrates the existing clip records from version 2 to version 3 of the Core Data model (creates the recently deleted folder).
+     */
+    public func migrateModelV2To3() {
+        guard let folderEntity = NSEntityDescription.entity(forEntityName: "Folder", in: self.viewContext) else {
+            print("Couldn't find folder entity description.")
+            return
+        }
+        
+        // check if root folder already exists
+        if let _ = Folder.getRecentlyDeletedFolder(context: self.viewContext) {
+            return
+        }
+        
+        let folder: Folder = Folder(entity: folderEntity, insertInto: self.viewContext)
+        folder.name = "deleted"
+        folder.index = 0
+        
+        do {
+            try self.viewContext.save()
+        }
+        catch let error as NSError {
+            print("Couldn't fetch/save. \(error), \(error.userInfo)")
+        }
+    }
+    
 }

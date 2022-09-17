@@ -15,14 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    private var managedObjectContext: NSManagedObjectContext!
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         if !DefaultsManager.hasLaunched {
             // first launch ever - set some default settings and data
-            self.managedObjectContext = self.persistentContainer.viewContext
             self.persistentContainer.setUpFirstLaunch()
             
             DefaultsManager.favoritesEnabled = true
@@ -37,7 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         if !DefaultsManager.hasLaunched2_0 {
             // has launched before updating to version 2.0 - migrate old clips to the new model
-            self.managedObjectContext = self.persistentContainer.viewContext
             self.persistentContainer.migrateModelV1To2()
             DefaultsManager.hasLaunched2_0 = true
         }
@@ -48,6 +44,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             DefaultsManager.autoAddLastCopiedInApp = false
             DefaultsManager.wrapClipsInKeyboard = false
             DefaultsManager.hasLaunched2_1 = true
+        }
+        if !DefaultsManager.hasLaunched2_2 {
+            self.persistentContainer.migrateModelV2To3()
+            DefaultsManager.hasLaunched2_2 = true
         }
         
         return true

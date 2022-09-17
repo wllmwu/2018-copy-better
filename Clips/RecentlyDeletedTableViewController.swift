@@ -1,22 +1,23 @@
 //
-//  FavoritesTableViewController.swift
+//  RecentlyDeletedTableViewController.swift
 //  Copy Better
 //
-//  Created by Bill Wu on 9/26/20.
-//  Copyright © 2020 William Wu. All rights reserved.
+//  Created by Bill Wu on 9/16/22.
+//  Copyright © 2022 William Wu. All rights reserved.
 //
 
 import UIKit
 import CoreData
 import ClipsKit
-import WidgetKit
 
-class FavoritesTableViewController: UITableViewController {
-    
+class RecentlyDeletedTableViewController: UITableViewController {
+
     private var managedObjectContext: NSManagedObjectContext!
     private var clips: [Clip] = []
-    private var selectedClip: Clip?
-
+    private lazy var rootFolder: Folder = {
+        return Folder.getRootFolder(context: self.managedObjectContext)!
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,13 +25,21 @@ class FavoritesTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        if self.managedObjectContext == nil {
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                AppDelegate.alertFatalError(message: "Couldn't find AppDelegate.")
+                return
+            }
+            self.managedObjectContext = appDelegate.persistentContainer.viewContext
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(FavoritesTableViewController.showCopiedToast), name: Notification.Name("ShowCopiedToast"), object: nil) // triggered by individual cells
+        NotificationCenter.default.addObserver(self, selector: #selector(RecentlyDeletedTableViewController.showCopiedToast), name: Notification.Name("ShowCopiedToast"), object: nil) // triggered by individual cells
         
         self.loadData()
     }
@@ -41,19 +50,11 @@ class FavoritesTableViewController: UITableViewController {
         NotificationCenter.default.removeObserver(self, name: Notification.Name("ShowCopiedToast"), object: nil)
     }
     
-    // MARK: - Public setters
-    
-    func setContext(_ moc: NSManagedObjectContext) {
-        self.managedObjectContext = moc
-    }
-    
     // MARK: - Instance methods
     
     private func loadData() {
-        if let favorites = Clip.getFavorites(context: self.managedObjectContext, limit: nil) {
-            self.clips = favorites
-        }
-        self.selectedClip = nil
+        self.clips = Clip.getRecentlyDeleted(context: self.managedObjectContext)
+        self.deleteOverdueClips()
         self.tableView.reloadData()
     }
     
@@ -64,12 +65,35 @@ class FavoritesTableViewController: UITableViewController {
         self.showToast(message: AppStrings.TOAST_MESSAGE_COPIED)
     }
     
-    private func saveContext() {
+    @discardableResult private func saveContext() -> Bool {
         do {
             try self.managedObjectContext.save()
+            return true
         }
         catch let error as NSError {
             print("Couldn't save. \(error), \(error.userInfo)")
+        }
+        return false
+    }
+    
+    private func deleteOverdueClips() {
+        let now = Date()
+        var i = 0
+        var deletedCount = 0
+        while i < self.clips.count {
+            let clip = self.clips[i]
+            if let deleteDate = clip.deleteDate {
+                if deleteDate < now {
+                    self.clips.remove(at: i)
+                    self.managedObjectContext.delete(clip)
+                    deletedCount += 1
+                    i -= 1
+                }
+            }
+            i += 1
+        }
+        if deletedCount > 0 {
+            self.saveContext()
         }
     }
 
@@ -99,12 +123,11 @@ class FavoritesTableViewController: UITableViewController {
                 cell = tableView.dequeueReusableCell(withIdentifier: "ClipNoTitleCell", for: indexPath) as! ClipTableViewCell
             }
             cell.setContents(clip.contents)
-            cell.setFavorite(clip.isFavorite)
             cell.setClip(clip)
             return cell
         }
     }
-    
+
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
@@ -113,95 +136,66 @@ class FavoritesTableViewController: UITableViewController {
         }
         return true
     }
-    
+
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            let clip: Clip = self.clips.remove(at: indexPath.row)
-            if let folder: Folder = clip.folder {
-                // reassign indices
-                for c in folder.clipsArray.suffix(from: Int(clip.index) + 1) {
-                    c.index -= 1
-                }
-            }
-            Clip.deleteClip(clip, context: self.managedObjectContext)
+            self.clips.remove(at: indexPath.row)
             if self.clips.count > 0 {
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }
             else {
                 tableView.reloadRows(at: [indexPath], with: .automatic)
             }
-            self.saveContext()
-            WidgetCenter.shared.reloadTimelines(ofKind: "com.williamwu.clips.favorites-widget")
         }
     }
-    
+
+    /*
+    // Override to support rearranging the table view.
+    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+
+    }
+    */
+
+    /*
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
-        return false
+        return true
     }
+    */
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         if self.clips.count == 0 {
             return nil
         }
         var actions: [UIContextualAction] = []
-        let deleteAction: UIContextualAction = UIContextualAction(style: .destructive, title: AppStrings.DELETE_ACTION_TITLE) { (action, view, completionHandler) in
-            self.tableView(self.tableView, commit: .delete, forRowAt: indexPath)
-            completionHandler(true)
+        let deleteAction = UIContextualAction(style: .destructive, title: AppStrings.DELETE_ACTION_TITLE) { (action, view, completionHandler) in
+            self.managedObjectContext.delete(self.clips[indexPath.row])
+            self.tableView(tableView, commit: .delete, forRowAt: indexPath)
+            let success = self.saveContext()
+            completionHandler(success)
         }
         actions.append(deleteAction)
-        if !self.isEditing {
-            let clip: Clip = self.clips[indexPath.row]
-            let favoriteAction: UIContextualAction = UIContextualAction(style: .normal, title: nil) { (action, view, completionHandler) in
-                clip.isFavorite = !clip.isFavorite
-                self.saveContext()
-                WidgetCenter.shared.reloadTimelines(ofKind: "com.williamwu.clips.favorites-widget")
-                self.tableView.reloadRows(at: [indexPath], with: .automatic)
-                completionHandler(true)
-            }
-            if clip.isFavorite {
-                favoriteAction.image = UIImage(systemName: "star.slash")
-                favoriteAction.backgroundColor = UIColor.systemRed
-            }
-            else {
-                favoriteAction.image = UIImage(systemName: "star")
-                favoriteAction.backgroundColor = UIColor.systemGreen
-            }
-            actions.append(favoriteAction)
+        let restoreAction = UIContextualAction(style: .normal, title: "Restore") { (action, view, completionHandler) in
+            Clip.restoreClip(self.clips[indexPath.row], folder: self.rootFolder, context: self.managedObjectContext)
+            self.tableView(tableView, commit: .delete, forRowAt: indexPath)
+            let success = self.saveContext()
+            completionHandler(success)
         }
+        actions.append(restoreAction)
         return UISwipeActionsConfiguration(actions: actions)
     }
-    
-    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        self.selectedClip = self.clips[indexPath.row]
-        return indexPath
-    }
-    
+
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
+        // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        if let identifier = segue.identifier {
-            if identifier == "FavToClipTitle" || identifier == "FavToClipNoTitle" {
-                if let clip = self.selectedClip {
-                    let destination: ClipViewController = segue.destination as! ClipViewController
-                    destination.setContext(self.managedObjectContext)
-                    destination.setClip(clip)
-                }
-                else {
-                    print("Error with segue: selected clip wasn't set.")
-                }
-            }
-        }
     }
-    
-    @IBAction func swipeBack() {
-        self.dismiss(animated: true, completion: nil)
-    }
+    */
 
 }

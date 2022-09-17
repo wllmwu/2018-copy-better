@@ -514,7 +514,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
                 let confirmAlert = UIAlertController(title: title, message: AppStrings.NO_UNDO_MESSAGE, preferredStyle: .alert) // confirm deletion
                 let cancelAction = UIAlertAction(title: AppStrings.CANCEL_ACTION, style: .cancel, handler: nil)
                 let okAction = UIAlertAction(title: AppStrings.OK_ACTION, style: .destructive) { (action) in
-                    self.managedObjectContext.delete(self.subfolders[index])
+                    Folder.deleteFolder(self.subfolders[index], context: self.managedObjectContext)
                     self.subfolders.remove(at: index)
                     tableView.deleteRows(at: [indexPath], with: .fade)
                     self.updateFolderIndices(from: index, to: self.subfolders.count)
@@ -528,8 +528,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
                 // deleting a clip
                 let clip = self.clips[index]
                 let wasFavorite = clip.isFavorite
-                self.managedObjectContext.delete(clip)
-                Clip.deleteCopyInteractions(for: clip)
+                Clip.deleteClip(clip, context: self.managedObjectContext)
                 self.clips.remove(at: index)
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 self.updateClipIndices(from: index, to: self.clips.count)
@@ -613,14 +612,12 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         }
         
         var actions: [UIContextualAction] = []
-        if self.isEditing {
-            let deleteAction = UIContextualAction(style: .destructive, title: AppStrings.DELETE_ACTION_TITLE) { (action, view, completionHandler) in
-                self.tableView(self.tableView, commit: .delete, forRowAt: indexPath)
-                completionHandler(true)
-            }
-            actions.append(deleteAction)
+        let deleteAction = UIContextualAction(style: .destructive, title: AppStrings.DELETE_ACTION_TITLE) { (action, view, completionHandler) in
+            self.tableView(self.tableView, commit: .delete, forRowAt: indexPath)
+            completionHandler(true)
         }
-        else {
+        actions.append(deleteAction)
+        if !self.isEditing {
             let moveAction = UIContextualAction(style: .normal, title: AppStrings.MOVE_ACTION_TITLE) { (action, view, completionHandler) in
                 if indexPath.section == MainTableViewController.FOLDER_SECTION {
                     self.selectedFolder = self.subfolders[indexPath.row]
