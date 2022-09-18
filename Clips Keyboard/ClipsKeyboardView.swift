@@ -179,9 +179,9 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
         let layout = UICollectionViewCompositionalLayout { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             if sectionIndex == 0 {
                 // folder section
-                let folderItemSize = NSCollectionLayoutSize(widthDimension: .absolute(88), heightDimension: .absolute(88))
+                let folderItemSize = NSCollectionLayoutSize(widthDimension: .absolute(88), heightDimension: .absolute(66))
                 let folderItem = NSCollectionLayoutItem(layoutSize: folderItemSize)
-                let folderGroupSize = NSCollectionLayoutSize(widthDimension: .estimated(132), heightDimension: .absolute(88))
+                let folderGroupSize = NSCollectionLayoutSize(widthDimension: .estimated(132), heightDimension: .absolute(66))
                 let folderGroup = NSCollectionLayoutGroup.horizontal(layoutSize: folderGroupSize, subitems: [folderItem])
                 let folderSection = NSCollectionLayoutSection(group: folderGroup)
                 folderSection.orthogonalScrollingBehavior = .continuous

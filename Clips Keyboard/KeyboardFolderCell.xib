@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,28 +12,28 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="KeyboardFolderCell" id="23n-g1-SKb" customClass="KeyboardFolderCell" customModule="Copy_Better_Keyboard" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="88" height="88"/>
+            <rect key="frame" x="0.0" y="0.0" width="88" height="66"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8jX-ef-sIs">
-                <rect key="frame" x="0.0" y="0.0" width="88" height="88"/>
+                <rect key="frame" x="0.0" y="0.0" width="88" height="66"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="folder.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="iO2-5M-DYK">
-                        <rect key="frame" x="24" y="13" width="40" height="37.5"/>
+                        <rect key="frame" x="29" y="7" width="30" height="27.5"/>
                         <color key="tintColor" systemColor="systemGrayColor"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="40" id="Zyc-VL-Hf2"/>
-                            <constraint firstAttribute="height" constant="40" id="sIy-kh-U5R"/>
+                            <constraint firstAttribute="width" constant="30" id="Zyc-VL-Hf2"/>
+                            <constraint firstAttribute="height" constant="30" id="sIy-kh-U5R"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Folder" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sQt-EJ-KGo">
-                        <rect key="frame" x="8" y="52" width="72" height="18"/>
+                        <rect key="frame" x="4" y="36" width="80" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S00-ws-KOL">
-                        <rect key="frame" x="0.0" y="12" width="1" height="64"/>
+                        <rect key="frame" x="0.0" y="12" width="1" height="42"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="1" id="Mef-Ki-oRd"/>
@@ -40,12 +41,12 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="sQt-EJ-KGo" firstAttribute="leading" secondItem="8jX-ef-sIs" secondAttribute="leading" constant="8" id="EOV-iZ-bh5"/>
+                    <constraint firstItem="sQt-EJ-KGo" firstAttribute="leading" secondItem="8jX-ef-sIs" secondAttribute="leading" constant="4" id="EOV-iZ-bh5"/>
                     <constraint firstItem="iO2-5M-DYK" firstAttribute="centerY" secondItem="8jX-ef-sIs" secondAttribute="centerY" constant="-12" id="UBb-hb-gR7"/>
                     <constraint firstItem="iO2-5M-DYK" firstAttribute="centerX" secondItem="8jX-ef-sIs" secondAttribute="centerX" id="XQC-h7-K21"/>
                     <constraint firstItem="sQt-EJ-KGo" firstAttribute="top" secondItem="iO2-5M-DYK" secondAttribute="bottom" id="g64-dS-of1"/>
                     <constraint firstItem="S00-ws-KOL" firstAttribute="leading" secondItem="8jX-ef-sIs" secondAttribute="leading" id="ohc-sI-wxt"/>
-                    <constraint firstAttribute="trailing" secondItem="sQt-EJ-KGo" secondAttribute="trailing" constant="8" id="sF0-DX-FPg"/>
+                    <constraint firstAttribute="trailing" secondItem="sQt-EJ-KGo" secondAttribute="trailing" constant="4" id="sF0-DX-FPg"/>
                     <constraint firstItem="S00-ws-KOL" firstAttribute="top" secondItem="8jX-ef-sIs" secondAttribute="top" constant="12" id="sMx-C4-AiG"/>
                     <constraint firstAttribute="bottom" secondItem="S00-ws-KOL" secondAttribute="bottom" constant="12" id="wds-U7-9l8"/>
                 </constraints>
