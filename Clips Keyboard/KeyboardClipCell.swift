@@ -43,6 +43,11 @@ class KeyboardClipCell: UICollectionViewCell {
             self.contentsLabelLeadingToEdge.priority = .defaultHigh
         }
         self.contentsLabel.text = ClipboardManager.stringFromItem(clip.contents)?.trimmingCharacters(in: .whitespacesAndNewlines)
+        if clip.isFavorite {
+            self.favoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        } else {
+            self.favoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
+        }
         self.index = Int(clip.index)
     }
     
@@ -91,6 +96,10 @@ class KeyboardClipCell: UICollectionViewCell {
     
     @IBAction func cancelTapped(_ sender: UIButton) {
         self.resetButtons()
+    }
+    
+    @IBAction func toggleFavorite(_ sender: UIButton) {
+        NotificationCenter.default.post(name: Notification.Name("ToggleFavorite"), object: nil, userInfo: ["index" : self.index])
     }
     
 }

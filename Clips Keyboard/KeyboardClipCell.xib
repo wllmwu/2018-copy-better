@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -81,10 +82,10 @@
                             <constraint firstAttribute="width" secondItem="XEJ-yv-Nf5" secondAttribute="height" multiplier="3:4" id="N0a-0V-IJM"/>
                             <constraint firstAttribute="height" constant="44" id="V2S-wJ-Ulv"/>
                         </constraints>
-                        <color key="tintColor" systemColor="systemGray2Color"/>
+                        <color key="tintColor" name="Accent"/>
                         <state key="normal" image="star" catalog="system"/>
                         <connections>
-                            <action selector="xTapped:" destination="64e-CN-iRw" eventType="touchUpInside" id="q6P-Lg-i0R"/>
+                            <action selector="toggleFavorite:" destination="64e-CN-iRw" eventType="touchUpInside" id="XHu-Og-hdR"/>
                         </connections>
                     </button>
                 </subviews>
@@ -129,6 +130,9 @@
     <resources>
         <image name="star" catalog="system" width="128" height="116"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
+        <namedColor name="Accent">
+            <color red="0.84705882352941175" green="0.6470588235294118" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -37,6 +37,7 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
         
         self.loadInterface()
         NotificationCenter.default.addObserver(self, selector: #selector(KeyboardViewController.deleteClip(_:)), name: Notification.Name("DeleteClip"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardViewController.toggleFavorite(_:)), name: Notification.Name("ToggleFavorite"), object: nil)
         
         let container = ClipsPersistentContainer(name: "Clips")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -163,6 +164,18 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
             array[i].index -= 1
         }
         Clip.deleteClip(clip, context: self.managedObjectContext)
+        
+        self.saveContext()
+        self.keyboardView.loadData()
+    }
+    
+    @objc func toggleFavorite(_ notification: Notification) {
+        guard let index: Int = notification.userInfo?["index"] as? Int else {
+            return
+        }
+        
+        let clip: Clip = self.clips[index]
+        clip.isFavorite = !clip.isFavorite
         
         self.saveContext()
         self.keyboardView.loadData()
