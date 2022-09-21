@@ -114,6 +114,9 @@
 /* "Delete" action title */
 "Delete" = "Delete";
 
+/* "Restore" action title */
+"Restore" = "Restore";
+
 /* "Favorites" title */
 "Favorites" = "Favorites";
 

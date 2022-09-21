@@ -165,6 +165,10 @@ struct AppStrings {
         return NSLocalizedString("Delete", comment: "\"Delete\" action title")
     }
     
+    static var RESTORE_ACTION_TITLE: String {
+        return NSLocalizedString("Restore", comment: "\"Restore\" action title")
+    }
+    
     static var FAVORITES_TITLE: String {
         return NSLocalizedString("Favorites", comment: "\"Favorites\" title")
     }

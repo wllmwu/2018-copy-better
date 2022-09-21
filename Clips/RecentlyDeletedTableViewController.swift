@@ -178,7 +178,7 @@ class RecentlyDeletedTableViewController: UITableViewController {
             completionHandler(success)
         }
         actions.append(deleteAction)
-        let restoreAction = UIContextualAction(style: .normal, title: "Restore") { (action, view, completionHandler) in
+        let restoreAction = UIContextualAction(style: .normal, title: AppStrings.RESTORE_ACTION_TITLE) { (action, view, completionHandler) in
             Clip.restoreClip(self.clips[indexPath.row], folder: self.rootFolder, context: self.managedObjectContext)
             self.tableView(tableView, commit: .delete, forRowAt: indexPath)
             let success = self.saveContext()
