@@ -103,7 +103,7 @@ struct FavoritesWidgetEntryView: View {
                         .padding(.horizontal)
                         .frame(minWidth: nil, idealWidth: nil, maxWidth: .infinity, minHeight: nil, idealHeight: nil, maxHeight: entry.cellHeight, alignment: .leading)
                     })
-                    .background(Color.white)
+                    .background(Color("WidgetBackground"))
                 }
                 Spacer(minLength: 0)
             }
