@@ -15,13 +15,14 @@ class KeyboardClipCell: UICollectionViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentsLabel: UILabel!
+    @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var xButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     
     @IBOutlet weak var contentsLabelLeadingToTitleLabel: NSLayoutConstraint!
     @IBOutlet weak var contentsLabelLeadingToEdge: NSLayoutConstraint!
-    @IBOutlet weak var contentsLabelTrailingToXButton: NSLayoutConstraint!
+    @IBOutlet weak var contentsLabelTrailingToFavoriteButton: NSLayoutConstraint!
     @IBOutlet weak var contentsLabelTrailingToDeleteButton: NSLayoutConstraint!
     
     override func prepareForReuse() {
@@ -42,6 +43,11 @@ class KeyboardClipCell: UICollectionViewCell {
             self.contentsLabelLeadingToEdge.priority = .defaultHigh
         }
         self.contentsLabel.text = ClipboardManager.stringFromItem(clip.contents)?.trimmingCharacters(in: .whitespacesAndNewlines)
+        if clip.isFavorite {
+            self.favoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        } else {
+            self.favoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
+        }
         self.index = Int(clip.index)
     }
     
@@ -67,16 +73,18 @@ class KeyboardClipCell: UICollectionViewCell {
     private func resetButtons() {
         self.deleteButton.isHidden = true
         self.cancelButton.isHidden = true
-        self.contentsLabelTrailingToXButton.priority = .defaultHigh
+        self.contentsLabelTrailingToFavoriteButton.priority = .defaultHigh
         self.contentsLabelTrailingToDeleteButton.priority = .defaultLow
         self.xButton.isHidden = false
+        self.favoriteButton.isHidden = false
     }
     
     // MARK: - Actions
     
     @IBAction func xTapped(_ sender: UIButton) {
         self.xButton.isHidden = true
-        self.contentsLabelTrailingToXButton.priority = .defaultLow
+        self.favoriteButton.isHidden = true
+        self.contentsLabelTrailingToFavoriteButton.priority = .defaultLow
         self.contentsLabelTrailingToDeleteButton.priority = .defaultHigh
         self.deleteButton.isHidden = false
         self.cancelButton.isHidden = false
@@ -88,6 +96,10 @@ class KeyboardClipCell: UICollectionViewCell {
     
     @IBAction func cancelTapped(_ sender: UIButton) {
         self.resetButtons()
+    }
+    
+    @IBAction func toggleFavorite(_ sender: UIButton) {
+        NotificationCenter.default.post(name: Notification.Name("ToggleFavorite"), object: nil, userInfo: ["index" : self.index])
     }
     
 }

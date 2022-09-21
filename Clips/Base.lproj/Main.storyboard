@@ -475,7 +475,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="iub-wh-jKI">
+                                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="iub-wh-jKI">
                                             <rect key="frame" x="328.33333333333331" y="17.333333333333336" width="25" height="24.666666666666664"/>
                                             <color key="tintColor" systemColor="systemGrayColor"/>
                                             <constraints>
@@ -542,7 +542,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="61k-nb-DlC">
+                                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="61k-nb-DlC">
                                             <rect key="frame" x="328.33333333333331" y="17.333333333333336" width="25" height="24.666666666666664"/>
                                             <color key="tintColor" systemColor="systemGrayColor"/>
                                             <constraints>
@@ -958,7 +958,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="iEx-kC-92x">
+                                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="iEx-kC-92x">
                                             <rect key="frame" x="328.33333333333331" y="17.333333333333336" width="25" height="24.666666666666664"/>
                                             <color key="tintColor" systemColor="systemGrayColor"/>
                                             <constraints>
@@ -1025,7 +1025,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="EAr-vt-sOM">
+                                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="EAr-vt-sOM">
                                             <rect key="frame" x="328.33333333333331" y="17.333333333333336" width="25" height="24.666666666666664"/>
                                             <color key="tintColor" systemColor="systemGrayColor"/>
                                             <constraints>
@@ -1347,7 +1347,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="DoH-Qd-4U1">
+                                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="DoH-Qd-4U1">
                                             <rect key="frame" x="328.33333333333331" y="17.333333333333336" width="25" height="24.666666666666664"/>
                                             <color key="tintColor" systemColor="systemGrayColor"/>
                                             <constraints>
@@ -1414,7 +1414,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Kl5-H8-YLU">
+                                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Kl5-H8-YLU">
                                             <rect key="frame" x="328.33333333333331" y="17.333333333333336" width="25" height="24.666666666666664"/>
                                             <color key="tintColor" systemColor="systemGrayColor"/>
                                             <constraints>
@@ -1638,7 +1638,7 @@
         <image name="folder.fill" catalog="system" width="128" height="97"/>
         <image name="gear" catalog="system" width="128" height="119"/>
         <image name="plus.rectangle.fill.on.rectangle.fill" catalog="system" width="128" height="97"/>
-        <image name="star" catalog="system" width="128" height="116"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="star.square" catalog="system" width="128" height="114"/>
         <namedColor name="Accent">
             <color red="0.84705882352941175" green="0.6470588235294118" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
