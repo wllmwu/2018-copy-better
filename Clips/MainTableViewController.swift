@@ -699,7 +699,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         else if indexPath.section == MainTableViewController.FOLDER_SECTION {
             self.selectedFolder = self.subfolders[indexPath.row]
         }
-        else {
+        else if indexPath.section == MainTableViewController.CLIP_SECTION {
             self.selectedClip = self.clips[indexPath.row]
         }
         return indexPath

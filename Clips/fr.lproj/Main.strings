@@ -63,6 +63,18 @@ Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "4Nl-cj-gK
 /* Class = "UILabel"; text = "Add last copied when app opens"; ObjectID = "pFr-YG-R5Z"; */
 "pFr-YG-R5Z.text" = "Ajouter le dernier élément copié lorsque l'application s'ouvre";
 
+/* Class = "UITableViewSection"; headerTitle = "Recently Deleted"; ObjectID = "bcU-0o-4zZ"; */
+"bcU-0o-4zZ.headerTitle" = "Suppressions récentes";
+
+/* Class = "UILabel"; text = "Recently deleted"; ObjectID = "0HR-vg-w6v"; */
+"0HR-vg-w6v.text" = "Suppressions récentes";
+
+/* Class = "UINavigationItem"; title = "Recently Deleted"; ObjectID = "PFE-TF-UpB"; */
+"PFE-TF-UpB.title" = "Suppressions récentes";
+
+/* Class = "UILabel"; text = "Clips will be deleted permanently after 30 days. Swipe on a clip to restore it or to delete it immediately."; ObjectID = "T8T-08-m0O"; */
+"T8T-08-m0O.text" = "Les éléments seront supprimés en permanence après 30 jours. Effectuez un balayage sur un élément pour le récupérer ou le supprimer immédiatement.";
+
 /* Class = "UIButton"; normalTitle = "Add to list"; ObjectID = "Gcs-nk-eEx"; */
 "Gcs-nk-eEx.normalTitle" = "Ajouter";
 
