@@ -289,7 +289,12 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         // create new clip
         let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
         clip.title = title
-        clip.contents = contents
+        if DefaultsManager.storeClipFormattingInApp {
+            clip.contents = contents
+        }
+        else {
+            clip.contents = ClipboardManager.removeRichText(from: contents)
+        }
         clip.index = index
         clip.folder = self.folder
         

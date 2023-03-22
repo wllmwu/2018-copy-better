@@ -83,7 +83,7 @@ class SettingsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 1 {
-            return 3
+            return 4
         }
         else if section == 3 {
             return 2

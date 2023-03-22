@@ -116,6 +116,14 @@ public class ClipboardManager: NSObject {
         return UIPasteboard.general.changeCount != ClipboardManager.pasteboardCountOfLastRetrieval
     }
     
+    public static func removeRichText(from item: [String : Any]) -> [String : Any] {
+        var itemVar: [String : Any] = item
+        itemVar.removeValue(forKey: kUTTypeRTFD as String)
+        itemVar.removeValue(forKey: kUTTypeRTF as String)
+        itemVar.removeValue(forKey: kUTTypeHTML as String)
+        return itemVar
+    }
+    
     // MARK: - Interpreters for data representations in pasteboard items
     
     /**

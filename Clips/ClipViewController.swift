@@ -161,7 +161,12 @@ class ClipViewController: UIViewController {
         // create new clip
         let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
         clip.title = title
-        clip.contents = self.contents
+        if DefaultsManager.storeClipFormattingInApp {
+            clip.contents = self.contents
+        }
+        else {
+            clip.contents = ClipboardManager.removeRichText(from: self.contents)
+        }
         clip.index = 0
         
         // reassign indices
