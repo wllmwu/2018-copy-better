@@ -102,6 +102,16 @@ public class DefaultsManager: NSObject {
         }
     }
     
+    private static var STORE_CLIP_FORMATTING_KEY = "storeClipFormattingInApp"
+    public static var storeClipFormattingInApp: Bool {
+        get {
+            return defaults.bool(forKey: STORE_CLIP_FORMATTING_KEY)
+        }
+        set {
+            defaults.set(newValue, forKey: STORE_CLIP_FORMATTING_KEY)
+        }
+    }
+    
     private static var WRAP_CLIPS_KEY = "wrapClipsInKeyboard"
     public static var wrapClipsInKeyboard: Bool {
         get {

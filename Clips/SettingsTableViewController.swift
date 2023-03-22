@@ -15,6 +15,7 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var showCurrentInMainSwitch: UISwitch!
     @IBOutlet weak var askforTitleSwitch: UISwitch!
     @IBOutlet weak var autoAddLastCopiedSwitch: UISwitch!
+    @IBOutlet weak var storeFormattingInfoSwitch: UISwitch!
     @IBOutlet weak var wrapClipsInKeyboardSwitch: UISwitch!
     @IBOutlet weak var tipsLabel: UILabel!
     @IBOutlet weak var aboutLabel: UILabel!
@@ -32,6 +33,7 @@ class SettingsTableViewController: UITableViewController {
         self.showCurrentInMainSwitch.isOn = DefaultsManager.showLastCopiedInApp
         self.askforTitleSwitch.isOn = DefaultsManager.askForTitleForLastCopiedInApp
         self.autoAddLastCopiedSwitch.isOn = DefaultsManager.autoAddLastCopiedInApp
+        self.storeFormattingInfoSwitch.isOn = DefaultsManager.storeClipFormattingInApp
         self.wrapClipsInKeyboardSwitch.isOn = DefaultsManager.wrapClipsInKeyboard
         
         self.tipsLabel.sizeToFit()
@@ -65,6 +67,10 @@ class SettingsTableViewController: UITableViewController {
         DefaultsManager.autoAddLastCopiedInApp = self.autoAddLastCopiedSwitch.isOn
     }
     
+    @IBAction func didToggleStoreFormattingInfoSwitch(_ sender: UISwitch) {
+        DefaultsManager.storeClipFormattingInApp = self.storeFormattingInfoSwitch.isOn
+    }
+    
     @IBAction func didToggleWrapClipsInKeyboardSwitch(_ sender: UISwitch) {
         DefaultsManager.wrapClipsInKeyboard = self.wrapClipsInKeyboardSwitch.isOn
     }
@@ -77,7 +83,7 @@ class SettingsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 1 {
-            return 3
+            return 4
         }
         else if section == 3 {
             return 2

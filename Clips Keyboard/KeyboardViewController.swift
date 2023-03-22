@@ -230,7 +230,7 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
         // create new clip
         let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
         clip.title = nil
-        clip.contents = contents
+        clip.contents = ClipboardManager.removeRichText(from: contents)
         clip.index = 0
         clip.folder = self.currentFolder
         self.clips.insert(clip, at: 0)

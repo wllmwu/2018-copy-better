@@ -39,6 +39,9 @@ Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "4Nl-cj-gK
 /* Class = "UITableViewSection"; headerTitle = "In app"; ObjectID = "BjC-VA-k4B"; */
 "BjC-VA-k4B.headerTitle" = "Aplicación";
 
+/* Class = "UITableViewSection"; footerTitle = "If this option is enabled, attributes such as color, font size, and bold/italics will be included when possible with any new clips that you add through the app."; ObjectID = "BjC-VA-k4B"; */
+"BjC-VA-k4B.footerTitle" = "Si esta opción está activada, color, tamaño de fuente, y otros atributos se guardarán cuando sea posible en la aplicación.";
+
 /* Class = "UITableViewSection"; headerTitle = "Keyboard"; ObjectID = "3rT-cN-McX"; */
 "3rT-cN-McX.headerTitle" = "Teclado";
 
@@ -62,6 +65,9 @@ Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "4Nl-cj-gK
 
 /* Class = "UILabel"; text = "Add last copied when app opens"; ObjectID = "pFr-YG-R5Z"; */
 "pFr-YG-R5Z.text" = "Agregar el previamente copiado cuando se abre la aplicación";
+
+/* Class = "UILabel"; text = "Store formatting info with new clips"; ObjectID = "SBf-Ol-AN5"; */
+"SBf-Ol-AN5.text" = "Incluir el formato de texto con nuevos elementos";
 
 /* Class = "UITableViewSection"; headerTitle = "Recently Deleted"; ObjectID = "bcU-0o-4zZ"; */
 "bcU-0o-4zZ.headerTitle" = "Eliminados hace poco";
@@ -119,6 +125,9 @@ Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "4Nl-cj-gK
 
 /* Class = "UITableViewController"; title = "Edit Clip"; ObjectID = "c12-NJ-Wss"; */
 "c12-NJ-Wss.title" = "Editar";
+
+/* Class = "UILabel"; text = "Clear Formatting"; ObjectID = "6Ws-6M-dNK"; */
+"6Ws-6M-dNK.text" = "Borrar el formato de texto";
 
 /* Class = "UILabel"; text = "Contents"; ObjectID = "d6d-Bl-fOw"; */
 "d6d-Bl-fOw.text" = "Recorte";

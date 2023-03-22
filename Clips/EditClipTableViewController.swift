@@ -22,6 +22,7 @@ class EditClipTableViewController: UITableViewController, UITextViewDelegate {
     
     private var mode: Mode = .add
     private var contents: [String : Any] = [:]
+    private var hasRichText: Bool = false
     private var textDidChange: Bool = false
     /**
      The clip being edited. Should be set when `mode` is `.edit`; otherwise, may be left as `nil`.
@@ -53,6 +54,7 @@ class EditClipTableViewController: UITableViewController, UITextViewDelegate {
         if self.mode == .add {
             self.navigationItem.title = AppStrings.ADD_CLIP_TITLE
             self.titleTextField.becomeFirstResponder()
+            self.hasRichText = false
         }
         else {
             self.titleTextField.text = self.clip.title
@@ -91,6 +93,10 @@ class EditClipTableViewController: UITableViewController, UITextViewDelegate {
      */
     private func setContents(_ contents: [String : Any]) {
         self.contents = contents
+        self.contentsTextView.text = ""
+        self.contentsTextView.textColor = nil
+        self.contentsTextView.font = nil
+        self.contentsTextView.typingAttributes = [:]
         
         if contents.count == 0 {
             return
@@ -98,12 +104,15 @@ class EditClipTableViewController: UITableViewController, UITextViewDelegate {
         
         if let rtfd = ClipboardManager.attributedStringFromRtfd(inItem: contents) {
             self.contentsTextView.attributedText = rtfd
+            self.hasRichText = true
         }
         else if let rtf = ClipboardManager.attributedStringFromRtf(inItem: contents) {
             self.contentsTextView.attributedText = rtf
+            self.hasRichText = true
         }
         else if let html = ClipboardManager.attributedStringFromHtml(inItem: contents) {
             self.contentsTextView.attributedText = html
+            self.hasRichText = true
         }
         else if let plaintext = ClipboardManager.stringFromPlaintext(inItem: contents) {
             self.contentsTextView.text = plaintext
@@ -135,14 +144,13 @@ class EditClipTableViewController: UITableViewController, UITextViewDelegate {
             }
         }
         
-        if let text = self.contentsTextView.attributedText {
-            if self.mode == .add || self.textDidChange {
-                clip.contents = ClipboardManager.itemFromAttributedString(text)
+        if self.mode == .add || self.textDidChange {
+            if self.hasRichText {
+                clip.contents = ClipboardManager.itemFromAttributedString(self.contentsTextView.attributedText)
             }
-            // else the text hasn't changed when Save is pressed, so just leave the clip as it is
-        }
-        else {
-            clip.contents = [:]
+            else {
+                clip.contents = ClipboardManager.itemFromPlaintext(self.contentsTextView.text)
+            }
         }
     }
     
@@ -186,11 +194,31 @@ class EditClipTableViewController: UITableViewController, UITextViewDelegate {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
+        if self.mode == .edit {
+            return 3
+        }
         return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if indexPath.section == 2 && self.hasRichText {
+            return indexPath
+        }
+        return nil
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section != 2 {
+            return
+        }
+        self.setContents(ClipboardManager.removeRichText(from: self.contents))
+        self.textDidChange = true
+        self.hasRichText = false
+        self.tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // MARK: - UITextViewDelegate protocol

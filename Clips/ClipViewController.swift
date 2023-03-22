@@ -105,6 +105,11 @@ class ClipViewController: UIViewController {
             self.shareButton.isEnabled = true
         }
         
+        self.contentsTextView.text = ""
+        self.contentsTextView.textColor = nil
+        self.contentsTextView.font = nil
+        self.contentsTextView.typingAttributes = [:]
+        
         let textViewSize: CGSize = self.contentsTextView.contentSize
         DispatchQueue.global(qos: .utility).async {
             if let rtfd = ClipboardManager.attributedStringFromRtfd(inItem: contents) {
@@ -161,7 +166,12 @@ class ClipViewController: UIViewController {
         // create new clip
         let clip = Clip(entity: entity, insertInto: self.managedObjectContext)
         clip.title = title
-        clip.contents = self.contents
+        if DefaultsManager.storeClipFormattingInApp {
+            clip.contents = self.contents
+        }
+        else {
+            clip.contents = ClipboardManager.removeRichText(from: self.contents)
+        }
         clip.index = 0
         
         // reassign indices
