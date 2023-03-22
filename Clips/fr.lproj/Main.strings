@@ -39,6 +39,9 @@ Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "4Nl-cj-gK
 /* Class = "UITableViewSection"; headerTitle = "In app"; ObjectID = "BjC-VA-k4B"; */
 "BjC-VA-k4B.headerTitle" = "Application";
 
+/* Class = "UITableViewSection"; footerTitle = "If this option is enabled, attributes such as color, font size, and bold/italics will be included when possible with any new clips that you add through the app."; ObjectID = "BjC-VA-k4B"; */
+"BjC-VA-k4B.footerTitle" = "Si cette option est activée, les attributs tels que la couleur et la taille de police seront enregistré avec les nouveaux éléments dans l'application quand c'est possible.";
+
 /* Class = "UITableViewSection"; headerTitle = "Keyboard"; ObjectID = "3rT-cN-McX"; */
 "3rT-cN-McX.headerTitle" = "Clavier";
 
@@ -62,6 +65,9 @@ Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "4Nl-cj-gK
 
 /* Class = "UILabel"; text = "Add last copied when app opens"; ObjectID = "pFr-YG-R5Z"; */
 "pFr-YG-R5Z.text" = "Ajouter le dernier élément copié lorsque l'application s'ouvre";
+
+/* Class = "UILabel"; text = "Store formatting info with new clips"; ObjectID = "SBf-Ol-AN5"; */
+"SBf-Ol-AN5.text" = "Inclure la mise en forme du texte avec les nouveaux éléments";
 
 /* Class = "UITableViewSection"; headerTitle = "Recently Deleted"; ObjectID = "bcU-0o-4zZ"; */
 "bcU-0o-4zZ.headerTitle" = "Suppressions récentes";
@@ -119,6 +125,9 @@ Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "4Nl-cj-gK
 
 /* Class = "UITableViewController"; title = "Edit Clip"; ObjectID = "c12-NJ-Wss"; */
 "c12-NJ-Wss.title" = "Modifier";
+
+/* Class = "UILabel"; text = "Clear Formatting"; ObjectID = "6Ws-6M-dNK"; */
+"6Ws-6M-dNK.text" = "Effacer la mise en forme";
 
 /* Class = "UILabel"; text = "Contents"; ObjectID = "d6d-Bl-fOw"; */
 "d6d-Bl-fOw.text" = "Élément";

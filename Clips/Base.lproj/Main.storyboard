@@ -54,7 +54,7 @@
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="In app" id="BjC-VA-k4B">
-                                <string key="footerTitle">When this option is enabled, attributes such as color, font size, and bold/italics will be included when possible with any new clips that you add through the app.</string>
+                                <string key="footerTitle">If this option is enabled, attributes such as color, font size, and bold/italics will be included when possible with any new clips that you add through the app.</string>
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="brF-9a-Npm">
                                         <rect key="frame" x="0.0" y="149.66666793823242" width="390" height="43.666667938232422"/>
