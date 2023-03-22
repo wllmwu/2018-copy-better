@@ -116,6 +116,9 @@ public class ClipboardManager: NSObject {
         return UIPasteboard.general.changeCount != ClipboardManager.pasteboardCountOfLastRetrieval
     }
     
+    /**
+     Returns a copy of the pasteboard item without rich text.
+     */
     public static func removeRichText(from item: [String : Any]) -> [String : Any] {
         var itemVar: [String : Any] = item
         itemVar.removeValue(forKey: kUTTypeRTFD as String)

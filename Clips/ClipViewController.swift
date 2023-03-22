@@ -105,6 +105,11 @@ class ClipViewController: UIViewController {
             self.shareButton.isEnabled = true
         }
         
+        self.contentsTextView.text = ""
+        self.contentsTextView.textColor = nil
+        self.contentsTextView.font = nil
+        self.contentsTextView.typingAttributes = [:]
+        
         let textViewSize: CGSize = self.contentsTextView.contentSize
         DispatchQueue.global(qos: .utility).async {
             if let rtfd = ClipboardManager.attributedStringFromRtfd(inItem: contents) {
