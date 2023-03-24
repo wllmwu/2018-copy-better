@@ -190,3 +190,14 @@ extension IntentHandler: SelectFolderIntentHandling {
     }
     
 }
+
+// MARK: - ClearClipboardIntentHandling protocol
+
+extension IntentHandler: ClearClipboardIntentHandling {
+    
+    func handle(intent: ClearClipboardIntent, completion: @escaping (ClearClipboardIntentResponse) -> Void) {
+        ClipboardManager.clearPasteboard()
+        return completion(ClearClipboardIntentResponse(code: .success, userActivity: nil))
+    }
+    
+}

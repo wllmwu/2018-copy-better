@@ -31,6 +31,7 @@
 			<key>IntentsSupported</key>
 			<array>
 				<string>AddClipIntent</string>
+				<string>ClearClipboardIntent</string>
 				<string>CopyClipIntent</string>
 				<string>SelectFolderIntent</string>
 			</array>
