@@ -168,26 +168,24 @@ extension IntentHandler: SelectFolderIntentHandling {
         guard let context = self.getContext() else {
             return completion(nil, nil)
         }
-        guard let rootFolder = Folder.getRootFolder(context: context) else {
+        guard let rootFolder = Folder.getRootFolder(context: context), let rootRef = Folder.getIntentReference(for: rootFolder, path: "") else {
             return completion(nil, nil)
         }
         
-        var folders: [Folder] = []
-        self.getFolders(rootFolder, &folders)
-        
-        var choices: [FolderReference] = []
-        for folder in folders {
-            if let ref = Folder.getIntentReference(for: folder) {
-                choices.append(ref)
-            }
+        var choices: [FolderReference] = [rootRef]
+        for subfolder in rootFolder.subfoldersArray {
+            self.getFolders(subfolder, "", &choices)
         }
         return completion(INObjectCollection(items: choices), nil)
     }
     
-    private func getFolders(_ folder: Folder, _ list: inout [Folder]) {
-        list.append(folder)
+    private func getFolders(_ folder: Folder, _ path: String, _ list: inout [FolderReference]) {
+        guard let ref = Folder.getIntentReference(for: folder, path: path) else {
+            return
+        }
+        list.append(ref)
         for subfolder in folder.subfoldersArray {
-            self.getFolders(subfolder, &list)
+            self.getFolders(subfolder, path + (folder.name ?? "_") + "/", &list)
         }
     }
     

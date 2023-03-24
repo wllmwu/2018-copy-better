@@ -98,11 +98,11 @@ public class Folder: NSManagedObject {
 
 extension Folder {
     
-    public static func getIntentReference(for folder: Folder) -> FolderReference? {
+    public static func getIntentReference(for folder: Folder, path: String) -> FolderReference? {
         guard let name = folder.name else {
             return nil
         }
-        return FolderReference(identifier: folder.uriRepresentation, display: name)
+        return FolderReference(identifier: folder.uriRepresentation, display: path + name)
     }
     
     public static func getReferencedFolder(from intentReference: FolderReference, context: NSManagedObjectContext) -> Folder? {
