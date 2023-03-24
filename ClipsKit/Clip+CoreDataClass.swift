@@ -98,6 +98,8 @@ public class Clip: NSManagedObject {
     
 }
 
+// MARK: - Intent handling
+
 extension Clip {
     
     public static func getIntentReference(for clip: Clip) -> ClipReference? {

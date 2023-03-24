@@ -44,6 +44,7 @@
 		E05D409B26E565DE002A1865 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E05D409E26E565DE002A1865 /* Intents.intentdefinition */; };
 		E05D409C26E565DE002A1865 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E05D409E26E565DE002A1865 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (no_codegen, ); }; };
 		E05EA02D21BD8BB300FC33C9 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05EA02C21BD8BB300FC33C9 /* Toast.swift */; };
+		E0600E0629CD1A5600AE329E /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E05D409E26E565DE002A1865 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (no_codegen, ); }; };
 		E0619E0021DE871B00A69332 /* ClipsKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0619DFF21DE871B00A69332 /* ClipsKeyboardView.swift */; };
 		E0619E0621DEA3BC00A69332 /* KeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0619E0521DEA3BC00A69332 /* KeyboardButton.swift */; };
 		E06AA128219D31CE0015A30F /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06AA127219D31CE0015A30F /* MainTableViewController.swift */; };
@@ -850,6 +851,7 @@
 				E06D3D5B251FBCB700441300 /* AppStrings.swift in Sources */,
 				E000A2F3251EECD2007EFFFF /* Clips_Widget_2.swift in Sources */,
 				E0C9757426E7D14E00E7ACA8 /* ClipsWidgets.swift in Sources */,
+				E0600E0629CD1A5600AE329E /* Intents.intentdefinition in Sources */,
 				E0C9757626E7D1FB00E7ACA8 /* FavoritesWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
