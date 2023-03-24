@@ -42,16 +42,16 @@ struct FavoritesProvider: TimelineProvider {
     }
     
     private func generateEntry(in context: Context) -> FolderTimelineEntry {
-        let count = context.family == .systemLarge ? NUM_TO_DISPLAY_LARGE_WIDGET : NUM_TO_DISPLAY_MEDIUM_WIDGET
+        let count = (context.family == .systemLarge ? NUM_TO_DISPLAY_LARGE_WIDGET : NUM_TO_DISPLAY_MEDIUM_WIDGET) + 1
         let cellHeight = context.displaySize.height / CGFloat(count)
-        return FolderTimelineEntry(date: Date(), clips: self.fetchFavorites(in: context) ?? [], cellHeight: cellHeight)
+        return FolderTimelineEntry(date: Date(), folderName: "", clips: self.fetchFavorites(in: context) ?? [], cellHeight: cellHeight)
     }
     
     func placeholder(in context: Context) -> FolderTimelineEntry {
         let mockFavorites = [ClipIdentifiable(uri: "1", title: AppStrings.DEFAULT_CLIP_TITLE_1, contents: AppStrings.DEFAULT_CLIP_CONTENTS_1), ClipIdentifiable(uri: "2", title: AppStrings.DEFAULT_CLIP_TITLE_2, contents: AppStrings.DEFAULT_CLIP_CONTENTS_2)]
-        let count = context.family == .systemLarge ? NUM_TO_DISPLAY_LARGE_WIDGET : NUM_TO_DISPLAY_MEDIUM_WIDGET
+        let count = (context.family == .systemLarge ? NUM_TO_DISPLAY_LARGE_WIDGET : NUM_TO_DISPLAY_MEDIUM_WIDGET) + 1
         let cellHeight = context.displaySize.height / CGFloat(count)
-        return FolderTimelineEntry(date: Date(), clips: mockFavorites, cellHeight: cellHeight)
+        return FolderTimelineEntry(date: Date(), folderName: "", clips: mockFavorites, cellHeight: cellHeight)
     }
 
     func getSnapshot(in context: Context, completion: @escaping (FolderTimelineEntry) -> ()) {
@@ -74,7 +74,18 @@ struct FavoritesWidgetEntryView: View {
     var body: some View {
         ZStack {
             Color("WidgetBackground")
-            VStack {
+            VStack(spacing: 0.0) {
+                ZStack {
+                    Rectangle()
+                        .fill(Color("AccentColor"))
+                        .frame(minWidth: nil, idealWidth: nil, maxWidth: nil, minHeight: nil, idealHeight: nil, maxHeight: entry.cellHeight, alignment: .leading)
+                    HStack {
+                        Text(AppStrings.FAVORITES_TITLE)
+                            .fontWeight(.bold)
+                        Spacer()
+                    }
+                    .padding(.leading)
+                }
                 ForEach(entry.clips) { clipIdentifiable in
                     Link(destination: URL(string: "copybetter:///main/favorites?action=copy&uri=\(clipIdentifiable.uri.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")")!, label: {
                         HStack {
@@ -114,7 +125,7 @@ struct FavoritesWidget: Widget {
 
 struct FavoritesWidget_Previews: PreviewProvider {
     static var previews: some View {
-        FavoritesWidgetEntryView(entry: FolderTimelineEntry(date: Date(), clips: [ClipIdentifiable(uri: "a", title: "AAA", contents: "aaa"), ClipIdentifiable(uri: "b", title: "BBB", contents: "bbb"), ClipIdentifiable(uri: "c", title: "CCC CCC CCC CCC CCC CCC", contents: "ccc ccc ccc ccc ccc ccc"), ClipIdentifiable(uri: "d", title: nil, contents: "qwertyuiop asdfghjkl;"), ClipIdentifiable(uri: "e", title: nil, contents: "qwertyuiop qwertyuiop qwertyuiop")], cellHeight: 31.5))
+        FavoritesWidgetEntryView(entry: FolderTimelineEntry(date: Date(), folderName: "", clips: [ClipIdentifiable(uri: "a", title: "AAA", contents: "aaa"), ClipIdentifiable(uri: "b", title: "BBB", contents: "bbb"), ClipIdentifiable(uri: "c", title: "CCC CCC CCC CCC CCC CCC", contents: "ccc ccc ccc ccc ccc ccc"), ClipIdentifiable(uri: "d", title: nil, contents: "qwertyuiop asdfghjkl;"), ClipIdentifiable(uri: "e", title: nil, contents: "qwertyuiop qwertyuiop qwertyuiop")], cellHeight: 31.5))
             .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }

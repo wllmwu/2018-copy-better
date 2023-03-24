@@ -20,6 +20,7 @@ struct ClipIdentifiable: Identifiable {
 
 struct FolderTimelineEntry: TimelineEntry {
     let date: Date
+    let folderName: String
     let clips: [ClipIdentifiable]
     let cellHeight: CGFloat
 }
@@ -57,19 +58,19 @@ struct FolderTimelineProvider: IntentTimelineProvider {
     }
     
     private func generateEntry(for configuration: SelectFolderIntent, in context: Context) -> FolderTimelineEntry {
-        let count = context.family == .systemLarge ? NUM_TO_DISPLAY_LARGE_WIDGET : NUM_TO_DISPLAY_MEDIUM_WIDGET
+        let count = (context.family == .systemLarge ? NUM_TO_DISPLAY_LARGE_WIDGET : NUM_TO_DISPLAY_MEDIUM_WIDGET) + 1
         let cellHeight = context.displaySize.height / CGFloat(count)
         guard let folderRef = configuration.folder else {
-            return FolderTimelineEntry(date: Date(), clips: [], cellHeight: cellHeight)
+            return FolderTimelineEntry(date: Date(), folderName: "", clips: [], cellHeight: cellHeight)
         }
-        return FolderTimelineEntry(date: Date(), clips: self.fetchClips(from: folderRef, in: context) ?? [], cellHeight: cellHeight)
+        return FolderTimelineEntry(date: Date(), folderName: folderRef.displayString, clips: self.fetchClips(from: folderRef, in: context) ?? [], cellHeight: cellHeight)
     }
     
     func placeholder(in context: Context) -> FolderTimelineEntry {
         let mockClips = [ClipIdentifiable(uri: "1", title: AppStrings.DEFAULT_CLIP_TITLE_1, contents: AppStrings.DEFAULT_CLIP_CONTENTS_1), ClipIdentifiable(uri: "2", title: AppStrings.DEFAULT_CLIP_TITLE_2, contents: AppStrings.DEFAULT_CLIP_CONTENTS_2)]
-        let count = context.family == .systemLarge ? NUM_TO_DISPLAY_LARGE_WIDGET : NUM_TO_DISPLAY_MEDIUM_WIDGET
+        let count = (context.family == .systemLarge ? NUM_TO_DISPLAY_LARGE_WIDGET : NUM_TO_DISPLAY_MEDIUM_WIDGET) + 1
         let cellHeight = context.displaySize.height / CGFloat(count)
-        return FolderTimelineEntry(date: Date(), clips: mockClips, cellHeight: cellHeight)
+        return FolderTimelineEntry(date: Date(), folderName: AppStrings.FOLDER_NAME_PLACEHOLDER, clips: mockClips, cellHeight: cellHeight)
     }
 
     func getSnapshot(for configuration: SelectFolderIntent, in context: Context, completion: @escaping (FolderTimelineEntry) -> ()) {
@@ -92,7 +93,18 @@ struct FolderWidgetEntryView: View {
     var body: some View {
         ZStack {
             Color("WidgetBackground")
-            VStack {
+            VStack(spacing: 0.0) {
+                ZStack {
+                    Rectangle()
+                        .fill(Color("AccentColor"))
+                        .frame(minWidth: nil, idealWidth: nil, maxWidth: nil, minHeight: nil, idealHeight: nil, maxHeight: entry.cellHeight, alignment: .leading)
+                    HStack {
+                        Text(entry.folderName)
+                            .fontWeight(.bold)
+                        Spacer()
+                    }
+                    .padding(.leading)
+                }
                 ForEach(entry.clips) { clipIdentifiable in
                     Link(destination: URL(string: "copybetter:///main?action=copy&uri=\(clipIdentifiable.uri.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")")!, label: {
                         HStack {
@@ -124,15 +136,21 @@ struct FolderWidget: Widget {
         IntentConfiguration(kind: kind, intent: SelectFolderIntent.self, provider: FolderTimelineProvider()) { entry in
             FolderWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName(AppStrings.FAVORITES_WIDGET_DISPLAY_NAME)
-        .description(AppStrings.FAVORITES_WIDGET_DESCRIPTION)
+        .configurationDisplayName(AppStrings.FOLDER_WIDGET_DISPLAY_NAME)
+        .description(AppStrings.FOLDER_WIDGET_DESCRIPTION)
         .supportedFamilies([.systemMedium, .systemLarge])
     }
 }
 
 struct FolderWidget_Previews: PreviewProvider {
     static var previews: some View {
-        FolderWidgetEntryView(entry: FolderTimelineEntry(date: Date(), clips: [ClipIdentifiable(uri: "a", title: "AAA", contents: "aaa"), ClipIdentifiable(uri: "b", title: "BBB", contents: "bbb"), ClipIdentifiable(uri: "c", title: "CCC CCC CCC CCC CCC CCC", contents: "ccc ccc ccc ccc ccc ccc"), ClipIdentifiable(uri: "d", title: nil, contents: "qwertyuiop asdfghjkl;"), ClipIdentifiable(uri: "e", title: nil, contents: "qwertyuiop qwertyuiop qwertyuiop")], cellHeight: 31.5))
+        FolderWidgetEntryView(entry: FolderTimelineEntry(date: Date(), folderName: "Folder", clips: [
+            ClipIdentifiable(uri: "a", title: "AAA", contents: "aaa"),
+            ClipIdentifiable(uri: "b", title: "BBB", contents: "bbb"),
+            ClipIdentifiable(uri: "c", title: "CCC CCC CCC CCC CCC CCC", contents: "ccc ccc ccc ccc ccc ccc"),
+            ClipIdentifiable(uri: "d", title: nil, contents: "qwertyuiop asdfghjkl;"),
+            ClipIdentifiable(uri: "e", title: nil, contents: "qwertyuiop qwertyuiop qwertyuiop"),
+        ], cellHeight: 31.5))
             .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }

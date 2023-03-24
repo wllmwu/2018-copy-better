@@ -132,5 +132,8 @@
 /* Favorites widget description */
 "View and copy[...]" = "View and copy clips in your Favorites folder.";
 
-/* Favorites widget empty message */
-"(No favorites yet)" = "(No favorites yet)";
+/* Folder widget display name */
+"widgets.folder.display-name" = "Folder";
+
+/* Folder widget description */
+"widgets.folder.description" = "View and copy clips in a folder of your choice.";

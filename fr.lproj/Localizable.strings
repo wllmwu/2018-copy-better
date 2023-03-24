@@ -130,7 +130,10 @@
 "Favorite Clips" = "Clips Favoris";
 
 /* Favorites widget description */
-"View and copy[...]" = "Afficher et copier des clips du dossier des favoris.";
+"View and copy[...]" = "Afficher et copier des clips favoris.";
 
-/* Favorites widget empty message */
-"(No favorites yet)" = "(Pas encore de favoris)";
+/* Folder widget display name */
+"widgets.folder.display-name" = "Dossier";
+
+/* Folder widget description */
+"widgets.folder.description" = "Afficher et copier des clips d'un dossier.";
