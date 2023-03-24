@@ -161,15 +161,20 @@ class ClipTableViewCell: UITableViewCell {
     // MARK: - Interface actions
     
     @IBAction func copyButtonTapped(_ sender: UIButton) {
-        ClipboardManager.copyToPasteboard(item: self.contents)
         if let clip = self.clip {
+            ClipboardManager.copyToPasteboard(item: self.contents)
             Clip.donateCopyInteraction(with: clip) { (error) in
                 if let e = error {
                     print("Interaction donation failed: \(e.localizedDescription)")
                 }
             }
+            NotificationCenter.default.post(name: Notification.Name("ShowCopiedToast"), object: nil)
         }
-        NotificationCenter.default.post(name: Notification.Name("ShowCopiedToast"), object: nil)
+        else {
+            // last copied cell
+            ClipboardManager.clearPasteboard()
+            self.setContents([:])
+        }
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
