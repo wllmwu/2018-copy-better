@@ -128,6 +128,7 @@ class EditClipTableViewController: UITableViewController, UITextViewDelegate {
     @discardableResult private func saveContext() -> Bool {
         do {
             try self.managedObjectContext.save()
+            WidgetCenter.shared.reloadTimelines(ofKind: "com.williamwu.clips.favorites-widget")
             return true
         }
         catch let error as NSError {
@@ -178,9 +179,6 @@ class EditClipTableViewController: UITableViewController, UITextViewDelegate {
             self.saveClipTitleAndContents(clip: self.clip)
             if self.saveContext() {
                 self.showToast(message: AppStrings.TOAST_MESSAGE_SAVED)
-                if self.clip.isFavorite {
-                    WidgetCenter.shared.reloadTimelines(ofKind: "com.williamwu.clips.favorites-widget")
-                }
             }
             
             self.performSegue(withIdentifier: "UnwindFromEdit", sender: self)

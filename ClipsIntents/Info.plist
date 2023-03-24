@@ -32,6 +32,7 @@
 			<array>
 				<string>AddClipIntent</string>
 				<string>CopyClipIntent</string>
+				<string>SelectFolderIntent</string>
 			</array>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>

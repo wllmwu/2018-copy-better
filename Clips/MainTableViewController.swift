@@ -185,11 +185,12 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     /**
-     Tries to save the managed object context, and returns whether the operation was successful.
+     Tries to save the managed object context, and returns whether the operation was successful. Also reloads the Favorites widget timeline.
      */
     @discardableResult private func saveContext() -> Bool {
         do {
             try self.managedObjectContext.save()
+            WidgetCenter.shared.reloadTimelines(ofKind: "com.williamwu.clips.favorites-widget")
             return true
         }
         catch let error as NSError {

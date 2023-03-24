@@ -427,57 +427,11 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>Show Favorites or a Folder</string>
-					<key>INIntentParameterDisplayNameID</key>
-					<string>F8Om3k</string>
-					<key>INIntentParameterDisplayPriority</key>
-					<integer>1</integer>
-					<key>INIntentParameterMetadata</key>
-					<dict>
-						<key>INIntentParameterMetadataDefaultValue</key>
-						<true/>
-						<key>INIntentParameterMetadataFalseDisplayName</key>
-						<string>Folder</string>
-						<key>INIntentParameterMetadataFalseDisplayNameID</key>
-						<string>awa7cf</string>
-						<key>INIntentParameterMetadataTrueDisplayName</key>
-						<string>Favorites</string>
-						<key>INIntentParameterMetadataTrueDisplayNameID</key>
-						<string>KGanIQ</string>
-					</dict>
-					<key>INIntentParameterName</key>
-					<string>showFavorites</string>
-					<key>INIntentParameterPromptDialogs</key>
-					<array>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Configuration</string>
-						</dict>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Primary</string>
-						</dict>
-					</array>
-					<key>INIntentParameterSupportsResolution</key>
-					<true/>
-					<key>INIntentParameterTag</key>
-					<integer>4</integer>
-					<key>INIntentParameterType</key>
-					<string>Boolean</string>
-				</dict>
-				<dict>
-					<key>INIntentParameterConfigurable</key>
-					<true/>
-					<key>INIntentParameterDisplayName</key>
 					<string>Folder</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>27QnIw</string>
 					<key>INIntentParameterDisplayPriority</key>
-					<integer>2</integer>
+					<integer>1</integer>
 					<key>INIntentParameterName</key>
 					<string>folder</string>
 					<key>INIntentParameterObjectType</key>
@@ -498,31 +452,9 @@
 							<key>INIntentParameterPromptDialogType</key>
 							<string>Primary</string>
 						</dict>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogFormatString</key>
-							<string>There are ${count} options matching ‘${folder}’.</string>
-							<key>INIntentParameterPromptDialogFormatStringID</key>
-							<string>iNXrRL</string>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>DisambiguationIntroduction</string>
-						</dict>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogFormatString</key>
-							<string>Just to confirm, you wanted ‘${folder}’?</string>
-							<key>INIntentParameterPromptDialogFormatStringID</key>
-							<string>NLETFL</string>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Confirmation</string>
-						</dict>
 					</array>
 					<key>INIntentParameterRelationship</key>
 					<dict>
-						<key>INIntentParameterRelationshipParentName</key>
-						<string>showFavorites</string>
 						<key>INIntentParameterRelationshipPredicateName</key>
 						<string>BooleanHasExactValue</string>
 					</dict>

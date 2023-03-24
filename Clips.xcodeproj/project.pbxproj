@@ -17,6 +17,7 @@
 		E00453E326D98F2B00F38D51 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E00453E226D98F2B00F38D51 /* Intents.framework */; };
 		E00453E626D98F2B00F38D51 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00453E526D98F2B00F38D51 /* IntentHandler.swift */; };
 		E00453EA26D98F2B00F38D51 /* ClipsIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E00453E126D98F2B00F38D51 /* ClipsIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E00624E829CE225200892A7D /* FolderWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00624E729CE225200892A7D /* FolderWidget.swift */; };
 		E0071DE721CB154D00B75D4C /* KeyboardClipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0071DE621CB154D00B75D4C /* KeyboardClipCell.xib */; };
 		E0071DE921CB171100B75D4C /* KeyboardClipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0071DE821CB171100B75D4C /* KeyboardClipCell.swift */; };
 		E0079EDC25068C9100F3BC10 /* FolderPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0079EDB25068C9100F3BC10 /* FolderPickerTableViewCell.swift */; };
@@ -228,6 +229,7 @@
 		E00453E526D98F2B00F38D51 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		E00453E726D98F2B00F38D51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E00453F326D990E300F38D51 /* ClipsIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ClipsIntents.entitlements; sourceTree = "<group>"; };
+		E00624E729CE225200892A7D /* FolderWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderWidget.swift; sourceTree = "<group>"; };
 		E0071DE621CB154D00B75D4C /* KeyboardClipCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboardClipCell.xib; sourceTree = "<group>"; };
 		E0071DE821CB171100B75D4C /* KeyboardClipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardClipCell.swift; sourceTree = "<group>"; };
 		E0079EDB25068C9100F3BC10 /* FolderPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderPickerTableViewCell.swift; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 				E0C9757326E7D14E00E7ACA8 /* ClipsWidgets.swift */,
 				E000A2F2251EECD2007EFFFF /* Clips_Widget_2.swift */,
 				E0C9757526E7D1FB00E7ACA8 /* FavoritesWidget.swift */,
+				E00624E729CE225200892A7D /* FolderWidget.swift */,
 				E000A2F4251EECD6007EFFFF /* Assets.xcassets */,
 				E000A2F6251EECD6007EFFFF /* Info.plist */,
 			);
@@ -851,6 +854,7 @@
 				E06D3D5B251FBCB700441300 /* AppStrings.swift in Sources */,
 				E000A2F3251EECD2007EFFFF /* Clips_Widget_2.swift in Sources */,
 				E0C9757426E7D14E00E7ACA8 /* ClipsWidgets.swift in Sources */,
+				E00624E829CE225200892A7D /* FolderWidget.swift in Sources */,
 				E0600E0629CD1A5600AE329E /* Intents.intentdefinition in Sources */,
 				E0C9757626E7D1FB00E7ACA8 /* FavoritesWidget.swift in Sources */,
 			);
