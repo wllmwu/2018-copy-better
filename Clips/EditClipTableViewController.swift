@@ -128,6 +128,7 @@ class EditClipTableViewController: UITableViewController, UITextViewDelegate {
     @discardableResult private func saveContext() -> Bool {
         do {
             try self.managedObjectContext.save()
+            WidgetCenter.shared.reloadTimelines(ofKind: "com.williamwu.clips.folder-widget")
             WidgetCenter.shared.reloadTimelines(ofKind: "com.williamwu.clips.favorites-widget")
             return true
         }

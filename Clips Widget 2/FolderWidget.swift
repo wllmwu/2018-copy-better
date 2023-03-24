@@ -45,7 +45,8 @@ struct FolderTimelineProvider: IntentTimelineProvider {
             return nil
         }
         let limit = context.family == .systemLarge ? NUM_TO_DISPLAY_LARGE_WIDGET : NUM_TO_DISPLAY_MEDIUM_WIDGET
-        let clips = folder.clipsArray[..<limit]
+        let sliceEnd = min(limit, folder.clipsArray.count)
+        let clips = folder.clipsArray[..<sliceEnd]
         
         var identifiables: [ClipIdentifiable] = []
         for clip in clips {

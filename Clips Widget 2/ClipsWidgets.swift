@@ -14,5 +14,6 @@ struct ClipsWidgets: WidgetBundle {
     var body: some Widget {
         Clips_Widget_2()
         FavoritesWidget()
+        FolderWidget()
     }
 }

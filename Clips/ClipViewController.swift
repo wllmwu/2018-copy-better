@@ -150,7 +150,7 @@ class ClipViewController: UIViewController {
     @discardableResult private func saveContext() -> Bool {
         do {
             try self.managedObjectContext.save()
-            WidgetCenter.shared.reloadTimelines(ofKind: "com.williamwu.clips.favorites-widget")
+            WidgetCenter.shared.reloadTimelines(ofKind: "com.williamwu.clips.folder-widget")
             return true
         }
         catch let error as NSError {
