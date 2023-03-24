@@ -1,5 +1,5 @@
 // "Select a clip"
-"2B01AI" = "Sélectionner un clip";
+"2B01AI" = "Choisir un clip";
 
 // "Add clip titled \"${title}\" with contents: ${contents}"
 "2n3rI5" = "Ajouter un clip titré \"${title}\" avec contenu: ${contents}";
@@ -87,3 +87,9 @@
 
 // "Clip"
 "ymLEhq" = "Clip";
+
+// "Folder"
+"27QnIw" = "Dossier";
+
+// "Select Folder"
+"icbaVK" = "Choisir un dossier";

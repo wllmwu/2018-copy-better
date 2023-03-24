@@ -13,6 +13,10 @@ import CoreData
 @objc(Folder)
 public class Folder: NSManagedObject {
     
+    public var uriRepresentation: String {
+        return self.objectID.uriRepresentation().absoluteString
+    }
+    
     /**
      A computed property that converts this folder's `subfolders` attribute into a `[Folder]` array, sorted by the `index` attribute.
      */
@@ -45,6 +49,19 @@ public class Folder: NSManagedObject {
         }
     }
     
+    public static func getFolder(with uriString: String, context: NSManagedObjectContext) -> Folder? {
+        guard let uri = URL(string: uriString), let objectID = context.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: uri) else {
+            return nil
+        }
+        
+        do {
+            return try context.existingObject(with: objectID) as? Folder
+        } catch let error as NSError {
+            print("Couldn't fetch.  \(error), \(error.userInfo)")
+            return nil
+        }
+    }
+    
     public static func getRecentlyDeletedFolder(context: NSManagedObjectContext) -> Folder? {
         let request = NSFetchRequest<Folder>(entityName: "Folder")
         request.predicate = NSPredicate(format: "(superfolder == NIL) AND (name LIKE 'deleted')")
@@ -73,6 +90,26 @@ public class Folder: NSManagedObject {
             Folder.deleteFolderHelper(subfolder, deletedFolder, context)
         }
         context.delete(folder)
+    }
+    
+}
+
+// MARK: - Intent handling
+
+extension Folder {
+    
+    public static func getIntentReference(for folder: Folder, path: String) -> FolderReference? {
+        guard let name = folder.name else {
+            return nil
+        }
+        return FolderReference(identifier: folder.uriRepresentation, display: path + name)
+    }
+    
+    public static func getReferencedFolder(from intentReference: FolderReference, context: NSManagedObjectContext) -> Folder? {
+        guard let uriString = intentReference.identifier else {
+            return nil
+        }
+        return Folder.getFolder(with: uriString, context: context)
     }
     
 }

@@ -40,7 +40,7 @@ Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "4Nl-cj-gK
 "BjC-VA-k4B.headerTitle" = "Application";
 
 /* Class = "UITableViewSection"; footerTitle = "If this option is enabled, attributes such as color, font size, and bold/italics will be included when possible with any new clips that you add through the app."; ObjectID = "BjC-VA-k4B"; */
-"BjC-VA-k4B.footerTitle" = "Si cette option est activée, les attributs tels que la couleur et la taille de police seront enregistré avec les nouveaux éléments dans l'application quand c'est possible.";
+"BjC-VA-k4B.footerTitle" = "Si cette option est activée, les attributs tels que la couleur et la taille de police seront enregistré avec de nouveaux éléments dans l'application quand c'est possible.";
 
 /* Class = "UITableViewSection"; headerTitle = "Keyboard"; ObjectID = "3rT-cN-McX"; */
 "3rT-cN-McX.headerTitle" = "Clavier";

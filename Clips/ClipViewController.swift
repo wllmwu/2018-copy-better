@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import IntentsUI
 import ClipsKit
+import WidgetKit
 
 class ClipViewController: UIViewController {
     
@@ -149,6 +150,7 @@ class ClipViewController: UIViewController {
     @discardableResult private func saveContext() -> Bool {
         do {
             try self.managedObjectContext.save()
+            WidgetCenter.shared.reloadTimelines(ofKind: "com.williamwu.clips.folder-widget")
             return true
         }
         catch let error as NSError {

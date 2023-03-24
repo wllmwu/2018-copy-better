@@ -189,8 +189,12 @@ struct AppStrings {
         return NSLocalizedString("View and copy[...]", comment: "Favorites widget description")
     }
     
-    static var FAVORITES_WIDGET_EMPTY_MESSAGE: String {
-        return NSLocalizedString("(No favorites yet)", comment: "Favorites widget empty message")
+    static var FOLDER_WIDGET_DISPLAY_NAME: String {
+        return NSLocalizedString("widgets.folder.display-name", comment: "Folder widget display name")
+    }
+    
+    static var FOLDER_WIDGET_DESCRIPTION: String {
+        return NSLocalizedString("widgets.folder.description", comment: "Folder widget description")
     }
     
 }

@@ -135,15 +135,14 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         if pathComponents.count >= 1 && pathComponents[0] == "main" {
             if pathComponents.count >= 2 && pathComponents[1] == "favorites" {
                 self.performSegue(withIdentifier: "MainToFavorites", sender: nil)
-                
-                if action != nil && action == "copy" {
-                    guard let uriPercentEncoded = queries["uri"], let uri = uriPercentEncoded.removingPercentEncoding, let clip = Clip.getClip(with: uri, context: self.managedObjectContext) else {
-                        return false
-                    }
-                    ClipboardManager.copyToPasteboard(item: clip.contents)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        NotificationCenter.default.post(name: Notification.Name("ShowCopiedToast"), object: nil)
-                    }
+            }
+            if action != nil && action == "copy" {
+                guard let uriPercentEncoded = queries["uri"], let uri = uriPercentEncoded.removingPercentEncoding, let clip = Clip.getClip(with: uri, context: self.managedObjectContext) else {
+                    return false
+                }
+                ClipboardManager.copyToPasteboard(item: clip.contents)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    NotificationCenter.default.post(name: Notification.Name("ShowCopiedToast"), object: nil)
                 }
             }
             else if action != nil && action == "addcopied" {
@@ -185,11 +184,12 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     /**
-     Tries to save the managed object context, and returns whether the operation was successful.
+     Tries to save the managed object context, and returns whether the operation was successful. Also reloads the Favorites widget timeline.
      */
     @discardableResult private func saveContext() -> Bool {
         do {
             try self.managedObjectContext.save()
+            WidgetCenter.shared.reloadTimelines(ofKind: "com.williamwu.clips.folder-widget")
             return true
         }
         catch let error as NSError {

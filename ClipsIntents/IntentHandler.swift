@@ -159,3 +159,34 @@ class IntentHandler: INExtension, CopyClipIntentHandling, AddClipIntentHandling 
     }
     
 }
+
+// MARK: - SelectFolderIntentHandling protocol
+
+extension IntentHandler: SelectFolderIntentHandling {
+    
+    func provideFolderOptionsCollection(for intent: SelectFolderIntent, with completion: @escaping (INObjectCollection<FolderReference>?, Error?) -> Void) {
+        guard let context = self.getContext() else {
+            return completion(nil, nil)
+        }
+        guard let rootFolder = Folder.getRootFolder(context: context), let rootRef = Folder.getIntentReference(for: rootFolder, path: "") else {
+            return completion(nil, nil)
+        }
+        
+        var choices: [FolderReference] = [rootRef]
+        for subfolder in rootFolder.subfoldersArray {
+            self.getFolders(subfolder, "", &choices)
+        }
+        return completion(INObjectCollection(items: choices), nil)
+    }
+    
+    private func getFolders(_ folder: Folder, _ path: String, _ list: inout [FolderReference]) {
+        guard let ref = Folder.getIntentReference(for: folder, path: path) else {
+            return
+        }
+        list.append(ref)
+        for subfolder in folder.subfoldersArray {
+            self.getFolders(subfolder, path + (folder.name ?? "_") + "/", &list)
+        }
+    }
+    
+}
