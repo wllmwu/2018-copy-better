@@ -108,6 +108,12 @@ public class ClipboardManager: NSObject {
         DefaultsManager.pasteboardCountForAutoAdd = changeCount
     }
     
+    public static func clearPasteboard() {
+        UIPasteboard.general.items = []
+        ClipboardManager.cachedItem = nil
+        ClipboardManager.pasteboardCountOfLastRetrieval = ClipboardManager.pasteboardChangeCount
+    }
+    
     public static var pasteboardChangeCount: Int {
         return UIPasteboard.general.changeCount
     }

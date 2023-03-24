@@ -782,7 +782,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             else if identifier == "MainToLastCopied" {
                 let destination: ClipViewController = segue.destination as! ClipViewController
                 destination.setContext(self.managedObjectContext)
-                destination.setLastCopied(contents: self.lastCopied, folder: self.folder)
+                destination.setLastCopied(contents: ClipboardManager.retrieveFromPasteboard(), folder: self.folder)
             }
             else if identifier == "MainToFavorites" {
                 let destination: FavoritesTableViewController = segue.destination as! FavoritesTableViewController

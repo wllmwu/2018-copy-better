@@ -93,3 +93,15 @@
 
 // "Select Folder"
 "icbaVK" = "Choisir un dossier";
+
+// "Deletes the current contents of the system clipboard."
+"RGaGbw" = "Supprime le contenu actuel du presse-papiers.";
+
+// "Clear the system clipboard"
+"IBICjn" = "Vider le presse-papiers de l'appareil";
+
+// "Clear the system clipboard"
+"cgnenn" = "Vider le presse-papiers de l'appareil";
+
+// "Clear Clipboard"
+"UdQ1dl" = "Vider le presse-papiers";

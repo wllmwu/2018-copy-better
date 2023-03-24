@@ -340,7 +340,7 @@
                                                 <constraint firstAttribute="width" constant="36" id="1fb-Ga-Xio"/>
                                                 <constraint firstAttribute="height" constant="36" id="mtt-ha-EuY"/>
                                             </constraints>
-                                            <state key="normal" image="doc.on.clipboard" catalog="system"/>
+                                            <state key="normal" image="clear.fill" catalog="system"/>
                                             <connections>
                                                 <action selector="copyButtonTapped:" destination="HgL-Ev-V2n" eventType="touchUpInside" id="e1J-R7-LcN"/>
                                             </connections>
@@ -885,7 +885,7 @@
                                                 <constraint firstAttribute="width" constant="36" id="MTR-2z-TnZ"/>
                                                 <constraint firstAttribute="height" constant="36" id="fvC-qt-Jnj"/>
                                             </constraints>
-                                            <state key="normal" image="doc.on.clipboard" catalog="system"/>
+                                            <state key="normal" image="clear.fill" catalog="system"/>
                                             <connections>
                                                 <action selector="copyButtonTapped:" destination="f7u-WW-z3b" eventType="touchUpInside" id="c0C-cf-U26"/>
                                             </connections>
@@ -1684,12 +1684,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="p24-k2-B1G"/>
-        <segue reference="atL-tM-tp5"/>
-        <segue reference="S5L-XS-eBb"/>
+        <segue reference="SI3-HK-EbX"/>
+        <segue reference="QqE-G5-atx"/>
+        <segue reference="T1C-MY-kRL"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.turn.up.left.fill" catalog="system" width="128" height="106"/>
+        <image name="clear.fill" catalog="system" width="128" height="114"/>
         <image name="doc" catalog="system" width="115" height="128"/>
         <image name="doc.on.clipboard" catalog="system" width="116" height="128"/>
         <image name="folder.fill" catalog="system" width="128" height="97"/>
