@@ -2,7 +2,7 @@
 //  Clips_Widget_2.swift
 //  Clips Widget 2
 //
-//  Created by Bill Wu on 9/25/20.
+//  Created by William Wu on 9/25/20.
 //  Copyright © 2020 William Wu. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  DefaultsManager.swift
 //  ClipsKit
 //
-//  Created by Bill Wu on 9/16/21.
+//  Created by William Wu on 9/16/21.
 //  Copyright © 2021 William Wu. All rights reserved.
 //
 

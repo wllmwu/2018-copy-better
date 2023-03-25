@@ -2,7 +2,7 @@
 //  Clip+CoreDataClass.swift
 //  Clips
 //
-//  Created by Bill Wu on 11/17/18.
+//  Created by William Wu on 11/17/18.
 //  Copyright © 2018 William Wu. All rights reserved.
 //
 //
