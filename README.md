@@ -2,7 +2,7 @@
 
 Copy Better keeps all the things you need to copy and paste in one place, available at a simple tap.
 
-Current version: 2.1.3 (October 2021)
+Current version: 2.3.0 (March 2023)
 
 ## Description
 
@@ -33,4 +33,4 @@ Or direct link: https://apps.apple.com/us/app/copy-better/id1456564050
 
 ## Copyright
 
-Copyright © 2021 William Wu. All rights reserved.
+Copyright © 2023 William Wu. All rights reserved.
