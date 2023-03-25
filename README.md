@@ -2,13 +2,13 @@
 
 Copy Better keeps all the things you need to copy and paste in one place, available at a simple tap.
 
-Current version: 2.1.3 (October 2021)
+Current version: 2.3.0 (March 2023)
 
 ## Description
 
 - Add clips from the system clipboard, edit them, and create new ones directly in the app. Your clips can be plain text, formatted text, and/or images.
 - Create folders to organize your clips, and mark important ones as favorites.
-- Add the Favorite Clips widget to your home screen for easy access.
+- Add the Favorites and Folder widgets to your home screen for easy access.
 - Use the Copy Better keyboard to paste your clips quickly in other apps.
 - Configure Siri shortcuts to create and paste clips anywhere.
 - Use the Share extension to save new clips from websites, Photos, or anywhere else with shareable content.
@@ -33,4 +33,4 @@ Or direct link: https://apps.apple.com/us/app/copy-better/id1456564050
 
 ## Copyright
 
-Copyright © 2021 William Wu. All rights reserved.
+Copyright © 2023 William Wu. All rights reserved.

@@ -2,7 +2,7 @@
 //  WidgetClipTableViewCell.swift
 //  Clips Widget
 //
-//  Created by Bill Wu on 11/30/18.
+//  Created by William Wu on 11/30/18.
 //  Copyright © 2018 William Wu. All rights reserved.
 //
 

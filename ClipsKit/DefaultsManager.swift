@@ -2,7 +2,7 @@
 //  DefaultsManager.swift
 //  ClipsKit
 //
-//  Created by Bill Wu on 9/16/21.
+//  Created by William Wu on 9/16/21.
 //  Copyright © 2021 William Wu. All rights reserved.
 //
 
@@ -49,6 +49,16 @@ public class DefaultsManager: NSObject {
         }
         set {
             defaults.set(newValue, forKey: HAS_LAUNCHED_2_2_KEY)
+        }
+    }
+    
+    private static var HAS_LAUNCHED_2_3_KEY = "launched2.3"
+    public static var hasLaunched2_3: Bool {
+        get {
+            return defaults.bool(forKey: HAS_LAUNCHED_2_3_KEY)
+        }
+        set {
+            defaults.set(newValue, forKey: HAS_LAUNCHED_2_3_KEY)
         }
     }
     

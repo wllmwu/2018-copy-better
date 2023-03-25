@@ -2,7 +2,7 @@
 //  NSAttributedString+HTML.swift
 //  ClipsKit
 //
-//  Created by Bill Wu on 10/3/21.
+//  Created by William Wu on 10/3/21.
 //  Copyright © 2021 William Wu. All rights reserved.
 //
 

@@ -208,62 +208,34 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="About" id="Qga-kv-hFl">
+                            <tableViewSection id="Qga-kv-hFl">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="5XC-qn-92A">
-                                        <rect key="frame" x="0.0" y="561.33334159851074" width="390" height="43.666667938232422"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="5XC-qn-92A">
+                                        <rect key="frame" x="0.0" y="547.66667556762695" width="390" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5XC-qn-92A" id="ZkO-Ri-XmH">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="361.33333333333331" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZBR-yv-hNc">
-                                                    <rect key="frame" x="20" y="-181.33333333333334" width="350" height="406.33333333333331"/>
-                                                    <string key="text">There are several ways to use this app!
-• Add clips from the system clipboard, edit them, and create new ones directly in the app. Your clips can be plain text, formatted text, and/or images.
-• Create folders to organize your clips, and mark important ones as favorites.
-• Add the Favorite Clips widget to your home screen for easy access.
-• Enable the Copy Better keyboard (Settings &gt; General &gt; Keyboard &gt; Keyboards &gt; Add New Keyboard) to paste your clips quickly in other apps. Make sure to enable Allow Full Access too, so the keyboard can access the app’s contents—no data is collected.
-• Configure Siri shortcuts to create and paste clips anywhere.
-• Use the Share extension to save new clips from websites, Photos, or anywhere else with shareable content.</string>
-                                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="ZBR-yv-hNc" firstAttribute="centerY" secondItem="ZkO-Ri-XmH" secondAttribute="centerY" id="IJG-Hl-9Eg"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="ZBR-yv-hNc" secondAttribute="trailing" id="TqE-2H-Y8e"/>
-                                                <constraint firstItem="ZBR-yv-hNc" firstAttribute="leading" secondItem="ZkO-Ri-XmH" secondAttribute="leadingMargin" id="tVw-4B-tj5"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="JWb-9a-NRG">
-                                        <rect key="frame" x="0.0" y="605.00000953674316" width="390" height="43.666667938232422"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JWb-9a-NRG" id="Rju-5u-SQ3">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© 2022 William Wu  This app is version 2.2.0.  Questions or bug reports? Email me at dev.wwu@gmail.com." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Nl-cj-gKr">
-                                                    <rect key="frame" x="20" y="-39.333333333333336" width="350" height="122.33333333333334"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help &amp; About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTT-Mb-8oJ">
+                                                    <rect key="frame" x="20" y="11.333333333333336" width="333.33333333333331" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="4Nl-cj-gKr" firstAttribute="centerY" secondItem="Rju-5u-SQ3" secondAttribute="centerY" id="5SE-BY-v6V"/>
-                                                <constraint firstItem="4Nl-cj-gKr" firstAttribute="leading" secondItem="Rju-5u-SQ3" secondAttribute="leadingMargin" id="Mbf-eU-Mi9"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="4Nl-cj-gKr" secondAttribute="trailing" id="QtQ-Ya-5v2"/>
+                                                <constraint firstItem="tTT-Mb-8oJ" firstAttribute="centerY" secondItem="ZkO-Ri-XmH" secondAttribute="centerY" id="5t0-lL-yIS"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="tTT-Mb-8oJ" secondAttribute="trailing" id="PNn-S9-xBd"/>
+                                                <constraint firstItem="tTT-Mb-8oJ" firstAttribute="leading" secondItem="ZkO-Ri-XmH" secondAttribute="leadingMargin" id="SBx-xI-SyG"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="LOw-op-Xqi" kind="show" id="1DU-0z-Twg"/>
+                                        </connections>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Recently Deleted" id="bcU-0o-4zZ">
-                                <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="5Cl-9G-fTG">
-                                        <rect key="frame" x="0.0" y="698.33334350585938" width="390" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="591.33334350585938" width="390" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Cl-9G-fTG" id="GB8-Xh-QI2">
                                             <rect key="frame" x="0.0" y="0.0" width="361.33333333333331" height="43.666667938232422"/>
@@ -301,13 +273,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="aboutLabel" destination="4Nl-cj-gKr" id="nsi-dc-mBk"/>
                         <outlet property="askforTitleSwitch" destination="Q6I-jf-Fdd" id="XaS-R9-xVL"/>
                         <outlet property="autoAddLastCopiedSwitch" destination="p2T-DP-dFi" id="qsk-I7-3qg"/>
                         <outlet property="enableFavoritesSwitch" destination="BYo-Fb-i4P" id="s7P-V0-Tgs"/>
                         <outlet property="showCurrentInMainSwitch" destination="quD-o9-F9g" id="Wen-w6-FSQ"/>
                         <outlet property="storeFormattingInfoSwitch" destination="0WX-Xx-UjS" id="fNE-Ui-toL"/>
-                        <outlet property="tipsLabel" destination="ZBR-yv-hNc" id="wDL-8z-lHI"/>
                         <outlet property="wrapClipsInKeyboardSwitch" destination="GWD-ib-Ggf" id="SGL-Dt-6Xo"/>
                         <segue destination="lOE-qf-mlW" kind="unwind" identifier="UnwindFromSettings" unwindAction="unwindToMainWithUnwindSegue:" id="R9A-sf-K5Y"/>
                     </connections>
@@ -1523,6 +1493,69 @@
                 </screenEdgePanGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="836" y="967"/>
+        </scene>
+        <!--Help & About-->
+        <scene sceneID="uep-06-xji">
+            <objects>
+                <viewController id="LOw-op-Xqi" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dhj-wV-LIC">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2e7-EO-pom">
+                                <rect key="frame" x="0.0" y="56" width="390" height="734"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wr5-Ju-MUt">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="556"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJv-co-5Uu">
+                                                <rect key="frame" x="16" y="8" width="358" height="548"/>
+                                                <mutableString key="text">There are several ways to use this app!
+• Add clips from the system clipboard, edit them, and create new ones directly in the app. Your clips can be plain text, formatted text, and/or images.
+• Create folders to organize your clips, and mark important ones as favorites.
+• Add the Favorite Clips widget to your home screen for easy access.
+• Enable the Copy Better keyboard (Settings &gt; General &gt; Keyboard &gt; Keyboards &gt; Add New Keyboard) to paste your clips quickly in other apps. Make sure to enable Allow Full Access too, so the keyboard can access the app’s contents—no data is collected.
+• Configure Siri shortcuts to create and paste clips anywhere.
+• Use the Share extension to save new clips from websites, Photos, or anywhere else with shareable content.  © 2023 William Wu  This app is version 2.3.0.  Questions or bug reports? Email me at dev.wwu@gmail.com.</mutableString>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="lJv-co-5Uu" secondAttribute="bottom" id="0Uv-Jy-Iy8"/>
+                                            <constraint firstItem="lJv-co-5Uu" firstAttribute="top" secondItem="wr5-Ju-MUt" secondAttribute="top" constant="8" id="fBC-hQ-IYg"/>
+                                            <constraint firstItem="lJv-co-5Uu" firstAttribute="leading" secondItem="wr5-Ju-MUt" secondAttribute="leading" constant="16" id="s0I-rY-0KR"/>
+                                            <constraint firstAttribute="trailing" secondItem="lJv-co-5Uu" secondAttribute="trailing" constant="16" id="vX7-oE-puv"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="FcZ-bi-Hlh" firstAttribute="trailing" secondItem="wr5-Ju-MUt" secondAttribute="trailing" id="AfU-4C-E8M"/>
+                                    <constraint firstItem="wr5-Ju-MUt" firstAttribute="top" secondItem="FcZ-bi-Hlh" secondAttribute="top" id="Wgq-rP-02n"/>
+                                    <constraint firstItem="wr5-Ju-MUt" firstAttribute="height" secondItem="gBY-4U-pv1" secondAttribute="height" priority="250" id="jTl-WS-WpD"/>
+                                    <constraint firstItem="FcZ-bi-Hlh" firstAttribute="bottom" secondItem="wr5-Ju-MUt" secondAttribute="bottom" id="kwe-4r-YXV"/>
+                                    <constraint firstItem="wr5-Ju-MUt" firstAttribute="width" secondItem="gBY-4U-pv1" secondAttribute="width" id="sh5-x5-k5u"/>
+                                    <constraint firstItem="wr5-Ju-MUt" firstAttribute="leading" secondItem="FcZ-bi-Hlh" secondAttribute="leading" id="uV7-s0-Jgx"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="FcZ-bi-Hlh"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="gBY-4U-pv1"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="dfa-8E-xCU"/>
+                        <color key="backgroundColor" name="Background"/>
+                        <constraints>
+                            <constraint firstItem="dfa-8E-xCU" firstAttribute="bottom" secondItem="2e7-EO-pom" secondAttribute="bottom" id="MFo-Ek-HI8"/>
+                            <constraint firstItem="2e7-EO-pom" firstAttribute="top" secondItem="dfa-8E-xCU" secondAttribute="top" id="RSA-lw-tGF"/>
+                            <constraint firstItem="dfa-8E-xCU" firstAttribute="trailing" secondItem="2e7-EO-pom" secondAttribute="trailing" id="fFR-FK-mbS"/>
+                            <constraint firstItem="2e7-EO-pom" firstAttribute="leading" secondItem="dfa-8E-xCU" secondAttribute="leading" id="me7-ZO-GlR"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Help &amp; About" id="sVz-Vi-H03"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rqt-js-SVa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3630.7692307692305" y="-1370.6161137440758"/>
         </scene>
         <!--Recently Deleted-->
         <scene sceneID="rGd-ov-SX9">

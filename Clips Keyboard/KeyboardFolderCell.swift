@@ -2,7 +2,7 @@
 //  KeyboardFolderCell.swift
 //  Copy Better Keyboard
 //
-//  Created by Bill Wu on 9/15/20.
+//  Created by William Wu on 9/15/20.
 //  Copyright © 2020 William Wu. All rights reserved.
 //
 

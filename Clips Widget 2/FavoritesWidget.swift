@@ -2,7 +2,7 @@
 //  FavoritesWidget.swift
 //  Clips Widget 2Extension
 //
-//  Created by Bill Wu on 9/7/21.
+//  Created by William Wu on 9/7/21.
 //  Copyright © 2021 William Wu. All rights reserved.
 //
 

@@ -2,13 +2,6 @@
 /* Class = "UINavigationItem"; title = "Edit Clip"; ObjectID = "05A-KI-hkJ"; */
 "05A-KI-hkJ.title" = "Modifier";
 
-/* Class = "UILabel"; text = "© 2021 William Wu
-
-This app is version 2.1.3.
-
-Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "4Nl-cj-gKr"; */
-"4Nl-cj-gKr.text" = "© 2022 William Wu\n\nVersion 2.2.0\n\nPosez des questions ou signalez un bug à dev.wwu@gmail.com.";
-
 /* Class = "UINavigationItem"; title = "Copy Better"; ObjectID = "55l-T6-khl"; */
 "55l-T6-khl.title" = "Copier Mieux";
 
@@ -51,9 +44,6 @@ Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "4Nl-cj-gK
 /* Class = "UILabel"; text = "Allow long clips to wrap"; ObjectID = "ebq-E6-diW"; */
 "ebq-E6-diW.text" = "Retourner les éléments longs à la ligne";
 
-/* Class = "UITableViewSection"; headerTitle = "About"; ObjectID = "Qga-kv-hFl"; */
-"Qga-kv-hFl.headerTitle" = "Informations";
-
 /* Class = "UILabel"; text = "Show current clipboard contents"; ObjectID = "C7j-pN-GgP"; */
 "C7j-pN-GgP.text" = "Afficher le presse-papiers actuel";
 
@@ -69,8 +59,26 @@ Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "4Nl-cj-gK
 /* Class = "UILabel"; text = "Store formatting info with new clips"; ObjectID = "SBf-Ol-AN5"; */
 "SBf-Ol-AN5.text" = "Inclure la mise en forme du texte avec les nouveaux éléments";
 
-/* Class = "UITableViewSection"; headerTitle = "Recently Deleted"; ObjectID = "bcU-0o-4zZ"; */
-"bcU-0o-4zZ.headerTitle" = "Suppressions récentes";
+/* Class = "UILabel"; text = "Help & About"; ObjectID = "tTT-Mb-8oJ"; */
+"tTT-Mb-8oJ.text" = "Aide & Informations";
+
+/* Class = "UINavigationItem"; title = "Help & About"; ObjectID = "sVz-Vi-H03"; */
+"sVz-Vi-H03.title" = "Aide & Informations";
+
+/* Class = "UILabel"; text = "There are several ways to use this app!
+ • Add clips from the system clipboard, edit them, and create new ones directly in the app. Your clips can be plain text, formatted text, and/or images.
+ • Create folders to organize your clips, and mark important ones as favorites.
+ • Add the Favorite Clips widget to your home screen for easy access.
+ • Enable the Copy Better keyboard (Settings > General > Keyboard > Keyboards > Add New Keyboard) to paste your clips quickly in other apps. Make sure to enable Allow Full Access too, so the keyboard can access the app’s contents—no data is collected.
+ • Configure Siri shortcuts to create and paste clips anywhere.
+ • Use the Share extension to save new clips from websites, Photos, or anywhere else with shareable content.
+ 
+ © 2023 William Wu
+  
+ This app is version 2.3.0. 
+ 
+ Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "lJv-co-5Uu"; */
+"lJv-co-5Uu.text" = "Il y a plusieurs façons d'utiliser cette application!\n• Ajouter des clips du presse-papiers, les modifier, et créer des nouveaux clips dans l'application.\n• Créer des dossiers pour organiser vos clips, et marquer les plus importants comme favoris.\n• Ajouter le widget Clips Favoris à votre écran d'accueil pour un accès facile.\n• Utiliser le clavier Copier Mieux (Réglages > Général > Clavier > Claviers > Ajouter un clavier) pour insérer vite vos clips dans d'autres applications. Il faut activer aussi « Autoriser l'accès complet », pour que le clavier peut accéder aux contenus de l'application—il ne va pas recueillir vos données saisies.\n• Configurer des raccourcis pour créer et coller des clips n'importe où.\n• Utiliser l'extension de partage pour sauvegarder des nouveaux clips du texte ou des images.\n\n© 2023 William Wu\n\nVersion 2.3.0\n\nPosez des questions ou signalez un bug à dev.wwu@gmail.com.";
 
 /* Class = "UILabel"; text = "Recently deleted"; ObjectID = "0HR-vg-w6v"; */
 "0HR-vg-w6v.text" = "Suppressions récentes";
@@ -113,15 +121,6 @@ Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "4Nl-cj-gK
 
 /* Class = "UITableViewSection"; headerTitle = "Title"; ObjectID = "Ymy-zL-M8M"; */
 "Ymy-zL-M8M.headerTitle" = "Titre";
-
-/* Class = "UILabel"; text = "There are several ways to use this app!
-• Add clips from the system clipboard, edit them, and create new ones directly in the app. Your clips can be plain text, formatted text, and/or images.
-• Create folders to organize your clips, and mark important ones as favorites.
-• Add the Favorite Clips widget to your home screen for easy access.
-• Enable the Copy Better keyboard (Settings > General > Keyboard > Keyboards > Add New Keyboard) to paste your clips quickly in other apps. Make sure to enable Allow Full Access too, so the keyboard can access the app’s contents—no data is collected.
-• Configure Siri shortcuts to create and paste clips anywhere.
-• Use the Share extension to save new clips from websites, Photos, or anywhere else with shareable content."; ObjectID = "ZBR-yv-hNc"; */
-"ZBR-yv-hNc.text" = "Il y a plusieurs façons d'utiliser cette application!\n• Ajouter des clips du presse-papiers, les modifier, et créer des nouveaux clips dans l'application.\n• Créer des dossiers pour organiser vos clips, et marquer les plus importants comme favoris.\n• Ajouter le widget Clips Favoris à votre écran d'accueil pour un accès facile.\n• Utiliser le clavier Copier Mieux (Réglages > Général > Clavier > Claviers > Ajouter un clavier) pour insérer vite vos clips dans d'autres applications. Il faut activer aussi « Autoriser l'accès complet », pour que le clavier peut accéder aux contenus de l'application—il ne va pas recueillir vos données saisies.\n• Configurer des raccourcis pour créer et coller des clips n'importe où.\n• Utiliser l'extension de partage pour sauvegarder des nouveaux clips du texte ou des images.";
 
 /* Class = "UITableViewController"; title = "Edit Clip"; ObjectID = "c12-NJ-Wss"; */
 "c12-NJ-Wss.title" = "Modifier";

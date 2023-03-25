@@ -2,13 +2,14 @@
 //  KeyboardViewController.swift
 //  Clips Keyboard
 //
-//  Created by Bill Wu on 12/16/18.
+//  Created by William Wu on 12/16/18.
 //  Copyright © 2018 William Wu. All rights reserved.
 //
 
 import UIKit
 import CoreData
 import ClipsKit
+import WidgetKit
 
 class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
     
@@ -147,6 +148,7 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
         do {
             try self.managedObjectContext.save()
             DefaultsManager.shouldRefreshAppContext = true
+            WidgetCenter.shared.reloadTimelines(ofKind: "com.williamwu.clips.folder-widget")
         }
         catch let error as NSError {
             print("Couldn't save. \(error), \(error.userInfo)")

@@ -2,7 +2,7 @@
 //  FolderTableViewCell.swift
 //  Copy Better
 //
-//  Created by Bill Wu on 8/12/20.
+//  Created by William Wu on 8/12/20.
 //  Copyright © 2020 William Wu. All rights reserved.
 //
 

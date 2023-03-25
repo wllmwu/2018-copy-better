@@ -2,7 +2,7 @@
 //  RecentlyDeletedTableViewController.swift
 //  Copy Better
 //
-//  Created by Bill Wu on 9/16/22.
+//  Created by William Wu on 9/16/22.
 //  Copyright © 2022 William Wu. All rights reserved.
 //
 

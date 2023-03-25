@@ -2,7 +2,7 @@
 //  IntentHandler.swift
 //  ClipsIntents
 //
-//  Created by Bill Wu on 8/27/21.
+//  Created by William Wu on 8/27/21.
 //  Copyright © 2021 William Wu. All rights reserved.
 //
 

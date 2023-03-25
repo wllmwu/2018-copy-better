@@ -2,7 +2,7 @@
 //  ShareConfigureViewController.swift
 //  Clips Share
 //
-//  Created by Bill Wu on 1/7/19.
+//  Created by William Wu on 1/7/19.
 //  Copyright © 2019 William Wu. All rights reserved.
 //
 

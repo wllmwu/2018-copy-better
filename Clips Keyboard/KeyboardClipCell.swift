@@ -2,7 +2,7 @@
 //  ClipsKeyboardCollectionViewCell.swift
 //  Clips Keyboard
 //
-//  Created by Bill Wu on 12/19/18.
+//  Created by William Wu on 12/19/18.
 //  Copyright © 2018 William Wu. All rights reserved.
 //
 

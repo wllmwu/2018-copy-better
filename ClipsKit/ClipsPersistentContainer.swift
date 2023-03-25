@@ -2,7 +2,7 @@
 //  ClipsPersistentContainer.swift
 //  Clips
 //
-//  Created by Bill Wu on 12/1/18.
+//  Created by William Wu on 12/1/18.
 //  Copyright © 2018 William Wu. All rights reserved.
 //
 

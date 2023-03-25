@@ -2,7 +2,7 @@
 //  ClipsKeyboardView.swift
 //  Clips Keyboard
 //
-//  Created by Bill Wu on 1/3/19.
+//  Created by William Wu on 1/3/19.
 //  Copyright © 2019 William Wu. All rights reserved.
 //
 
