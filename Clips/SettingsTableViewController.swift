@@ -17,8 +17,6 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var autoAddLastCopiedSwitch: UISwitch!
     @IBOutlet weak var storeFormattingInfoSwitch: UISwitch!
     @IBOutlet weak var wrapClipsInKeyboardSwitch: UISwitch!
-    @IBOutlet weak var tipsLabel: UILabel!
-    @IBOutlet weak var aboutLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +33,6 @@ class SettingsTableViewController: UITableViewController {
         self.autoAddLastCopiedSwitch.isOn = DefaultsManager.autoAddLastCopiedInApp
         self.storeFormattingInfoSwitch.isOn = DefaultsManager.storeClipFormattingInApp
         self.wrapClipsInKeyboardSwitch.isOn = DefaultsManager.wrapClipsInKeyboard
-        
-        self.tipsLabel.sizeToFit()
-        self.aboutLabel.sizeToFit()
     }
 
     override func didReceiveMemoryWarning() {
@@ -78,7 +73,7 @@ class SettingsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return 4
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -89,13 +84,6 @@ class SettingsTableViewController: UITableViewController {
             return 2
         }
         return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 3 {
-            return (indexPath.row == 0) ? self.tipsLabel.bounds.height + 16 : self.aboutLabel.bounds.height + 16
-        }
-        return 44
     }
 
     /*
