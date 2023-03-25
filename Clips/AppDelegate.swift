@@ -49,6 +49,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.persistentContainer.migrateModelV2To3()
             DefaultsManager.hasLaunched2_2 = true
         }
+        if !DefaultsManager.hasLaunched2_3 {
+            DefaultsManager.storeClipFormattingInApp = true
+            DefaultsManager.hasLaunched2_3 = true
+        }
         
         return true
     }

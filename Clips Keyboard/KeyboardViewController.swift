@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import ClipsKit
+import WidgetKit
 
 class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
     
@@ -147,6 +148,7 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
         do {
             try self.managedObjectContext.save()
             DefaultsManager.shouldRefreshAppContext = true
+            WidgetCenter.shared.reloadTimelines(ofKind: "com.williamwu.clips.folder-widget")
         }
         catch let error as NSError {
             print("Couldn't save. \(error), \(error.userInfo)")
