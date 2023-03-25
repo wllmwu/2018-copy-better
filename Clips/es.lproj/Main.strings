@@ -2,13 +2,6 @@
 /* Class = "UINavigationItem"; title = "Edit Clip"; ObjectID = "05A-KI-hkJ"; */
 "05A-KI-hkJ.title" = "Editar";
 
-/* Class = "UILabel"; text = "© 2021 William Wu
-
-This app is version 2.1.3.
-
-Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "4Nl-cj-gKr"; */
-"4Nl-cj-gKr.text" = "© 2022 William Wu (correo electrónico: dev.wwu@gmail.com)\n\nVersión 2.2.0";
-
 /* Class = "UINavigationItem"; title = "Copy Better"; ObjectID = "55l-T6-khl"; */
 "55l-T6-khl.title" = "Copiar Mejor";
 
@@ -45,9 +38,6 @@ Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "4Nl-cj-gK
 /* Class = "UITableViewSection"; headerTitle = "Keyboard"; ObjectID = "3rT-cN-McX"; */
 "3rT-cN-McX.headerTitle" = "Teclado";
 
-/* Class = "UITableViewSection"; headerTitle = "About"; ObjectID = "Qga-kv-hFl"; */
-"Qga-kv-hFl.headerTitle" = "Información";
-
 /* Class = "UITableViewSection"; footerTitle = "Enable the Copy Better keyboard in Settings > General > Keyboard > Keyboards > Add New Keyboard. Make sure to enable Allow Full Access too (so the keyboard can access the app's contents—no data is collected)."; ObjectID = "3rT-cN-McX"; */
 "3rT-cN-McX.footerTitle" = "Habilite el teclado Copiar Mejor a Configuración > General > Teclado > Teclados > Agregar nuevo teclado. Asegúrese de habilitar “Permitir acceso completo” también.";
 
@@ -69,8 +59,26 @@ Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "4Nl-cj-gK
 /* Class = "UILabel"; text = "Store formatting info with new clips"; ObjectID = "SBf-Ol-AN5"; */
 "SBf-Ol-AN5.text" = "Incluir el formato de texto con nuevos elementos";
 
-/* Class = "UITableViewSection"; headerTitle = "Recently Deleted"; ObjectID = "bcU-0o-4zZ"; */
-"bcU-0o-4zZ.headerTitle" = "Eliminados hace poco";
+/* Class = "UILabel"; text = "Help & About"; ObjectID = "tTT-Mb-8oJ"; */
+"tTT-Mb-8oJ.text" = "Ayuda & Información";
+
+/* Class = "UINavigationItem"; title = "Help & About"; ObjectID = "sVz-Vi-H03"; */
+"sVz-Vi-H03.title" = "Ayuda & Información";
+
+/* Class = "UILabel"; text = "There are several ways to use this app!
+ • Add clips from the system clipboard, edit them, and create new ones directly in the app. Your clips can be plain text, formatted text, and/or images.
+ • Create folders to organize your clips, and mark important ones as favorites.
+ • Add the Favorite Clips widget to your home screen for easy access.
+ • Enable the Copy Better keyboard (Settings > General > Keyboard > Keyboards > Add New Keyboard) to paste your clips quickly in other apps. Make sure to enable Allow Full Access too, so the keyboard can access the app’s contents—no data is collected.
+ • Configure Siri shortcuts to create and paste clips anywhere.
+ • Use the Share extension to save new clips from websites, Photos, or anywhere else with shareable content.
+ 
+ © 2023 William Wu
+  
+ This app is version 2.3.0. 
+ 
+ Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "lJv-co-5Uu"; */
+"lJv-co-5Uu.text" = "Para acceder más fácilmente a la lista de recortes, agregue el widget Clips Favoritos a la pantalla de inicio, atajos con Siri o con la app Atajos y el teclado Copiar Mejor (Configuración > General > Teclado > Teclados > Agregar nuevo teclado—asegúrese de habilitar “Permitir acceso completo” también).\n\n© 2023 William Wu (correo electrónico: dev.wwu@gmail.com)\n\nVersión 2.3.0";
 
 /* Class = "UILabel"; text = "Recently deleted"; ObjectID = "0HR-vg-w6v"; */
 "0HR-vg-w6v.text" = "Eliminados hace poco";
@@ -113,15 +121,6 @@ Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "4Nl-cj-gK
 
 /* Class = "UITableViewSection"; headerTitle = "Title"; ObjectID = "Ymy-zL-M8M"; */
 "Ymy-zL-M8M.headerTitle" = "Título";
-
-/* Class = "UILabel"; text = "There are several ways to use this app!
-• Add clips from the system clipboard, edit them, and create new ones directly in the app. Your clips can be plain text, formatted text, and/or images.
-• Create folders to organize your clips, and mark important ones as favorites.
-• Add the Favorite Clips widget to your home screen for easy access.
-• Enable the Copy Better keyboard (Settings > General > Keyboard > Keyboards > Add New Keyboard) to paste your clips quickly in other apps. Make sure to enable Allow Full Access too, so the keyboard can access the app’s contents—no data is collected.
-• Configure Siri shortcuts to create and paste clips anywhere.
-• Use the Share extension to save new clips from websites, Photos, or anywhere else with shareable content."; ObjectID = "ZBR-yv-hNc"; */
-"ZBR-yv-hNc.text" = "Para acceder más fácilmente a la lista de recortes, agregue el widget Clips Favoritos a la pantalla de inicio, atajos con Siri o con la app Atajos y el teclado Copiar Mejor (Configuración > General > Teclado > Teclados > Agregar nuevo teclado—asegúrese de habilitar “Permitir acceso completo” también).";
 
 /* Class = "UITableViewController"; title = "Edit Clip"; ObjectID = "c12-NJ-Wss"; */
 "c12-NJ-Wss.title" = "Editar";

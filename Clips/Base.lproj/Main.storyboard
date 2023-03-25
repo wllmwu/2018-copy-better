@@ -1530,7 +1530,6 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" name="Background"/>
                                 <constraints>
                                     <constraint firstItem="FcZ-bi-Hlh" firstAttribute="trailing" secondItem="wr5-Ju-MUt" secondAttribute="trailing" id="AfU-4C-E8M"/>
                                     <constraint firstItem="wr5-Ju-MUt" firstAttribute="top" secondItem="FcZ-bi-Hlh" secondAttribute="top" id="Wgq-rP-02n"/>
@@ -1544,7 +1543,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dfa-8E-xCU"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="Background"/>
                         <constraints>
                             <constraint firstItem="dfa-8E-xCU" firstAttribute="bottom" secondItem="2e7-EO-pom" secondAttribute="bottom" id="MFo-Ek-HI8"/>
                             <constraint firstItem="2e7-EO-pom" firstAttribute="top" secondItem="dfa-8E-xCU" secondAttribute="top" id="RSA-lw-tGF"/>
