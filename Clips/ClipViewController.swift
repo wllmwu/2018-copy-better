@@ -108,8 +108,8 @@ class ClipViewController: UIViewController {
         
         self.contentsTextView.text = ""
         self.contentsTextView.textColor = nil
-        self.contentsTextView.font = nil
         self.contentsTextView.typingAttributes = [:]
+        self.contentsTextView.font = UIFont.systemFont(ofSize: 17)
         
         let textViewSize: CGSize = self.contentsTextView.contentSize
         DispatchQueue.global(qos: .utility).async {

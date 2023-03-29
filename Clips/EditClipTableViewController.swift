@@ -95,8 +95,8 @@ class EditClipTableViewController: UITableViewController, UITextViewDelegate {
         self.contents = contents
         self.contentsTextView.text = ""
         self.contentsTextView.textColor = nil
-        self.contentsTextView.font = nil
         self.contentsTextView.typingAttributes = [:]
+        self.contentsTextView.font = UIFont.systemFont(ofSize: 17)
         
         if contents.count == 0 {
             return
