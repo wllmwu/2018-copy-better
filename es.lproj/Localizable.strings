@@ -137,3 +137,6 @@
 
 /* Folder widget description */
 "widgets.folder.description" = "Ve y copia clips en una carpeta.";
+
+/* Clear Clipboard widget action */
+"widgets.common.actions.clear-clipboard" = "Portapapeles";

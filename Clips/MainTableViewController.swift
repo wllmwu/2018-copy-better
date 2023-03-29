@@ -136,6 +136,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             if pathComponents.count >= 2 && pathComponents[1] == "favorites" {
                 self.performSegue(withIdentifier: "MainToFavorites", sender: nil)
             }
+            
             if action != nil && action == "copy" {
                 guard let uriPercentEncoded = queries["uri"], let uri = uriPercentEncoded.removingPercentEncoding, let clip = Clip.getClip(with: uri, context: self.managedObjectContext) else {
                     return false
@@ -147,6 +148,10 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
             }
             else if action != nil && action == "addcopied" {
                 self.addLastCopied()
+            }
+            else if action != nil && action == "clear" {
+                ClipboardManager.clearPasteboard()
+                self.loadData()
             }
         }
         

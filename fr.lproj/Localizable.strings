@@ -137,3 +137,6 @@
 
 /* Folder widget description */
 "widgets.folder.description" = "Afficher et copier des clips d'un dossier.";
+
+/* Clear Clipboard widget action */
+"widgets.common.actions.clear-clipboard" = "Presse-papiers";

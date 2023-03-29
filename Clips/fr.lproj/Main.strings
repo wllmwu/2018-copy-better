@@ -75,10 +75,10 @@
  
  © 2023 William Wu
   
- This app is version 2.3.0. 
+ This app is version 2.3.1. 
  
  Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "lJv-co-5Uu"; */
-"lJv-co-5Uu.text" = "Il y a plusieurs façons d'utiliser cette application!\n• Ajouter des clips du presse-papiers, les modifier, et créer des nouveaux clips dans l'application.\n• Créer des dossiers pour organiser vos clips, et marquer les plus importants comme favoris.\n• Ajouter le widget Clips Favoris à votre écran d'accueil pour un accès facile.\n• Utiliser le clavier Copier Mieux (Réglages > Général > Clavier > Claviers > Ajouter un clavier) pour insérer vite vos clips dans d'autres applications. Il faut activer aussi « Autoriser l'accès complet », pour que le clavier peut accéder aux contenus de l'application—il ne va pas recueillir vos données saisies.\n• Configurer des raccourcis pour créer et coller des clips n'importe où.\n• Utiliser l'extension de partage pour sauvegarder des nouveaux clips du texte ou des images.\n\n© 2023 William Wu\n\nVersion 2.3.0\n\nPosez des questions ou signalez un bug à dev.wwu@gmail.com.";
+"lJv-co-5Uu.text" = "Il y a plusieurs façons d'utiliser cette application!\n• Ajouter des clips du presse-papiers, les modifier, et créer des nouveaux clips dans l'application.\n• Créer des dossiers pour organiser vos clips, et marquer les plus importants comme favoris.\n• Ajouter le widget Clips Favoris à votre écran d'accueil pour un accès facile.\n• Utiliser le clavier Copier Mieux (Réglages > Général > Clavier > Claviers > Ajouter un clavier) pour insérer vite vos clips dans d'autres applications. Il faut activer aussi « Autoriser l'accès complet », pour que le clavier peut accéder aux contenus de l'application—il ne va pas recueillir vos données saisies.\n• Configurer des raccourcis pour créer et coller des clips n'importe où.\n• Utiliser l'extension de partage pour sauvegarder des nouveaux clips du texte ou des images.\n\n© 2023 William Wu\n\nVersion 2.3.1\n\nPosez des questions ou signalez un bug à dev.wwu@gmail.com.";
 
 /* Class = "UILabel"; text = "Recently deleted"; ObjectID = "0HR-vg-w6v"; */
 "0HR-vg-w6v.text" = "Suppressions récentes";

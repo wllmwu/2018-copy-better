@@ -137,3 +137,6 @@
 
 /* Folder widget description */
 "widgets.folder.description" = "View and copy clips in a folder of your choice.";
+
+/* Clear Clipboard widget action */
+"widgets.common.actions.clear-clipboard" = "Clipboard";
