@@ -197,4 +197,8 @@ struct AppStrings {
         return NSLocalizedString("widgets.folder.description", comment: "Folder widget description")
     }
     
+    static var CLEAR_CLIPBOARD_WIDGET_ACTION: String {
+        return NSLocalizedString("widgets.common.actions.clear-clipboard", comment: "Clear Clipboard widget action")
+    }
+    
 }

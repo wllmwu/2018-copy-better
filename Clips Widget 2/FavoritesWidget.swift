@@ -82,7 +82,15 @@ struct FavoritesWidgetEntryView: View {
                     HStack {
                         Text(AppStrings.FAVORITES_TITLE)
                             .fontWeight(.bold)
+                            .truncationMode(.head)
                         Spacer()
+                        Link(destination: URL(string: "copybetter:///main?action=clear")!, label: {
+                            HStack(spacing: 0.0) {
+                                Image(systemName: "clear.fill")
+                                Text(AppStrings.CLEAR_CLIPBOARD_WIDGET_ACTION)
+                                    .padding(.trailing)
+                            }
+                        })
                     }
                     .padding(.leading)
                 }
