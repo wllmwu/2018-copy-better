@@ -77,8 +77,8 @@
   
  This app is version 2.3.1. 
  
- Questions or bug reports? Email me at dev.wwu@gmail.com."; ObjectID = "lJv-co-5Uu"; */
-"lJv-co-5Uu.text" = "Para acceder más fácilmente a la lista de recortes, agregue el widget Clips Favoritos a la pantalla de inicio, atajos con Siri o con la app Atajos y el teclado Copiar Mejor (Configuración > General > Teclado > Teclados > Agregar nuevo teclado—asegúrese de habilitar “Permitir acceso completo” también).\n\n© 2023 William Wu (correo electrónico: dev.wwu@gmail.com)\n\nVersión 2.3.1";
+ Please report bugs to dev.wwu@gmail.com."; ObjectID = "lJv-co-5Uu"; */
+"lJv-co-5Uu.text" = "Para acceder más fácilmente a la lista de recortes, agregue el widget Clips Favoritos a la pantalla de inicio, atajos con Siri o con la app Atajos y el teclado Copiar Mejor (Configuración > General > Teclado > Teclados > Agregar nuevo teclado—asegúrese de habilitar “Permitir acceso completo” también).\n\n© 2023 William Wu\n\nVersión 2.3.1";
 
 /* Class = "UILabel"; text = "Recently deleted"; ObjectID = "0HR-vg-w6v"; */
 "0HR-vg-w6v.text" = "Eliminados hace poco";

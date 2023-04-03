@@ -13,17 +13,17 @@
 // "Add Clip"
 "6gfyIG" = "Ajouter un Clip";
 
-// "Copy clip \"${clip}\" to the clipboard"
-"7BeXK3" = "Copier le clip \"${clip}\" au presse-papiers";
+// "Retrieve contents of \"${clip}\""
+"7BeXK3" = "Récupérer le contenu de \"${clip}\"";
 
 // "Added the clip: ${inputText}"
 "7TMWAV" = "Le clip a été ajouté: ${inputText}";
 
-// "Copied to clipboard."
-"DM4921" = "Copié au presse-papiers.";
+// "Clip retrieved."
+"DM4921" = "Récupéré.";
 
-// "What's the title of the clip you would like to copy?"
-"FgdroQ" = "Quel est le titre du clip que vous voudriez copier?";
+// "What's the title of the clip you would like to retrieve?"
+"FgdroQ" = "Quel est le titre du clip que vous voudriez récupérer?";
 
 // "There are ${count} options matching ‘${clip}’."
 "HXOkSN" = "Il y a ${count} résultats pour ‘${clip}’.";
@@ -37,11 +37,11 @@
 // "No clips matching '${clip}' were found."
 "NH5R4t" = "Aucun résultats pour '${clip}'.";
 
-// "Copy clip \"${clip}\" to the clipboard"
-"OpXQc6" = "Copier le clip \"${clip}\" au presse-papiers";
+// "Retrieve contents of \"${clip}\""
+"OpXQc6" = "Récupérer le contenu de \"${clip}\"";
 
-// "Copies a clip to the system clipboard. Also outputs the clip's contents as text."
-"T3GdvL" = "Copie un clip au presse-papiers et transmet ses contenu à l'action suivante.";
+// "Outputs the clip's contents as text."
+"T3GdvL" = "Transmet le contenu d'un clip à l'action suivante.";
 
 // "What would you like to title this clip?"
 "VPrJRS" = "Quel titre voudriez-vous donner à ce clip?";
@@ -52,11 +52,11 @@
 // "Contents"
 "ZPokU6" = "Contenu";
 
-// "Copied to clipboard: ${clipContents}"
-"cxjvkX" = "Copié au presse-papiers: ${clipContents}";
+// "Clip retrieved: ${clipContents}"
+"cxjvkX" = "Récupéré: ${clipContents}";
 
-// "Copy Clip"
-"dbZ2UR" = "Copier un Clip";
+// "Get Clip"
+"dbZ2UR" = "Récupérer un Clip";
 
 // "Added the clip."
 "hgsjlA" = "Le clip a été ajouté.";
@@ -93,15 +93,3 @@
 
 // "Select Folder"
 "icbaVK" = "Choisir un dossier";
-
-// "Deletes the current contents of the system clipboard."
-"RGaGbw" = "Supprime le contenu actuel du presse-papiers.";
-
-// "Clear the system clipboard"
-"IBICjn" = "Vider le presse-papiers de l'appareil";
-
-// "Clear the system clipboard"
-"cgnenn" = "Vider le presse-papiers de l'appareil";
-
-// "Clear Clipboard"
-"UdQ1dl" = "Vider le presse-papiers";

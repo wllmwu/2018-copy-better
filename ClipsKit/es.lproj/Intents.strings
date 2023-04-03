@@ -13,17 +13,17 @@
 // "Add Clip"
 "6gfyIG" = "Agregar un Clip";
 
-// "Copy clip \"${clip}\" to the clipboard"
-"7BeXK3" = "Copiar el clip \"${clip}\" al portapapeles";
+// "Retrieve contents of \"${clip}\""
+"7BeXK3" = "Recuperar los contenidos de \"${clip}\"";
 
 // "Added the clip: ${inputText}"
 "7TMWAV" = "El clip fue agregado: ${inputText}";
 
-// "Copied to clipboard."
-"DM4921" = "Copiado al portapapeles.";
+// "Clip retrieved."
+"DM4921" = "Recuperado.";
 
-// "What's the title of the clip you would like to copy?"
-"FgdroQ" = "¿Cuál es el título del clip que le gustaría copiar?";
+// "What's the title of the clip you would like to retrieve?"
+"FgdroQ" = "¿Cuál es el título del clip que le gustaría recuperar?";
 
 // "There are ${count} options matching ‘${clip}’."
 "HXOkSN" = "Hay ${count} resultados para ‘${clip}’.";
@@ -37,11 +37,11 @@
 // "No clips matching '${clip}' were found."
 "NH5R4t" = "No hay resultados para '${clip}'.";
 
-// "Copy clip \"${clip}\" to the clipboard"
-"OpXQc6" = "Copiar el clip \"${clip}\" al portapapeles";
+// "Retrieve contents of \"${clip}\""
+"OpXQc6" = "Recuperar los contenidos de \"${clip}\"";
 
-// "Copies a clip to the system clipboard. Also outputs the clip's contents as text."
-"T3GdvL" = "Copia un clip al portapapeles y pasa el contenido del clip a la acción siguiente.";
+// "Outputs the clip's contents as text."
+"T3GdvL" = "Pasa el contenido del clip a la acción siguiente.";
 
 // "What would you like to title this clip?"
 "VPrJRS" = "¿Cómo le gustaría titular este clip?";
@@ -52,11 +52,11 @@
 // "Contents"
 "ZPokU6" = "Contenido";
 
-// "Copied to clipboard: ${clipContents}"
-"cxjvkX" = "Copiado al portapapeles: ${clipContents}";
+// "Clip retrieved: ${clipContents}"
+"cxjvkX" = "Recuperado: ${clipContents}";
 
-// "Copy Clip"
-"dbZ2UR" = "Copiar un Clip";
+// "Get Clip"
+"dbZ2UR" = "Recuperar un Clip";
 
 // "Added the clip."
 "hgsjlA" = "El clip fue agregado.";
@@ -93,15 +93,3 @@
 
 // "Select Folder"
 "icbaVK" = "Seleccionar una Carpeta";
-
-// "Deletes the current contents of the system clipboard."
-"RGaGbw" = "Elimina los contenidos del portapapeles.";
-
-// "Clear the system clipboard"
-"IBICjn" = "Eliminar el portapapeles";
-
-// "Clear the system clipboard"
-"cgnenn" = "Eliminar el portapapeles";
-
-// "Clear Clipboard"
-"UdQ1dl" = "Eliminar el Portapapeles";

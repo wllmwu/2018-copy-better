@@ -43,7 +43,7 @@ class IntentHandler: INExtension, CopyClipIntentHandling, AddClipIntentHandling 
             return completion(CopyClipIntentResponse(code: .failureNonexistent, userActivity: nil))
         }
         
-        ClipboardManager.copyToPasteboard(item: clip.contents)
+        // ClipboardManager.copyToPasteboard(item: clip.contents) // doesn't work in shortcuts
         let response = CopyClipIntentResponse.success(clipContents: ClipboardManager.stringFromItem(clip.contents) ?? "")
         return completion(response)
     }
@@ -187,17 +187,6 @@ extension IntentHandler: SelectFolderIntentHandling {
         for subfolder in folder.subfoldersArray {
             self.getFolders(subfolder, path + (folder.name ?? "_") + "/", &list)
         }
-    }
-    
-}
-
-// MARK: - ClearClipboardIntentHandling protocol
-
-extension IntentHandler: ClearClipboardIntentHandling {
-    
-    func handle(intent: ClearClipboardIntent, completion: @escaping (ClearClipboardIntentResponse) -> Void) {
-        ClipboardManager.clearPasteboard()
-        return completion(ClearClipboardIntentResponse(code: .success, userActivity: nil))
     }
     
 }
