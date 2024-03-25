@@ -21,6 +21,7 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
     internal var isFavorites: Bool = false
     internal var subfolders: [Folder] = []
     internal var clips: [Clip] = []
+    internal var shouldShowCurrent: Bool = true
     internal var shouldWrapClips: Bool = false
     internal var favoritesEnabled: Bool = true
     
@@ -58,6 +59,10 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
             container.migrateModelV1To2()
             DefaultsManager.hasLaunched2_0 = true
         }
+        if !DefaultsManager.hasLaunched2_4 {
+            DefaultsManager.showLastCopiedInKeyboard = true
+            DefaultsManager.hasLaunched2_4 = true
+        }
         
         if let rootFolder = Folder.getRootFolder(context: self.managedObjectContext) {
             self.rootFolder = rootFolder
@@ -69,6 +74,7 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.shouldShowCurrent = DefaultsManager.showLastCopiedInKeyboard
         self.shouldWrapClips = DefaultsManager.wrapClipsInKeyboard
         self.favoritesEnabled = DefaultsManager.favoritesEnabled
         self.loadData()
@@ -77,7 +83,9 @@ class KeyboardViewController: UIInputViewController, ClipsKeyboardViewDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.pasteboardCheckTimer = Timer.scheduledTimer(timeInterval: 3, target: self.keyboardView, selector: #selector(ClipsKeyboardView.updateLastCopied), userInfo: nil, repeats: true)
+        if self.shouldShowCurrent {
+            self.pasteboardCheckTimer = Timer.scheduledTimer(timeInterval: 3, target: self.keyboardView, selector: #selector(ClipsKeyboardView.updateLastCopied), userInfo: nil, repeats: true)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

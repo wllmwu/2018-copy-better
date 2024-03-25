@@ -62,6 +62,16 @@ public class DefaultsManager: NSObject {
         }
     }
     
+    private static var HAS_LAUNCHED_2_4_KEY = "launched2.4"
+    public static var hasLaunched2_4: Bool {
+        get {
+            return defaults.bool(forKey: HAS_LAUNCHED_2_4_KEY)
+        }
+        set {
+            defaults.set(newValue, forKey: HAS_LAUNCHED_2_4_KEY)
+        }
+    }
+    
     private static var FAVORITES_ENABLED_KEY = "enableFavorites"
     public static var favoritesEnabled: Bool {
         get {
@@ -119,6 +129,16 @@ public class DefaultsManager: NSObject {
         }
         set {
             defaults.set(newValue, forKey: STORE_CLIP_FORMATTING_KEY)
+        }
+    }
+    
+    private static var SHOW_LAST_COPIED_KEYBOARD_KEY = "showLastCopiedInKeyboard"
+    public static var showLastCopiedInKeyboard: Bool {
+        get {
+            return defaults.bool(forKey: SHOW_LAST_COPIED_KEYBOARD_KEY)
+        }
+        set {
+            defaults.set(newValue, forKey: SHOW_LAST_COPIED_KEYBOARD_KEY)
         }
     }
     

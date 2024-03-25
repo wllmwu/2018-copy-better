@@ -53,6 +53,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             DefaultsManager.storeClipFormattingInApp = true
             DefaultsManager.hasLaunched2_3 = true
         }
+        if !DefaultsManager.hasLaunched2_4 {
+            DefaultsManager.showLastCopiedInKeyboard = true
+            DefaultsManager.hasLaunched2_4 = true
+        }
         
         return true
     }
