@@ -1463,7 +1463,7 @@
 				CODE_SIGN_ENTITLEMENTS = Clips/Clips.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "$(SRCROOT)/Clips/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Copy Better";
@@ -1489,7 +1489,7 @@
 				CODE_SIGN_ENTITLEMENTS = Clips/Clips.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FFB5P5C3G7;
 				INFOPLIST_FILE = "$(SRCROOT)/Clips/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Copy Better";

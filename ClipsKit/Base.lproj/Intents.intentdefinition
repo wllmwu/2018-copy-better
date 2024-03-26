@@ -9,11 +9,11 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>M2oRIV</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>21G115</string>
+	<string>23E224</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
-	<string>13F100</string>
+	<string>15E204a</string>
 	<key>INIntentDefinitionToolsVersion</key>
-	<string>13.4.1</string>
+	<string>15.3</string>
 	<key>INIntents</key>
 	<array>
 		<dict>
@@ -411,6 +411,8 @@
 		<dict>
 			<key>INIntentCategory</key>
 			<string>information</string>
+			<key>INIntentDescription</key>
+			<string>Choose a folder to show.</string>
 			<key>INIntentDescriptionID</key>
 			<string>DP1JFq</string>
 			<key>INIntentEligibleForWidgets</key>
