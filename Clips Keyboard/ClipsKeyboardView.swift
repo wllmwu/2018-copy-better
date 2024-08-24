@@ -36,6 +36,7 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     private static let numItemsOnPage: Int = 5
     
     @IBOutlet weak var lastCopiedLabel: UILabel!
+    @IBOutlet weak var lastCopiedButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var nextKeyboardButton: KeyboardButton!
     @IBOutlet weak var spaceKey: KeyboardButton!
@@ -102,7 +103,10 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
             self.setMessageLabelVisible(false)
         }
         
-        self.updateLastCopied()
+        if DefaultsManager.showLastCopiedInKeyboard {
+            self.updateLastCopied()
+        }
+        self.lastCopiedButton.isEnabled = DefaultsManager.showLastCopiedInKeyboard
     }
     
     @objc func updateLastCopied() {
@@ -141,9 +145,7 @@ class ClipsKeyboardView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     }
     
     @IBAction func addLastCopied(_ sender: UIButton) {
-        if let item = self.lastCopied {
-            self.delegate.addLastCopied(item)
-        }
+        self.delegate.addLastCopied(ClipboardManager.retrieveFromPasteboard())
     }
     
     @IBAction func space(_ sender: UIButton) {

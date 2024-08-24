@@ -262,6 +262,7 @@ class ClipViewController: UIViewController {
                 self.setTitle(nil)
                 self.navigationItem.largeTitleDisplayMode = .never
             }
+            self.contents = clip.contents
             self.setContentsText(contents: clip.contents)
         }
     }

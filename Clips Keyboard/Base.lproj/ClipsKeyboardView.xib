@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -217,6 +217,7 @@
             <connections>
                 <outlet property="backspaceKey" destination="aeo-Xp-SNY" id="iUg-Ah-L60"/>
                 <outlet property="collectionView" destination="8z4-Li-KCR" id="JJE-E7-XFw"/>
+                <outlet property="lastCopiedButton" destination="gN3-kZ-ZNV" id="QQs-dh-bJ6"/>
                 <outlet property="lastCopiedLabel" destination="hg9-Pr-SgV" id="DWx-nA-bPb"/>
                 <outlet property="messageLabel" destination="Exl-xm-tBI" id="7Qe-Hu-FyQ"/>
                 <outlet property="nextKeyboardButton" destination="bas-aS-K5R" id="0B3-Ze-oKo"/>
@@ -229,9 +230,9 @@
         </view>
     </objects>
     <resources>
-        <image name="delete.left" catalog="system" width="128" height="104"/>
-        <image name="delete.left.fill" catalog="system" width="128" height="104"/>
-        <image name="globe" catalog="system" width="128" height="121"/>
+        <image name="delete.left" catalog="system" width="128" height="102"/>
+        <image name="delete.left.fill" catalog="system" width="128" height="102"/>
+        <image name="globe" catalog="system" width="128" height="123"/>
         <namedColor name="Key">
             <color red="0.69803921568627447" green="0.71764705882352942" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -239,7 +240,7 @@
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
